@@ -1,0 +1,25 @@
+{
+  "bindings":[
+    {
+      "action":"shiftDown",
+      "control":"button3"
+    },
+    {
+      "action":"slower_motion",
+      "control":"alt button3"
+    },
+    {
+      "action":"faster_motion",
+      "control":"alt button4"
+    },
+    {
+      "action":"shiftUp",
+      "control":"button4"
+    }
+  ],
+  "devicetype":"mouse",
+  "guid":"{6F1D2B60-D5A0-11CF-BFC7-444553540000}",
+  "name":"Wine Mouse",
+  "version":1,
+  "vidpid":"6F1D2B60"
+}

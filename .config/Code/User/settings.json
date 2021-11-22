@@ -1,0 +1,26 @@
+{
+    "workbench.colorTheme": "Default High Contrast",
+    "files.associations": {
+        "grub": "properties"
+    },
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter-notebook"
+    },
+    "notebook.cellToolbarLocation": {
+        "default": "right",
+        "jupyter-notebook": "left"
+    },
+    "python.linting.flake8Args": ["--ignore=E501,F401"],
+    "security.workspace.trust.untrustedFiles": "open",
+    "explorer.confirmDelete": false,
+    "python.linting.flake8Enabled": true,
+    "python.linting.flake8CategorySeverity.E": "Warning",
+    "python.linting.flake8CategorySeverity.F": "Warning",
+    "files.autoSave": "afterDelay",
+    "explorer.confirmDragAndDrop": false,
+    "git.enableSmartCommit": true,
+    "editor.fontSize": 16,
+    "docker.enableDockerComposeLanguageService": true,
+    "cmake.configureOnOpen": true,
+    "python.defaultInterpreterPath": "/bin/python"
+}

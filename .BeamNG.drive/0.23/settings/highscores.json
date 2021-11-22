@@ -1,0 +1,47 @@
+{
+  "glow_city":{
+    "TrackEditorTrack_Argon Curves":{
+      "standing0":[
+        {
+          "detailed":false,
+          "formattedTime":"01:12.861",
+          "formattedTimestamp":"Mon Jul 26 16:13:18 2021",
+          "playerName":"LeadSeason",
+          "timeInMillis":72861,
+          "timeStamp":1.627316e+09,
+          "vehicleBrand":"Hirochi",
+          "vehicleConfig":"powerglow",
+          "vehicleModel":"sbr",
+          "vehicleName":"SBR4"
+        },
+        {
+          "detailed":false,
+          "formattedTime":"01:17.381",
+          "formattedTimestamp":"Mon Jul 26 16:12:05 2021",
+          "place":1,
+          "playerName":"LeadSeason",
+          "timeInMillis":77381,
+          "timeStamp":1.62731593e+09,
+          "vehicleBrand":"Hirochi",
+          "vehicleConfig":"powerglow",
+          "vehicleModel":"sbr",
+          "vehicleName":"SBR4"
+        }
+      ],
+      "standing2":[
+        {
+          "detailed":false,
+          "formattedTime":"02:30.244",
+          "formattedTimestamp":"Mon Jul 26 16:13:21 2021",
+          "playerName":"LeadSeason",
+          "timeInMillis":150244,
+          "timeStamp":1.627316e+09,
+          "vehicleBrand":"Hirochi",
+          "vehicleConfig":"powerglow",
+          "vehicleModel":"sbr",
+          "vehicleName":"SBR4"
+        }
+      ]
+    }
+  }
+}
