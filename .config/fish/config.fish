@@ -39,6 +39,9 @@ end
 set EDITOR vim
 
 fish_add_path -g ~/.local/bin
+
+thefuck --alias | source
+
 export LANG=en_US.UTF-8
 
 alias msnake="/home/leadseason/Games/msnake/build/msnake"

@@ -18,6 +18,7 @@ Plug 'nvie/vim-flake8'
 Plug 'dag/vim-fish'
 
 Plug 'fladson/vim-kitty'
+Plug 'https://github.com/sagarrakshe/toggle-bool'
 
 call plug#end()
 
