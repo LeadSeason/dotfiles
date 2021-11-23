@@ -18,12 +18,13 @@ Plug 'nvie/vim-flake8'
 Plug 'dag/vim-fish'
 
 Plug 'fladson/vim-kitty'
-Plug 'https://github.com/sagarrakshe/toggle-bool'
+ " Plug 'https://github.com/sagarrakshe/toggle-bool'
 
 call plug#end()
 
 let g:airline_powerline_fonts = 1
 
+ " noremap <C-a> :ToggleBool<CR>
 map <F5> :NERDTreeToggle<CR>
 
 command Sw :w !sudo tee %
