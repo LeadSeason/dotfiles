@@ -13,7 +13,7 @@
       "defaultSpawnPointName":"spawn_startline"
     },
     "italy":{
-      "defaultSpawnPointName":"spawn_town_east"
+      "defaultSpawnPointName":"spawn_crossroads"
     },
     "small_island":{
       "defaultSpawnPointName":"spawn_north"
@@ -22,7 +22,7 @@
       "defaultSpawnPointName":"undefined"
     },
     "utah":{
-      "defaultSpawnPointName":"spawn_west_highway"
+      "defaultSpawnPointName":"spawn_auto_repair_zone"
     },
     "west_coast_usa":{
       "defaultSpawnPointName":"spawns_industrial"
