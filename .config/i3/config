@@ -27,12 +27,15 @@ exec --no-startup-id /home/leadseason/.config/i3/tray
 exec --no-startup-id picom --config /home/leadseason/.config/picom.conf
 
 # wallpaper
-exec --no-startup-id feh --bg-max ~/Pictures/wallpaper/brige.jpg
+exec --no-startup-id feh --bg-fill ~/Pictures/wallpaper/lake2.jpg
+
+# start auto lock
+exec --no-startup-id xautolock
 
 # Gaps
 for_window [class="^.*"] border pixel 2 
-gaps inner 15 
-gaps outer 15
+gaps inner 10 
+gaps outer 10
 
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
