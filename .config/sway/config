@@ -33,7 +33,7 @@ gaps outer 10
 exec --no-startup-id nm-applet
 
 # bg start
-exec --no-startup-id swaybg --image Pictures/wallpaper/lake2.jpg
+exec --no-startup-id swaybg --image Pictures/wallpaper/lake.jpg
 
 # auto lock
 exec --no-startup-id autolock -locker swaylock

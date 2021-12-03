@@ -16,11 +16,11 @@
     "python.linting.flake8Enabled": true,
     "python.linting.flake8CategorySeverity.E": "Warning",
     "python.linting.flake8CategorySeverity.F": "Warning",
-    "files.autoSave": "afterDelay",
     "explorer.confirmDragAndDrop": false,
     "git.enableSmartCommit": true,
     "editor.fontSize": 16,
     "docker.enableDockerComposeLanguageService": true,
     "cmake.configureOnOpen": true,
-    "python.defaultInterpreterPath": "/bin/python"
+    "python.defaultInterpreterPath": "/bin/python",
+    "editor.fontFamily": "'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback', 'Symbols Nerd Font', 'Octicons'"
 }
