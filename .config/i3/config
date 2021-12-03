@@ -67,6 +67,8 @@ exec --no-startup-id ~/.config/polybar/polybar.sh
 # ░╚════╝░░╚════╝░╚═╝░░╚══╝░░░╚═╝░░░╚═╝░░╚═╝░╚════╝░╚══════╝╚═════╝░
 # 
 
+# screen capture
+bindsym $mod+c exec --no-startup-id bash -c "flameshot gui -r | python /home/leadseason/Pictures/FlameShot-Custom-Uploader/main.py"
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status

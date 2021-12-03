@@ -18,8 +18,8 @@
 
 [colors]
 ;background = ${xrdb:color0:#222}
-background = #101010
-background-alt = #222
+background = #D2101010
+background-alt = #d2202020
 ;foreground = ${xrdb:color7:#222}
 foreground = #dfdfdf
 foreground-alt = #555
@@ -28,16 +28,16 @@ secondary = #e60053
 alert = #bd2c40
 
 
-# 0: +HDMI-A-0 1920/527x1080/296+1920+0  HDMI-A-0
-# 1: +VGA-1-1 1920/521x1080/293+0+0  VGA-1-1
-# 2: +DVI-I-1-1 1920/531x1080/299+3840+0  DVI-I-1-1
+; 0: +HDMI-A-0 1920/527x1080/296+1920+0  HDMI-A-0
+; 1: +VGA-1-1 1920/521x1080/293+0+0  VGA-1-1
+; 2: +DVI-I-1-1 1920/531x1080/299+3840+0  DVI-I-1-1
 
 [bar/example]
 monitor = ${env:MONITOR:}
 width = 100%
 height = 27
-;offset-x = 1%
-;offset-y = 1%
+; offset-x = 1%
+; offset-y = 1%
 radius = 6.0
 fixed-center = false
 
@@ -50,7 +50,7 @@ line-color = #f00
 border-size = 4
 border-color = #00000000
 
-padding-left = 0
+padding-left = 3
 padding-right = 2
 
 module-margin-left = 1
@@ -66,9 +66,9 @@ font-2 = "Octicons:style=Regular"
 #font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 #font-2 = siji:pixelsize=10;1
 
-modules-left = i3
+modules-left = powermenu i3
 modules-center = mpd
-modules-right = filesystem pulseaudio memory cpu wlan eth temperature date powermenu
+modules-right = pulseaudio battery wlan eth memory cpu temperature date
 # modules-left = bspwm i3
 # modules-center = mpd
 # modules-right = filesystem xbacklight alsa pulseaudio xkeyboard memory cpu wlan eth battery temperature date powermenu
@@ -234,10 +234,11 @@ label = %percentage_used%%
 
 [module/wlan]
 type = internal/network
-interface = wlp41s0
+interface = wlp4s0
 interval = 3.0
 
-format-connected = <ramp-signal> <label-connected>
+format-connected = <label-connected>
+format-connected-prefix = "直 "
 format-connected-underline = #9f78e1
 label-connected = %essid%
 
@@ -256,7 +257,7 @@ ramp-signal-foreground = ${colors.foreground-alt}
 
 [module/eth]
 type = internal/network
-interface = virbr0
+interface = enp3s0
 interval = 3.0
 
 format-connected-underline = #55aa55
@@ -280,7 +281,7 @@ date-alt = " %Y-%m-%d"
 time = %H:%M
 time-alt = %H:%M:%S
 
-format-prefix = 
+format-prefix = 
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = #0a6cf5
 
@@ -289,8 +290,8 @@ label = %date% %time%
 [module/pulseaudio]
 type = internal/pulseaudio
 
-format-volume = <label-volume> <bar-volume>
-label-volume = VOL %percentage%%
+format-volume = <label-volume>
+label-volume = 墳 %percentage%%
 label-volume-foreground = ${root.foreground}
 
 label-muted = 🔇 muted
@@ -343,24 +344,34 @@ bar-volume-empty-foreground = ${colors.foreground-alt}
 
 [module/battery]
 type = internal/battery
-battery = BAT0
-adapter = ADP1
-full-at = 98
+battery = BAT1
+adapter = ADAC
+full-at = 99
 
-format-charging = <animation-charging> <label-charging>
+format-charging = <ramp-capacity> <label-charging>
+format-charging-prefix = " "
 format-charging-underline = #ffb52a
 
-format-discharging = <animation-discharging> <label-discharging>
+format-discharging = <ramp-capacity> <label-discharging>
+format-discharging-prefix = " "
 format-discharging-underline = ${self.format-charging-underline}
 
-format-full-prefix = " "
+format-full-prefix = " "
 format-full-prefix-foreground = ${colors.foreground-alt}
 format-full-underline = ${self.format-charging-underline}
 
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-foreground = ${colors.foreground-alt}
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+ramp-capacity-5 = 
+ramp-capacity-6 = 
+ramp-capacity-7 = 
+ramp-capacity-8 = 
+ramp-capacity-9 = 
+ramp-capacity-10 = 
+ramp-capacity-foreground = ${colors.foreground}
 
 animation-charging-0 = 
 animation-charging-1 = 
@@ -388,23 +399,24 @@ label = %temperature-c%
 label-warn = %temperature-c%
 label-warn-foreground = ${colors.secondary}
 
-ramp-0 = 
-ramp-1 = 
-ramp-2 = 
-ramp-foreground = ${colors.foreground-alt}
+ramp-0 = ""
+ramp-1 = ""
+ramp-2 = 
+ramp-foreground = ${colors.secondary}
 
 [module/powermenu]
 type = custom/menu
 
 expand-right = true
 
-format-spacing = 1
+;format-spacing = 1
+format-underline = ${colors.secondary}
 
-label-open = 
+label-open = ""
 label-open-foreground = ${colors.secondary}
-label-close =  cancel
+label-close = cancel
 label-close-foreground = ${colors.secondary}
-label-separator = |
+label-separator = " | "
 label-separator-foreground = ${colors.foreground-alt}
 
 menu-0-0 = reboot
