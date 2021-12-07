@@ -4,7 +4,7 @@ DEFAULT_SOURCE_INDEX=$(pacmd list-sources | grep "\* index:" | cut -d' ' -f5)
 
 display_volume() {
 	if [ -z "$volume" ]; then
-	  echo "No Mic Found"
+	  echo ""
 	else
 	  volume="${volume//[[:blank:]]/}" 
 	  if [[ "$mute" == *"yes"* ]]; then
