@@ -22,5 +22,6 @@
     "docker.enableDockerComposeLanguageService": true,
     "cmake.configureOnOpen": true,
     "python.defaultInterpreterPath": "/bin/python",
-    "editor.fontFamily": "'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback', 'Symbols Nerd Font', 'Octicons'"
+    "editor.fontFamily": "'Droid Sans Mono', 'monospace', monospace, 'Material Icons', 'Droid Sans Fallback', 'Symbols Nerd Font', 'Octicons'",
+    "files.autoSave": "afterDelay"
 }

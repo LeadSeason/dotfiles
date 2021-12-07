@@ -59,7 +59,7 @@ module-margin-right = 2
 
 font-0 = "DejaVu Sans:style=Regular"
 font-1 = "Symbols Nerd Font:style=Regular"
-font-2 = "Octicons:style=Regular"
+font-2 = "Material Icons:style=Regular"
 
 
 #font-0 = fixed:pixelsize=10;1
@@ -68,7 +68,7 @@ font-2 = "Octicons:style=Regular"
 
 modules-left = powermenu i3
 modules-center = mpd
-modules-right = pulseaudio battery wlan eth memory cpu temperature date
+modules-right = mic-volume pulseaudio kdeconnect battery wlan eth memory cpu temperature updates-pacman-aurhelper date
 # modules-left = bspwm i3
 # modules-center = mpd
 # modules-right = filesystem xbacklight alsa pulseaudio xkeyboard memory cpu wlan eth battery temperature date powermenu
@@ -150,7 +150,7 @@ index-sort = true
 wrapping-scroll = false
 
 ; Only show workspaces on the same output as the bar
-;pin-workspaces = true
+pin-workspaces = true
 
 label-mode-padding = 2
 label-mode-foreground = #000
@@ -234,7 +234,7 @@ label = %percentage_used%%
 
 [module/wlan]
 type = internal/network
-interface = wlp4s0
+interface = wlp41s0
 interval = 3.0
 
 format-connected = <label-connected>
@@ -257,11 +257,11 @@ ramp-signal-foreground = ${colors.foreground-alt}
 
 [module/eth]
 type = internal/network
-interface = enp3s0
+interface = enp39s0
 interval = 3.0
 
 format-connected-underline = #55aa55
-format-connected-prefix = " "
+format-connected-prefix = " "
 format-connected-prefix-foreground = ${colors.foreground-alt}
 label-connected = %local_ip%
 
@@ -387,11 +387,12 @@ animation-discharging-framerate = 750
 
 [module/temperature]
 type = internal/temperature
-thermal-zone = 0
+interval = 0.5
+hwmon-path = /sys/devices/platform/nct6775.2592/hwmon/hwmon5/temp3_input
 warn-temperature = 60
 
 format = <ramp> <label>
-format-underline = #f50a4d
+format-underline = #f90000
 format-warn = <ramp> <label-warn>
 format-warn-underline = ${self.format-underline}
 
@@ -423,16 +424,61 @@ menu-0-0 = reboot
 menu-0-0-exec = menu-open-1
 menu-0-1 = power off
 menu-0-1-exec = menu-open-2
+menu-0-2 = lock
+menu-0-2-exec = menu-open-3
+menu-0-3 = logout
+menu-0-3-exec = menu-open-4
+menu-0-4 = sleep
+menu-0-4-exec = menu-open-5
+
 
 menu-1-0 = cancel
 menu-1-0-exec = menu-open-0
 menu-1-1 = reboot
-menu-1-1-exec = sudo reboot
+menu-1-1-exec = reboot
 
 menu-2-0 = power off
-menu-2-0-exec = sudo poweroff
+menu-2-0-exec = poweroff
 menu-2-1 = cancel
 menu-2-1-exec = menu-open-0
+
+menu-3-0 = lock
+menu-3-0-exec = xautolock -locknow
+menu-3-1 = cancel
+menu-3-1-exec = menu-open-0
+
+menu-4-0 = logout
+menu-4-0-exec = i3-msg exit
+menu-4-1 = cancel
+menu-4-1-exec = menu-open-0
+
+menu-5-0 = sleep
+menu-5-0-exec = systemctl suspend
+menu-5-1 = cancel
+menu-5-1-exec = menu-open-0
+
+[module/updates-pacman-aurhelper]
+type = custom/script
+exec = ~/.config/polybar/scripts/updates-pacman-aurhelper.sh
+interval = 600
+format-underline = #1793D1
+click-left = "kitty --hold 'yay' '-Syu' '--noconfirm' '--sudoloop'"
+
+[module/kdeconnect]  
+type = custom/script  
+exec = "~/.config/polybar/scripts/polybar-kdeconnect.sh -d"  
+tail = true
+
+[module/mic-volume]
+type = custom/script
+interval = 1
+format =  <label>
+exec = bash ~/.config/polybar/scripts/mic-volume.sh show-vol 'alsa_input.pci-0000_31_00.4.analog-stereo'
+
+; Control actions (using pactl)
+click-left = bash ~/.config/polybar/scripts/mic-volume.sh mute-vol 'alsa_input.pci-0000_31_00.4.analog-stereo'
+scroll-up = bash ~/.config/polybar/scripts/mic-volume.sh inc-vol 'alsa_input.pci-0000_31_00.4.analog-stereo'
+scroll-down = bash ~/.config/polybar/scripts/mic-volume.sh dec-vol 'alsa_input.pci-0000_31_00.4.analog-stereo'
 
 [settings]
 screenchange-reload = true

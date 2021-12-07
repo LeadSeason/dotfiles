@@ -28,20 +28,6 @@ default_border pixel 2
 gaps inner 10 
 gaps outer 10
 
-# NetworkManager is the most popular way to manage wireless networks on Linux,
-# and nm-applet is a desktop environment-independent system tray GUI for it.
-exec --no-startup-id nm-applet
-
-# bg start
-exec --no-startup-id swaybg --image Pictures/wallpaper/lake.jpg
-
-# auto lock
-exec --no-startup-id autolock -locker swaylock
-
-# backround and locking and composing start script
-# script will start sway stuff or i3 stuff
-exec --no-startup-id bash /home/leadseason/.config/i3/startup.bash
-
 # top bar setup
 # bar {
 #     # i3bar_command i3bar --transparency
@@ -54,6 +40,25 @@ exec --no-startup-id bash /home/leadseason/.config/i3/startup.bash
 #         separator #666666ff
 #     }
 # }
+
+# 
+# ██████╗░██████╗░░█████╗░░██████╗░██████╗░░█████╗░███╗░░░███╗░██████╗
+# ██╔══██╗██╔══██╗██╔══██╗██╔════╝░██╔══██╗██╔══██╗████╗░████║██╔════╝
+# ██████╔╝██████╔╝██║░░██║██║░░██╗░██████╔╝███████║██╔████╔██║╚█████╗░
+# ██╔═══╝░██╔══██╗██║░░██║██║░░╚██╗██╔══██╗██╔══██║██║╚██╔╝██║░╚═══██╗
+# ██║░░░░░██║░░██║╚█████╔╝╚██████╔╝██║░░██║██║░░██║██║░╚═╝░██║██████╔╝
+# ╚═╝░░░░░╚═╝░░╚═╝░╚════╝░░╚═════╝░╚═╝░░╚═╝╚═╝░░╚═╝╚═╝░░░░░╚═╝╚═════╝░
+# 
+
+# bg start
+exec --no-startup-id swaybg --image Pictures/wallpaper/lake.jpg
+
+# auto lock
+exec --no-startup-id autolock -locker swaylock
+
+# NetworkManager is the most popular way to manage wireless networks on Linux,
+# and nm-applet is a desktop environment-independent system tray GUI for it.
+exec --no-startup-id nm-applet
 
 #
 # ░█████╗░░█████╗░███╗░░██╗████████╗██████╗░░█████╗░██╗░░░░░░██████╗
@@ -83,6 +88,14 @@ bindsym $mod+x exec swaylock
 
 # start a terminal
 bindsym $mod+Return exec kitty
+
+# media Controls
+
+bindsym XF86AudioPlay exec playerctl play
+bindsym XF86AudioPause exec playerctl pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+
 
 #############################
 # default controls start here
@@ -137,7 +150,7 @@ bindsym $mod+v split v
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
+bindsym $mod+q layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 

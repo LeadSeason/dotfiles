@@ -52,7 +52,9 @@ alias ledoff="ratbagctl 0 led 0 set mode off; ratbagctl 0 led 1 set mode off"
 alias yt-dl="youtube-dl -f mp4 --id "
 alias make="make -j24"
 alias autoremove="sudo pacman -Rcns (pacman -Qdtq)"
+alias mixer=ncpamixer
 # alias cat="pygmentize -g"
+
 
 ############################
 #### fish command timer ####
@@ -64,3 +66,4 @@ set fish_command_timer_success_color white
 set fish_command_timer_time_format ""
 set fish_command_timer_millis 0
 set fish_command_timer_min_cmd_duration 10
+

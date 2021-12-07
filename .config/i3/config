@@ -36,27 +36,43 @@ gaps outer 10
 # ╚═╝░░░░░╚═╝░░╚═╝░╚════╝░░╚═════╝░╚═╝░░╚═╝╚═╝░░╚═╝╚═╝░░░░░╚═╝╚═════╝░
 # 
 
-# multimonitor setup
-exec --no-startup-id xrandr --output VGA-1-1 --auto --left-of HDMI-A-0
-exec --no-startup-id xrandr --output DVI-I-1-1 --auto --right-of HDMI-A-0
+# start startup script
+exec --no-startup-id /home/leadseason/.config/i3/config.sh
 
-# X composing
-exec --no-startup-id picom --config /home/leadseason/.config/picom.conf
-
-# wallpaper
-exec --no-startup-id feh --bg-fill ~/Pictures/wallpaper/lake.jpg
-
-# notifiaction deamon
-exec --no-startup-id dunst
-
-# start auto lock
-exec --no-startup-id xautolock
-
-# network manager tray icon
-exec --no-startup-id nm-applet
-
-# polybar
-exec --no-startup-id ~/.config/polybar/polybar.sh
+# # multimonitor setup
+# exec --no-startup-id xrandr --output HDMI-A-0 --off
+# exec --no-startup-id xrandr --output DVI-I-1-1 --off
+# exec --no-startup-id xrandr --output VGA-1-1 --off
+# exec --no-startup-id xrandr --output HDMI-A-0 --rate 144 --mode 1920x1080
+# exec --no-startup-id xrandr --output VGA-1-1 --auto --left-of HDMI-A-0
+# exec --no-startup-id xrandr --output DVI-I-1-1 --rate 144 --mode 1920x1080 --right-of HDMI-A-0
+# 
+# # X composing
+# exec --no-startup-id picom --config /home/leadseason/.config/picom.conf
+# 
+# # wallpaper
+# exec --no-startup-id feh --bg-fill ~/Pictures/wallpaper/lake.jpg
+# 
+# # notifiaction deamon
+# exec --no-startup-id dunst
+# 
+# # notifiaction deamon
+# exec --no-startup-id klipper
+# 
+# # start auto lock
+# exec --no-startup-id /home/leadseason/.config/i3/xidlehook.sh
+# 
+# # polybar
+# exec --no-startup-id ~/.config/polybar/polybar.sh
+# 
+# # network manager tray icon
+# exec --no-startup-id nm-applet
+# 
+# # blueman-applet start
+# exec --no-startup-id blueman-applet
+# 
+# # discord on start
+# exec --no-startup-id discord-canary
 
 # 
 # ░█████╗░░█████╗░███╗░░██╗████████╗██████╗░░█████╗░██╗░░░░░░██████╗
@@ -69,10 +85,23 @@ exec --no-startup-id ~/.config/polybar/polybar.sh
 
 # screen capture
 bindsym $mod+c exec --no-startup-id bash -c "flameshot gui -r | python /home/leadseason/Pictures/FlameShot-Custom-Uploader/main.py"
+
+# Lock screen bind
+bindsym $mod+x exec --no-startup-id /home/leadseason/.config/i3/lock.sh
+
+# Media player controls
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioStop exec playerctl stop
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+
+#########################################################################
+# Default settings 
+
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
@@ -127,7 +156,7 @@ bindsym $mod+v split v
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
+bindsym $mod+q layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
