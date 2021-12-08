@@ -27,11 +27,6 @@ primary = #ffb52a
 secondary = #e60053
 alert = #bd2c40
 
-
-; 0: +HDMI-A-0 1920/527x1080/296+1920+0  HDMI-A-0
-; 1: +VGA-1-1 1920/521x1080/293+0+0  VGA-1-1
-; 2: +DVI-I-1-1 1920/531x1080/299+3840+0  DVI-I-1-1
-
 [bar/example]
 monitor = ${env:MONITOR:}
 width = 100%
@@ -39,7 +34,7 @@ height = 27
 ; offset-x = 1%
 ; offset-y = 1%
 radius = 6.0
-fixed-center = false
+fixed-center = true
 
 background = ${colors.background}
 foreground = ${colors.foreground}
@@ -67,8 +62,8 @@ font-2 = "Material Icons:style=Regular"
 #font-2 = siji:pixelsize=10;1
 
 modules-left = powermenu i3
-modules-center = mpd
-modules-right = mic-volume pulseaudio kdeconnect battery wlan eth memory cpu temperature updates-pacman-aurhelper date
+modules-center = date
+modules-right = mic-volume pulseaudio kdeconnect battery wlan eth memory cpu temperature updates-pacman-aurhelper 
 # modules-left = bspwm i3
 # modules-center = mpd
 # modules-right = filesystem xbacklight alsa pulseaudio xkeyboard memory cpu wlan eth battery temperature date powermenu
@@ -160,11 +155,11 @@ label-mode-background = ${colors.primary}
 label-focused = %index%
 label-focused-background = ${colors.background-alt}
 label-focused-underline= ${colors.primary}
-label-focused-padding = 2
+label-focused-padding = 3
 
 ; unfocused = Inactive workspace on any monitor
 label-unfocused = %index%
-label-unfocused-padding = 2
+label-unfocused-padding = 3
 
 ; visible = Active workspace on unfocused monitor
 label-visible = %index%
@@ -273,7 +268,7 @@ format-disconnected =
 
 [module/date]
 type = internal/date
-interval = 5
+interval = 100
 
 date =
 date-alt = " %Y-%m-%d"
@@ -281,7 +276,7 @@ date-alt = " %Y-%m-%d"
 time = %H:%M
 time-alt = %H:%M:%S
 
-format-prefix = 
+format-prefix = ""
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = #0a6cf5
 
@@ -459,7 +454,7 @@ menu-5-1-exec = menu-open-0
 
 [module/updates-pacman-aurhelper]
 type = custom/script
-exec = ~/.config/polybar/scripts/updates-pacman-aurhelper.sh
+exec = ~/.config/polybar/scripts/getupdates-client.sh
 interval = 600
 format-underline = #1793D1
 click-left = "kitty --hold 'yay' '-Syu' '--noconfirm' '--sudoloop'"
