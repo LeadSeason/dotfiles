@@ -1,0 +1,15 @@
+
+@-moz-document
+  url-prefix(about:home),
+  url-prefix(about:newtab),
+  url-prefix(about:privatebrowsing)
+  {
+    .logo
+    {
+      background: url("image.png") no-repeat center !important;
+      background-size: 256px !important;
+      height: 256px !important;
+      width: 256px !important;
+    }
+  }
+
