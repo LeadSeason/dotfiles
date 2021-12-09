@@ -462,7 +462,8 @@ click-left = "kitty --hold 'yay' '-Syu' '--noconfirm' '--sudoloop'"
 [module/kdeconnect]  
 type = custom/script  
 exec = "~/.config/polybar/scripts/polybar-kdeconnect.sh -d"  
-tail = true
+tail = false
+interval=1
 
 [module/mic-volume]
 type = custom/script
