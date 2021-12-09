@@ -6,10 +6,29 @@
   {
     .logo
     {
-      background: url("image.png") no-repeat center !important;
-      background-size: 256px !important;
-      height: 256px !important;
-      width: 256px !important;
+      background: url("icon.png") no-repeat center !important;
+      background-size: 512px !important;
+      height: 512px !important;
+      width: 512px !important;
     }
   }
+
+
+@-moz-document 
+    url-prefix(about:home),
+    url-prefix(about:newtab) 
+    { 
+        .click-target-container *,
+        .top-sites-list * 
+        { 
+            color: #fff !important ;
+            text-shadow: 2px 2px 2px #000 !important ;
+        }
+
+    body 
+        {
+        background: url(wallpaper.jpg) !important ;
+        background-size: cover !important ;
+        }
+    }
 
