@@ -53,7 +53,7 @@ alias yt-dl="youtube-dl -f mp4 --id "
 alias make="make -j24"
 alias autoremove="sudo pacman -Rcns (pacman -Qdtq)"
 alias mixer=ncpamixer
-# alias cat="pygmentize -g"
+alias cat="/home/leadseason/.config/fish/functions/cat.py"
 
 
 ############################
