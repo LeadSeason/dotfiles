@@ -6,7 +6,7 @@ do
         updates_arch=0
     fi
 
-    if ! updates_arch=$(checkupdates-aur 2> /dev/null | wc -l ); then
+    if ! updates_aur=$(checkupdates-aur 2> /dev/null | wc -l ); then
         updates_aur=0
     fi
 
