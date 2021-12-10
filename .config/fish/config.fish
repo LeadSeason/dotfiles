@@ -65,5 +65,5 @@ set fish_command_timer_color white
 set fish_command_timer_success_color white
 set fish_command_timer_time_format ""
 set fish_command_timer_millis 0
-set fish_command_timer_min_cmd_duration 10
+set fish_command_timer_min_cmd_duration 1000
 
