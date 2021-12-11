@@ -12,7 +12,7 @@ xrandr --output DVI-I-1-1 --rate 144 --mode 1920x1080 --right-of HDMI-A-0
 picom --config /home/leadseason/.config/picom.conf &
 
 # wallpaper
-feh --bg-fill /home/leadseason/Pictures/wallpaper/lake.jpg &
+feh --bg-fill /home/leadseason/Pictures/wallpaper/wallpaper.jpg &
 
 # start auto lock
 /home/leadseason/.config/i3/xidlehook.sh &
