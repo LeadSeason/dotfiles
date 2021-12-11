@@ -63,7 +63,7 @@ font-2 = "Material Icons:style=Regular"
 
 modules-left = powermenu i3
 modules-center = date
-modules-right = mic-volume pulseaudio kdeconnect battery wlan eth memory cpu temperature updates-pacman-aurhelper 
+modules-right = mic-volume pulseaudio battery wlan eth memory cpu temperature updates-pacman-aurhelper 
 # modules-left = bspwm i3
 # modules-center = mpd
 # modules-right = filesystem xbacklight alsa pulseaudio xkeyboard memory cpu wlan eth battery temperature date powermenu
@@ -222,7 +222,7 @@ label = %percentage:2%%
 [module/memory]
 type = internal/memory
 interval = 2
-format-prefix = "mem "
+format-prefix = "ram "
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = #4bffdc
 label = %percentage_used%%
