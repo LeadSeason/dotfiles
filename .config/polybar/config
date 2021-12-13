@@ -408,12 +408,13 @@ content = ""
 content-foreground = ${colors.secondary}
 
 click-left = "rofi -show power-menu -modi power-menu:~/.config/rofi/rofi-power-menu"
+
 [module/updates-pacman-aurhelper]
 type = custom/script
 exec = ~/.config/polybar/scripts/getupdates-client.sh
 interval = 5
 format-underline = #1793D1
-click-left = "kitty --hold 'yay' '-Syu' '--noconfirm' '--sudoloop'"
+click-left = alacritty --hold -e '/home/leadseason/.config/polybar/scripts/getupdates-update.sh'
 
 [module/kdeconnect]  
 type = custom/script  
