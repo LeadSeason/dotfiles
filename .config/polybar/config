@@ -462,8 +462,8 @@ format-underline = #dfdf00
 format-warn = <ramp> <label-warn>
 format-warn-underline = ${self.format-underline}
 
-label = %output%
-label-warn = %output%
+label = %output%°C
+label-warn = %output%°C
 label-warn-foreground = ${colors.secondary}
 
 ramp-0 = ""
