@@ -414,7 +414,7 @@ type = custom/script
 exec = ~/.config/polybar/scripts/getupdates-client.sh
 interval = 5
 format-underline = #1793D1
-click-left = alacritty --hold -e '/home/leadseason/.config/polybar/scripts/getupdates-update.sh'
+click-left = kitty --hold -e '/home/leadseason/.config/polybar/scripts/getupdates-update.sh'
 
 [module/kdeconnect]  
 type = custom/script  
