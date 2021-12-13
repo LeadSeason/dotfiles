@@ -63,6 +63,7 @@ font-2 = "Material Icons:style=Regular"
 
 modules-left = powermenu i3
 modules-center = date
+# modules-right = mic-volume pulseaudio battery wlan eth memory cpu temperature updates-pacman-aurhelper 
 modules-right = mic-volume pulseaudio battery wlan eth gputemp vram gpuload memory cpu temperature updates-pacman-aurhelper 
 # modules-left = bspwm i3
 # modules-center = mpd

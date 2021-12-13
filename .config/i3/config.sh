@@ -33,4 +33,4 @@ nm-applet &
 blueman-applet &
 
 # discord on start
-discord-canary &
+# discord-canary &
