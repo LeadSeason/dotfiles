@@ -1,7 +1,7 @@
 /* vim:ft=css */
 configuration {
 	modi: "window,run,ssh,drun";
-/*	font: "mono 12";*/
+	font: "mono 12, Symbols Nerd Font 12";
 /*	location: 0;*/
 /*	yoffset: 0;*/
 /*	xoffset: 0;*/

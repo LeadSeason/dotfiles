@@ -100,6 +100,9 @@ bindsym XF86AudioPrev exec playerctl previous
 # Powerbutton sleep
 bindsym XF86PowerOff exec xdotool key A
 
+# ctrl + alt + del = rofi powermenu
+bindsym $mod+ctrl+Delete exec --no-startup-id rofi -show power-menu -modi power-menu:~/.config/rofi/rofi-power-menu 
+
 # start dmenu (a program launcher)
 # bindsym $mod+d exec --no-startup-id dmenu_run
 
