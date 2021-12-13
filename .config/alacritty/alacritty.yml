@@ -96,7 +96,7 @@ window:
 scrolling:
   # Maximum number of lines in the scrollback buffer.
   # Specifying '0' will disable scrolling.
-  history: 0
+  history: 20000
 
   # Scrolling distance multiplier.
   #multiplier: 3
@@ -104,53 +104,53 @@ scrolling:
 # Font configuration
 font:
   # Normal (roman) font face
-  normal:
+  # normal:
     # Font family
     #
-    Default:
+    # Default:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    family: Hack
+    # family: Hack
 
     # The `style` can be specified to pick a specific face.
     #tyle: Regular
 
   # Bold font face
-  bold:
+  # bold:
     # Font family
     #
     # If the bold family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: Hack
+    # family: Hack
 
     # The `style` can be specified to pick a specific face.
-    style: Bold
+    # style: Bold
 
   # Italic font face
-  italic:
+  # italic:
     # Font family
     #
     # If the italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: Hack
+    # family: Hack
 
     # The `style` can be specified to pick a specific face.
-    style: Italic
+    # style: Italic
 
   # Bold italic font face
-  bold_italic:
+  # bold_italic:
     # Font family
     #
     # If the bold italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: Hack
+    # family: Hack
 
     # The `style` can be specified to pick a specific face.
-    style: Bold Italic
+    # style: Bold Italic
 
   # Point size
-  size: 11.0
+  size: 9.0
 
 
   # Offset is the extra space around each character. `offset.y` can be thought
@@ -270,38 +270,38 @@ colors:
   # Normal colors
   normal:
     black:   '#000000'
-    red:     '#b21818'
-    green:   '#18b218'
-    yellow:  '#b26818'
-    blue:    '#1818b2'
-    magenta: '#b218b2'
-    cyan:    '#18b2b2'
-    white:   '#b2b2b2'
+    red:     '#cc0403'
+    green:   '#19cb00'
+    yellow:  '#cecb00'
+    blue:    '#0d73cc'
+    magenta: '#cb1ed1'
+    cyan:    '#0dcdcd'
+    white:   '#dddddd'
 
   # Bright colors
   bright:
-    black:   '#686868'
-    red:     '#ff5454'
-    green:   '#54ff54'
-    yellow:  '#ffff54'
-    blue:    '#5454ff'
-    magenta: '#ff54ff'
-    cyan:    '#54ffff'
+    black:   '#767676'
+    red:     '#f2201f'
+    green:   '#23fd00'
+    yellow:  '#fffd00'
+    blue:    '#1a8fff'
+    magenta: '#fd28ff'
+    cyan:    '#14ffff'
     white:   '#ffffff'
 
   # Dim colors
   #
   # If the dim colors are not set, they will be calculated automatically based
   # on the `normal` colors.
-  dim:
-    black:   '#181818'
-    red:     '#650000'
-    green:   '#006500'
-    yellow:  '#655e00'
-    blue:    '#000065'
-    magenta: '#650065'
-    cyan:    '#006565'
-    white:   '#656565'
+  # dim:
+  #   black:   '#181818'
+  #   red:     '#650000'
+  #   green:   '#006500'
+  #   yellow:  '#655e00'
+  #   blue:    '#000065'
+  #   magenta: '#650065'
+  #   cyan:    '#006565'
+  #   white:   '#656565'
 
   # Indexed Colors
   #
@@ -421,7 +421,7 @@ cursor:
 #   - (Linux/BSD) user login shell
 #   - (Windows) powershell
 shell:
-  program: tmux 
+  program: fish 
 #  args:
 #    - --login
 
