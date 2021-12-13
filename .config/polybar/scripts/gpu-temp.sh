@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-var=$(sensors -u >2 /dev/null)
+var=$(sensors -u 2>/dev/null)
 
 # check if radeon
 if [[ $var == *"amdgpu"* ]]
