@@ -2,21 +2,21 @@
 
 import os
 import sys
-import io
 import traceback
-import datetime
+import json
 import getpass
+import argparse
 
 import asyncio
 import aiohttp
 import aiofiles
-import aioconsole
 
 import notify2
-import yaml
+import keyring
 import filetype
 
 from PyQt5 import QtWidgets
+
 
 save_path = "/home/leadseason/Pictures/FlameShot-Custom-Uploader/Images/"
 error_log_path = "/home/leadseason/Pictures/FlameShot-Custom-Uploader/logs/"
@@ -69,10 +69,11 @@ def error_message(message):
 
 
 async def s_clip(data):
-    p = await asyncio.create_subprocess_exec("xsel", "-bi",
-            stdout=asyncio.subprocess.PIPE,
-            stderr=asyncio.subprocess.PIPE,
-            stdin=asyncio.subprocess.PIPE)
+    p = await asyncio.create_subprocess_exec(
+        "xsel", "-bi",
+        stdout=asyncio.subprocess.PIPE,
+        stderr=asyncio.subprocess.PIPE,
+        stdin=asyncio.subprocess.PIPE)
     await p.communicate(input=bytes(data, "UTF-8"))
     await p.wait()
 
@@ -81,10 +82,12 @@ async def Notification(message, submessage, icon=None):
     """
         Shows notification to user that image has been uploaded
     """
-    notify2.init("Uploade")
-    uri = f"file://{os.path.abspath(icon)}"
-    print(uri)
-    n = notify2.Notification(message, submessage, uri)
+    notify2.init("Uploader")
+    if icon is None:
+        n = notify2.Notification(message, submessage)
+    else:
+        uri = f"file://{os.path.abspath(icon)}"
+        n = notify2.Notification(message, submessage, uri)
     if not n.show():
         await logln("Failed to send notification")
 
@@ -97,10 +100,10 @@ async def save_to_file(image_path, url, img_format):
     url_split = url.split("/")
     url_id = url_split[len(url_split) - 1]
     filename = f"{save_path}{url_id}_{img_format}"
-    
+
     async with aiofiles.open(filename, "wb") as x:
-        async for ix in file_sender(image_path): 
-           await x.write(ix)
+        async for ix in file_sender(image_path):
+            await x.write(ix)
     return f"{save_path}{filename}.{img_format}"
 
 
@@ -129,12 +132,21 @@ async def stdin_reader():
             yield chunk
             chunk = await f.read(chunk_size)
 
+
 async def header_get():
-    import keyring
+    cfg_user = keyring.get_password("pyuploader", "user")
+    cfg_token = keyring.get_password("pyuploader", "token")
+    if cfg_user is None or cfg_token is None:
+        await logln("Fatal", bcolors.FAIL)
+        await logln("""There is no configuration saved. either
+1. get config from site and use 'timhostuploader -i "/path/to/config/Timmy Uploader config.sxcu"'
+2. or use 'timhostuploader -s' to set manuly configuration
+configuration will be saved in the keyring""")
+        sys.exit(1)
     return {
-            "user": keyring.get_password("pyuploader", "user"),
-            "token": keyring.get_password("pyuploader", "token")
-            }
+        "user": cfg_user,
+        "token": cfg_token
+    }
 
 
 async def main():
@@ -144,12 +156,12 @@ async def main():
             async for x in stdin_reader():
                 if x == b"screenshot aborted\n" or x == b"":
                     await logln("Aborted", bcolors.WARNING)
-                    sys.exit() 
+                    sys.exit(1)
                 await temp_file.write(x)
 
             await temp_file.seek(0)
             in_file = temp_file.name
-            
+
         elif len(sys.argv) == 2:
             in_file = sys.argv[1]
             if not os.path.isfile(in_file):
@@ -159,16 +171,14 @@ async def main():
         else:
             await logln("too many arguments", bcolors.FAIL)
             sys.exit(1)
-        
+
         file_name = str(os.path.basename(in_file))
         try:
             file_format = filetype.guess(in_file).extension
         except AttributeError:
             await logln("Fatal", bcolors.FAIL)
             await logln("Unable to figure out file type")
-            sys.exit()
-
-
+            sys.exit(1)
 
         match file_format:
             case "png":
@@ -177,14 +187,10 @@ async def main():
                 file_type = "Gif"
             case "mp4":
                 file_type = "Video"
-            case None:
-                await logln("Fatal", bcolors.FAIL)
-                await logln("Unknow file format")
-                sys.exit()
             case _:
                 await logln("Fatal", bcolors.FAIL)
                 await logln(f"Timhost only supports png, gif, mp4 and not {file_format}")
-                sys.exit()
+                sys.exit(1)
 
         if not file_name.endswith(f".{file_format}"):
             file_name += f".{file_format}"
@@ -199,20 +205,53 @@ async def main():
                 headers=headers,
                 data=formdata
             ) as resp:
+                match resp.status:
+                    case 200:
+                        url = await resp.text()
+                        await logln(url)
+                        await s_clip(url)
+                        await save_to_file(in_file, url, file_name)
+                        await Notification(f"{file_type} has been uploaded", url, in_file)
 
-                url = await resp.text()
-                await logln(await resp.text())
+                    case 401:
+                        await logln("Access denied: Invalid Token or User ID!")
+                        await Notification("Access denied: Invalid Token or User ID!", "")
 
-        await s_clip(url)
-
-        await save_to_file(in_file, url, file_name)
-
-        await Notification(f"{file_type} has been uploaded", url, in_file)
+                    case _:
+                        await logln(f"Unable to connect to Tim host\nError code: {resp.status} go @Tim and yell at him\n{await resp.text()}")
+                        await Notification("Unable to connect to Tim host", f"Error code: {resp.status} go @Tim and yell at him\n{await resp.text()}")
 
 
 if __name__ == "__main__":
-    try:
-        asyncio.run(main())
-    except Exception:
-        print("Fail")
-        print(traceback.format_exc())
+    parser = argparse.ArgumentParser()
+
+    parser.add_argument("-i", "--import_conf", help="Imports the config")
+    parser.add_argument("-s", "--setcfg", help="set the config manualy", action="store_true")
+    parser.add_argument("Upload_file", nargs=argparse.REMAINDER, help="File to be uploaded")
+    args = parser.parse_args()
+
+    if args.import_conf is not None:
+        if not os.path.isfile(args.import_conf):
+            print("No such file")
+            sys.exit(1)
+        with open(args.import_conf) as fp:
+            data = json.load(fp=fp)
+        keyring.set_password("pyuploader", "user", str(data["Headers"]["user"]))
+        keyring.set_password("pyuploader", "token", str(data["Headers"]["token"]))
+        sys.exit()
+    elif args.setcfg:
+        keyring.set_password("pyuploader", "user", getpass.getpass("Userid:"))
+        keyring.set_password("pyuploader", "token", getpass.getpass("Token:"))
+        print("config set")
+        sys.exit()
+
+    else:
+        try:
+            asyncio.run(main())
+        except KeyboardInterrupt:
+            print("Exiting")
+            print("Good bye")
+            sys.exit()
+        except Exception:
+            print("Fail")
+            print(traceback.format_exc())
