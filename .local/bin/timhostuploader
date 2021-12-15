@@ -1,0 +1,218 @@
+#!/usr/bin/python3.10
+
+import os
+import sys
+import io
+import traceback
+import datetime
+import getpass
+
+import asyncio
+import aiohttp
+import aiofiles
+import aioconsole
+
+import notify2
+import yaml
+import filetype
+
+from PyQt5 import QtWidgets
+
+save_path = "/home/leadseason/Pictures/FlameShot-Custom-Uploader/Images/"
+error_log_path = "/home/leadseason/Pictures/FlameShot-Custom-Uploader/logs/"
+
+
+class bcolors:
+    OK = '\033[92m'
+    WARNING = '\033[93m'
+    FAIL = '\033[91m'
+    END = '\033[0m'
+    NORMAL = '\033[0m'
+
+
+async def log(arg="", color=bcolors.NORMAL, end=""):
+    print(f"{color}{arg}{bcolors.NORMAL}", end=end, file=sys.stderr)
+
+
+async def logln(arg="", color=bcolors.NORMAL, end="\n"):
+    print(f"{color}{arg}{bcolors.NORMAL}", end=end, file=sys.stderr)
+
+
+async def logr(arg="", color=bcolors.NORMAL, end="\r"):
+    overwrite = "".ljust(os.get_terminal_size()[1] - len(arg), " ")
+    print(f"{color}{arg}{bcolors.NORMAL}{overwrite}", end=end, file=sys.stderr)
+
+
+async def save_error(message):
+    """
+        Saves error to error folder to be later examined
+    """
+
+    for i in range(sys.maxsize**10):
+        filepath = f"{error_log_path}Error_{i}.log"
+        if not os.path.isfile(filepath):
+            with open(filepath, "w") as x:
+                x.write(message)
+            break
+
+
+def error_message(message):
+    """
+        Shows a error message with qt
+    """
+    app = QtWidgets.QApplication([])
+
+    error_dialog = QtWidgets.QErrorMessage()
+    error_dialog.showMessage(str(message).replace("\n", "<br>"))
+
+    app.exec_()
+
+
+async def s_clip(data):
+    p = await asyncio.create_subprocess_exec("xsel", "-bi",
+            stdout=asyncio.subprocess.PIPE,
+            stderr=asyncio.subprocess.PIPE,
+            stdin=asyncio.subprocess.PIPE)
+    await p.communicate(input=bytes(data, "UTF-8"))
+    await p.wait()
+
+
+async def Notification(message, submessage, icon=None):
+    """
+        Shows notification to user that image has been uploaded
+    """
+    notify2.init("Uploade")
+    uri = f"file://{os.path.abspath(icon)}"
+    print(uri)
+    n = notify2.Notification(message, submessage, uri)
+    if not n.show():
+        await logln("Failed to send notification")
+
+
+async def save_to_file(image_path, url, img_format):
+    """
+        Saves Uploaded Image to local directory
+        and names the file the upload id
+    """
+    url_split = url.split("/")
+    url_id = url_split[len(url_split) - 1]
+    filename = f"{save_path}{url_id}_{img_format}"
+    
+    async with aiofiles.open(filename, "wb") as x:
+        async for ix in file_sender(image_path): 
+           await x.write(ix)
+    return f"{save_path}{filename}.{img_format}"
+
+
+async def file_sender(file_name=None):
+    file_size = os.path.getsize(file_name)
+    chunk_size = 65536
+    readsofar = 0
+
+    async with aiofiles.open(file_name, 'rb') as f:
+        chunk = await f.read(chunk_size)
+        while chunk:
+            yield chunk
+
+            readsofar += len(chunk)
+            percent = readsofar * 1e2 / file_size
+
+            await logr(f"Uploading file ... {round(percent, 1)}")
+            chunk = await f.read(chunk_size)
+
+
+async def stdin_reader():
+    chunk_size = 65536
+    async with aiofiles.open("/dev/stdin", 'rb') as f:
+        chunk = await f.read(chunk_size)
+        while chunk:
+            yield chunk
+            chunk = await f.read(chunk_size)
+
+async def header_get():
+    import keyring
+    return {
+            "user": keyring.get_password("pyuploader", "user"),
+            "token": keyring.get_password("pyuploader", "token")
+            }
+
+
+async def main():
+    in_file = None
+    async with aiofiles.tempfile.NamedTemporaryFile('wb+') as temp_file:
+        if len(sys.argv) == 1:
+            async for x in stdin_reader():
+                if x == b"screenshot aborted\n" or x == b"":
+                    await logln("Aborted", bcolors.WARNING)
+                    sys.exit() 
+                await temp_file.write(x)
+
+            await temp_file.seek(0)
+            in_file = temp_file.name
+            
+        elif len(sys.argv) == 2:
+            in_file = sys.argv[1]
+            if not os.path.isfile(in_file):
+                await logln("No such file", bcolors.FAIL)
+                sys.exit(1)
+
+        else:
+            await logln("too many arguments", bcolors.FAIL)
+            sys.exit(1)
+        
+        file_name = str(os.path.basename(in_file))
+        try:
+            file_format = filetype.guess(in_file).extension
+        except AttributeError:
+            await logln("Fatal", bcolors.FAIL)
+            await logln("Unable to figure out file type")
+            sys.exit()
+
+
+
+        match file_format:
+            case "png":
+                file_type = "Image"
+            case "gif":
+                file_type = "Gif"
+            case "mp4":
+                file_type = "Video"
+            case None:
+                await logln("Fatal", bcolors.FAIL)
+                await logln("Unknow file format")
+                sys.exit()
+            case _:
+                await logln("Fatal", bcolors.FAIL)
+                await logln(f"Timhost only supports png, gif, mp4 and not {file_format}")
+                sys.exit()
+
+        if not file_name.endswith(f".{file_format}"):
+            file_name += f".{file_format}"
+
+        headers = await header_get()
+        formdata = aiohttp.FormData()
+        formdata.add_field("img", file_sender(file_name=in_file), filename=file_name)
+
+        async with aiohttp.ClientSession() as session:
+            async with session.post(
+                "https://images.timanttikuutio.eu/upload",
+                headers=headers,
+                data=formdata
+            ) as resp:
+
+                url = await resp.text()
+                await logln(await resp.text())
+
+        await s_clip(url)
+
+        await save_to_file(in_file, url, file_name)
+
+        await Notification(f"{file_type} has been uploaded", url, in_file)
+
+
+if __name__ == "__main__":
+    try:
+        asyncio.run(main())
+    except Exception:
+        print("Fail")
+        print(traceback.format_exc())
