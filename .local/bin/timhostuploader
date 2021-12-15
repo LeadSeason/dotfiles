@@ -31,16 +31,19 @@ class bcolors:
 
 
 async def log(arg="", color=bcolors.NORMAL, end=""):
-    print(f"{color}{arg}{bcolors.NORMAL}", end=end, file=sys.stderr)
+    if os.getenv("TERM") is not None:
+        print(f"{color}{arg}{bcolors.NORMAL}", end=end, file=sys.stderr)
 
 
 async def logln(arg="", color=bcolors.NORMAL, end="\n"):
-    print(f"{color}{arg}{bcolors.NORMAL}", end=end, file=sys.stderr)
+    if os.getenv("TERM") is not None:
+        print(f"{color}{arg}{bcolors.NORMAL}", end=end, file=sys.stderr)
 
 
 async def logr(arg="", color=bcolors.NORMAL, end="\r"):
-    overwrite = "".ljust(os.get_terminal_size()[1] - len(arg), " ")
-    print(f"{color}{arg}{bcolors.NORMAL}{overwrite}", end=end, file=sys.stderr)
+    if os.getenv("TERM") is not None:
+        overwrite = "".ljust(os.get_terminal_size()[1] - len(arg), " ")
+        print(f"{color}{arg}{bcolors.NORMAL}{overwrite}", end=end, file=sys.stderr)
 
 
 async def save_error(message):
@@ -208,7 +211,7 @@ async def main():
                 match resp.status:
                     case 200:
                         url = await resp.text()
-                        await logln(url)
+                        print(url)
                         await s_clip(url)
                         await save_to_file(in_file, url, file_name)
                         await Notification(f"{file_type} has been uploaded", url, in_file)
