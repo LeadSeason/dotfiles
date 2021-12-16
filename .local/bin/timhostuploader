@@ -59,18 +59,6 @@ async def save_error(message):
             break
 
 
-def error_message(message):
-    """
-        Shows a error message with qt
-    """
-    app = QtWidgets.QApplication([])
-
-    error_dialog = QtWidgets.QErrorMessage()
-    error_dialog.showMessage(str(message).replace("\n", "<br>"))
-
-    app.exec_()
-
-
 async def s_clip(data):
     p = await asyncio.create_subprocess_exec(
         "xsel", "-bi",
@@ -255,6 +243,8 @@ if __name__ == "__main__":
             print("Exiting")
             print("Good bye")
             sys.exit()
-        except Exception:
+        except Exception as e:
             print("Fail")
             print(traceback.format_exc())
+            asyncio.run(Notification("There was an error in the program while uploading", str(e)))
+
