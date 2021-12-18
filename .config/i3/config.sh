@@ -32,5 +32,8 @@ nm-applet &
 # blueman-applet start
 blueman-applet &
 
+# start libsecret (gnone key manager)
+gnome-keyring-daemon &
+
 # discord on start
 # discord-canary &
