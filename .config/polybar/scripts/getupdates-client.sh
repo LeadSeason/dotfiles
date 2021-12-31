@@ -5,7 +5,7 @@ if ! updates=$(cat /tmp/updates 2> /dev/null); then
 fi
 
 
-if [ "$updates" -gt 9 ]; then
+if [ "$updates" -gt 10 ]; then
     echo "$updates"
 else
     echo ""

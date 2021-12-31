@@ -36,4 +36,7 @@ blueman-applet &
 gnome-keyring-daemon &
 
 # discord on start
-# discord-canary &
+discord-canary &
+
+# firefox on start
+firefox &

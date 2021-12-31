@@ -64,7 +64,7 @@ font-2 = "Material Icons:style=Regular"
 modules-left = powermenu i3 bspwm
 modules-center = date
 # modules-right = mic-volume pulseaudio battery wlan eth memory cpu temperature updates-pacman-aurhelper 
-modules-right = mic-volume pulseaudio battery wlan eth gputemp vram gpuload memory cpu temperature updates-pacman-aurhelper 
+modules-right = mic-volume pulseaudio battery wlan eth vram gpuload gputemp memory cpu cputemp updates-pacman-aurhelper 
 # modules-left = bspwm i3
 # modules-center = mpd
 # modules-right = filesystem xbacklight alsa pulseaudio xkeyboard memory cpu wlan eth battery temperature date powermenu
@@ -269,7 +269,7 @@ format-disconnected =
 
 [module/date]
 type = internal/date
-interval = 100
+interval = .5
 
 date =
 date-alt = " %Y-%m-%d"
@@ -459,6 +459,27 @@ warn-temperature = 70
 
 format = <ramp> <label>
 format-underline = #dfdf00
+format-warn = <ramp> <label-warn>
+format-warn-underline = ${self.format-underline}
+
+label = %output%°C
+label-warn = %output%°C
+label-warn-foreground = ${colors.secondary}
+
+ramp-0 = ""
+ramp-1 = ""
+ramp-2 = " "
+ramp-foreground = ${colors.secondary}
+
+
+[module/cputemp]
+type = custom/script
+interval = 1
+exec = "~/.config/polybar/scripts/cpu-temp.sh 2> /dev/null"
+warn-temperature = 70
+
+format = <ramp> <label>
+format-underline = #f90000
 format-warn = <ramp> <label-warn>
 format-warn-underline = ${self.format-underline}
 

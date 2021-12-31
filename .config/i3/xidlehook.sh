@@ -8,6 +8,6 @@ xidlehook \
         "/home/leadseason/.config/i3/lock.sh" \
         "" \
     `# suspend after hour` \
-    --timer 3600 \
+    --timer 1800 \
         "systemctl suspend" \
         ""

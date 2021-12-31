@@ -188,7 +188,7 @@ async def main():
 
         headers = await header_get()
         formdata = aiohttp.FormData()
-        formdata.add_field("img", file_sender(file_name=in_file), filename=file_name)
+        formdata.add_field("img", file_sender(file_name=in_file), filename=str(file_name))
 
         async with aiohttp.ClientSession() as session:
             async with session.post(
