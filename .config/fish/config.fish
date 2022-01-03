@@ -36,7 +36,7 @@ function fish_greeting
     echo -n
 end
 
-export EDITOR=vim
+export EDITOR=nvim
 
 fish_add_path -g ~/.local/bin
 
