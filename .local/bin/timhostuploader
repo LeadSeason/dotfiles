@@ -15,8 +15,6 @@ import notify2
 import keyring
 import filetype
 
-from PyQt5 import QtWidgets
-
 
 save_path = "/home/leadseason/Pictures/FlameShot-Custom-Uploader/Images/"
 error_log_path = "/home/leadseason/Pictures/FlameShot-Custom-Uploader/logs/"
@@ -178,9 +176,11 @@ async def main():
                 file_type = "Gif"
             case "mp4":
                 file_type = "Video"
+            case "mkv":
+                file_type = "Video"
             case _:
                 await logln("Fatal", bcolors.FAIL)
-                await logln(f"Timhost only supports png, gif, mp4 and not {file_format}")
+                await logln(f"Timhost only supports png, gif, mp4, mkv and not {file_format}")
                 sys.exit(1)
 
         if not file_name.endswith(f".{file_format}"):
@@ -188,7 +188,7 @@ async def main():
 
         headers = await header_get()
         formdata = aiohttp.FormData()
-        formdata.add_field("img", file_sender(file_name=in_file), filename=str(file_name))
+        formdata.add_field("img", file_sender(file_name=in_file), filename=file_name.replace(" ", "_"))
 
         async with aiohttp.ClientSession() as session:
             async with session.post(
@@ -209,8 +209,11 @@ async def main():
                         await Notification("Access denied: Invalid Token or User ID!", "")
 
                     case _:
-                        await logln(f"Unable to connect to Tim host\nError code: {resp.status} go @Tim and yell at him\n{await resp.text()}")
-                        await Notification("Unable to connect to Tim host", f"Error code: {resp.status} go @Tim and yell at him\n{await resp.text()}")
+                        await logln(f"""Unable to connect to Tim host\n
+Error code: {resp.status} go @Tim and yell at him\n
+{await resp.text()}""")
+                        await Notification("Unable to connect to Tim host",
+                                           f"Error code: {resp.status} go @Tim and yell at him\n{await resp.text()}")
 
 
 if __name__ == "__main__":
@@ -247,4 +250,3 @@ if __name__ == "__main__":
             print("Fail")
             print(traceback.format_exc())
             asyncio.run(Notification("There was an error in the program while uploading", str(e)))
-
