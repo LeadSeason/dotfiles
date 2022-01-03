@@ -85,6 +85,7 @@ exec --no-startup-id /home/leadseason/.config/i3/config.sh
 
 # screen capture
 bindsym $mod+c exec --no-startup-id bash -c "flameshot gui -r | /home/leadseason/.local/bin/timhostuploader"
+# bindsym $mod+c exec --no-startup-id bash -c "flameshot gui -r"
 
 # video capture
 bindsym $mod+Shift+c exec --no-startup-id bash -c "/home/leadseason/.config/i3/video.bash"
