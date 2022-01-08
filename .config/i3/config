@@ -90,7 +90,7 @@ bindsym $mod+c exec --no-startup-id bash -c "flameshot gui -r | /home/leadseason
 # video capture
 bindsym $mod+Shift+c exec --no-startup-id bash -c "/home/leadseason/.config/i3/video.bash"
 # Lock screen bind
-bindsym $mod+x exec --no-startup-id /home/leadseason/.config/i3/lock.sh
+bindsym Mod4+l exec --no-startup-id /home/leadseason/.config/i3/lock.sh
 
 # Media player controls
 bindsym XF86AudioPlay exec playerctl play-pause

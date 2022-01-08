@@ -192,7 +192,7 @@ async def main():
 
         async with aiohttp.ClientSession() as session:
             async with session.post(
-                "https://images.timanttikuutio.eu/upload",
+                "https://tims.host/upload",
                 headers=headers,
                 data=formdata
             ) as resp:
