@@ -186,9 +186,14 @@ async def main():
         if not file_name.endswith(f".{file_format}"):
             file_name += f".{file_format}"
 
+        file_name.replace(" ", "_").encode("ascii", "ignore").decode("ascii")
+        valid_chars = ".-_˝abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+
+        file_name = "".join(x for x in file_name if x in valid_chars)
+
         headers = await header_get()
         formdata = aiohttp.FormData()
-        formdata.add_field("img", file_sender(file_name=in_file), filename=file_name.replace(" ", "_"))
+        formdata.add_field("img", file_sender(file_name=in_file), filename=file_name)
 
         async with aiohttp.ClientSession() as session:
             async with session.post(
