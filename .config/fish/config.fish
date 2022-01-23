@@ -4,8 +4,7 @@ function fish_greeting
 end
 
 export EDITOR=nvim
-
-fish_add_path -g ~/.local/bin
+export PATH="$HOME/.local/bin:$PATH"
 
 alias lynx="lynx -accept_all_cookies"
 alias cat="/home/leadseason/.config/fish/functions/cat.py"
