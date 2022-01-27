@@ -54,7 +54,10 @@ alias make="make -j24"
 alias autoremove="sudo pacman -Rcns (pacman -Qdtq)"
 alias mixer=ncpamixer
 alias cat="/home/leadseason/.config/fish/functions/cat.py"
-
+function mpv
+    /usr/bin/i3-msg layout tabbed; /usr/bin/mpv $argv --volume=40; /usr/bin/i3-msg layout toggle split; 
+end
+ 
 
 ############################
 #### fish command timer ####
