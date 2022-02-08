@@ -1,7 +1,7 @@
 /* vim:ft=css */
 configuration {
 	modi: "window,run,ssh,drun";
-	font: "mono 12, Symbols Nerd Font 12";
+	font: "Iosevka 12, Symbols Nerd Font 12";
 /*	location: 0;*/
 /*	yoffset: 0;*/
 /*	xoffset: 0;*/
@@ -9,7 +9,7 @@ configuration {
 	show-icons: true;
 	terminal: "kitty";
 /*	ssh-client: "ssh";*/
-/*	ssh-command: "{terminal} -e {ssh-client} {host} [-p {port}]";*/
+  	ssh-command: """{terminal} -e fish -c "{ssh-client} {host} [-p {port}]" """;
 /*	run-command: "{cmd}";*/
 /*	run-list-command: "";*/
 /*	run-shell-command: "{terminal} -e {cmd}";*/
@@ -25,7 +25,7 @@ configuration {
 /*	ignored-prefixes: "";*/
 /*	sort: false;*/
 /*	sorting-method: "normal";*/
-/*	case-sensitive: false;*/
+  	case-sensitive: false;
 /*	cycle: true;*/
 /*	sidebar-mode: false;*/
 /*	hover-select: false;*/
@@ -146,4 +146,7 @@ configuration {
   }
 }
 
-@theme "/usr/share/rofi/themes/Monokai.rasi"
+//@theme "/usr/share/rofi/themes/Monokai.rasi"
+//@theme "/usr/share/rofi/themes/arthur.rasi"
+//@theme "/usr/share/rofi/themes/fancy.rasi"
+@theme "/usr/share/rofi/themes/sidebar.rasi"
