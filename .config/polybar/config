@@ -33,8 +33,9 @@ width = 100%
 height = 27
 ; offset-x = 1%
 ; offset-y = 1%
-radius = 6.0
+radius = 10.0
 fixed-center = true
+enable-ipc = true
 
 background = ${colors.background}
 foreground = ${colors.foreground}
@@ -45,14 +46,14 @@ line-color = #f00
 border-size = 4
 border-color = #00000000
 
-padding-left = 3
+padding-left = 2
 padding-right = 2
 
-module-margin-left = 1
+module-margin-left = 2
 module-margin-right = 2
 
 
-font-0 = "DejaVu Sans:style=Regular"
+font-0 = "Iosevk:style=Regular"
 font-1 = "Symbols Nerd Font:style=Regular"
 font-2 = "Material Icons:style=Regular"
 
@@ -61,10 +62,10 @@ font-2 = "Material Icons:style=Regular"
 #font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 #font-2 = siji:pixelsize=10;1
 
-modules-left = powermenu i3 bspwm
+modules-left = powermenu composer-toggle i3 bspwm
 modules-center = date
 # modules-right = mic-volume pulseaudio battery wlan eth memory cpu temperature updates-pacman-aurhelper 
-modules-right = mic-volume pulseaudio battery wlan eth vram gpuload gputemp memory cpu cputemp updates-pacman-aurhelper 
+modules-right = kdeconnect mic-volume pulseaudio battery wlan eth vram gpuload gputemp memory cpu cputemp updates-pacman-aurhelper 
 # modules-left = bspwm i3
 # modules-center = mpd
 # modules-right = filesystem xbacklight alsa pulseaudio xkeyboard memory cpu wlan eth battery temperature date powermenu
@@ -118,7 +119,7 @@ label-unmounted = %mountpoint% not mounted
 label-unmounted-foreground = ${colors.foreground-alt}
 
 [module/bspwm]
-type = internal3/bspwm
+type = internal/bspwm
 
 label-focused = %index%
 label-focused-background = ${colors.background-alt}
@@ -156,11 +157,11 @@ label-mode-background = ${colors.primary}
 label-focused = %index%
 label-focused-background = ${colors.background-alt}
 label-focused-underline= ${colors.primary}
-label-focused-padding = 3
+label-focused-padding = 2
 
 ; unfocused = Inactive workspace on any monitor
 label-unfocused = %index%
-label-unfocused-padding = 3
+label-unfocused-padding = 2
 
 ; visible = Active workspace on unfocused monitor
 label-visible = %index%
@@ -289,6 +290,7 @@ type = internal/pulseaudio
 format-volume = <label-volume>
 label-volume = 墳 %percentage%%
 label-volume-foreground = ${root.foreground}
+format-volume-underline = #49bdff
 
 label-muted = 🔇 muted
 label-muted-foreground = #666
@@ -309,6 +311,7 @@ bar-volume-fill-font = 2
 bar-volume-empty = ─
 bar-volume-empty-font = 2
 bar-volume-empty-foreground = ${colors.foreground-alt}
+
 
 [module/alsa]
 type = internal/alsa
@@ -420,12 +423,14 @@ click-left = kitty --hold -e '/home/leadseason/.config/polybar/scripts/getupdate
 type = custom/script  
 exec = "~/.config/polybar/scripts/polybar-kdeconnect.sh -d"  
 tail = false
+format-underline = #fff
 interval=1
 
 [module/mic-volume]
 type = custom/script
 interval = 1
 format =  <label>
+format-underline = #49bdff
 exec = bash ~/.config/polybar/scripts/mic-volume.sh show-vol 'alsa_input.pci-0000_31_00.4.analog-stereo'
 
 ; Control actions (using pactl)
@@ -493,13 +498,22 @@ ramp-2 = " "
 ramp-foreground = ${colors.secondary}
 
 
+[module/composer-toggle]
+type = custom/ipc
+hook-0 = echo 
+hook-1 = echo 
+click-left = ~/.config/polybar/scripts/composer-toggle.sh
+initial = 2
+
+
 [settings]
 screenchange-reload = true
 ;compositing-background = xor
 ;compositing-background = screen
 ;compositing-foreground = source
 ;compositing-border = over
-;pseudo-transparency = false
+pseudo-transparency = false
+
 
 [global/wm]
 margin-top = 5
