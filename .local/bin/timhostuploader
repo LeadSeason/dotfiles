@@ -169,19 +169,16 @@ async def main():
             await logln("Unable to figure out file type")
             sys.exit(1)
 
-        match file_format:
-            case "png":
-                file_type = "Image"
-            case "gif":
-                file_type = "Gif"
-            case "mp4":
-                file_type = "Video"
-            case "mkv":
-                file_type = "Video"
-            case _:
-                await logln("Fatal", bcolors.FAIL)
-                await logln(f"Timhost only supports png, gif, mp4, mkv and not {file_format}")
-                sys.exit(1)
+        if file_format in ["png", "jpg", "jpeg"]:
+            file_type = "Image"
+        elif file_format in ["gif"]:
+            file_type = "Gif"
+        elif file_format in ["mp4", "mkv"]:
+            file_type = "Video"
+        else:
+            await logln("Fatal", bcolors.FAIL)
+            await logln(f"Timhost only supports png, gif, mp4, mkv and not {file_format}")
+            sys.exit(1)
 
         if not file_name.endswith(f".{file_format}"):
             file_name += f".{file_format}"
