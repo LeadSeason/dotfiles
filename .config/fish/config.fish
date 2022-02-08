@@ -43,6 +43,7 @@ fish_add_path -g ~/.local/bin
 thefuck --alias | source
 
 export LANG=en_US.UTF-8
+set -x (gnome-keyring-daemon --start | string split "=")
 
 alias msnake="/home/leadseason/Games/msnake/build/msnake"
 alias bashblitz="/home/leadseason/Games/bashblitz/bashblitz.sh"
@@ -54,11 +55,16 @@ alias make="make -j24"
 alias autoremove="sudo pacman -Rcns (pacman -Qdtq)"
 alias mixer=ncpamixer
 alias cat="/home/leadseason/.config/fish/functions/cat.py"
+
 function mpv
     /usr/bin/i3-msg layout tabbed; /usr/bin/mpv $argv --volume=40; /usr/bin/i3-msg layout toggle split; 
 end
- 
 
+function feh
+    /usr/bin/i3-msg layout tabbed; /usr/bin/feh $argv --volume=40; /usr/bin/i3-msg layout toggle split; 
+end
+
+ 
 ############################
 #### fish command timer ####
 ###########################
