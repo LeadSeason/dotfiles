@@ -24,6 +24,13 @@ Plug 'vimsence/vimsence'
  " Fish Script syntax
 Plug 'dag/vim-fish'
 
+ " Json Syntax
+ " Plug 'elzr/vim-json'
+
+ " rust syntax formating etc
+ " by rust team
+Plug 'rust-lang/rust.vim'
+
  " plugin call end
 call plug#end()
 
@@ -37,10 +44,16 @@ call ale#Set('python_flake8_options', '--ignore E501')
  " use system clipboard
 set clipboard+=unnamedplus
 
+ " Undo dir
+set undofile
+set undodir=/home/leadseason/.local/share/nvim/undodir/
+
 syntax enable
+filetype plugin indent on
 
 set number
 set tabstop=4
+set shiftwidth=4
 set mouse=a
 set noswapfile
 

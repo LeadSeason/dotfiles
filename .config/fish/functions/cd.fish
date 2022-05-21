@@ -51,6 +51,7 @@ function cd --description 'Change directory'
 
         clear
         ls
+		pwd
     end
     
     return $cd_status

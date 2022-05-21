@@ -64,11 +64,8 @@ font-2 = "Material Icons:style=Regular"
 
 modules-left = powermenu composer-toggle i3 bspwm
 modules-center = date
-# modules-right = mic-volume pulseaudio battery wlan eth memory cpu temperature updates-pacman-aurhelper 
-modules-right = kdeconnect mic-volume pulseaudio battery wlan eth vram gpuload gputemp memory cpu cputemp updates-pacman-aurhelper 
-# modules-left = bspwm i3
-# modules-center = mpd
-# modules-right = filesystem xbacklight alsa pulseaudio xkeyboard memory cpu wlan eth battery temperature date powermenu
+modules-right = kdeconnect mic-volume pulseaudio wlan eth mouse-batt memory cpu updates-pacman-aurhelper 
+# modules-right = kdeconnect mic-volume pulseaudio battery wlan eth vram gpuload gputemp memory cpu cputemp updates-pacman-aurhelper 
 
 tray-position = right
 tray-padding = 2
@@ -504,6 +501,13 @@ hook-0 = echo 
 hook-1 = echo 
 click-left = ~/.config/polybar/scripts/composer-toggle.sh
 initial = 2
+
+[module/mouse-batt]
+type = custom/script
+interval = 1
+exec = "~/.config/polybar/scripts/mouse-batt.fish 2> /dev/null"
+format =  <label>
+format-underline = #ffffff
 
 
 [settings]

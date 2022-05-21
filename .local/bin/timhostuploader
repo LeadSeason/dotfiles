@@ -6,18 +6,19 @@ import traceback
 import json
 import getpass
 import argparse
+import logging
 
 import asyncio
 import aiohttp
 import aiofiles
 
-import notify2
+import dbus
 import keyring
 import filetype
 
 
-save_path = "/home/leadseason/Pictures/FlameShot-Custom-Uploader/Images/"
-error_log_path = "/home/leadseason/Pictures/FlameShot-Custom-Uploader/logs/"
+save_path = "/home/leadseason/var/media/pictures/tims.host_uploads/"
+error_log_path = "/home/leadseason/.cache/timhostuploader-logs/"
 
 
 class bcolors:
@@ -57,28 +58,58 @@ async def save_error(message):
             break
 
 
-async def s_clip(data):
-    p = await asyncio.create_subprocess_exec(
-        "xsel", "-bi",
-        stdout=asyncio.subprocess.PIPE,
-        stderr=asyncio.subprocess.PIPE,
-        stdin=asyncio.subprocess.PIPE)
-    await p.communicate(input=bytes(data, "UTF-8"))
-    await p.wait()
+async def clipboard_handler(data):
+    if sys.platform.lower().startswith("linux"):
+        try:
+            session_type = os.environ["XDG_SESSION_TYPE"]
+        except SyntaxError:
+            session_type = None
+
+        if session_type == "wayland":
+            os.system(f"wl-copy {data} &")
+
+        elif session_type == "X11" or session_type is None:
+            p = await asyncio.create_subprocess_exec(
+                "xsel", "-bi",
+                stdout=asyncio.subprocess.PIPE,
+                stderr=asyncio.subprocess.PIPE,
+                stdin=asyncio.subprocess.PIPE
+            )
+            await p.communicate(input=bytes(data, "UTF-8"))
+            await p.wait()
+    else:
+        logln("please update system to linux", bcolors.WARNING)
+        exit()
 
 
-async def Notification(message, submessage, icon=None):
+async def Notification(summary, body="", icon_path=None, app_name="Timshostuploader", replaces_id=0, actions=[], urgency=1, expire_timeout=3000):
     """
         Shows notification to user that image has been uploaded
     """
-    notify2.init("Uploader")
-    if icon is None:
-        n = notify2.Notification(message, submessage)
+    bus_name = "org.freedesktop.Notifications"
+    bus_path = "/org/freedesktop/Notifications"
+
+    if icon_path is not None:
+        icon_uri = f"file://{os.path.abspath(icon_path)}"
     else:
-        uri = f"file://{os.path.abspath(icon)}"
-        n = notify2.Notification(message, submessage, uri)
-    if not n.show():
-        await logln("Failed to send notification")
+        icon_uri = ""
+
+    hints = {
+        "urgency": int(urgency)
+    }
+
+    notfy = dbus.Interface(
+        dbus.SessionBus().get_object(
+            bus_name, bus_path
+        ),
+        bus_name
+    )
+    """
+        Freedesktop notifications standards
+        https://specifications.freedesktop.org/notification-spec/latest/ar01s09.html
+    """
+
+    notfy.Notify(app_name, replaces_id, icon_uri, summary, body, actions, hints, expire_timeout)
 
 
 async def save_to_file(image_path, url, img_format):
@@ -93,32 +124,24 @@ async def save_to_file(image_path, url, img_format):
     async with aiofiles.open(filename, "wb") as x:
         async for ix in file_sender(image_path):
             await x.write(ix)
-    return f"{save_path}{filename}.{img_format}"
+    return filename
 
 
-async def file_sender(file_name=None):
-    file_size = os.path.getsize(file_name)
-    chunk_size = 65536
-    readsofar = 0
+async def file_sender(file_name="/dev/stdin", chunk_size=65536):
+    if file_name != "/dev/stdin":
+        file_size = os.path.getsize(file_name)
+        readsofar = 0
 
     async with aiofiles.open(file_name, 'rb') as f:
         chunk = await f.read(chunk_size)
         while chunk:
             yield chunk
 
-            readsofar += len(chunk)
-            percent = readsofar * 1e2 / file_size
+            if file_name != "/dev/stdin":
+                readsofar += len(chunk)
+                percent = readsofar * 1e2 / file_size
+                await logr(f"Uploading file ... {round(percent, 1)}")
 
-            await logr(f"Uploading file ... {round(percent, 1)}")
-            chunk = await f.read(chunk_size)
-
-
-async def stdin_reader():
-    chunk_size = 65536
-    async with aiofiles.open("/dev/stdin", 'rb') as f:
-        chunk = await f.read(chunk_size)
-        while chunk:
-            yield chunk
             chunk = await f.read(chunk_size)
 
 
@@ -142,10 +165,10 @@ async def main():
     in_file = None
     async with aiofiles.tempfile.NamedTemporaryFile('wb+') as temp_file:
         if len(sys.argv) == 1:
-            async for x in stdin_reader():
+            async for x in file_sender():
                 if x == b"screenshot aborted\n" or x == b"":
                     await logln("Aborted", bcolors.WARNING)
-                    sys.exit(1)
+                    sys.exit(0)
                 await temp_file.write(x)
 
             await temp_file.seek(0)
@@ -202,28 +225,34 @@ async def main():
                     case 200:
                         url = await resp.text()
                         print(url)
-                        await s_clip(url)
-                        await save_to_file(in_file, url, file_name)
-                        await Notification(f"{file_type} has been uploaded", url, in_file)
+                        await clipboard_handler(url)
+                        save_file = await save_to_file(in_file, url, file_name)
+                        await Notification(f"{file_type} has been uploaded", url, icon_path=save_file)
 
                     case 401:
                         await logln("Access denied: Invalid Token or User ID!")
                         await Notification("Access denied: Invalid Token or User ID!", "")
 
+                    case 418:
+                        await logln("418 I'm a teapot")
+                        await Notification("418 I'm a teapot", "")
+
                     case _:
-                        await logln(f"""Unable to connect to Tim host\n
-Error code: {resp.status} go @Tim and yell at him\n
-{await resp.text()}""")
+                        await logln(f"""Unable to connect to Tims host\n
+                                        Error code: {resp.status} go @Tim and yell at him\n
+                                        {await resp.text()}""")
                         await Notification("Unable to connect to Tim host",
                                            f"Error code: {resp.status} go @Tim and yell at him\n{await resp.text()}")
 
 
 if __name__ == "__main__":
+    # logging.basicConfig(level=logging.DEBUG)
     parser = argparse.ArgumentParser()
 
     parser.add_argument("-i", "--import_conf", help="Imports the config")
     parser.add_argument("-s", "--setcfg", help="set the config manualy", action="store_true")
     parser.add_argument("Upload_file", nargs=argparse.REMAINDER, help="File to be uploaded")
+    parser.add_argument("-v", "--verbose", help="Verbose mode enables logging debug", action="store_true")
     args = parser.parse_args()
 
     if args.import_conf is not None:
@@ -251,4 +280,5 @@ if __name__ == "__main__":
         except Exception as e:
             print("Fail")
             print(traceback.format_exc())
+            asyncio.run(save_error(traceback.format_exc()))
             asyncio.run(Notification("There was an error in the program while uploading", str(e)))

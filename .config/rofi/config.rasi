@@ -1,6 +1,6 @@
 /* vim:ft=css */
 configuration {
-	modi: "window,run,ssh,drun";
+	modi: "window,run,ssh,drun,emoji";
 	font: "Iosevka 12, Symbols Nerd Font 12";
 /*	location: 0;*/
 /*	yoffset: 0;*/
@@ -149,4 +149,5 @@ configuration {
 //@theme "/usr/share/rofi/themes/Monokai.rasi"
 //@theme "/usr/share/rofi/themes/arthur.rasi"
 //@theme "/usr/share/rofi/themes/fancy.rasi"
-@theme "/usr/share/rofi/themes/sidebar.rasi"
+//@theme "/usr/share/rofi/themes/sidebar.rasi"
+@theme "/usr/share/rofi/themes/Arc-Dark.rasi"
