@@ -1,37 +1,26 @@
 
- " plugin call
 call plug#begin(stdpath('data') . '/plugged')
 
  " Make sure to use single qoutes !!!
 
- " better status bar
+Plug 'ms-jpq/chadtree'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
  " python stuff aka autocompleate and syntax
+Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
+Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
+Plug 'ms-jpq/coq.thirdparty', {'branch': '3p'}
+Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins' }
 Plug 'dense-analysis/ale'
-Plug 'davidhalter/jedi-vim'
-
- " probobly not needed dont really use kitty splits
-Plug 'fladson/vim-kitty'
-
- " read more easyly hex codes
-Plug 'ap/vim-css-color'
 
  " discord rich pressense
 Plug 'vimsence/vimsence'
-
- " Fish Script syntax
 Plug 'dag/vim-fish'
-
- " Json Syntax
- " Plug 'elzr/vim-json'
-
- " rust syntax formating etc
- " by rust team
+Plug 'ap/vim-css-color'
+Plug 'fladson/vim-kitty'
 Plug 'rust-lang/rust.vim'
 
- " plugin call end
 call plug#end()
 
 
@@ -41,16 +30,18 @@ command Sw :w !sudo tee %  " sudo write
 let b:ale_linters = ['flake8']
 call ale#Set('python_flake8_options', '--ignore E501')
 
- " use system clipboard
-set clipboard+=unnamedplus
-
- " Undo dir
-set undofile
-set undodir=/home/leadseason/.local/share/nvim/undodir/
+ " Chad tree bind
+nnoremap W <cmd>CHADopen<cr>
+ " inoremap <expr> j ((pumvisible())?("\<C-n>"):("j"))
+ " inoremap <expr> k ((pumvisible())?("\<C-p>"):("k"))
 
 syntax enable
 filetype plugin indent on
 
+set clipboard+=unnamedplus
+set undofile
+set undodir=/home/leadseason/.local/share/nvim/undodir/
+set omnifunc=csscomplete#CompleteCSS
 set number
 set tabstop=4
 set shiftwidth=4

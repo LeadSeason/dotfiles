@@ -2,19 +2,19 @@ function fish_greeting
     echo -n
 end
 
-export EDITOR=nvim
-
 if status is-login
     if test -z "$DISPLAY" -a "$XDG_VTNR" = 1
-        exec sway
-		fish
+		set -x (gnome-keyring-daemon --start | string split "=")
+        exec sway >> ~/.cache/swaylog
     end
 end
+
+set -x (gnome-keyring-daemon --start | string split "=")
 
 fish_add_path -g ~/.local/bin
 
 export LANG=en_US.UTF-8
-set -x (gnome-keyring-daemon --start | string split "=")
+export EDITOR=nvim
 
 alias lynx="lynx -accept_all_cookies"
 alias make="make -j24"

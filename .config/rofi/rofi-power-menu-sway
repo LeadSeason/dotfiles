@@ -38,9 +38,9 @@ icons[shutdown]="\uf011"
 icons[cancel]="\u00d7"
 
 declare -A actions
-actions[lockscreen]="/home/leadseason/.config/i3/lock.sh"
+actions[lockscreen]="gtklock -d -s ~/.config/gtklock/style.css"
 #actions[switchuser]="???"
-actions[logout]="i3-msg exit"
+actions[logout]="swaymsg exit"
 actions[suspend]="systemctl suspend"
 # actions[hibernate]="systemctl hibernate"
 actions[reboot]="systemctl reboot"

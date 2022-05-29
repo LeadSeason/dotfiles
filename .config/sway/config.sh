@@ -3,11 +3,20 @@
 killall -q swayidle &
 killall -q xsettingd &
 killall -q swaync &
-killall -q gnome-keyring-deamon &
 killall -q kdeconnectd &
 killall -q waybar &
+killall -q python &
+killall -q getupdates-serv &
+killall -q foot -s &
 
 wait
+
+# password manager
+eval $(gnome-keyring-daemon --start)
+export SSH_AUTH_SOCK
+
+# foot server
+foot -s &
 
 # Adaptive wallpaper
 /bin/python /home/leadseason/.config/sway/scripts/wallpaper.py &
@@ -26,16 +35,13 @@ waybar &
 
 # Automatich locking
 swayidle -w \
-	timeout 300 'swaylock -f -c 000000' \
+	timeout 300 'gtklock -d -s ~/.config/gtklock/style.css' \
 	timeout 600 'swaymsg "output * dpms off"' \
 		resume 'swaymsg "output * dpms on"' \
-	before-sleep 'swaylock -f -c 000000' &
+	before-sleep 'gtklock -d -s ~/.config/gtklock/style.css' &
 
 # notifiaction deamon
 swaync &
-
-# start libsecret (gnone key manager)
-gnome-keyring-daemon &
 
 # start update notifer server
 ~/.config/waybar/scipts/getupdates-server.sh &

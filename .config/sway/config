@@ -9,7 +9,7 @@
 
 # Mod1 = alt
 set $mod Mod1
-set $term kitty
+set $term footclient
 
 # 
 # ██╗░░░░░░█████╗░░█████╗░██╗░░██╗  ░█████╗░███╗░░██╗██████╗░  ███████╗███████╗░█████╗░██╗░░░░░
@@ -25,7 +25,7 @@ font pango:Iosevka 8
 
 # Gaps
 default_border pixel 2
-gaps inner 5 
+gaps inner 5
 gaps outer 5
 
 # class                 border  backgr. text    indicator child_border
@@ -84,25 +84,25 @@ input type:pointer {
 }
 
 # start screenshot
-bindsym $mod+c exec bash -c 'grim -g "$(slurp)" - | /home/leadseason/.local/bin/timhostuploader'
+bindsym $mod+c exec bash -c 'grim -g "$(slurp)" - | swappy -f - -o - | /home/leadseason/.local/bin/timhostuploader'
 
 # lock
-bindsym $mod+r exec swaylock
-
-# ctrl + alt + del = rofi powermenu
-bindsym $mod+ctrl+Delete exec --no-startup-id rofi -show power-menu -modi power-menu:~/.config/rofi/rofi-power-menu 
-
-# start rofi (command mode)
-bindsym $mod+Shift+d exec --no-startup-id rofi -show run
+bindsym $mod+r exec gtklock -s ~/.config/gtklock/style.css
 
 # start rofi (a program launcher)
-bindsym $mod+d exec --no-startup-id rofi -show drun 
+bindsym $mod+d exec --no-startup-id wofi -i -I --show drun
+
+# start rofi (command mode)
+bindsym $mod+Shift+d exec --no-startup-id wofi -i -I --show run
 
 # rofi emogi picker
 bindsym $mod+period exec --no-startup-id rofi -show emoji
 
 # rofi ssh
 bindsym $mod+Shift+s exec --no-startup-id rofi -show ssh
+
+# ctrl + alt + del = rofi powermenu
+bindsym $mod+ctrl+Delete exec --no-startup-id rofi -show power-menu -modi power-menu:~/.config/rofi/rofi-power-menu-sway
 
 # Media player controls
 bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
@@ -113,7 +113,7 @@ bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 # Use pactl to adjust volume in PulseAudio.
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +1% 
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -1%
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle 
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
 # Use Mouse+$mod to drag floating windows to their wanted position
