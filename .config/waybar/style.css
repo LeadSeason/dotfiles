@@ -1,6 +1,6 @@
 * {
     /* `otf-font-awesome` is required to be installed for icons */
-    font-family: "Iosevka light", FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+    font-family: "Iosevka light", FontAwesome, SourceHanSans;
     font-size: 15px;
     background-color: rgba(0, 0, 0, 0);
 }
