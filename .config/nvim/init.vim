@@ -14,12 +14,12 @@ Plug 'ms-jpq/coq.thirdparty', {'branch': '3p'}
 Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins' }
 Plug 'dense-analysis/ale'
 
- " discord rich pressense
 Plug 'vimsence/vimsence'
 Plug 'dag/vim-fish'
 Plug 'ap/vim-css-color'
 Plug 'fladson/vim-kitty'
 Plug 'rust-lang/rust.vim'
+Plug 'ntpeters/vim-better-whitespace'
 
 call plug#end()
 
@@ -38,13 +38,19 @@ nnoremap W <cmd>CHADopen<cr>
 syntax enable
 filetype plugin indent on
 
+set autoindent
+set smartindent
+
 set clipboard+=unnamedplus
+
 set undofile
 set undodir=/home/leadseason/.local/share/nvim/undodir/
-set omnifunc=csscomplete#CompleteCSS
-set number
+set noswapfile
+
 set tabstop=4
 set shiftwidth=4
+
 set mouse=a
-set noswapfile
+set omnifunc=csscomplete#CompleteCSS
+set number
 

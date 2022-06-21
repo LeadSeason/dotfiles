@@ -1,4 +1,4 @@
-# 
+#
 # ░██████╗░███████╗███╗░░██╗███████╗██████╗░░█████╗░██╗░░░░░
 # ██╔════╝░██╔════╝████╗░██║██╔════╝██╔══██╗██╔══██╗██║░░░░░
 # ██║░░██╗░█████╗░░██╔██╗██║█████╗░░██████╔╝███████║██║░░░░░
@@ -9,9 +9,11 @@
 
 # Mod1 = alt
 set $mod Mod1
-set $term footclient
+set $term footclient --term xterm-256color
 
-# 
+# xwayland disable
+
+#
 # ██╗░░░░░░█████╗░░█████╗░██╗░░██╗  ░█████╗░███╗░░██╗██████╗░  ███████╗███████╗░█████╗░██╗░░░░░
 # ██║░░░░░██╔══██╗██╔══██╗██║░██╔╝  ██╔══██╗████╗░██║██╔══██╗  ██╔════╝██╔════╝██╔══██╗██║░░░░░
 # ██║░░░░░██║░░██║██║░░██║█████═╝░  ███████║██╔██╗██║██║░░██║  █████╗░░█████╗░░███████║██║░░░░░
@@ -42,17 +44,17 @@ output HDMI-A-1 mode 1920x1080@60Hz pos 0 0
 output DP-1 mode 1920x1080@144Hz pos 1920 0
 output DVI-I-1 mode 1920x1080@144Hz pos 3840 0
 
-# 
+#
 # ██████╗░██████╗░░█████╗░░██████╗░██████╗░░█████╗░███╗░░░███╗░██████╗
 # ██╔══██╗██╔══██╗██╔══██╗██╔════╝░██╔══██╗██╔══██╗████╗░████║██╔════╝
 # ██████╔╝██████╔╝██║░░██║██║░░██╗░██████╔╝███████║██╔████╔██║╚█████╗░
 # ██╔═══╝░██╔══██╗██║░░██║██║░░╚██╗██╔══██╗██╔══██║██║╚██╔╝██║░╚═══██╗
 # ██║░░░░░██║░░██║╚█████╔╝╚██████╔╝██║░░██║██║░░██║██║░╚═╝░██║██████╔╝
 # ╚═╝░░░░░╚═╝░░╚═╝░╚════╝░░╚═════╝░╚═╝░░╚═╝╚═╝░░╚═╝╚═╝░░░░░╚═╝╚═════╝░
-# 
+#
 
 # bg start
-exec --no-startup-id swaybg --image ~/.config/i3/wallpaper.jpg
+# exec --no-startup-id swaybg --image ~/.config/i3/wallpaper.jpg
 
 exec --no-startup-id ~/.config/sway/config.sh
 
@@ -111,9 +113,9 @@ bindsym XF86AudioNext exec --no-startup-id playerctl next
 bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 
 # Use pactl to adjust volume in PulseAudio.
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +1% 
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +1%
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -1%
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle 
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
 # Use Mouse+$mod to drag floating windows to their wanted position

@@ -12,7 +12,7 @@ killall -q foot -s &
 wait
 
 # password manager
-eval $(gnome-keyring-daemon --start)
+eval $(gnome-keyring-daemon --start -c pkcs11,secrets)
 export SSH_AUTH_SOCK
 
 # foot server
@@ -21,19 +21,13 @@ foot -s &
 # Adaptive wallpaper
 /bin/python /home/leadseason/.config/sway/scripts/wallpaper.py &
 
-# Import User envronment
-/etc/X11/xinit/xinitrc.d/50-systemd-user.sh &
-
-# Theaming
-# xsettingsd &
-
 # kdeconnectd
 /usr/lib/kdeconnectd &
 
 # waybar
 waybar &
 
-# Automatich locking
+# Automatic locking
 swayidle -w \
 	timeout 300 'gtklock -d -s ~/.config/gtklock/style.css' \
 	timeout 600 'swaymsg "output * dpms off"' \
@@ -45,3 +39,9 @@ swaync &
 
 # start update notifer server
 ~/.config/waybar/scipts/getupdates-server.sh &
+
+
+systemctl --user import-environment XDG_CURRENT_DESKTOP XDG_SESSION_TYPE DISPLAY &
+
+dbus-update-activation-environment --systemd XDG_CURRENT_DESKTOP XDG_SESSION_TYPE DISPLAY &
+dbus-update-activation-environment XDG_CURRENT_DESKTOP XDG_SESSION_TYPE DISPLAY &
