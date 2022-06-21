@@ -7,7 +7,7 @@ configuration {
 /*	xoffset: 0;*/
 /*	fixed-num-lines: true;*/
 	show-icons: true;
-	terminal: "footclient";
+	terminal: "footclient --term xterm-256color";
 /*	ssh-client: "ssh";*/
   	ssh-command: """{terminal} -e fish -c "{ssh-client} {host} [-p {port}]" """;
 /*	run-command: "{cmd}";*/
