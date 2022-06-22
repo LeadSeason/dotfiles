@@ -38,7 +38,7 @@ icons[shutdown]="\uf011"
 icons[cancel]="\u00d7"
 
 declare -A actions
-actions[lockscreen]="/home/leadseason/.config/i3/lock.sh"
+actions[lockscreen]="~/.config/i3/lock.sh"
 #actions[switchuser]="???"
 actions[logout]="i3-msg exit"
 actions[suspend]="systemctl suspend"
