@@ -64,8 +64,8 @@ font-2 = "Material Icons:style=Regular"
 
 modules-left = powermenu composer-toggle i3 bspwm
 modules-center = date
-modules-right = kdeconnect mic-volume pulseaudio wlan eth mouse-batt memory cpu updates-pacman-aurhelper 
-# modules-right = kdeconnect mic-volume pulseaudio battery wlan eth vram gpuload gputemp memory cpu cputemp updates-pacman-aurhelper 
+modules-right = kdeconnect mic-volume pulseaudio wlan eth mouse-batt memory cpu updates-pacman-aurhelper
+# modules-right = kdeconnect mic-volume pulseaudio battery wlan eth vram gpuload gputemp memory cpu cputemp updates-pacman-aurhelper
 
 tray-position = right
 tray-padding = 2
@@ -414,11 +414,11 @@ type = custom/script
 exec = ~/.config/polybar/scripts/getupdates-client.sh
 interval = 5
 format-underline = #1793D1
-click-left = kitty --hold -e '/home/leadseason/.config/polybar/scripts/getupdates-update.sh'
+click-left = kitty --hold -e '~/.config/polybar/scripts/getupdates-update.sh'
 
-[module/kdeconnect]  
-type = custom/script  
-exec = "~/.config/polybar/scripts/polybar-kdeconnect.sh -d"  
+[module/kdeconnect]
+type = custom/script
+exec = "~/.config/polybar/scripts/polybar-kdeconnect.sh -d"
 tail = false
 format-underline = #fff
 interval=1
@@ -435,7 +435,7 @@ click-left = bash ~/.config/polybar/scripts/mic-volume.sh mute-vol 'alsa_input.p
 scroll-up = bash ~/.config/polybar/scripts/mic-volume.sh inc-vol 'alsa_input.pci-0000_31_00.4.analog-stereo'
 scroll-down = bash ~/.config/polybar/scripts/mic-volume.sh dec-vol 'alsa_input.pci-0000_31_00.4.analog-stereo'
 
-[module/gpuload]  
+[module/gpuload]
 type = custom/script
 exec = "~/.config/polybar/scripts/gpu-usage.sh"
 format = <label>%
@@ -444,7 +444,7 @@ format-prefix-foreground = ${colors.foreground-alt}
 format-underline = #dfdf00
 interval = 1
 
-[module/vram]  
+[module/vram]
 type = custom/script
 exec = "~/.config/polybar/scripts/vram-usage.sh"
 format = <label>%
@@ -524,3 +524,4 @@ margin-top = 5
 margin-bottom = 5
 
 ; vim:ft=dosini
+

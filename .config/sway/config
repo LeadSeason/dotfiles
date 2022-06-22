@@ -86,7 +86,7 @@ input type:pointer {
 }
 
 # start screenshot
-bindsym $mod+c exec bash -c 'grim -g "$(slurp)" - | swappy -f - -o - | /home/leadseason/.local/bin/timhostuploader'
+bindsym $mod+c exec bash -c 'grim -g "$(slurp)" - | swappy -f - -o - | ~/.local/bin/timhostuploader'
 
 # lock
 bindsym $mod+r exec gtklock -s ~/.config/gtklock/style.css

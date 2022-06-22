@@ -11,23 +11,23 @@ killall -q xidlehook &
 killall -q dunst &
 killall -q polybar &
 killall -q keynav &
- 
+
 wait
 
 # theaming
 xsettingsd &
 
 # X composing
-picom --config /home/leadseason/.config/picom.conf &
+picom --config ~/.config/picom.conf &
 
 # wallpaper
-feh --bg-fill /home/leadseason/.config/i3/wallpaper.jpg &
+feh --bg-fill ~/.config/i3/wallpaper.jpg &
 
 # start auto lock
-/home/leadseason/.config/i3/xidlehook.sh &
+~/.config/i3/xidlehook.sh &
 
 # polybar
-/home/leadseason/.config/polybar/polybar.sh &
+~/.config/polybar/polybar.sh &
 
 # notifiaction deamon
 dunst &

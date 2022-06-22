@@ -19,7 +19,7 @@ export SSH_AUTH_SOCK
 foot -s &
 
 # Adaptive wallpaper
-/bin/python /home/leadseason/.config/sway/scripts/wallpaper.py &
+/bin/python ~/.config/sway/scripts/wallpaper.py &
 
 # kdeconnectd
 /usr/lib/kdeconnectd &

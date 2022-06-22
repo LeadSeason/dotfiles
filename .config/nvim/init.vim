@@ -44,7 +44,7 @@ set smartindent
 set clipboard+=unnamedplus
 
 set undofile
-set undodir=/home/leadseason/.local/share/nvim/undodir/
+set undodir=~/.local/share/nvim/undodir/
 set noswapfile
 
 set tabstop=4

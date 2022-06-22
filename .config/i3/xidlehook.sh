@@ -5,7 +5,7 @@ xidlehook \
     --not-when-audio \
     `# Lock after 10 minutes` \
     --timer 300 \
-        "/home/leadseason/.config/i3/lock.sh" \
+        "~/.config/i3/lock.sh" \
         "" \
     `# suspend after hour` \
     --timer 1800 \

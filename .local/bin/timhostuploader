@@ -16,8 +16,8 @@ import keyring
 import filetype
 
 
-save_path = "/home/leadseason/var/media/pictures/tims.host_uploads/"
-error_log_path = "/home/leadseason/.cache/timhostuploader-logs/"
+save_path = "~/var/media/pictures/tims.host_uploads/"
+error_log_path = "~/.cache/timhostuploader-logs/"
 
 
 class bcolors:
