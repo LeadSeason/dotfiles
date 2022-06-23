@@ -7,7 +7,7 @@ import signal
 
 if "-s" in sys.argv:
     i = int(str(int(datetime.now().strftime("%H")) / 2).split(".")[0]) + 1
-    image = f"~/.config/sway/wallpaper/dear-{i}.jpg"
+    image = f"/home/leadseason/.config/sway/wallpaper/dear-{i}.jpg"
     print(image)
     sys.exit(0)
 
@@ -19,7 +19,7 @@ os.system("killall -q swaybg &")
 while True:
     i = int(str(int(datetime.now().strftime("%H")) / 2).split(".")[0]) + 1
     if not old_id == i:
-        image = f"~/.config/sway/wallpaper/dear-{i}.jpg"
+        image = f"/home/leadseason/.config/sway/wallpaper/dear-{i}.jpg"
         print(image)
 
         os.system(f"swaybg -i{image} &")
