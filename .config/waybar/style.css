@@ -36,7 +36,7 @@ window#waybar.chromium {
 }
 
 #workspaces button {
-    padding: 0 2px;
+    padding: 0 0px;
     background-color: transparent;
     color: #ffffff;
     border: none;

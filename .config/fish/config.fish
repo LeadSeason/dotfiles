@@ -2,12 +2,12 @@ function fish_greeting
     echo -n
 end
 
-if status is-login
-    if test -z "$DISPLAY" -a "$XDG_VTNR" = 1
-		# set -x (gnome-keyring-daemon --start | string split "=")
-        exec sway 2>> ~/.cache/swaylog
-    end
-end
+# if status is-login
+#     if test -z "$DISPLAY" -a "$XDG_VTNR" = 1
+# 		# set -x (gnome-keyring-daemon --start | string split "=")
+#         exec sway 2>> ~/.cache/swaylog
+#     end
+# end
 
 # set -x (gnome-keyring-daemon --start | string split "=")
 

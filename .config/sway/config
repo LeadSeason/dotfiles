@@ -56,7 +56,7 @@ output DVI-I-1 mode 1920x1080@144Hz pos 3840 0
 # bg start
 # exec --no-startup-id swaybg --image ~/.config/i3/wallpaper.jpg
 
-exec --no-startup-id ~/.config/sway/config.sh
+exec --no-startup-id /home/leadseason/.config/sway/config.sh
 
 
 #

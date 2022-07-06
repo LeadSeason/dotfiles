@@ -14,11 +14,13 @@ Plug 'ms-jpq/coq.thirdparty', {'branch': '3p'}
 Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins' }
 Plug 'dense-analysis/ale'
 
-Plug 'vimsence/vimsence'
+ " Plug 'vimsence/vimsence'
+Plug 'andweeb/presence.nvim'
 Plug 'dag/vim-fish'
 Plug 'ap/vim-css-color'
 Plug 'fladson/vim-kitty'
 Plug 'rust-lang/rust.vim'
+Plug 'WolfgangMehner/bash-support'
 Plug 'ntpeters/vim-better-whitespace'
 
 call plug#end()
