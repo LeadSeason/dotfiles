@@ -7,7 +7,7 @@ killall -q polybar
 killall -q getupdates-server.sh
 
 # starting update check script
-/home/leadseason/.config/polybar/scripts/getupdates-server.sh &
+~/.config/polybar/scripts/getupdates-server.sh &
 
 # starting polybar for every monitor
 if type "xrandr"; then
