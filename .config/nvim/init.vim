@@ -8,13 +8,13 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
  " python stuff aka autocompleate and syntax
-Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
-Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
-Plug 'ms-jpq/coq.thirdparty', {'branch': '3p'}
+ " Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
+ " Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
+ " Plug 'ms-jpq/coq.thirdparty', {'branch': '3p'}
+Plug 'davidhalter/jedi-vim'
 Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins' }
 Plug 'dense-analysis/ale'
 
- " Plug 'vimsence/vimsence'
 Plug 'andweeb/presence.nvim'
 Plug 'dag/vim-fish'
 Plug 'ap/vim-css-color'

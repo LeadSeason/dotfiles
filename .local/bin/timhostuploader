@@ -213,7 +213,16 @@ async def main():
 
         file_name = "".join(x for x in file_name if x in valid_chars)
 
-        headers = await header_get()
+        try:
+            headers = await header_get()
+        except keyring.errors.KeyringLocked:
+            await logln("Fail", bcolors.FAIL)
+            print(traceback.format_exc())
+            await save_error(traceback.format_exc())
+            await Notification("Unable to open keyring upload failed", "Using wl-copy")
+            os.system(f"cat {in_file} | wl-copy")
+            exit(1)
+
         formdata = aiohttp.FormData()
         formdata.add_field("img", file_sender(file_name=in_file), filename=file_name)
 
@@ -279,11 +288,6 @@ if __name__ == "__main__":
             print("Exiting")
             print("Good bye")
             sys.exit()
-        except keyring.errors.KeyringLocked:
-            asyncio.run(logln("Fail", bcolors.FAIL))
-            print(traceback.format_exc())
-            asyncio.run(save_error(traceback.format_exc()))
-            asyncio.run(Notification("Unable to open keyring upload failed"))
         except Exception as e:
             print("Fail")
             print(traceback.format_exc())
