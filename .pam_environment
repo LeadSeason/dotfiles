@@ -16,6 +16,6 @@ MOZ_WEBRENDER				DEFAULT=1
 QT_QPA_PLATFORM				DEFAULT=wayland
 QT_QPA_PLATFORMTHEME		DEFAULT=qt5ct
 
-GTK_THEME					DEFAULT=Cloudy-Solid-SoftGrey-Dark
+GTK_THEME					DEFAULT=Adwaita-dark
 
 VK_ICD_FILENAMES			DEFAULT=/usr/share/vulkan/icd.d/radeon_icd.i686.json:/usr/share/vulkan/icd.d/radeon_icd.x86_64.json

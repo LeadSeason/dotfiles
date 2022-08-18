@@ -1,7 +1,7 @@
 * {
     /* `otf-font-awesome` is required to be installed for icons */
     font-family: "Iosevka light", FontAwesome, SourceHanSans;
-    font-size: 15px;
+    font-size: 20px;
     background-color: rgba(0, 0, 0, 0);
 }
 
@@ -88,6 +88,12 @@ window#waybar.chromium {
 #custom-bat,
 #custom-archupdates,
 #custom-seperator,
+#custom-hyprtitle,
+
+#custom-hyprtitle {
+    padding: 0 2px;
+    margin: 0 2px;
+}
 
 #mpd {
     padding: 0 10px;
@@ -96,7 +102,8 @@ window#waybar.chromium {
 
 #window,
 #workspaces {
-    margin: 0 4px;
+    margin: 0 2px;
+    padding: 0 0px;
 }
 
 /* If workspaces is the leftmost module, omit left margin */

@@ -22,11 +22,10 @@ if [ "$(tty)" = "/dev/tty1" ]; then
 			eval $(gnome-keyring-daemon --start -c pkcs11,secrets,ssh)
 			export SSH_AUTH_SOCK
 			export GNOME_KEYRING_CONTROL
-			exec sway
+			exec Hyprland
 			;;
 		*)
 			unset ACTION
-			exec zsh
 			;;
 	esac
 fi

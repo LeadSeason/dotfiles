@@ -88,19 +88,13 @@ bindsym $mod+c exec bash -c 'grim -g "$(slurp)" - | swappy -f - -o - | ~/.local/
 # lock
 bindsym $mod+r exec gtklock
 
-# start rofi (a program launcher)
+# start wofi (a program launcher)
 bindsym $mod+d exec --no-startup-id wofi -i -I --show drun
-
-# start rofi (command mode)
 bindsym $mod+Shift+d exec --no-startup-id wofi -i -I --show run
-
-# rofi emogi picker
+bindsym $mod+Shift+v exec clipman pick -t wofi
+# rofi
 bindsym $mod+period exec --no-startup-id rofi -show emoji
-
-# rofi ssh
 bindsym $mod+Shift+s exec --no-startup-id rofi -show ssh
-
-# ctrl + alt + del = rofi powermenu
 bindsym $mod+ctrl+Delete exec --no-startup-id rofi -show power-menu -modi power-menu:~/.config/rofi/rofi-power-menu-sway
 
 # Media player controls
