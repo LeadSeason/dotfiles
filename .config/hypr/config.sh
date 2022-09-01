@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+systemctl --user stop gnome-keyring-daemon.service gnome-keyring-daemon.socket &
+
 killall -q swayidle &
 killall -q swaync &
 killall -q kdeconnectd &
@@ -15,14 +17,14 @@ killall -q polkit-gnome-au &
 
 wait
 
-/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+# foot server
+foot -s &
 
 # password manager
 eval $(gnome-keyring-daemon --start -c pkcs11,secrets,ssh)
 export SSH_AUTH_SOCK
 
-# foot server
-foot -s &
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 
 # Adaptive wallpaper
 python ~/.config/sway/scripts/wallpaper.py &
@@ -56,3 +58,4 @@ systemctl --user import-environment XDG_CURRENT_DESKTOP XDG_SESSION_TYPE DISPLAY
 
 dbus-update-activation-environment --systemd XDG_CURRENT_DESKTOP XDG_SESSION_TYPE DISPLAY &
 dbus-update-activation-environment XDG_CURRENT_DESKTOP XDG_SESSION_TYPE DISPLAY &
+

@@ -10,14 +10,14 @@ if [ "$(tty)" = "/dev/tty1" ]; then
 	read ACTION
 
 	case $ACTION in
-		1)
+		"1")
 			unset ACTION
 			eval $(gnome-keyring-daemon --start -c pkcs11,secrets,ssh)
 			export SSH_AUTH_SOCK
 			export GNOME_KEYRING_CONTROL
 			exec sway
 			;;
-		2)
+		"2")
 			unset ACTION
 			eval $(gnome-keyring-daemon --start -c pkcs11,secrets,ssh)
 			export SSH_AUTH_SOCK
@@ -32,7 +32,7 @@ fi
 
 
 # auto loads and inits
-autoload -Uz compinit promptinit colors
+autoload -Uz compinit promptinit colors select-word-style
 compinit
 promptinit
 colors
@@ -44,6 +44,7 @@ HISTFILE=~/.local/share/zsh/histfile
 HISTSIZE=1000
 SAVEHIST=100000
 ZPLUG_HOME=~/.local/share/zsh/zplug
+path+=('/home/leadseason/.local/bin')
 
 
 # Plugin managment
@@ -66,6 +67,7 @@ zplug load
 
 
 # alias defenitions
+alias :q="exit"
 alias ls="lsd -F --color=auto"
 alias ll="lsd -Flh --color=auto"
 alias la="lsd -Flha --color=auto"
@@ -80,7 +82,12 @@ alias showcolors="curl https://gist.githubusercontent.com/HaleTom/89ffe32783f89f
 # Bindings
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
-bindkey "^W" "backward-delete-word-custom"
+bindkey '^[[1;5D' vi-backward-blank-word
+bindkey '^[[1;5C' vi-forward-blank-word
+
+
+bindkey "^W" backward-delete-word-custom
+bindkey "^H" backward-delete-word-custom
 
 zstyle ':completion:*' matcher-list \
     'm:{[:lower:]}={[:upper:]}' \
@@ -91,7 +98,6 @@ zstyle ':completion:*' matcher-list \
 # Functions
 precmd() {
 	local exit_code=(${?})
-	bindkey '^W' backward-delete-word-custom
 	if [[ "$exit_code" == "0" ]] then;
 		print -P "%F{39}$USER%F{255}@%F{39}$HOST %F{34}%(5~|%-1~/…/%3~|%4~)%F{255} $(git rev-parse --abbrev-ref HEAD 2> /dev/null)"
 	else

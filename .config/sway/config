@@ -84,6 +84,7 @@ input type:pointer {
 
 # start screenshot
 bindsym $mod+c exec bash -c 'grim -g "$(slurp)" - | swappy -f - -o - | ~/.local/bin/timhostuploader'
+bindsym $mod+Shift+c exec bash -c '~/.config/sway/scripts/recorder.bash'
 
 # lock
 bindsym $mod+r exec gtklock
@@ -92,6 +93,7 @@ bindsym $mod+r exec gtklock
 bindsym $mod+d exec --no-startup-id wofi -i -I --show drun
 bindsym $mod+Shift+d exec --no-startup-id wofi -i -I --show run
 bindsym $mod+Shift+v exec clipman pick -t wofi
+
 # rofi
 bindsym $mod+period exec --no-startup-id rofi -show emoji
 bindsym $mod+Shift+s exec --no-startup-id rofi -show ssh
