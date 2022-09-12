@@ -43,4 +43,7 @@ set number
 set tabstop=4
 set mouse=a
 set noswapfile
-
+set autoindent
+set expandtab
+set tabstop=2
+set shiftwidth=2
