@@ -39,13 +39,14 @@ colors
 
 
 # variable defenitions
-PS1=" → %{$reset_color%}"
 HISTFILE=~/.local/share/zsh/histfile
 HISTSIZE=1000
 SAVEHIST=100000
 ZPLUG_HOME=~/.local/share/zsh/zplug
 path+=('/home/leadseason/.local/bin')
 
+unset RPS1
+unset PS1
 
 # Plugin managment
 source $ZPLUG_HOME/init.zsh
@@ -98,11 +99,13 @@ zstyle ':completion:*' matcher-list \
 # Functions
 precmd() {
 	local exit_code=(${?})
+	local git_branch="$(git rev-parse --abbrev-ref HEAD 2> /dev/null) "
 	if [[ "$exit_code" == "0" ]] then;
-		print -P "%F{39}$USER%F{255}@%F{39}$HOST %F{34}%(5~|%-1~/…/%3~|%4~)%F{255} $(git rev-parse --abbrev-ref HEAD 2> /dev/null)"
+		PS1="%F{39}$USER%F{255}@%F{39}$HOST %F{34}%(5~|%-1~/…/%3~|%4~)%F{255} $git_branch$VIRTUAL_ENV_PROMPT
+ → %{$reset_color%}"
 	else
-
-		print -P "%F{39}$USER%F{255}@%F{39}$HOST %{$reset_color%}[%F{196}$exit_code%{$reset_color%}] %F{34}%(5~|%-1~/…/%3~|%4~)%F{255} $(git rev-parse --abbrev-ref HEAD 2> /dev/null)"
+		PS1="%F{39}$USER%F{255}@%F{39}$HOST %{$reset_color%}[%F{196}$exit_code%{$reset_color%}] %F{34}%(5~|%-1~/…/%3~|%4~)%F{255} $git_branch$VIRTUAL_ENV_PROMPT
+ → %{$reset_color%}"
 	fi
 }
 
