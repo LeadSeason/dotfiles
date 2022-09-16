@@ -97,16 +97,46 @@ zstyle ':completion:*' matcher-list \
 
 
 # Functions
+
+zsh_command_time() {
+    if [ -n "$ZSH_COMMAND_TIME" ]; then
+        local hours=$(($ZSH_COMMAND_TIME/3600))
+        local min=$(($ZSH_COMMAND_TIME/60))
+        local sec=$(($ZSH_COMMAND_TIME%60))
+        if [ "$ZSH_COMMAND_TIME" -le 60 ]; then
+            local timer_show="$fg[green]${ZSH_COMMAND_TIME}s"
+        elif [ "$ZSH_COMMAND_TIME" -gt 60 ] && [ "$ZSH_COMMAND_TIME" -le 180 ]; then
+            local timer_show="$fg[yellow]${min}min ${sec}s"
+        else
+            if [ "$hours" -gt 0 ]; then
+                local min=$(($min%60))
+                local timer_show="$fg[red]${hours}h ${min}min ${sec}s"
+            else
+				local timer_show="$fg[red]${min}min ${sec}s"
+            fi
+        fi
+		printf "${ZSH_COMMAND_TIME_MSG}\n" "$timer_show"
+    fi
+}
+
 precmd() {
 	local exit_code=(${?})
-	local git_branch="$(git rev-parse --abbrev-ref HEAD 2> /dev/null) "
+	local git_branch=" $(git rev-parse --abbrev-ref HEAD 2> /dev/null)"
+
+	if [[ $VIRTUAL_ENV_PROMPT ]] then;
+		local py_venv=" $VIRTUAL_ENV_PROMPT"
+	fi
+
 	if [[ "$exit_code" == "0" ]] then;
-		PS1="%F{39}$USER%F{255}@%F{39}$HOST %F{34}%(5~|%-1~/…/%3~|%4~)%F{255} $git_branch$VIRTUAL_ENV_PROMPT
+		PS1="%F{39}$USER%F{255}@%F{39}$HOST %F{34}%(5~|%-1~/…/%3~|%4~)%F{255}$git_branch$py_venv
  → %{$reset_color%}"
+
 	else
-		PS1="%F{39}$USER%F{255}@%F{39}$HOST %{$reset_color%}[%F{196}$exit_code%{$reset_color%}] %F{34}%(5~|%-1~/…/%3~|%4~)%F{255} $git_branch$VIRTUAL_ENV_PROMPT
+		PS1="%F{39}$USER%F{255}@%F{39}$HOST %{$reset_color%}[%F{196}$exit_code%{$reset_color%}] $timer_show%F{34}%(5~|%-1~/…/%3~|%4~)%F{255}$git_branch$py_venv
  → %{$reset_color%}"
 	fi
+
+	unset ZSH_TIMER_SHOW
 }
 
 backward-delete-word-custom() {
