@@ -132,7 +132,7 @@ precmd() {
  → %{$reset_color%}"
 
 	else
-		PS1="%F{39}$USER%F{255}@%F{39}$HOST %{$reset_color%}[%F{196}$exit_code%{$reset_color%}] $timer_show%F{34}%(5~|%-1~/…/%3~|%4~)%F{255}$git_branch$py_venv
+		PS1="%F{39}$USER%F{255}@%F{39}$HOST %{$reset_color%}[%F{196}$exit_code%{$reset_color%}] %F{34}%(5~|%-1~/…/%3~|%4~)%F{255}$git_branch$py_venv
  → %{$reset_color%}"
 	fi
 
