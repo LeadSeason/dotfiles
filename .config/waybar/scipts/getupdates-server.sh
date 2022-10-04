@@ -13,5 +13,11 @@ do
     updates=$((updates_arch + updates_aur))
 
     echo $updates > /tmp/updates
-    sleep 600
+	for i in {1..600}
+	do
+		sleep 1
+		if ! pgrep -x waybar; then
+			exit 0
+		fi
+	done
 done

@@ -1,13 +1,14 @@
 
 # start wm on tty1 login
 if [ "$(tty)" = "/dev/tty1" ]; then
-	systemctl --user stop gnome-keyring-daemon.service gnome-keyring-daemon.socket
+	systemctl --user stop gnome-keyring-daemon.service gnome-keyring-daemon.socket &
 
 	echo "[1] Start Sway"
 	echo "[2] Start Hyprland"
 	echo "[3] Stay in tty"
 	echo -n " → "
 	read ACTION
+	wait
 
 	case $ACTION in
 		"1")

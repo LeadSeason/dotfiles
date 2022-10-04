@@ -53,13 +53,13 @@
         }
     },
     "pulseaudio": {
-        // "scroll-step": 1, // %, can be a float
+        "scroll-step": 1, // %, can be a float
         "format": "{volume}% {icon} {format_source}",
-        "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": " {icon} {format_source}",
-        "format-muted": " {format_source}",
+        "format-muted": "ﱝ {format_source}",
         "format-source": "{volume}% ",
         "format-source-muted": "",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": "ﱝ {icon} {format_source}",
         "format-icons": {
             "headphone": "",
             "hands-free": "",
@@ -114,7 +114,7 @@
         "interval": 5
     },
     "temperature": {
-        "hwmon-path": "/sys/devices/platform/nct6775.2592/hwmon/hwmon5/temp7_input",
+        "hwmon-path": "/sys/devices/platform/nct6775.2592/hwmon/hwmon4/temp7_input",
         "critical-threshold": 70,
         "format": "{temperatureC}°C",
         "interval": 2
@@ -122,8 +122,8 @@
     "custom/archupdates": {
         "format": "{}",
         "exec": "$HOME/.config/waybar/scipts/getupdates-client.sh",
-        "on-click": "footclient --hold -e $HOME/.config/waybar/scipts/getupdates-update.sh",
-        "interval": 20
+        "on-click": "kitty --hold -e $HOME/.config/waybar/scipts/getupdates-update.sh",
+        "interval": 1
     },
     "clock": {
         "timezone": "Europe/Helsinki",

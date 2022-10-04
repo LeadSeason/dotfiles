@@ -18,6 +18,9 @@ os.system("killall -q swaybg &")
 
 while True:
     i = int(str(int(datetime.now().strftime("%H")) / 2).split(".")[0]) + 1
+    if os.popen("pgrep sway").close() >= 1:
+        sys.exit(0)
+
     if not old_id == i:
         image = f"/home/leadseason/.config/sway/wallpaper/dear-{i}.jpg"
         print(image)
@@ -25,8 +28,10 @@ while True:
         os.system(f"swaybg -i{image} &")
 
         jobs = []
-        for pid in os.popen("pgrep swaybg"):
+        pgrep = os.popen("pgrep swaybg")
+        for pid in pgrep:
             jobs.append(int(pid))
+        pgrep.close()
         for pid in jobs[:-1]:
             os.kill(pid, signal.SIGKILL)
 
