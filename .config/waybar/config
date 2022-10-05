@@ -114,7 +114,7 @@
         "interval": 5
     },
     "temperature": {
-        "hwmon-path": "/sys/devices/platform/nct6775.2592/hwmon/hwmon4/temp7_input",
+        // "hwmon-path": "",
         "critical-threshold": 70,
         "format": "{temperatureC}°C",
         "interval": 2

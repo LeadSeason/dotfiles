@@ -22,9 +22,7 @@ set $term kitty --single-instance
 # ╚══════╝░╚════╝░░╚════╝░╚═╝░░╚═╝  ╚═╝░░╚═╝╚═╝░░╚══╝╚═════╝░  ╚═╝░░░░░╚══════╝╚═╝░░╚═╝╚══════╝
 #
 
-output DP-2 mode 2560x1440@165Hz pos 0 0 max_render_time off
-output DP-1 mode 2560x1440@165Hz pos 2560 0 max_render_time off
-output DP-3 mode 2560x1440@165Hz pos 5120 0 max_render_time off
+include ~/.config/sway/config.d/*
 
 # font
 font pango:Iosevka 8
