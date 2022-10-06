@@ -77,7 +77,8 @@ alias grep="grep --color"
 alias lynx="lynx -accept_all_cookies"
 alias s="s -p duckduckgo"
 alias make="make -j24"
-alias autoremove="sudo pacman -Rcns $(pacman -Qdtq)"
+alias cc="pygmentize -g"
+alias autoremove="sudo pacman -Rcns \"$(pacman -Qdtq)\""
 alias showcolors="curl https://gist.githubusercontent.com/HaleTom/89ffe32783f89f403bba96bd7bcd1263/raw/ | bash"
 
 

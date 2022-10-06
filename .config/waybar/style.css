@@ -165,7 +165,8 @@ label:focus {
 }
 
 #backlight {
-    background-color: #90b1b1;
+    padding: 0 2px;
+    margin: 0 2px;
 }
 
 #network {

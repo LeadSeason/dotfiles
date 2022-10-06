@@ -10,11 +10,13 @@ wait
 # export SSH_AUTH_SOCK
 # export GNOME_KEYRING_CONTROL
 
-# foot server
-# foot -s &
+# Automatic Screen rotation
+rot8 &
 
+# Clipboard storage
 wl-paste -t text --watch clipman store --no-persist &
 
+# Polkit Authentication agent / gnome-keyring login prompt
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 
 # Adaptive wallpaper
