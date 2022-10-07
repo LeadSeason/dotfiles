@@ -44,7 +44,10 @@ HISTFILE=~/.local/share/zsh/histfile
 HISTSIZE=1000
 SAVEHIST=100000
 ZPLUG_HOME=~/.local/share/zsh/zplug
-path+=('/home/leadseason/.local/bin')
+PATH="$HOME/.local/bin:$PATH"
+NVIM_PATH="${PATH:-}"
+
+export NVIM_PATH PATH ZPLUG_HOME SAVEHIST HISTSIZE HISTFILE
 
 unset RPS1
 unset PS1
@@ -78,6 +81,7 @@ alias lynx="lynx -accept_all_cookies"
 alias s="s -p duckduckgo"
 alias make="make -j24"
 alias cc="pygmentize -g"
+alias nvim="PATH=\"$NVIM_PATH\" nvim"
 alias autoremove="sudo pacman -Rcns \"$(pacman -Qdtq)\""
 alias showcolors="curl https://gist.githubusercontent.com/HaleTom/89ffe32783f89f403bba96bd7bcd1263/raw/ | bash"
 

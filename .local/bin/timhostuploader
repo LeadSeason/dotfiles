@@ -50,7 +50,7 @@ async def save_error(message):
     """
 
     if not os.path.isdir(error_log_path):
-        os.mkdir(error_log_path)
+        os.makedirs(error_log_path)
 
     for i in range(sys.maxsize**10):
         filepath = f"{error_log_path}Error_{i}.log"
@@ -119,6 +119,10 @@ async def save_to_file(image_path, url, img_format):
         Saves Uploaded Image to local directory
         and names the file the upload id
     """
+    # Make directory recursively if it does not exist
+    if not os.path.isdir(save_path):
+        os.makedirs(save_path)
+
     url_split = url.split("/")
     url_id = url_split[len(url_split) - 1]
     filename = f"{save_path}{url_id}_{img_format}"
