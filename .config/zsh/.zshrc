@@ -1,8 +1,6 @@
 
 # start wm on tty1 login
 if [ "$(tty)" = "/dev/tty1" ]; then
-	systemctl --user stop gnome-keyring-daemon.service gnome-keyring-daemon.socket &
-
 	echo "[1] Start Sway"
 	echo "[2] Start Hyprland"
 	echo "[3] Stay in tty"
@@ -13,16 +11,10 @@ if [ "$(tty)" = "/dev/tty1" ]; then
 	case $ACTION in
 		"1")
 			unset ACTION
-			eval $(gnome-keyring-daemon --start -c pkcs11,secrets,ssh)
-			export SSH_AUTH_SOCK
-			export GNOME_KEYRING_CONTROL
 			exec sway
 			;;
 		"2")
 			unset ACTION
-			eval $(gnome-keyring-daemon --start -c pkcs11,secrets,ssh)
-			export SSH_AUTH_SOCK
-			export GNOME_KEYRING_CONTROL
 			exec Hyprland
 			;;
 		*)

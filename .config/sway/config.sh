@@ -6,9 +6,9 @@ _SWAY_LOCK_COMMAND='swaylock --ignore-empty-password --fade-in 2 --grace 3 --gra
 
 wait
 
-# eval $(gnome-keyring-daemon --start -c pkcs11,secrets,ssh)
-# export SSH_AUTH_SOCK
-# export GNOME_KEYRING_CONTROL
+eval $(gnome-keyring-daemon --start -c pkcs11,secrets,ssh)
+export SSH_AUTH_SOCK
+export GNOME_KEYRING_CONTROL
 
 # Automatic Screen rotation
 rot8 &
