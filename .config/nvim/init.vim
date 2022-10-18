@@ -11,6 +11,7 @@ Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'ray-x/guihua.lua', {'do': 'cd lua/fzy && make' }
 Plug 'ray-x/navigator.lua'
+Plug 'jiangmiao/auto-pairs'
 
 Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'hrsh7th/vim-vsnip-integ'
@@ -53,17 +54,25 @@ filetype plugin indent on
 let b:ale_linters = ['flake8']
 call ale#Set('python_flake8_options', '--ignore E501')
 
-nnoremap <C-T> <cmd>Telescope find_files find_command=rg,--ignore,--hidden,--files prompt_prefix=🔍<cr>
+nnoremap <C-T> <cmd>lua require("telescope.builtin").find_files({hidden=true, layout_config={prompt_prefix="🔍"}})<cr>
 
 nnoremap W <cmd>NERDTree<cr>
+
+tnoremap <C-esc> <C-\><C-N>
+ " Split navigation
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+nnoremap <C-Down> <C-W><C-J>
+nnoremap <C-Up> <C-W><C-K>
+nnoremap <C-Right> <C-W><C-L>
+nnoremap <C-Left> <C-W><C-H>
 
 set completeopt=menu,menuone,noselect
 set omnifunc=csscomplete#CompleteCSS
 
+set ft
 set nowrap
 set autoindent
 set smartindent
@@ -71,11 +80,12 @@ set clipboard+=unnamedplus
 set undofile
 set undodir=~/.local/share/nvim/undodir/
 set noswapfile
-set tabstop=4
-set shiftwidth=4
+set shiftround
 set mouse=a
 set number
+set scrolloff=5
 set termguicolors
+set modeline
 
 let g:aurora_italic = 1
 let g:aurora_transparent = 1
@@ -83,6 +93,15 @@ let g:aurora_bold = 1
 let g:aurora_darker = 1
 
 colorscheme aurora
+
+if (&ft=='c' || &ft=='cpp')
+	set tabstop=2
+	set shiftwidth=2
+else
+	set tabstop=4
+	set shiftwidth=4
+endif
+
 lua <<EOF
 
  -- Setup Navigator
@@ -164,6 +183,10 @@ cmp.setup.cmdline(':', {
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 require('lspconfig')['clangd'].setup {
 	cmd = { "clangd" },
+	capabilities = capabilities
+}
+require('lspconfig')['vimls'].setup {
+	cmd = { "vim-language-server" },
 	capabilities = capabilities
 }
 EOF
