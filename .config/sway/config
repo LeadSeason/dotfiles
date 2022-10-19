@@ -76,6 +76,12 @@ input type:pointer {
     pointer_accel -0.4
 }
 
+# start a terminal
+bindsym $mod+Return exec $term
+
+# start a terminal
+bindsym $mod+A exec nemo
+
 # start screenshot
 bindsym $mod+c exec bash -c 'grim -g "$(slurp)" - | swappy -f - -o - | ~/.local/bin/timhostuploader'
 bindsym $mod+Shift+c exec bash -c '~/.config/sway/scripts/recorder.bash'
@@ -109,11 +115,9 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-# start a terminal
-bindsym $mod+Return exec $term
-
 # kill focused window
 bindsym $mod+Shift+q kill
+
 
 # change focus
 bindsym $mod+j focus left
@@ -139,16 +143,24 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-# split in horizontal orientation
-bindsym $mod+h split h
+# move focused workspace
+bindsym $mod+Control+Shift+Left move workspace to output left
+bindsym $mod+Control+Shift+Down move workspace to output down
+bindsym $mod+Control+Shift+Up move workspace to output up
+bindsym $mod+Control+Shift+Right move workspace to output right
 
-# split in vertical orientation
+# alternatively, you can use the cursor keys:
+bindsym $mod+Control+Shift+j move workspace to output left
+bindsym $mod+Control+Shift+k move workspace to output down
+bindsym $mod+Control+Shift+l move workspace to output up
+bindsym $mod+Control+Shift+odiaeresis move workspace to output right
+
+# split in Horizontal or vertical orientation
+bindsym $mod+h split h
 bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
-
-# enter global fullscreen mode
 bindsym $mod+Shift+f fullscreen global
 
 # change container layout (stacked, tabbed, toggle split)
