@@ -10,6 +10,8 @@
 # Mod1 = alt
 set $mod Mod1
 set $term kitty --single-instance
+set $file nemo
+set $lock-command 'swaylock --ignore-empty-password --fade-in 2 --grace-no-mouse --grace-no-touch --screenshots --indicator-caps-lock --indicator --clock --timestr "%T" --bs-hl-color 66000099 --caps-lock-bs-hl-color 66000099 --caps-lock-key-hl-color 00660099 --font Iosevka Term,Iosevka Term Thin Extended:style=Thin Extended,Regular --indicator-idle-visible --indicator-radius 120 --indicator-thickness 10 --inside-color 00000099 --inside-clear-color 00660099 --inside-caps-lock-color 66000099 --inside-ver-color 66666699 --inside-wrong-color 66000099 --key-hl-color ffffffee --layout-bg-color 00000066 --layout-border-color 33333366 --layout-text-color ffffffff --line-color ffffff66 --line-clear-color ffffff66 --line-caps-lock-color ffffff66 --line-ver-color 33333366 --line-wrong-color 33000066 --ring-color ffffff66 --ring-clear-color 33ff3366 --ring-caps-lock-color ff333366 --ring-ver-color bb00cc66 --ring-wrong-color ff000066 --separator-color 00000000 --text-color ffffff --text-clear-color ffffffff --text-caps-lock-color ffffffff --text-ver-color ffffffff --text-wrong-color ffffffff --effect-blur 7x5 --effect-vignette 0.5:0.5 &'
 
 # xwayland disable
 
@@ -24,6 +26,8 @@ set $term kitty --single-instance
 
 include ~/.config/sway/config.d/*
 
+output * bg ~/.config/sway/wp.jpg stretch #333333
+
 # font
 font pango:Iosevka 8
 
@@ -32,12 +36,17 @@ default_border pixel 2
 gaps inner 5
 gaps outer 5
 
+# colors
+# client.color #80ebff #050e5c #061533 #080d35 #00050f
+
 # class                 border  backgr. text    indicator child_border
-client.focused          #ffffff #555555 #555555 #000000   #eeeeee
-client.focused_inactive #000000 #000000 #ffffff #000000   #000000
+client.focused          #2a5fb0 #050e5c #ffffff #050e5c   #2a5fb0
+client.focused_inactive #050e5c #080d35 #ffffff #484e50   #050e5c
 client.unfocused        #333333 #222222 #888888 #292d2e   #222222
-client.urgent           #2f343a #900000 #ffffff #900000   #900000
+client.urgent           #2f343a #80ebff #ffffff #80ebff   #80ebff
 client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
+
+client.background       #ffffff
 
 #
 # ██████╗░██████╗░░█████╗░░██████╗░██████╗░░█████╗░███╗░░░███╗░██████╗
@@ -48,7 +57,29 @@ client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 # ╚═╝░░░░░╚═╝░░╚═╝░╚════╝░░╚═════╝░╚═╝░░╚═╝╚═╝░░╚═╝╚═╝░░░░░╚═╝╚═════╝░
 #
 
-exec --no-startup-id /home/leadseason/.config/sway/config.sh
+
+exec wl-paste -t text --watch clipman store --no-persist
+exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec /usr/lib/kdeconnectd
+exec swaync
+exec ~/.config/waybar/scipts/getupdates-server.sh
+exec waybar
+exec kdeconnect-indicator
+exec nm-applet --indicator
+exec sworkstyle
+exec swayidle -w \\
+	timeout 300 "$lock-command --grace 3" \\
+	before-sleep "$lock-command"
+
+# 	timeout 600 'swaymsg "output * dpms off"' \
+# 		resume 'swaymsg "output * dpms on"' \
+
+exec /usr/lib/xdg-desktop-portal-wlr
+exec /usr/lib/xdg-desktop-portal
+
+exec systemctl --user import-environment XDG_CURRENT_DESKTOP XDG_SESSION_TYPE DISPLAY WAYLAND_DISPLAY SWAYSOCK SSH_AUTH_SOCK GNOME_KEYRING_CONTROL
+exec dbus-update-activation-environment --systemd XDG_CURRENT_DESKTOP XDG_SESSION_TYPE DISPLAY WAYLAND_DISPLAY SWAYSOCK SSH_AUTH_SOCK GNOME_KEYRING_CONTROL
+
 
 #
 # ░█████╗░░█████╗░███╗░░██╗████████╗██████╗░░█████╗░██╗░░░░░░██████╗
@@ -76,18 +107,19 @@ input type:pointer {
     pointer_accel -0.4
 }
 
+floating_modifier $mod normal
+
 # start a terminal
 bindsym $mod+Return exec $term
 
-# start a terminal
-bindsym $mod+A exec nemo
+# start a filebrowser
+bindsym $mod+A exec $file
 
 # start screenshot
 bindsym $mod+c exec bash -c 'grim -g "$(slurp)" - | swappy -f - -o - | ~/.local/bin/timhostuploader'
 bindsym $mod+Shift+c exec bash -c '~/.config/sway/scripts/recorder.bash'
 
 # lock
-# bindsym $mod+r exec gtklock
 bindsym $mod+r exec "swaylock --ignore-empty-password --fade-in 2 --grace 3 --grace-no-mouse --grace-no-touch --screenshots --indicator-caps-lock --indicator --clock --timestr '%T' --bs-hl-color 66000099 --caps-lock-bs-hl-color 66000099 --caps-lock-key-hl-color 00660099 --font Iosevka Term,Iosevka Term Thin Extended:style=Thin Extended,Regular --indicator-idle-visible --indicator-radius 120 --indicator-thickness 10 --inside-color 00000099 --inside-clear-color 00660099 --inside-caps-lock-color 66000099 --inside-ver-color 66666699 --inside-wrong-color 66000099 --key-hl-color ffffffee --layout-bg-color 00000066 --layout-border-color 33333366 --layout-text-color ffffffff --line-color ffffff66 --line-clear-color ffffff66 --line-caps-lock-color ffffff66 --line-ver-color 33333366 --line-wrong-color 33000066 --ring-color ffffff66 --ring-clear-color 33ff3366 --ring-caps-lock-color ff333366 --ring-ver-color bb00cc66 --ring-wrong-color ff000066 --separator-color 00000000 --text-color ffffff --text-clear-color ffffffff --text-caps-lock-color ffffffff --text-ver-color ffffffff --text-wrong-color ffffffff --effect-blur 7x5 --effect-vignette 0.5:0.5 & swaymsg 'output * dpms on' &"
 
 # start wofi (a program launcher)
@@ -113,11 +145,9 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ to
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
 # Use Mouse+$mod to drag floating windows to their wanted position
-floating_modifier $mod
 
 # kill focused window
 bindsym $mod+Shift+q kill
-
 
 # change focus
 bindsym $mod+j focus left
@@ -170,6 +200,7 @@ bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
+bindsym $mod+space focus mode_toggle
 
 # switch to workspace
 bindsym $mod+1 workspace number "1"

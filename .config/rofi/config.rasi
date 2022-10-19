@@ -7,7 +7,7 @@ configuration {
 /*	xoffset: 0;*/
 /*	fixed-num-lines: true;*/
 	show-icons: true;
-	terminal: "footclient --term xterm-256color";
+	terminal: "kitty --single-instance";
 /*	ssh-client: "ssh";*/
   	ssh-command: """{terminal} -e fish -c "{ssh-client} {host} [-p {port}]" """;
 /*	run-command: "{cmd}";*/

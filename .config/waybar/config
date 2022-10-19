@@ -1,156 +1,170 @@
+// vim:ft=jsonc
 {
-    "layer": "top", // Waybar at top layer
-    "position": "top", // Waybar position (top|bottom|left|right)
-    "height": 24, // Waybar height (to be removed for auto height)
-    "spacing": 0,
+	"layer": "top",
+	"position": "top",
+	"height": 24,
+	"spacing": 0,
 	"modules-left": [
-        "sway/workspaces",
-        "sway/mode",
-        "custom/seperator",
-        "sway/window"
-    ],
-    "modules-center": [],
-    "modules-right": [
-        "idle_inhibitor",
-        "custom/seperator",
+		"sway/workspaces",
+		"sway/mode",
+		"custom/seperator",
+		"sway/window"
+	],
+	"modules-center": [],
+	"modules-right": [
+		"idle_inhibitor",
+		"custom/seperator",
 		"backlight",
-        "custom/seperator",
-        "pulseaudio",
-        "custom/seperator",
-        "battery",
-        "custom/seperator",
-        "network",
-        "custom/seperator",
-        "cpu",
-        "custom/seperator",
-        "memory",
-        "custom/seperator",
-        "temperature",
-        "custom/seperator",
-        "custom/archupdates",
-        "custom/seperator",
-        "clock",
-        "custom/seperator",
-        "tray",
-        "custom/notification"
-    ],
-    "custom/seperator": {
-        "format": "|"
-    },
-    "sway/workspaces": {
-        "disable-scroll": true
-    },
-    "sway/mode": {
-        "format": "<span style=\"italic\">{}</span>"
-    },
-    "sway/window": {
-        "format": "{}",
-        "max-length": 50
-    },
+		"custom/seperator",
+		"pulseaudio",
+		"custom/seperator",
+		"battery",
+		"custom/seperator",
+		"network",
+		"custom/seperator",
+		"cpu",
+		"custom/seperator",
+		"memory",
+		"custom/seperator",
+		"temperature",
+		"custom/seperator",
+		"custom/archupdates",
+		"custom/seperator",
+		"clock",
+		"custom/seperator",
+		"tray",
+		"custom/notification"
+	],
+	"custom/seperator": {
+		"format": "|"
+	},
+	"sway/workspaces": {
+		"disable-scroll": true
+	},
+	"sway/mode": {
+		"format": "<span style=\"italic\">{}</span>"
+	},
+	"sway/window": {
+		"format": "{}",
+		"max-length": 50
+	},
 	"backlight": {
 		"format": "{percent}% {icon}",
 		"on-scroll-down": "brightnessctl set 2%+",
 		"on-scroll-up": "brightnessctl set 2%-",
-		"format-icons": ["","","","","","",""]
+		"format-icons": [
+			"",
+			"",
+			"",
+			"",
+			"",
+			"",
+			""
+		]
 	},
-    "idle_inhibitor": {
-        "format": "{icon}",
-        "format-icons": {
-            "activated": "",
-            "deactivated": ""
-        }
-    },
-    "pulseaudio": {
-        "scroll-step": 1, // %, can be a float
-        "format": "{volume}% {icon} {format_source}",
-        "format-muted": "ﱝ {format_source}",
-        "format-source": "{volume}% ",
-        "format-source-muted": "",
-        "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": "ﱝ {icon} {format_source}",
-        "format-icons": {
-            "headphone": "",
-            "hands-free": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": [
-                "",
-                "",
-                ""
-            ]
-        },
-        "on-click": "pavucontrol"
-    },
-    "network": {
-        "format-wifi": "{essid} ({signalStrength}%) ",
-        "format-ethernet": "{ipaddr}/{cidr} ",
-        "tooltip-format": "{ifname} via {gwaddr} ",
-        "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "Disconnected ⚠",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
-    },
-    "cpu": {
-        "format": " {usage}%",
-        "tooltip": false,
-        "interval": 2
-    },
-    "memory": {
-        "format": "{used:0.1f}G/{total:0.1f}G",
-        "format-alt": "mem {}%",
-        "tooltip-format": "Memory: {used:0.1f}Gi / {total:0.1f}Gi\nSwap: {swapUsed:0.1f}Gi / {swapTotal:0.1f}Gi",
-        "interval": 5
-    },
-    "temperature": {
-        // "hwmon-path": "",
-        "critical-threshold": 70,
-        "format": "{temperatureC}°C",
-        "interval": 2
-    },
-    "custom/archupdates": {
-        "format": "{}",
-        "exec": "$HOME/.config/waybar/scipts/getupdates-client.sh",
-        "on-click": "kitty --hold -e $HOME/.config/waybar/scipts/getupdates-update.sh",
-        "interval": 1
-    },
-    "clock": {
-        "timezone": "Europe/Helsinki",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "{:%Y-%m-%d}"
-    },
-    "tray": {
-        "icon-size": 18,
-        "spacing": 5
-    },
-    "custom/notification": {
-        "tooltip": false,
-        "format": "{icon}",
-        "format-icons": {
-            "notification": "<span foreground='red'><sup></sup></span>",
-            "none": "",
-            "dnd-notification": "<span foreground='red'><sup></sup></span>",
-            "dnd-none": ""
-        },
-        "return-type": "json",
-        "exec-if": "which swaync-client",
-        "exec": "swaync-client -swb",
-        "on-click": "swaync-client -t -sw",
-        "on-click-right": "swaync-client -d -sw",
-        "escape": true
-    },
-    // end of using
-    "battery": {
-        "interval": 10,
-        "states": {
-            "warning": 30,
-            "critical": 15
-        },
-        "format": " {icon}{capacity}%", // Icon: bolt
-        "format-discharging": "{icon}  {capacity}%",
-        "tooltip-format": "{time}",
-        "format-icons": ["", "", "", "", ""],
-        "tooltip": true
-    }
+	"idle_inhibitor": {
+		"format": "{icon}",
+		"format-icons": {
+			"activated": "",
+			"deactivated": ""
+		}
+	},
+	"pulseaudio": {
+		"scroll-step": 1, // %, can be a float
+		"format": "{volume}% {icon} {format_source}",
+		"format-muted": "ﱝ {format_source}",
+		"format-source": "{volume}% ",
+		"format-source-muted": "",
+		"format-bluetooth": "{volume}% {icon} {format_source}",
+		"format-bluetooth-muted": "ﱝ {icon} {format_source}",
+		"format-icons": {
+			"headphone": "",
+			"hands-free": "",
+			"headset": "",
+			"phone": "",
+			"portable": "",
+			"car": "",
+			"default": [
+				"",
+				"",
+				""
+			]
+		},
+		"on-click": "pavucontrol"
+	},
+	"network": {
+		"format-wifi": "{essid} ({signalStrength}%) ",
+		"format-ethernet": "{ipaddr}/{cidr} ",
+		"tooltip-format": "{ifname} via {gwaddr} ",
+		"format-linked": "{ifname} (No IP) ",
+		"format-disconnected": "Disconnected ⚠",
+		"format-alt": "{ifname}: {ipaddr}/{cidr}"
+	},
+	"cpu": {
+		"format": " {usage}%",
+		"tooltip": false,
+		"interval": 2
+	},
+	"memory": {
+		"format": "{used:0.1f}G/{total:0.1f}G",
+		"format-alt": "mem {}%",
+		"tooltip-format": "Memory: {used:0.1f}Gi / {total:0.1f}Gi\nSwap: {swapUsed:0.1f}Gi / {swapTotal:0.1f}Gi",
+		"interval": 5
+	},
+	"temperature": {
+		"hwmon-path-abs": "/sys/devices/platform/nct6775.2592/hwmon",
+		"input-filename": "temp7_input",
+		"critical-threshold": 70,
+		"format": "{temperatureC}°C",
+		"interval": 2
+	},
+	"custom/archupdates": {
+		"format": "{}",
+		"exec": "$HOME/.config/waybar/scipts/getupdates-client.sh",
+		"on-click": "kitty --hold -e $HOME/.config/waybar/scipts/getupdates-update.sh",
+		"interval": 1
+	},
+	"clock": {
+		"timezone": "Europe/Helsinki",
+		"tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+		"format-alt": "{:%Y-%m-%d}"
+	},
+	"tray": {
+		"icon-size": 18,
+		"spacing": 5
+	},
+	"custom/notification": {
+		"tooltip": false,
+		"format": "{icon}",
+		"format-icons": {
+			"notification": "<span foreground='red'><sup></sup></span>",
+			"none": "",
+			"dnd-notification": "<span foreground='red'><sup></sup></span>",
+			"dnd-none": ""
+		},
+		"return-type": "json",
+		"exec-if": "which swaync-client",
+		"exec": "swaync-client -swb",
+		"on-click": "swaync-client -t -sw",
+		"on-click-right": "swaync-client -d -sw",
+		"escape": true
+	},
+	"battery": {
+		"interval": 10,
+		"states": {
+			"warning": 30,
+			"critical": 15
+		},
+		"format": " {icon}{capacity}%",
+		"format-discharging": "{icon}  {capacity}%",
+		"tooltip-format": "{time}",
+		"format-icons": [
+			"",
+			"",
+			"",
+			"",
+			""
+		],
+		"tooltip": true
+	}
 }
-// vim:ft=jsonc

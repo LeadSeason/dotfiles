@@ -1,4 +1,4 @@
-fallback = ''
+fallback = ''
 
 [matching]
 'discord' = ''
@@ -36,3 +36,9 @@ fallback = ''
 'nemo' = ''
 '/swayimg?\w*/' = ''
 'cura' = ''
+'org.kde.kcolorchooser' = ''
+'org.kde.kdeconnect.app' = ''
+'org.kde.kdeconnect-settings' = ''
+'gcr-prompter' = ''
+'swappy' = ''
+'/steam_app?\w*/' = ''
