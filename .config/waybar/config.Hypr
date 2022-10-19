@@ -1,11 +1,13 @@
 {
     "layer": "top", // Waybar at top layer
     "position": "top", // Waybar position (top|bottom|left|right)
-    "height": 24, // Waybar height (to be removed for auto height)
+    "height": 30, // Waybar height (to be removed for auto height)
     "spacing": 0, // Gaps between modules (4px)
 	"gtk-layer-shell": false,
     "modules-left": [
-        "wlr/workspaces"
+        "wlr/workspaces",
+        "custom/seperator",
+		"custom/hyprtitle"
     ],
     "modules-center": [],
     "modules-right": [
@@ -31,6 +33,10 @@
     "custom/seperator": {
         "format": "|"
     },
+	"custom/hyprtitle": {
+		"exec": "hyprctl activewindow | while read line; do if [[ \"$line\" == \"title\"* ]]; then echo -n ${line//\"title: \"}; fi; done;",
+		"interval": 1
+	},
     "wlr/workspaces": {
         "disable-scroll": true
     },
@@ -110,7 +116,7 @@
         "interval": 5
     },
     "temperature": {
-        "hwmon-path": "/sys/devices/platform/nct6775.2592/hwmon/hwmon5/temp7_input",
+        "hwmon-path": "/sys/devices/platform/nct6775.2592/hwmon/hwmon4/temp7_input",
         "critical-threshold": 70,
         "format": "{temperatureC}°C",
         "interval": 2
