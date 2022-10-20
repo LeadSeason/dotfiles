@@ -48,6 +48,7 @@ unset PS1
 source $ZPLUG_HOME/init.zsh
 
 zplug 'zplug/zplug', hook-build:'zplug --self-manage'
+zplug "chrissicool/zsh-256color"
 zplug "zsh-users/zsh-syntax-highlighting"
 zplug "zsh-users/zsh-history-substring-search"
 zplug "zsh-users/zsh-autosuggestions"
