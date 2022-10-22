@@ -11,10 +11,33 @@ if [ "$(tty)" = "/dev/tty1" ]; then
 	case $ACTION in
 		"1")
 			unset ACTION
+			# starting gnome-keyring-daemon for ssh, secrets, and gpg key unloking
+			eval $(gnome-keyring-daemon --start -c pkcs11,secrets,ssh)
+
+			# exporting keyring variables
+			export SSH_AUTH_SOCK
+			export GNOME_KEYRING_CONTROL
+			# varibles for wayland1
+			export GDK_BACKEND=wayland
+			export CLUTTER_BACKEND=wayland
+			export SDL_VIDEODRIVER=wayland
+			export XDG_SESSION_TYPE=wayland
+			export XDG_SESSION_DEFAULT=sway
+			export XDG_CURRENT_DESKTOP=sway
+			export MOZ_ENABLE_WAYLAND=1
+			export MOZ_WEBRENDER=1
+			export QT_QPA_PLATFORM=wayland
+			export QT_QPA_PLATFORMTHEME=qt5ct
+			export GTK_THEME=Adwaita-dark
+
+			# starting sway
 			exec sway
 			;;
 		"2")
 			unset ACTION
+			eval $(gnome-keyring-daemon --start -c pkcs11,secrets,ssh)
+			export SSH_AUTH_SOCK
+			export GNOME_KEYRING_CONTROL
 			exec Hyprland
 			;;
 		*)
