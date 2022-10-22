@@ -198,4 +198,9 @@ require('lspconfig')['jsonls'].setup {
 	capabilities = capabilities
 }
 
+require('lspconfig')['bashls'].setup {
+	cmd = { "bash-language-server" },
+	capabilities = capabilities
+}
+
 EOF
