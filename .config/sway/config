@@ -57,10 +57,6 @@ client.background       #ffffff
 # ╚═╝░░░░░╚═╝░░╚═╝░╚════╝░░╚═════╝░╚═╝░░╚═╝╚═╝░░╚═╝╚═╝░░░░░╚═╝╚═════╝░
 #
 
-exec eval $(gnome-keyring-daemon --start -c pkcs11,secrets,ssh)
-exec export SSH_AUTH_SOCK
-exec export GNOME_KEYRING_CONTROL
-
 exec wl-paste -t text --watch clipman store --no-persist
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec /usr/lib/kdeconnectd
