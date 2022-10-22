@@ -44,4 +44,8 @@ fallback = ''
 'swappy' = ''
 '/steam_app?\w*/' = ''
 'blueman-manager' = ''
+<<<<<<< HEAD
 'krita' = ''
+=======
+'osu!' = ''
+>>>>>>> 8ada105fc6acbf371e4bf1c060e8b7128728a65c

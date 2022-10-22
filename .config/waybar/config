@@ -157,6 +157,7 @@
 		},
 		"format": " {icon}{capacity}%",
 		"format-discharging": "{icon}  {capacity}%",
+		"format-alt": "{time}",
 		"tooltip-format": "{time}",
 		"format-icons": [
 			"",
