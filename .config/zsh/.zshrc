@@ -58,7 +58,7 @@ colors
 # variable defenitions
 HISTFILE=~/.local/share/zsh/histfile
 HISTSIZE=1000
-SAVEHIST=100000
+SAVEHIST=1000000
 ZPLUG_HOME=~/.local/share/zsh/zplug
 PATH="$HOME/.local/bin:$PATH"
 NVIM_PATH="${PATH:-}"

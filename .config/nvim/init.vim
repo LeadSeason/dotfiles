@@ -11,7 +11,6 @@ Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'ray-x/guihua.lua', {'do': 'cd lua/fzy && make' }
 Plug 'ray-x/navigator.lua'
-Plug 'jiangmiao/auto-pairs'
 
 Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'hrsh7th/vim-vsnip-integ'
@@ -25,8 +24,6 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
 
 Plug 'preservim/nerdtree'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 
  " Python stuff aka autocompleate and syntax
 Plug 'davidhalter/jedi-vim'
@@ -35,14 +32,29 @@ Plug 'dense-analysis/ale'
  " C/C++
 Plug 'clangd/clangd'
 
-Plug 'andweeb/presence.nvim'
-Plug 'dag/vim-fish'
-Plug 'ap/vim-css-color'
-Plug 'fladson/vim-kitty'
-Plug 'rust-lang/rust.vim'
-Plug 'WolfgangMehner/bash-support'
-Plug 'ntpeters/vim-better-whitespace'
+ " Arduino
+Plug 'stevearc/vim-arduino'
 
+ " Fish
+Plug 'dag/vim-fish'
+
+ " Bash
+Plug 'WolfgangMehner/bash-support'
+
+ " css
+Plug 'ap/vim-css-color'
+
+ " Rust
+Plug 'rust-lang/rust.vim'
+
+Plug 'andweeb/presence.nvim'
+Plug 'fladson/vim-kitty'
+Plug 'ntpeters/vim-better-whitespace'
+Plug 'jiangmiao/auto-pairs'
+
+ " Theme
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'ray-x/aurora'
 
 call plug#end()
@@ -181,26 +193,39 @@ cmp.setup.cmdline(':', {
 
 
  -- Set up lspconfig.
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+ -- local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
+ -- C/C++
 require('lspconfig')['clangd'].setup {
 	cmd = { "clangd" },
 	capabilities = capabilities
 }
 
+ -- vim script
 require('lspconfig')['vimls'].setup {
 	cmd = { "vim-language-server" },
 	capabilities = capabilities
 }
 
+ -- json
 require('lspconfig')['jsonls'].setup {
 	cmd = { "vscode-json-language-server" },
 	capabilities = capabilities
 }
 
+ -- bash
 require('lspconfig')['bashls'].setup {
 	cmd = { "bash-language-server" },
 	capabilities = capabilities
 }
 
+require'lspconfig'.arduino_language_server.setup {
+  cmd = {
+    "arduino-language-server",
+    "-cli-config", "~/.arduino15/arduino-cli.yaml",
+    "-fqbn", "arduino:avr:uno",
+    "-cli", "arduino-cli",
+    "-clangd", "clangd"
+  }
+}
 EOF
