@@ -154,6 +154,7 @@ label:focus {
 }
 
 #cpu {
+    color: #ffffff;
     padding: 0 2px;
     margin: 0 2px;
 }
@@ -168,6 +169,7 @@ label:focus {
 }
 
 #backlight {
+    color: #ffffff;
     padding: 0 2px;
     margin: 0 2px;
 }
@@ -194,21 +196,8 @@ label:focus {
     min-width: 16px;
 }
 
-#custom-media {
-    background-color: #66cc99;
-    color: #2a5c45;
-    min-width: 100px;
-}
-
-#custom-media.custom-spotify {
-    background-color: #66cc99;
-}
-
-#custom-media.custom-vlc {
-    background-color: #ffa000;
-}
-
 #temperature {
+    color: #ffffff;
     padding: 0 2px;
     margin: 0 2px;
     min-width: 16px;

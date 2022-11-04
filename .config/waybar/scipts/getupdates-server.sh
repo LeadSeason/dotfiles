@@ -16,7 +16,7 @@ do
 	for i in {1..600}
 	do
 		sleep 1
-		if ! pgrep -x waybar; then
+		if ! pgrep -x waybar > /dev/null; then
 			exit 0
 		fi
 	done

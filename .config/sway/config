@@ -57,26 +57,26 @@ client.background       #ffffff
 # ╚═╝░░░░░╚═╝░░╚═╝░╚════╝░░╚═════╝░╚═╝░░╚═╝╚═╝░░╚═╝╚═╝░░░░░╚═╝╚═════╝░
 #
 
-exec wl-paste -t text --watch clipman store --no-persist
-exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec /usr/lib/kdeconnectd
-exec swaync
-exec ~/.config/waybar/scipts/getupdates-server.sh
-exec waybar
-exec kdeconnect-indicator
-exec nm-applet --indicator
-exec blueman-applet
-exec sworkstyle
+exec wl-paste -t text --watch clipman store --no-persist >> "/home/leadseason/.cache/swaylog/clipman"
+exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 >> "/home/leadseason/.cache/swaylog/polkit"
+exec /usr/lib/kdeconnectd >> "/home/leadseason/.cache/swaylog/kdeconnect"
+exec swaync >> "/home/leadseason/.cache/swaylog/swaync"
+exec ~/.config/waybar/scipts/getupdates-server.sh >> "/home/leadseason/.cache/swaylog/updateServer"
+exec waybar >> "/home/leadseason/.cache/swaylog/waybar"
+exec kdeconnect-indicator >> "/home/leadseason/.cache/swaylog/kdeindicator"
+exec nm-applet --indicator >> "/home/leadseason/.cache/swaylog/networkIndicator"
+exec blueman-applet >> "/home/leadseason/.cache/swaylog/bluetoothIndicator"
+exec sworkstyle >> "/home/leadseason/.cache/swaylog/sworkstyle"
 exec swayidle -w \\
 	timeout 300 "$lock-command --grace 3" \\
-	before-sleep "$lock-command"
+	before-sleep "$lock-command" >> "/home/leadseason/.cache/swaylog/swayidle"
 
 # 	timeout 600 'swaymsg "output * dpms off"' \
 # 		resume 'swaymsg "output * dpms on"' \
 
-exec /usr/lib/xdg-desktop-portal-wlr
-exec /usr/lib/xdg-desktop-portal
-exec /usr/lib/xdg-desktop-portal-gtk
+exec /usr/lib/xdg-desktop-portal-wlr >> "/home/leadseason/.cache/swaylog/xdg-desktop-portal-wlr"
+exec /usr/lib/xdg-desktop-portal >> "/home/leadseason/.cache/swaylog/xdg-desktop-portal"
+exec /usr/lib/xdg-desktop-portal-gtk >> "/home/leadseason/.cache/swaylog/xdg-desktop-portal-gtk"
 
 exec systemctl --user import-environment XDG_CURRENT_DESKTOP XDG_SESSION_TYPE DISPLAY WAYLAND_DISPLAY SWAYSOCK SSH_AUTH_SOCK GNOME_KEYRING_CONTROL
 exec dbus-update-activation-environment --systemd XDG_CURRENT_DESKTOP XDG_SESSION_TYPE DISPLAY WAYLAND_DISPLAY SWAYSOCK SSH_AUTH_SOCK GNOME_KEYRING_CONTROL
@@ -115,6 +115,9 @@ bindsym $mod+Return exec $term
 
 # start a filebrowser
 bindsym $mod+A exec $file
+
+# start terminal with bpython running 
+bindsym $mod+p exec $term -e "bpython"
 
 # start screenshot
 bindsym $mod+c exec bash -c 'grim -g "$(slurp)" - | swappy -f - -o - | ~/.local/bin/timhostuploader'
