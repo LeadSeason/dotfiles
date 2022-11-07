@@ -26,7 +26,7 @@ set $lock-command 'swaylock --ignore-empty-password --fade-in 2 --grace-no-mouse
 
 include ~/.config/sway/config.d/*
 
-output * bg ~/.config/sway/wp.jpg stretch #333333
+# output * bg ~/.config/sway/wp.jpg stretch #333333
 
 # font
 font pango:Iosevka 8
@@ -57,7 +57,10 @@ client.background       #ffffff
 # ╚═╝░░░░░╚═╝░░╚═╝░╚════╝░░╚═════╝░╚═╝░░╚═╝╚═╝░░╚═╝╚═╝░░░░░╚═╝╚═════╝░
 #
 
+exec mpvpaper "*" ~/.wallpaper/ArisuWallpaper.mp4 -o "--loop"
+exec mkdir -p "/home/leadseason/.cache/swaylog"
 exec wl-paste -t text --watch clipman store --no-persist >> "/home/leadseason/.cache/swaylog/clipman"
+exec autotiling >> "/home/leadseason/.cache/swaylog/autotiling"
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 >> "/home/leadseason/.cache/swaylog/polkit"
 exec /usr/lib/kdeconnectd >> "/home/leadseason/.cache/swaylog/kdeconnect"
 exec swaync >> "/home/leadseason/.cache/swaylog/swaync"
@@ -67,9 +70,7 @@ exec kdeconnect-indicator >> "/home/leadseason/.cache/swaylog/kdeindicator"
 exec nm-applet --indicator >> "/home/leadseason/.cache/swaylog/networkIndicator"
 exec blueman-applet >> "/home/leadseason/.cache/swaylog/bluetoothIndicator"
 exec sworkstyle >> "/home/leadseason/.cache/swaylog/sworkstyle"
-exec swayidle -w \\
-	timeout 300 "$lock-command --grace 3" \\
-	before-sleep "$lock-command" >> "/home/leadseason/.cache/swaylog/swayidle"
+exec swayidle -w timeout 300 "$lock-command --grace 3" before-sleep "$lock-command" >> "/home/leadseason/.cache/swaylog/swayidle"
 
 # 	timeout 600 'swaymsg "output * dpms off"' \
 # 		resume 'swaymsg "output * dpms on"' \
@@ -116,7 +117,7 @@ bindsym $mod+Return exec $term
 # start a filebrowser
 bindsym $mod+A exec $file
 
-# start terminal with bpython running 
+# start terminal with bpython running
 bindsym $mod+p exec $term -e "bpython"
 
 # start screenshot

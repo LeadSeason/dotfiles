@@ -169,3 +169,5 @@ backward-delete-word-custom() {
 
 zle -N backward-delete-word-custom
 
+pfetch
+

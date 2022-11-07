@@ -2,17 +2,11 @@
 
 while (true)
 do
-    if ! updates_arch=$(checkupdates 2> /dev/null | wc -l ); then
-        updates_arch=0
-    fi
+	checkupdates 2> /dev/null > /tmp/updates
+	yay -Qau 2> /dev/null >> /tmp/updates
 
-    if ! updates_aur=$(checkupdates-aur 2> /dev/null | wc -l ); then
-        updates_aur=0
-    fi
+	echo "Avalable packages to update $(cat /tmp/updates 2> /dev/null | wc -l)"
 
-    updates=$((updates_arch + updates_aur))
-
-    echo $updates > /tmp/updates
 	for i in {1..600}
 	do
 		sleep 1

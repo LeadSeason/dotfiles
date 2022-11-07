@@ -5,9 +5,11 @@
 	"height": 24,
 	"spacing": 0,
 	"modules-left": [
+		"wlr/workspaces",
 		"sway/workspaces",
 		"sway/mode",
 		"custom/seperator",
+		"hyprland/window",
 		"sway/window"
 	],
 	"modules-center": [],
@@ -45,6 +47,10 @@
 		"format": "<span style=\"italic\">{}</span>"
 	},
 	"sway/window": {
+		"format": "{}",
+		"max-length": 50
+	},
+	"hyprland/window": {
 		"format": "{}",
 		"max-length": 50
 	},

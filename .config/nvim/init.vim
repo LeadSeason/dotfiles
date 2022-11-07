@@ -213,6 +213,12 @@ require('lspconfig')['jsonls'].setup {
 	capabilities = capabilities
 }
 
+ -- css
+require('lspconfig')['cssls'].setup {
+	cmd = { "vscode-css-language-server" },
+	capabilities = capabilities
+}
+
  -- bash
 require('lspconfig')['bashls'].setup {
 	cmd = { "bash-language-server" },
