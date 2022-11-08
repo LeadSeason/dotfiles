@@ -9,7 +9,7 @@ configuration {
 	show-icons: true;
 	terminal: "kitty --single-instance";
 /*	ssh-client: "ssh";*/
-  	ssh-command: """{terminal} -e fish -c "{ssh-client} {host} [-p {port}]" """;
+  	ssh-command: """{terminal} -e sh -c "{ssh-client} {host} [-p {port}]" """;
 /*	run-command: "{cmd}";*/
 /*	run-list-command: "";*/
 /*	run-shell-command: "{terminal} -e {cmd}";*/

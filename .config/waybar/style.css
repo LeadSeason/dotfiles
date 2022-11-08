@@ -46,6 +46,13 @@ window#waybar {
 
 }
 
+#custom-os_icon {
+    color: #1793d1;
+	padding: 0 0px;
+    margin: 0 0px;
+
+}
+
 
 #battery.charging,
 #battery.plugged {
