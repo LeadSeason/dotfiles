@@ -219,6 +219,12 @@ require('lspconfig')['cssls'].setup {
 	capabilities = capabilities
 }
 
+ -- html
+require('lspconfig')['html'].setup {
+	cmd = { "vscode-html-language-server" },
+	capabilities = capabilities
+}
+
  -- bash
 require('lspconfig')['bashls'].setup {
 	cmd = { "bash-language-server" },
