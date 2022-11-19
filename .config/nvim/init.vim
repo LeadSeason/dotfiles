@@ -231,6 +231,11 @@ require('lspconfig')['bashls'].setup {
 	capabilities = capabilities
 }
 
+require('lspconfig')['pyright'].setup{
+    on_attach = on_attach,
+    flags = lsp_flags,
+}
+
 require'lspconfig'.arduino_language_server.setup {
   cmd = {
     "arduino-language-server",
