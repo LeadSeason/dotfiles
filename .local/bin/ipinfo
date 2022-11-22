@@ -1,0 +1,54 @@
+#!/usr/bin/python
+
+import socket
+import json
+import sys
+import requests
+import keyring
+import getpass
+import argparse
+import re
+import ipaddress
+
+parse = argparse.ArgumentParser()
+
+parse.add_argument("-s", "--setcfg", help="set config manualy", action="store_true")
+parse.add_argument("IPs", nargs=argparse.REMAINDER, help="IPs to scan")
+args = parse.parse_args()
+
+if args.setcfg:
+    keyring.set_password("pyipinfo", "token", getpass.getpass("Token:"))
+    print("token successfully set")
+    exit(0)
+
+try:
+    cfg_token = keyring.get_password("pyipinfo", "token")
+except keyring.errors.KeyringLocked:
+    print("No token in storage", file=sys.stderr)
+    cfg_token = ""
+
+try:
+    ip = args.IPs[0]
+except IndexError:
+    ip = ""
+
+if ip != "":
+    try:
+        ipaddress.ip_address(ip)
+    except ValueError:
+        ip = socket.gethostbyname(ip)
+
+r = requests.get(f"https://ipinfo.io/{ip}?token={cfg_token}")
+if r.status_code != 200:
+    print(f"ipinfo.io returned {r.status_code}", file=sys.stderr)
+    exit(130)
+
+jdata = json.loads(r.content)
+
+jdata_max = 0
+for x in jdata:
+    if len(x) > jdata_max:
+        jdata_max = len(x)
+
+for x in jdata:
+    print(f"\033[92m{' ' * (8 - len(x))}{x}\033[0m: {jdata[x]}")
