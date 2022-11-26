@@ -80,7 +80,7 @@ async def clipboard_handler(data):
             await p.communicate(input=bytes(data, "UTF-8"))
             await p.wait()
     else:
-        logln("please update system to linux", bcolors.WARNING)
+        await logln("please update system to linux", bcolors.WARNING)
         exit()
 
 

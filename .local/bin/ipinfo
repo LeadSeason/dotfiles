@@ -7,7 +7,6 @@ import requests
 import keyring
 import getpass
 import argparse
-import re
 import ipaddress
 
 parse = argparse.ArgumentParser()
@@ -36,7 +35,11 @@ if ip != "":
     try:
         ipaddress.ip_address(ip)
     except ValueError:
-        ip = socket.gethostbyname(ip)
+        try:
+            ip = socket.gethostbyname(ip)
+        except socket.gaierror as e:
+            print(e)
+            exit(130)
 
 r = requests.get(f"https://ipinfo.io/{ip}?token={cfg_token}")
 if r.status_code != 200:
