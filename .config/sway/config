@@ -11,6 +11,7 @@
 set $mod Mod1
 set $term kitty --single-instance
 set $file nemo
+set $WOBSOCK $XDG_RUNTIME_DIR/wob.sock
 
 # xwayland disable
 
@@ -39,8 +40,8 @@ gaps outer 5
 # client.color #80ebff #050e5c #061533 #080d35 #00050f
 
 # class                 border  backgr. text    indicator child_border
-client.focused          #2a5fb0 #050e5c #ffffff #050e5c   #2a5fb0
-client.focused_inactive #050e5c #080d35 #ffffff #484e50   #050e5c
+client.focused          #2942ff #2f2f5c #ffffff #2f2f5c   #2942ff
+client.focused_inactive #2f2f5c #080d35 #ffffff #484e50   #2f2f5c
 client.unfocused        #333333 #222222 #888888 #292d2e   #222222
 client.urgent           #2f343a #80ebff #ffffff #80ebff   #80ebff
 client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
@@ -58,25 +59,22 @@ client.background       #ffffff
 
 exec mpvpaper "*" ~/.wallpaper/ArisuWallpaper.mp4 -o "--loop"
 exec mkdir -p "/home/leadseason/.cache/swaylog"
-exec wl-paste -t text --watch clipman store --no-persist >> "/home/leadseason/.cache/swaylog/clipman"
-exec autotiling >> "/home/leadseason/.cache/swaylog/autotiling"
-exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 >> "/home/leadseason/.cache/swaylog/polkit"
-exec /usr/lib/kdeconnectd >> "/home/leadseason/.cache/swaylog/kdeconnect"
-exec swaync >> "/home/leadseason/.cache/swaylog/swaync"
-exec ~/.config/waybar/scipts/getupdates-server.sh >> "/home/leadseason/.cache/swaylog/updateServer"
-exec waybar >> "/home/leadseason/.cache/swaylog/waybar"
-exec kdeconnect-indicator >> "/home/leadseason/.cache/swaylog/kdeindicator"
-exec nm-applet --indicator >> "/home/leadseason/.cache/swaylog/networkIndicator"
-exec blueman-applet >> "/home/leadseason/.cache/swaylog/bluetoothIndicator"
-exec sworkstyle >> "/home/leadseason/.cache/swaylog/sworkstyle"
-exec swayidle -w timeout 300 "swaylock --grace 3" before-sleep "swaylock" >> "/home/leadseason/.cache/swaylog/swayidle"
-
-# 	timeout 600 'swaymsg "output * dpms off"' \
-# 		resume 'swaymsg "output * dpms on"' \
-
-exec /usr/lib/xdg-desktop-portal-wlr >> "/home/leadseason/.cache/swaylog/xdg-desktop-portal-wlr"
-exec /usr/lib/xdg-desktop-portal >> "/home/leadseason/.cache/swaylog/xdg-desktop-portal"
-exec /usr/lib/xdg-desktop-portal-gtk >> "/home/leadseason/.cache/swaylog/xdg-desktop-portal-gtk"
+exec wl-paste -t text --watch clipman store --no-persist
+exec autotiling
+exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec /usr/lib/kdeconnectd
+exec swaync
+exec ~/.config/waybar/scipts/getupdates-server.sh
+exec waybar
+exec kdeconnect-indicator
+exec nm-applet --indicator
+exec blueman-applet
+exec sworkstyle
+exec swayidle -w timeout 300 "swaylock --grace 3" before-sleep "swaylock"
+exec rm -f $WOBSOCK && mkfifo $WOBSOCK && tail -f $WOBSOCK | wob
+exec /usr/lib/xdg-desktop-portal-wlr
+exec /usr/lib/xdg-desktop-portal
+exec /usr/lib/xdg-desktop-portal-gtk
 
 exec systemctl --user import-environment XDG_CURRENT_DESKTOP XDG_SESSION_TYPE DISPLAY WAYLAND_DISPLAY SWAYSOCK SSH_AUTH_SOCK GNOME_KEYRING_CONTROL
 exec dbus-update-activation-environment --systemd XDG_CURRENT_DESKTOP XDG_SESSION_TYPE DISPLAY WAYLAND_DISPLAY SWAYSOCK SSH_AUTH_SOCK GNOME_KEYRING_CONTROL
@@ -149,8 +147,8 @@ bindsym $mod+F1 exec --no-startup-id playerctl next
 bindsym $mod+F4 exec --no-startup-id playerctl previous
 
 # Use pactl to adjust volume in PulseAudio.
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +1%
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -1%
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5% && pactl get-sink-volume @DEFAULT_SINK@ | head -n 1| awk '{print substr($5, 1, length($5)-1)}' > $WOBSOCK
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5% && pactl get-sink-volume @DEFAULT_SINK@ | head -n 1 | awk '{print substr($5, 1, length($5)-1)}' > $WOBSOCK
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
 

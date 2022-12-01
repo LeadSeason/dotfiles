@@ -1,1 +1,16 @@
 ZDOTDIR=$HOME/.config/zsh/
+EDITOR=nvim
+ZDOTDIR=/home/leadseason/.config/zsh
+DOTNET_CLI_TELEMETRY_OPTOUT=1
+VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/radeon_icd.i686.json:/usr/share/vulkan/icd.d/radeon_icd.x86_64.json
+GDK_BACKEND=wayland
+CLUTTER_BACKEND=wayland
+SDL_VIDEODRIVER=wayland
+XDG_SESSION_TYPE=wayland
+XDG_SESSION_DEFAULT=sway
+XDG_CURRENT_DESKTOP=sway
+MOZ_ENABLE_WAYLAND=1
+MOZ_WEBRENDER=1
+QT_QPA_PLATFORM=wayland
+QT_QPA_PLATFORMTHEME=qt5ct
+GTK_THEME=Adwaita-dark

@@ -10,7 +10,7 @@ timestr=%T
 bs-hl-color=66000099
 caps-lock-bs-hl-color=66000099
 caps-lock-key-hl-color=00660099
-font="Iosevka Term,Iosevka Term Thin Extended:style=Thin Extended,Regular"
+font=Iosevka Term,Iosevka Term Thin Extended:style=Thin Extended,Regular
 indicator-idle-visible
 indicator-radius=120
 indicator-thickness=10
