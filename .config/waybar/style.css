@@ -6,7 +6,8 @@
 
 window#waybar {
     background: rgba(0, 0, 0, 0.15);
-	border-radius: 10px;
+	background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 10%);
+	border-radius: 0px;
 }
 
 #workspaces button {
@@ -61,7 +62,7 @@ window#waybar {
 
 @keyframes bat_blink {
     to {
-        color: #B0FFFF;
+        color: #ff0000;
     }
 }
 
