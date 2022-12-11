@@ -14,6 +14,9 @@ Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/vim-vsnip'
 
+ " File formatter
+Plug 'mhartington/formatter.nvim'
+
  " Plug 'saadparwaiz1/cmp_luasnip'
  " Plug 'hrsh7th/vim-vsnip-integ'
 
@@ -102,6 +105,11 @@ endif
 let b:ale_linters = ['flake8']
 call ale#Set('python_flake8_options', '--ignore E501')
 
+augroup FormatAutogroup
+  autocmd!
+  autocmd BufWritePost * FormatWrite
+augroup END
+
 if exists("g:neovide")
     " set neovide specific settings
 	set guifont=Iosevka
@@ -126,6 +134,7 @@ set noswapfile
 set shiftround
 set mouse=a
 set number
+set relativenumber
 set scrolloff=5
 set termguicolors
 set modeline
