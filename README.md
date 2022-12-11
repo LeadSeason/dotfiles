@@ -1,2 +1,2 @@
 # dotfiles
-Home
+These dotfiles should be used as a example.
