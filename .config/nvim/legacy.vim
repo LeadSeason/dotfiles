@@ -54,16 +54,17 @@ Plug 'ap/vim-css-color'
 
  " Rust
 Plug 'rust-lang/rust.vim'
-
-Plug 'andweeb/presence.nvim' " Discord RichPresence
-Plug 'fladson/vim-kitty' " Syntax highlighting for kitty conf file
-Plug 'ntpeters/vim-better-whitespace' " Whitespace highlighting
-Plug 'jiangmiao/auto-pairs' " Auto pairs
-
  " Statusline
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 
+Plug 'glepnir/dashboard-nvim' " Dashboard
+Plug 'andweeb/presence.nvim' " Discord RichPresence
+Plug 'fladson/vim-kitty' " Syntax highlighting for kitty conf file
+Plug 'ntpeters/vim-better-whitespace' " Whitespace highlighting
+Plug 'lewis6991/gitsigns.nvim' " Git diff + blame
+
+ " Plug 'jiangmiao/auto-pairs' " Auto pairs
  " Plug 'vim-airline/vim-airline'
  " Plug 'vim-airline/vim-airline-themes'
 
@@ -146,5 +147,6 @@ let g:aurora_transparent = 1
 let g:aurora_bold = 1
 let g:aurora_darker = 1
 
-colorscheme aurora
+ " colorscheme aurora
  " colorscheme moonlight
+colorscheme catppuccin-mocha
