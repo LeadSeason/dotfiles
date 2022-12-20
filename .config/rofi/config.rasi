@@ -146,8 +146,4 @@ configuration {
   }
 }
 
-//@theme "/usr/share/rofi/themes/Monokai.rasi"
-//@theme "/usr/share/rofi/themes/arthur.rasi"
-//@theme "/usr/share/rofi/themes/fancy.rasi"
-//@theme "/usr/share/rofi/themes/sidebar.rasi"
-@theme "/usr/share/rofi/themes/Arc-Dark.rasi"
+@theme "/home/leadseason/.local/share/rofi/themes/catppuccin-mocha.rasi"
