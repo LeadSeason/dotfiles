@@ -6,37 +6,22 @@
 	"spacing": 0,
 	"modules-left": [
 		"custom/os_icon",
-		"custom/seperator",
 		"wlr/workspaces",
-		"sway/workspaces",
-		"sway/mode",
-		"custom/seperator",
-		"hyprland/window",
-		"sway/window"
+		"sway/workspaces"
 	],
-	"modules-center": [],
+	"modules-center": [
+		"clock"
+	],
 	"modules-right": [
 		"idle_inhibitor",
-		"custom/seperator",
 		"backlight",
-		"custom/seperator",
 		"pulseaudio",
-		"custom/seperator",
 		"battery",
-		"custom/seperator",
 		"network",
-		"custom/seperator",
 		"cpu",
-		"custom/seperator",
 		"memory",
-		"custom/seperator",
 		"temperature",
-		"custom/seperator",
 		"custom/archupdates",
-		"custom/seperator",
-		"clock",
-		"custom/seperator",
-		"tray",
 		"custom/notification"
 	],
 	"custom/os_icon": {
@@ -105,11 +90,11 @@
 	},
 	"network": {
 		"format-wifi": "{essid} ({signalStrength}%) ",
-		"format-ethernet": "{ipaddr}/{cidr} ",
-		"tooltip-format": "{ifname} via {gwaddr} ",
+		"format-ethernet": " ",
 		"format-linked": "{ifname} (No IP) ",
 		"format-disconnected": "Disconnected ⚠",
-		"format-alt": "{ifname}: {ipaddr}/{cidr}"
+		"format-alt": "{ifname}: {ipaddr}/{cidr}",
+		"tooltip-format": "{ifname}: {ipaddr}/{cidr}\n{ifname} via {gwaddr}"
 	},
 	"cpu": {
 		"format": " {usage}%",
@@ -117,8 +102,8 @@
 		"interval": 2
 	},
 	"memory": {
-		"format": "{used:0.1f}G/{total:0.1f}G",
-		"format-alt": "mem {}%",
+		"format": " {}%",
+		"format-alt": "{used:0.1f}G/{total:0.1f}G",
 		"tooltip-format": "Memory: {used:0.1f}Gi / {total:0.1f}Gi\nSwap: {swapUsed:0.1f}Gi / {swapTotal:0.1f}Gi",
 		"interval": 5
 	},
@@ -167,7 +152,7 @@
 			"critical": 15
 		},
 		"format": " {icon}{capacity}%",
-		"format-discharging": "{icon}  {capacity}%",
+		"format-discharging": "{icon} {capacity}%",
 		"format-alt": "{time}",
 		"tooltip-format": "{time}",
 		"format-icons": [
