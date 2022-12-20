@@ -13,4 +13,4 @@ export MOZ_ENABLE_WAYLAND=1
 export MOZ_WEBRENDER=1
 export QT_QPA_PLATFORM=wayland
 export QT_QPA_PLATFORMTHEME=qt5ct
-export GTK_THEME=Adwaita-dark
+export GTK_THEME=Catppuccin-Mocha-Standard-Blue-Dark
