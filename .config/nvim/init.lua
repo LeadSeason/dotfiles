@@ -219,7 +219,7 @@ require("formatter").setup({
 				return {
 					exe = "clang-format",
 					args = {
-						"-style='{BreakBeforeBraces: Allman, AllowShortIfStatementsOnASingleLine: false, IndentCaseLabels: false}'",
+						"-style='{BreakBeforeBraces: BS_Allman, AllowShortIfStatementsOnASingleLine: false, IndentCaseLabels: false}'",
 						util.escape_path(util.get_current_buffer_file_name()),
 					},
 					stdin = true,

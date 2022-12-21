@@ -152,6 +152,13 @@ bindsym $mod+Shift+c exec bash -c '~/.config/sway/scripts/recorder.bash'
 # lock
 bindsym $mod+r exec "swaylock --grace 3"
 
+# Brightness controls
+bindsym XF86MonBrightnessUp exec brightnessctl set 10%+
+bindsym XF86MonBrightnessDown exec brightnessctl set 10%-
+
+# Manual brightness to 100% if stuck at 0%
+bindsym $mod+F12 exec brightnessctl set 100%
+
 # start wofi (a program launcher)
 bindsym $mod+d exec --no-startup-id wofi -i -I --show drun
 bindsym $mod+Shift+d exec --no-startup-id wofi -i -I --show run

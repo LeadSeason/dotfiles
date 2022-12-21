@@ -3,7 +3,7 @@
 
 * {
     font-family: "Iosevka light", FontAwesome;
-	font-size: 20px;
+	font-size: 12px;
 	min-height: 0;
 }
 
@@ -72,7 +72,7 @@
 #backlight {
   background-color: @surface0;
   color: @mauve;
-  border-radius: 1rem 1rem 1rem 1rem;
+  border-radius: 0rem;
   margin: 5px 0px;
   padding: 1rem
 }
@@ -86,7 +86,6 @@
 #battery {
   background-color: @surface0;
   color: @maroon;
-  border-radius: 1rem 1rem 1rem 1rem;
   border-radius: 0rem;
   margin: 5px 0px;
   padding: 1rem
@@ -94,7 +93,6 @@
 #network {
   background-color: @surface0;
   color: @peach;
-  border-radius: 1rem 1rem 1rem 1rem;
   border-radius: 0rem;
   margin: 5px 0px;
   padding: 1rem
@@ -102,7 +100,6 @@
 #cpu {
   background-color: @surface0;
   color: @green;
-  border-radius: 1rem 1rem 1rem 1rem;
   border-radius: 0rem;
   margin: 5px 0px;
   padding: 1rem
@@ -110,7 +107,6 @@
 #memory {
   background-color: @surface0;
   color: @teal;
-  border-radius: 1rem 1rem 1rem 1rem;
   border-radius: 0rem;
   margin: 5px 0px;
   padding: 1rem
@@ -118,7 +114,6 @@
 #temperature {
   background-color: @surface0;
   color: @sky;
-  border-radius: 1rem 1rem 1rem 1rem;
   border-radius: 0rem;
   margin: 5px 0px;
   padding: 1rem
