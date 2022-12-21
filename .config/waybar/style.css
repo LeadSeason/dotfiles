@@ -48,6 +48,8 @@
 
 #workspaces button:hover {
   color: @sapphire;
+  background: @surface0;
+  border-color: @surface0;
   border-radius: 1rem;
 }
 
