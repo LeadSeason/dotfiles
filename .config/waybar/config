@@ -45,9 +45,9 @@
 		"max-length": 50
 	},
 	"backlight": {
-		"format": "{percent}% {icon}",
-		"on-scroll-down": "brightnessctl set 2%+ && brightnessctl i | grep -o \"([0-9]*%)\" | grep -o \"[0-9]*\" > /run/user/1000/wob.sock",
-		"on-scroll-up": "brightnessctl set 2%- && brightnessctl i | grep -o \"([0-9]*%)\" | grep -o \"[0-9]*\" > /run/user/1000/wob.sock",
+		"format": "{icon} {percent}%",
+		"on-scroll-down": "brightnessctl set 2%+ & brightnessctl i | grep -o \"([0-9]*%)\" | grep -o \"[0-9]*\" > /run/user/1000/wob.sock",
+		"on-scroll-up": "brightnessctl set 2%- & brightnessctl i | grep -o \"([0-9]*%)\" | grep -o \"[0-9]*\" > /run/user/1000/wob.sock",
 		"format-icons": [
 			"",
 			"",
@@ -67,9 +67,9 @@
 	},
 	"pulseaudio": {
 		"scroll-step": 1, // %, can be a float
-		"format": "{volume}% {icon} {format_source}",
+		"format": " {icon} {volume}% {format_source}",
 		"format-muted": "ﱝ {format_source}",
-		"format-source": "{volume}% ",
+		"format-source": " {volume}%",
 		"format-source-muted": "",
 		"format-bluetooth": "{volume}% {icon} {format_source}",
 		"format-bluetooth-muted": "ﱝ {icon} {format_source}",
@@ -89,7 +89,7 @@
 		"on-click": "pavucontrol"
 	},
 	"network": {
-		"format-wifi": "{essid} ({signalStrength}%) ",
+		"format-wifi": " {signalStrength}%",
 		"format-ethernet": " ",
 		"format-linked": "{ifname} (No IP) ",
 		"format-disconnected": "Disconnected ⚠",
@@ -112,7 +112,7 @@
 		// "input-filename": "temp7_input",
 		"critical-threshold": 70,
 		"format": "{temperatureC}°C",
-		"interval": 2
+		"interval": 2,
 	},
 	"custom/archupdates": {
 		"format": "{}",
