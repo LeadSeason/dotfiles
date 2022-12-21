@@ -61,8 +61,8 @@
 	},
 	"backlight": {
 		"format": "{percent}% {icon}",
-		"on-scroll-down": "brightnessctl set 2%+",
-		"on-scroll-up": "brightnessctl set 2%-",
+		"on-scroll-down": "brightnessctl set 2%+ && brightnessctl i | grep -o \"([0-9]*%)\" | grep -o \"[0-9]*\" > /run/user/1000/wob.sock",
+		"on-scroll-up": "brightnessctl set 2%- && brightnessctl i | grep -o \"([0-9]*%)\" | grep -o \"[0-9]*\" > /run/user/1000/wob.sock",
 		"format-icons": [
 			"",
 			"",
@@ -161,6 +161,7 @@
 		"escape": true
 	},
 	"battery": {
+		"bat": "BAT0",
 		"interval": 10,
 		"states": {
 			"warning": 30,

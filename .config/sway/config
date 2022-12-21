@@ -75,7 +75,7 @@ exec kdeconnect-indicator
 exec nm-applet --indicator
 exec blueman-applet
 exec sworkstyle
-exec swayidle -w timeout 180 "pgrep swaylock || swaylock --grace 3" before-sleep "pgrep swaylock || swaylock"
+exec swayidle timeout 180 "pgrep swaylock || swaylock --grace 3 &" timeout 183 "for x in {1..100}; do; brightnessctl set ${x}%; done;" resume "brightnessctl set 100%" timeout 190 "brightnessctl set 0%" resume "brightnessctl set 100%" before-sleep "pgrep swaylock || swaylock"
 exec rm -f $WOBSOCK && mkfifo $WOBSOCK && tail -f $WOBSOCK | wob
 exec /usr/lib/xdg-desktop-portal-wlr
 exec /usr/lib/xdg-desktop-portal
@@ -129,6 +129,13 @@ bindsym $mod+Shift+c exec bash -c '~/.config/sway/scripts/recorder.bash'
 
 # lock
 bindsym $mod+r exec "swaylock --grace 3"
+
+# Brightness controls
+bindsym XF86MonBrightnessUp exec brightnessctl set 10%+
+bindsym XF86MonBrightnessDown exec brightnessctl set 10%-
+
+# Manual brightness to 100% if stuck at 0%
+bindsym $mod+F12 exec brightnessctl set 100%
 
 # start wofi (a program launcher)
 bindsym $mod+d exec --no-startup-id wofi -i -I --show drun
