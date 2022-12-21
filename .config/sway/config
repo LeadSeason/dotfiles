@@ -24,29 +24,53 @@ set $WOBSOCK $XDG_RUNTIME_DIR/wob.sock
 # ╚══════╝░╚════╝░░╚════╝░╚═╝░░╚═╝  ╚═╝░░╚═╝╚═╝░░╚══╝╚═════╝░  ╚═╝░░░░░╚══════╝╚═╝░░╚═╝╚══════╝
 #
 
+# Color scheme
+set $rosewater #f5e0dc
+set $flamingo  #f2cdcd
+set $pink      #f5c2e7
+set $mauve     #cba6f7
+set $red       #f38ba8
+set $maroon    #eba0ac
+set $peach     #fab387
+set $green     #a6e3a1
+set $teal      #94e2d5
+set $sky       #89dceb
+set $sapphire  #74c7ec
+set $blue      #89b4fa
+set $lavender  #b4befe
+set $text      #cdd6f4
+set $subtext1  #bac2de
+set $subtext0  #a6adc8
+set $overlay2  #9399b2
+set $overlay1  #7f849c
+set $overlay0  #6c7086
+set $surface2  #585b70
+set $surface1  #45475a
+set $surface0  #313244
+set $base      #1e1e2e
+set $mantle    #181825
+set $crust     #11111b
+
 include ~/.config/sway/config.d/*
 
-# output * bg ~/.config/sway/wp.jpg stretch #333333
+output * bg ~/.config/sway/wp.png stretch $base
 
 # font
 font pango:Iosevka 8
 
 # Gaps
 default_border pixel 2
-gaps inner 5
-gaps outer 5
+gaps inner 10
+gaps outer 10
 
-# colors
-# client.color #80ebff #050e5c #061533 #080d35 #00050f
 
-# class                 border  backgr. text    indicator child_border
-client.focused          #2942ff #2f2f5c #ffffff #2f2f5c   #2942ff
-client.focused_inactive #2f2f5c #080d35 #ffffff #484e50   #2f2f5c
-client.unfocused        #333333 #222222 #888888 #292d2e   #222222
-client.urgent           #2f343a #80ebff #ffffff #80ebff   #80ebff
-client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
-
-client.background       #ffffff
+# target                 title     bg    text   indicator  border
+client.focused           $sapphire $base $text  $rosewater $sapphire
+client.focused_inactive  $mauve    $base $text  $rosewater $mauve
+client.unfocused         $mauve    $base $text  $rosewater $mauve
+client.urgent            $peach    $base $peach $overlay0  $peach
+client.placeholder       $overlay0 $base $text  $overlay0  $overlay0
+client.background        $base
 
 exec_always {
 	gsettings set org.gnome.desktop.interface cursor-size 12
@@ -61,8 +85,6 @@ exec_always {
 # ╚═╝░░░░░╚═╝░░╚═╝░╚════╝░░╚═════╝░╚═╝░░╚═╝╚═╝░░╚═╝╚═╝░░░░░╚═╝╚═════╝░
 #
 
-# exec mpvpaper "*" ~/.wallpaper/ArisuWallpaper.mp4 -o "--loop"
-exec swaybg -i Visual-media/arch-tan.png
 exec mkdir -p "/home/leadseason/.cache/swaylog"
 exec wl-paste -t text --watch clipman store --no-persist
 exec autotiling
@@ -75,7 +97,7 @@ exec kdeconnect-indicator
 exec nm-applet --indicator
 exec blueman-applet
 exec sworkstyle
-exec swayidle timeout 180 "pgrep swaylock || swaylock --grace 3 &" timeout 183 "for x in {1..100}; do; brightnessctl set ${x}%; done;" resume "brightnessctl set 100%" timeout 190 "brightnessctl set 0%" resume "brightnessctl set 100%" before-sleep "pgrep swaylock || swaylock"
+exec swayidle timeout 180 "pgrep swaylock || swaylock --grace 3" before-sleep "pgrep swaylock || swaylock"
 exec rm -f $WOBSOCK && mkfifo $WOBSOCK && tail -f $WOBSOCK | wob
 exec /usr/lib/xdg-desktop-portal-wlr
 exec /usr/lib/xdg-desktop-portal
@@ -160,8 +182,8 @@ bindsym $mod+F1 exec --no-startup-id playerctl next
 bindsym $mod+F4 exec --no-startup-id playerctl previous
 
 # Use pactl to adjust volume in PulseAudio.
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5% && pactl get-sink-volume @DEFAULT_SINK@ | head -n 1| awk '{print substr($5, 1, length($5)-1)}' > $WOBSOCK
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5% && pactl get-sink-volume @DEFAULT_SINK@ | head -n 1 | awk '{print substr($5, 1, length($5)-1)}' > $WOBSOCK
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +1% && pactl get-sink-volume @DEFAULT_SINK@ | head -n 1| awk '{print substr($5, 1, length($5)-1)}' > $WOBSOCK
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -1% && pactl get-sink-volume @DEFAULT_SINK@ | head -n 1 | awk '{print substr($5, 1, length($5)-1)}' > $WOBSOCK
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
 

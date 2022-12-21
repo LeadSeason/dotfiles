@@ -1,96 +1,140 @@
+@import "mocha.css";
+
+
 * {
-    font-family: "Iosevka light", FontAwesome, SourceHanSans;
+    font-family: "Iosevka light", FontAwesome;
 	font-size: 20px;
-    background-color: rgba(0, 0, 0, 0);
+	min-height: 0;
 }
 
-window#waybar {
-    background: rgba(0, 0, 0, 0.15);
-	background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 10%);
-	border-radius: 0px;
-}
-
-#workspaces button {
-	padding: 0 0px;
-	border: none;
-    border-radius: 0;
-}
-
-#workspaces button:hover {
-    background: rgba(0, 0, 0, 0.2);
-    box-shadow: inset 0 -2px #2942ff;
-    color: #2942ff;
-}
-
-#workspaces button.active {
-    box-shadow: inset 0 -2px #2942ff;
-    color: #2942ff;
-}
-#workspaces button.focused {
-    box-shadow: inset 0 -2px #2942ff;
-    color: #2942ff;
-}
-
-#workspaces button.visible {
-    box-shadow: inset 0 -2px #2942ff;
-    color: #2942ff;
-}
-
-#workspaces button.urgent {
-    color: #B0FFFF;
-}
-
-#custom-seperator {
-    color: #2942ff;
-	padding: 0 2px;
-    margin: 0 2px;
-
+#waybar {
+	background: transparent;
+	color: @text;
+	margin: 5px 5px;
 }
 
 #custom-os_icon {
-    color: #1793d1;
-	padding: 0 0px;
-    margin: 0 0px;
-
+  border-radius: 1rem;
+  background: @surface0;
+  color: @sapphire;
+  padding: 1rem;
+  padding-left: 1.3rem;
+  margin: 5px 0px;
+  margin-left: .5rem;
 }
 
-
-#battery.charging,
-#battery.plugged {
-    color: #2942ff;
+#workspaces {
+  border-radius: 1rem;
+  margin: 5px 0px;
+  background-color: @surface0;
+  margin-left: .5rem;
 }
 
-@keyframes bat_blink {
-    to {
-        color: #ff0000;
-    }
+#workspaces button {
+  color: @lavender;
+  border-radius: 1rem;
+  padding: 0.5rem;
 }
 
-#battery.critical:not(.charging) {
-    color: #ffffff;
-    animation-name: bat_blink;
-    animation-duration: 0.5s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
+#workspaces button.focused {
+  color: @sapphire;
+  border-radius: 1rem;
 }
 
+#workspaces button.visable {
+  color: @sky;
+  border-radius: 1rem;
+}
+
+#workspaces button:hover {
+  color: @sapphire;
+  border-radius: 1rem;
+}
+
+#clock {
+  background-color: @surface0;
+  color: @lavender;
+  border-radius: 1rem 1rem 1rem 1rem;
+  margin: 5px 0px;
+  padding: 1rem
+}
+
+#idle_inhibitor {
+  background-color: @surface0;
+  color: @pink;
+  border-radius: 1rem 0rem 0rem 1rem;
+  margin: 5px 0px;
+  padding: 1rem
+}
+
+#backlight {
+  background-color: @surface0;
+  color: @mauve;
+  border-radius: 1rem 1rem 1rem 1rem;
+  margin: 5px 0px;
+  padding: 1rem
+}
+#pulseaudio {
+  background-color: @surface0;
+  color: @red;
+  border-radius: 0rem;
+  margin: 5px 0px;
+  padding: 1rem
+}
+#battery {
+  background-color: @surface0;
+  color: @maroon;
+  border-radius: 1rem 1rem 1rem 1rem;
+  border-radius: 0rem;
+  margin: 5px 0px;
+  padding: 1rem
+}
+#network {
+  background-color: @surface0;
+  color: @peach;
+  border-radius: 1rem 1rem 1rem 1rem;
+  border-radius: 0rem;
+  margin: 5px 0px;
+  padding: 1rem
+}
+#cpu {
+  background-color: @surface0;
+  color: @green;
+  border-radius: 1rem 1rem 1rem 1rem;
+  border-radius: 0rem;
+  margin: 5px 0px;
+  padding: 1rem
+}
+#memory {
+  background-color: @surface0;
+  color: @teal;
+  border-radius: 1rem 1rem 1rem 1rem;
+  border-radius: 0rem;
+  margin: 5px 0px;
+  padding: 1rem
+}
 #temperature {
-    min-width: 16px;
+  background-color: @surface0;
+  color: @sky;
+  border-radius: 1rem 1rem 1rem 1rem;
+  border-radius: 0rem;
+  margin: 5px 0px;
+  padding: 1rem
+}
+#custom-archupdates {
+  background-color: @surface0;
+  color: @sapphire;
+  border-radius: 0rem 1rem 1rem 0rem;
+  margin: 5px 0px;
+  padding: 1rem
 }
 
-#temperature.critical {
-    color: #ffffff;
-    animation-name: temp_blink;
-    animation-duration: 0.5s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
+#custom-notification {
+  background-color: @surface0;
+  color: @lavender;
+  border-radius: 1rem 1rem 1rem 1rem;
+  padding: 1rem;
+  padding-left: 1.3rem;
+  margin: 5px 0px;
+  margin-left: 1rem;
 }
-
-@keyframes temp_blink {
-    to {
-        color: #B0FFFF;
-    }
-}
-
