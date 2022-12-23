@@ -60,6 +60,7 @@ font pango:Iosevka 8
 
 # Gaps
 default_border pixel 2
+gaps top 0
 gaps inner 10
 gaps outer 10
 
@@ -136,6 +137,9 @@ input type:pointer {
 
 floating_modifier $mod normal
 
+# reload sway
+bindsym $mod+Shift+r reload
+
 # start a terminal
 bindsym $mod+Return exec $term
 
@@ -169,6 +173,9 @@ bindsym $mod+period exec --no-startup-id rofi -show emoji
 bindsym $mod+Shift+s exec --no-startup-id rofi -show ssh
 bindsym $mod+ctrl+Delete exec --no-startup-id rofi -show power-menu -modi power-menu:~/.config/rofi/rofi-power-menu-sway
 
+# Start a audio control program
+bindsym $mod+Shift+e exec pavucontrol
+
 # Media player controls
 bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
 bindsym XF86AudioStop exec --no-startup-id playerctl stop
@@ -182,7 +189,7 @@ bindsym $mod+F1 exec --no-startup-id playerctl next
 bindsym $mod+F4 exec --no-startup-id playerctl previous
 
 # Use pactl to adjust volume in PulseAudio.
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +1% && pactl get-sink-volume @DEFAULT_SINK@ | head -n 1| awk '{print substr($5, 1, length($5)-1)}' > $WOBSOCK
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +1% && pactl get-sink-volume @DEFAULT_SINK@ | head -n 1 | awk '{print substr($5, 1, length($5)-1)}' > $WOBSOCK
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -1% && pactl get-sink-volume @DEFAULT_SINK@ | head -n 1 | awk '{print substr($5, 1, length($5)-1)}' > $WOBSOCK
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle

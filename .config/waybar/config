@@ -16,6 +16,7 @@
 		"idle_inhibitor",
 		"backlight",
 		"pulseaudio",
+		"pulseaudio#2",
 		"battery",
 		"network",
 		"cpu",
@@ -67,12 +68,13 @@
 	},
 	"pulseaudio": {
 		"scroll-step": 1, // %, can be a float
-		"format": " {icon} {volume}% {format_source}",
-		"format-muted": "ﱝ {format_source}",
-		"format-source": " {volume}%",
-		"format-source-muted": "",
-		"format-bluetooth": "{volume}% {icon} {format_source}",
-		"format-bluetooth-muted": "ﱝ {icon} {format_source}",
+		"format": "{icon} {volume}%",
+		"format-muted": "ﱝ",
+		"format-bluetooth": "{volume}% {icon} ",
+		"format-bluetooth-muted": "ﱝ {icon} ",
+		"on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+		"on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +1% && pactl get-sink-volume @DEFAULT_SINK@ | head -n 1 | awk '{print substr($5, 1, length($5)-1)}' > $XDG_RUNTIME_DIR/wob.sock",
+		"on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -1% && pactl get-sink-volume @DEFAULT_SINK@ | head -n 1 | awk '{print substr($5, 1, length($5)-1)}' > $XDG_RUNTIME_DIR/wob.sock",
 		"format-icons": {
 			"headphone": "",
 			"hands-free": "",
@@ -85,8 +87,18 @@
 				"",
 				""
 			]
-		},
-		"on-click": "pavucontrol"
+		}
+	},
+	"pulseaudio#2": {
+		"format-source": " {volume}%",
+		"format-source-muted": " ",
+		"format": "{format_source}",
+		"format-muted": "{format_source}",
+		"format-bluetooth": "{format_source}",
+		"format-bluetooth-muted": "{format_source}",
+		"on-click": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
+		"on-scroll-up": "pactl set-source-volume @DEFAULT_SOURCE@ +1% && pactl get-source-volume @DEFAULT_SOURCE@ | head -n 1 | awk '{print substr($5, 1, length($5)-1)}' > $XDG_RUNTIME_DIR/wob.sock",
+		"on-scroll-down": "pactl set-source-volume @DEFAULT_SOURCE@ -1% && pactl get-source-volume @DEFAULT_SOURCE@ | head -n 1 | awk '{print substr($5, 1, length($5)-1)}' > $XDG_RUNTIME_DIR/wob.sock"
 	},
 	"network": {
 		"format-wifi": " {signalStrength}%",
@@ -102,21 +114,21 @@
 		"interval": 2
 	},
 	"memory": {
-		"format": " {}%",
+		"format": " {}%",
 		"format-alt": "{used:0.1f}G/{total:0.1f}G",
 		"tooltip-format": "Memory: {used:0.1f}Gi / {total:0.1f}Gi\nSwap: {swapUsed:0.1f}Gi / {swapTotal:0.1f}Gi",
 		"interval": 5
 	},
 	"temperature": {
-		// "hwmon-path-abs": "/sys/devices/platform/nct6775.2592/hwmon",
-		// "input-filename": "temp7_input",
+		"hwmon-path-abs": "/sys/devices/platform/nct6775.2592/hwmon",
+		"input-filename": "temp7_input",
 		"critical-threshold": 70,
 		"format": "{temperatureC}°C",
-		"interval": 2,
+		"interval": 2
 	},
 	"custom/archupdates": {
-		"format": "{}",
-		"exec": "$HOME/.config/waybar/scipts/getupdates-client.sh",
+		"format": " {}",
+		"exec": "cat /tmp/updates 2> /dev/null | wc -l",
 		"on-click": "kitty --hold -e $HOME/.config/waybar/scipts/getupdates-update.sh",
 		"interval": 1
 	},

@@ -11,6 +11,9 @@ if [ "$(tty)" = "/dev/tty1" ]; then
 	case $ACTION in
 		"1")
 			unset ACTION
+			# Load All Enviroment variables
+			source ~/.zshenv
+
 			# starting gnome-keyring-daemon for ssh, secrets, and gpg key unloking
 			eval $(gnome-keyring-daemon --start -c pkcs11,secrets,ssh)
 
@@ -34,13 +37,11 @@ if [ "$(tty)" = "/dev/tty1" ]; then
 	esac
 fi
 
-
 # auto loads and inits
 autoload -Uz compinit promptinit colors select-word-style
 compinit
 promptinit
 colors
-
 
 # variable defenitions
 HISTFILE=~/.local/share/zsh/histfile
@@ -72,10 +73,11 @@ zplug load
 
 
 # Plugin Configuration
-
+source /home/leadseason/.config/zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh
 
 
 # alias defenitions
+alias copy="wl-copy"
 alias :q="exit"
 alias ls="lsd -F --color=auto"
 alias ll="lsd -Flh --color=auto"
@@ -85,6 +87,7 @@ alias lynx="lynx -accept_all_cookies"
 alias s="s -p duckduckgo"
 alias make="make -j24"
 alias cc="pygmentize -g"
+alias icat="kitty +kitten icat"
 alias nvim="PATH=\"$NVIM_PATH\" nvim"
 alias neovide="neovide --multigrid"
 alias nvide="swaymsg 'layout tabbed' && neovide --nofork; swaymsg 'layout toggle split'"

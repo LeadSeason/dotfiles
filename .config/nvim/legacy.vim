@@ -35,7 +35,7 @@ Plug 'preservim/nerdtree'
  " Python stuff aka autocompleate and syntax
 Plug 'davidhalter/jedi-vim'
 Plug 'dense-analysis/ale'
- " Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins' }
+Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins' }
 
  " C/C++
 Plug 'clangd/clangd'
@@ -64,7 +64,7 @@ Plug 'fladson/vim-kitty' " Syntax highlighting for kitty conf file
 Plug 'ntpeters/vim-better-whitespace' " Whitespace highlighting
 Plug 'lewis6991/gitsigns.nvim' " Git diff + blame
 
- " Plug 'jiangmiao/auto-pairs' " Auto pairs
+Plug 'windwp/nvim-autopairs'
  " Plug 'vim-airline/vim-airline'
  " Plug 'vim-airline/vim-airline-themes'
 
