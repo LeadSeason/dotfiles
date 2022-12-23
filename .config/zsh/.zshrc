@@ -77,6 +77,8 @@ source /home/leadseason/.config/zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh
 
 
 # alias defenitions
+alias neofetch="neofetch --ascii ~/.config/neofetch/saber.ascii"
+alias saberfetch="neofetch"
 alias copy="wl-copy"
 alias :q="exit"
 alias ls="lsd -F --color=auto"
