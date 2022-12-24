@@ -1,0 +1,5 @@
+/* vim:ft=css */
+
+* {
+    font: "JetBrains Mono Nerd Font 12";
+}

@@ -171,7 +171,7 @@ bindsym $mod+Shift+v exec clipman pick -t wofi
 # rofi
 bindsym $mod+period exec --no-startup-id rofi -show emoji
 bindsym $mod+Shift+s exec --no-startup-id rofi -show ssh
-bindsym $mod+ctrl+Delete exec --no-startup-id rofi -show power-menu -modi power-menu:~/.config/rofi/rofi-power-menu-sway
+bindsym $mod+ctrl+Delete exec /home/leadseason/.config/rofi/powermenu.sh
 
 # Start a audio control program
 bindsym $mod+Shift+e exec pavucontrol

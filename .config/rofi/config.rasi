@@ -146,4 +146,4 @@ configuration {
   }
 }
 
-@theme "/home/leadseason/.local/share/rofi/themes/catppuccin-mocha.rasi"
+@theme "/home/leadseason/.local/share/rofi/run.rasi"

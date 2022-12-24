@@ -26,7 +26,8 @@
 		"custom/notification"
 	],
 	"custom/os_icon": {
-		"format": " "
+		"format": " ",
+		"on-click": "/home/leadseason/.config/rofi/powermenu.sh"
 	},
 	"custom/seperator": {
 		"format": "|"
@@ -105,8 +106,8 @@
 		"format-ethernet": " ",
 		"format-linked": "{ifname} (No IP) ",
 		"format-disconnected": "Disconnected ⚠",
-		"format-alt": "{ifname}: {ipaddr}/{cidr}",
-		"tooltip-format": "{ifname}: {ipaddr}/{cidr}\n{ifname} via {gwaddr}"
+		"tooltip-format": "{ifname}: {ipaddr}/{cidr}\n{ifname} via {gwaddr}",
+		"on-click": "networkmanager_dmenu"
 	},
 	"cpu": {
 		"format": " {usage}%",

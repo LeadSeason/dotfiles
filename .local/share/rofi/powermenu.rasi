@@ -1,0 +1,157 @@
+/* vim:ft=css */
+
+@import                          "shared/mocha.rasi"
+@import                          "shared/fonts.rasi"
+
+configuration {
+    show-icons:                 false;
+}
+
+/*****----- Main Window -----*****/
+window {
+    /* properties for window widget */
+    transparency:                "real";
+    location:                    west;
+    anchor:                      west;
+    fullscreen:                  false;
+    width:                       115px;
+    x-offset:                    15px;
+    y-offset:                    0px;
+
+    /* properties for all widgets */
+    enabled:                     true;
+    margin:                      0px;
+    padding:                     0px;
+    border:                      0px solid;
+    border-radius:               12px;
+    border-color:                @selected-col;
+    cursor:                      "default";
+    background-color:            @bg-col;
+}
+
+/*****----- Main Box -----*****/
+mainbox {
+    enabled:                     true;
+    spacing:                     15px;
+    margin:                      0px;
+    padding:                     15px;
+    border:                      0px solid;
+    border-radius:               0px;
+    border-color:                @selected-col;
+    background-color:            transparent;
+    children:                    [ "listview" ];
+}
+
+/*****----- Inputbar -----*****/
+inputbar {
+    enabled:                     true;
+    spacing:                     0px;
+    margin:                      0px;
+    padding:                     0px;
+    border:                      0px;
+    border-radius:               0px;
+    border-color:                @selected-col;
+    background-color:            transparent;
+    text-color:                  @fg-col;
+    children:                    [ "textbox-prompt-colon", "prompt"];
+}
+
+dummy {
+    background-color:            transparent;
+}
+
+textbox-prompt-colon {
+    enabled:                     true;
+    expand:                      false;
+    str:                         "";
+    padding:                     12px 16px;
+    border-radius:               0px;
+    background-color:            @blue;
+    text-color:                  @bg-col;
+}
+prompt {
+    enabled:                     true;
+    padding:                     12px;
+    border-radius:               0px;
+    background-color:            @fg-col2;
+    text-color:                  @bg-col;
+}
+
+/*****----- Message -----*****/
+message {
+    enabled:                     true;
+    margin:                      0px;
+    padding:                     12px;
+    border:                      0px solid;
+    border-radius:               100%;
+    border-color:                @selected-col;
+    background-color:            @bg-col-light;
+    text-color:                  @fg-col;
+}
+textbox {
+    background-color:            inherit;
+    text-color:                  inherit;
+    vertical-align:              0.5;
+    horizontal-align:            0.5;
+    placeholder-color:           @fg-col;
+    blink:                       true;
+    markup:                      true;
+}
+error-message {
+    padding:                     12px;
+    border:                      0px solid;
+    border-radius:               0px;
+    border-color:                @selected-col;
+    background-color:            @bg-col;
+    text-color:                  @fg-col;
+}
+
+/*****----- Listview -----*****/
+listview {
+    enabled:                     true;
+    columns:                     1;
+    lines:                       5;
+    cycle:                       true;
+    dynamic:                     true;
+    scrollbar:                   false;
+    layout:                      vertical;
+    reverse:                     false;
+    fixed-height:                true;
+    fixed-columns:               true;
+
+    spacing:                     15px;
+    margin:                      0px;
+    padding:                     0px;
+    border:                      0px solid;
+    border-radius:               0px;
+    border-color:                @selected-col;
+    background-color:            transparent;
+    text-color:                  @fg-col;
+    cursor:                      "default";
+}
+
+/*****----- Elements -----*****/
+element {
+    enabled:                     true;
+    spacing:                     0px;
+    margin:                      0px;
+    padding:                     20px 0px;
+    border:                      0px solid;
+    border-radius:               100%;
+    border-color:                @selected-col;
+    background-color:            @bg-col-light;
+    text-color:                  @fg-col;
+    cursor:                      pointer;
+}
+element-text {
+    font:                        "feather bold 24";
+    background-color:            transparent;
+    text-color:                  inherit;
+    cursor:                      inherit;
+    vertical-align:              0.5;
+    horizontal-align:            0.5;
+}
+element selected.normal {
+    background-color:            var(fg-col2);
+    text-color:                  var(bg-col);
+}

@@ -21,6 +21,7 @@ if [ "$(tty)" = "/dev/tty1" ]; then
 			export SSH_AUTH_SOCK
 			export GNOME_KEYRING_CONTROL
 
+			export DESKTOP_SESSION=sway
 			# starting sway
 			exec sway
 			;;
@@ -137,6 +138,7 @@ zsh_command_time() {
 }
 
 precmd() {
+	# 
 	local exit_code=(${?})
 	local git_branch=" $(git rev-parse --abbrev-ref HEAD 2> /dev/null)"
 
