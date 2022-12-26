@@ -1,6 +1,0 @@
-{
-    "files.associations": {
-        "config": "jsonc",
-        "*.json": "jsonc"
-    }
-}
