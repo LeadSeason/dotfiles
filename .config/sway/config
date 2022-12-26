@@ -53,7 +53,7 @@ set $crust     #11111b
 
 include ~/.config/sway/config.d/*
 
-output * bg ~/.config/sway/wp.png stretch $base
+output * bg ~/.config/sway/wp/saber-wallpaper.png stretch $base
 
 # font
 font pango:Iosevka 8
