@@ -2,7 +2,6 @@
 {
 	"layer": "top",
 	"position": "top",
-	"height": 24,
 	"spacing": 0,
 	"modules-left": [
 		"custom/os_icon",
@@ -146,9 +145,9 @@
 		"tooltip": false,
 		"format": "{icon}",
 		"format-icons": {
-			"notification": "<span foreground='red'><sup></sup></span>",
+			"notification": "<span foreground='#f38ba8'></span>",
 			"none": "",
-			"dnd-notification": "<span foreground='red'><sup></sup></span>",
+			"dnd-notification": "<span foreground='#f38ba8'></span>",
 			"dnd-none": ""
 		},
 		"return-type": "json",
@@ -159,7 +158,7 @@
 		"escape": true
 	},
 	"battery": {
-		"bat": "BAT0",
+		// "bat": "BAT0",
 		"interval": 10,
 		"states": {
 			"warning": 30,
