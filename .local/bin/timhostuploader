@@ -16,7 +16,7 @@ import keyring
 import filetype
 
 
-save_path = "/home/leadseason/var/media/pictures/tims.host_uploads/"
+save_path = "/home/leadseason/visual-media/tims.host_uploads/"
 error_log_path = "/home/leadseason/.cache/timhostuploader-logs/"
 
 
@@ -133,6 +133,24 @@ async def save_to_file(image_path, url, img_format):
     return filename
 
 
+async def save_to_file_no_upload(image_path, img_format):
+    """
+        Saves Uploaded Image to local directory
+        and names the file the upload id
+    """
+    # Make directory recursively if it does not exist
+    if not os.path.isdir(save_path):
+        os.makedirs(save_path)
+
+    filename = f"{save_path}{img_format}"
+    print(filename)
+
+    async with aiofiles.open(filename, "wb") as x:
+        async for ix in file_sender(image_path):
+            await x.write(ix)
+    return filename
+
+
 async def file_sender(file_name="/dev/stdin", chunk_size=65536):
     if file_name != "/dev/stdin":
         file_size = os.path.getsize(file_name)
@@ -217,6 +235,7 @@ async def main():
 
         file_name = "".join(x for x in file_name if x in valid_chars)
 
+
         try:
             headers = await header_get()
         except keyring.errors.KeyringLocked:
@@ -224,40 +243,49 @@ async def main():
             print(traceback.format_exc())
             await save_error(traceback.format_exc())
             await Notification("Unable to open keyring upload failed", "Using wl-copy")
+            save_file = await save_to_file_no_upload(in_file, file_name)
             os.system(f"cat {in_file} | wl-copy")
             exit(1)
 
         formdata = aiohttp.FormData()
         formdata.add_field("img", file_sender(file_name=in_file), filename=file_name)
 
-        async with aiohttp.ClientSession() as session:
-            async with session.post(
-                "https://tims.host/upload",
-                headers=headers,
-                data=formdata
-            ) as resp:
-                match resp.status:
-                    case 200:
-                        url = await resp.text()
-                        await logln(url)
-                        await clipboard_handler(url)
-                        save_file = await save_to_file(in_file, url, file_name)
-                        await Notification(f"{file_type} has been uploaded", url, icon_path=save_file)
+        try:
+            async with aiohttp.ClientSession() as session:
+                async with session.post(
+                    "https://tims.host/upload",
+                    headers=headers,
+                    data=formdata
+                ) as resp:
+                    match resp.status:
+                        case 200:
+                            url = await resp.text()
+                            await logln(url)
+                            await clipboard_handler(url)
+                            save_file = await save_to_file(in_file, url, file_name)
+                            await Notification(f"{file_type} has been uploaded", url, icon_path=save_file)
 
-                    case 401:
-                        await logln("Access denied: Invalid Token or User ID!")
-                        await Notification("Access denied: Invalid Token or User ID!", "")
+                        case 401:
+                            await logln("Access denied: Invalid Token or User ID!")
+                            await Notification("Access denied: Invalid Token or User ID!", "")
 
-                    case 418:
-                        await logln("418 I'm a teapot")
-                        await Notification("418 I'm a teapot", "")
+                        case _:
+                            await logln(f"""Unable to connect to Tims host\n
+                                            Error code: {resp.status} go @Tim and yell at him\n
+                                            {await resp.text()}""")
+                            await Notification("Unable to connect to Tim host",
+                                            f"Error code: {resp.status} go @Tim and yell at him\n{await resp.text()}")
 
-                    case _:
-                        await logln(f"""Unable to connect to Tims host\n
-                                        Error code: {resp.status} go @Tim and yell at him\n
-                                        {await resp.text()}""")
-                        await Notification("Unable to connect to Tim host",
-                                           f"Error code: {resp.status} go @Tim and yell at him\n{await resp.text()}")
+                            await logln("Fail", bcolors.FAIL)
+
+        except Exception as e:
+            save_file = await save_to_file_no_upload(in_file, file_name)
+            await Notification("Unable uoload to tims.host", "Using wl-copy")
+            os.system(f"cat {in_file} | wl-copy")
+            print("Fail")
+            print(traceback.format_exc())
+            await save_error(traceback.format_exc())
+            await Notification("There was an error in the program while uploading", str(e))
 
 
 if __name__ == "__main__":
