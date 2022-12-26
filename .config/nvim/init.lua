@@ -109,11 +109,11 @@ require("lspconfig")["jsonls"].setup({
 })
 --/end json
 
--- css
-require("lspconfig")["cssls"].setup({
-	capabilities = capabilities,
-})
---/end css
+-- -- css
+-- require("lspconfig")["cssls"].setup({
+-- 	capabilities = capabilities,
+-- })
+-- --/end css
 
 -- html
 require("lspconfig")["html"].setup({
