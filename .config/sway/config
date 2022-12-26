@@ -164,35 +164,36 @@ bindsym XF86MonBrightnessDown exec brightnessctl set 10%-
 bindsym $mod+F12 exec brightnessctl set 100%
 
 # start wofi (a program launcher)
-bindsym $mod+d exec --no-startup-id wofi -i -I --show drun
-bindsym $mod+Shift+d exec --no-startup-id wofi -i -I --show run
+bindsym $mod+d exec wofi -i -I --show drun
+bindsym $mod+Shift+d exec wofi -i -I --show run
 bindsym $mod+Shift+v exec clipman pick -t wofi
 
 # rofi
-bindsym $mod+period exec --no-startup-id rofi -show emoji
-bindsym $mod+Shift+s exec --no-startup-id rofi -show ssh
+bindsym $mod+period exec rofi -show emoji
+bindsym $mod+Shift+s exec rofi -show ssh
 bindsym $mod+ctrl+Delete exec /home/leadseason/.config/rofi/powermenu.sh
 
 # Start a audio control program
 bindsym $mod+Shift+e exec pavucontrol
 
 # Media player controls
-bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
-bindsym XF86AudioStop exec --no-startup-id playerctl stop
-bindsym XF86AudioNext exec --no-startup-id playerctl next
-bindsym XF86AudioPrev exec --no-startup-id playerctl previous
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioStop exec playerctl stop
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
 
 # Alternatively Useing $mod + F-keys
-bindsym $mod+F2 exec --no-startup-id playerctl play-pause
-bindsym $mod+F3 exec --no-startup-id playerctl stop
-bindsym $mod+F1 exec --no-startup-id playerctl next
-bindsym $mod+F4 exec --no-startup-id playerctl previous
+bindsym $mod+F2 exec playerctl play-pause
+bindsym $mod+F3 exec playerctl stop
+bindsym $mod+F1 exec playerctl next
+bindsym $mod+F4 exec playerctl previous
 
 # Use pactl to adjust volume in PulseAudio.
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +1% && pactl get-sink-volume @DEFAULT_SINK@ | head -n 1 | awk '{print substr($5, 1, length($5)-1)}' > $WOBSOCK
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -1% && pactl get-sink-volume @DEFAULT_SINK@ | head -n 1 | awk '{print substr($5, 1, length($5)-1)}' > $WOBSOCK
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+bindsym Pause exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 
