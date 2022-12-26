@@ -46,8 +46,10 @@ colors
 
 # variable defenitions
 HISTFILE=~/.local/share/zsh/histfile
-HISTSIZE=1000
-SAVEHIST=1000000
+HISTSIZE=100000000
+SAVEHIST=100000000
+setopt SHARE_HISTORY
+setopt HIST_IGNORE_ALL_DUPS
 ZPLUG_HOME=~/.local/share/zsh/zplug
 PATH="$HOME/.local/bin:$PATH"
 NVIM_PATH="${PATH:-}"
@@ -78,8 +80,7 @@ source /home/leadseason/.config/zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh
 
 
 # alias defenitions
-alias neofetch="neofetch --ascii ~/.config/neofetch/saber.ascii"
-alias saberfetch="neofetch"
+alias saberfetch="neofetch --ascii ~/.config/neofetch/saber.ascii --gap -567"
 alias copy="wl-copy"
 alias :q="exit"
 alias ls="lsd -F --color=auto"
