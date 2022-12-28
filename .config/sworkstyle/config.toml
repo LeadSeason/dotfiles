@@ -1,7 +1,7 @@
 fallback = ''
 
 [matching]
-'discord' = ' '
+'discord' = 'ﭮ'
 'balena-etcher' = ''
 'Chia Blockchain' = ''
 'steam_app?\w*/' = ''
