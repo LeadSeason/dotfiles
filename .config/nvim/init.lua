@@ -219,7 +219,7 @@ require("formatter").setup({
 				return {
 					exe = "clang-format",
 					args = {
-						"-style='{BreakBeforeBraces: BS_Allman, AllowShortIfStatementsOnASingleLine: false, IndentCaseLabels: false}'",
+						"-style=file:/home/leadseason/.config/config.clang-format",
 						util.escape_path(util.get_current_buffer_file_name()),
 					},
 					stdin = true,
@@ -232,7 +232,7 @@ require("formatter").setup({
 				return {
 					exe = "clang-format",
 					args = {
-						"-style='{BreakBeforeBraces: Allman, AllowShortIfStatementsOnASingleLine: false, IndentCaseLabels: false}'",
+						"-style=file:/home/leadseason/.config/config.clang-format",
 						util.escape_path(util.get_current_buffer_file_name()),
 					},
 					stdin = true,
