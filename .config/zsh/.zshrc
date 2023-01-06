@@ -1,41 +1,20 @@
 
 # start wm on tty1 login
 if [ "$(tty)" = "/dev/tty1" ]; then
-	echo "[1] Start Sway"
-	echo "[2] Start Hyprland"
-	echo "[3] Stay in tty"
-	echo -n " → "
-	read ACTION
-	wait
+    unset ACTION
+    # Load All Enviroment variables
+    source ~/.zshenv
 
-	case $ACTION in
-		"1")
-			unset ACTION
-			# Load All Enviroment variables
-			source ~/.zshenv
+    # starting gnome-keyring-daemon for ssh, secrets, and gpg key unloking
+    eval $(gnome-keyring-daemon --start -c pkcs11,secrets,ssh)
 
-			# starting gnome-keyring-daemon for ssh, secrets, and gpg key unloking
-			eval $(gnome-keyring-daemon --start -c pkcs11,secrets,ssh)
+    # exporting keyring variables
+    export SSH_AUTH_SOCK
+    export GNOME_KEYRING_CONTROL
 
-			# exporting keyring variables
-			export SSH_AUTH_SOCK
-			export GNOME_KEYRING_CONTROL
-
-			export DESKTOP_SESSION=sway
-			# starting sway
-			exec sway
-			;;
-		"2")
-			unset ACTION
-			eval $(gnome-keyring-daemon --start -c pkcs11,secrets,ssh)
-			export SSH_AUTH_SOCK
-			export GNOME_KEYRING_CONTROL
-			exec Hyprland
-			;;
-		*)
-			unset ACTION
-			;;
-	esac
+    export DESKTOP_SESSION=sway
+    # starting sway
+    exec sway
 fi
 
 # auto loads and inits
@@ -68,6 +47,7 @@ zplug "zsh-users/zsh-syntax-highlighting"
 zplug "zsh-users/zsh-history-substring-search"
 zplug "zsh-users/zsh-autosuggestions"
 zplug "popstas/zsh-command-time"
+zplug "woefe/git-prompt.zsh"
 
 if ! zplug check; then
 	zplug install
@@ -141,7 +121,7 @@ zsh_command_time() {
 precmd() {
 	# 
 	local exit_code=(${?})
-	local git_branch=" $(git rev-parse --abbrev-ref HEAD 2> /dev/null)"
+    local git_branch=" $(gitprompt)"
 
 	if [[ $VIRTUAL_ENV_PROMPT ]] then;
 		local py_venv=" $VIRTUAL_ENV_PROMPT"
