@@ -39,6 +39,7 @@ Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins' }
 
  " C/C++
 Plug 'clangd/clangd'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
  " Arduino
 Plug 'stevearc/vim-arduino'
@@ -100,7 +101,6 @@ if exists("g:neovide")
 	 " Paste: Ctrl + Shift + V
  	 " nnoremap <C-S-V>
 endif
-
 
  " python stuff
 let b:ale_linters = ['flake8']
