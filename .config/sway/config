@@ -60,9 +60,9 @@ font pango:Iosevka 8
 
 # Gaps
 default_border pixel 2
-gaps top 0
 gaps inner 10
 gaps outer 10
+gaps top 0
 
 
 # target                 title     bg    text   indicator  border
@@ -126,8 +126,9 @@ input type:touchpad {
 # Finnish keymap
 input "type:keyboard" {
     xkb_layout fi
-	xkb_options caps:escape
 }
+
+# xkb_options caps:escape
 
 # Mouse settings
 input type:pointer {
@@ -151,7 +152,6 @@ bindsym $mod+p exec $term -e "bpython"
 
 # start screenshot
 bindsym $mod+c exec bash -c 'grim -g "$(slurp)" - | swappy -f - -o - | ~/.local/bin/timhostuploader'
-bindsym $mod+Shift+c exec bash -c '~/.config/sway/scripts/recorder.bash'
 
 # lock
 bindsym $mod+r exec "swaylock --grace 3"
