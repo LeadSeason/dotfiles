@@ -2,6 +2,7 @@
 -- vim.opt.expandtab = true
 vim.g.neovide_cursor_vfx_mode = "wireframe"
 vim.g.neovide_refresh_rate = 165
+vim.opt.colorcolumn = "80"
 vim.opt.autoindent = true
 vim.opt.clipboard = "unnamedplus"
 vim.opt.completeopt = { "menu", "menuone", "noselect" }

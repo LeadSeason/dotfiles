@@ -1,5 +1,6 @@
 -- Shorten function name
 local keymap = vim.keymap.set
+local map = vim.api.nvim_set_keymap
 
 -- Silent keymap option
 local opts = { silent = true }
@@ -17,6 +18,21 @@ local Tree_status_ok, _ = pcall(require, "nvim-tree")
 if Tree_status_ok then
 	-- nvim-tree keymap
 	keymap("n", "<C-B>", "<CMD>NvimTreeOpen<cr>", opts)
+end
+
+
+-- barbar
+local barbar_status_ok, _ = pcall(require, "bufferline")
+if barbar_status_ok then
+	-- Barbar's keymap
+	map("n", "W", "<CMD>BufferClose<CR>", opts)
+	map("n", "<C-.>", "<CMD>BufferNext<CR>", opts)
+	map("n", "<C-,>", "<CMD>BufferPrevious<CR>", opts)
+end
+
+-- if unix then use xdg-open to open urls
+if vim.fn.has("unix") == 1 then
+	map("", "gx", '<Cmd>call jobstart(["xdg-open", expand("<cfile>")], {"detach": v:true})<CR>', {})
 end
 
 -- Exit Terminal using CTRL + esc

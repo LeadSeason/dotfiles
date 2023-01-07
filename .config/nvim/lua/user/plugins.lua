@@ -46,13 +46,20 @@ return packer.startup(function(use)
 	-- Color Scheme
 	use({ "catppuccin/nvim", as = "catppuccin" })
 
+	use({"nvim-tree/nvim-web-devicons"}) -- devIcons used by multiple plugins
 	use({ "glepnir/dashboard-nvim" })
 	use({ "windwp/nvim-autopairs" })
-	use({ "lukas-reineke/indent-blankline.nvim" })
-	use({ "lewis6991/impatient.nvim" })
-	use({ "andweeb/presence.nvim" })
-	use({ "sQVe/sort.nvim" })
+	use({ "lukas-reineke/indent-blankline.nvim" }) -- indent lines
+	use({ "lewis6991/impatient.nvim" }) -- Speed up lua loading
+	use({ "andweeb/presence.nvim" }) -- Discord rich presence
+	use({ "sQVe/sort.nvim" }) -- :Sort
+	use({ "jdhao/whitespace.nvim", event = "VimEnter" })
 
+	-- Tab line
+	use({
+		"romgrk/barbar.nvim",
+		wants = "nvim-web-devicons",
+	})
 	-- Lualine
 	use({
 		"nvim-lualine/lualine.nvim",
@@ -63,7 +70,6 @@ return packer.startup(function(use)
 	use({
 		"nvim-telescope/telescope.nvim",
 		tag = "0.1.0",
-		-- or                            , branch = "0.1.x",
 		requires = { { "nvim-lua/plenary.nvim" } },
 	})
 	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
@@ -92,10 +98,10 @@ return packer.startup(function(use)
 	use({ "neovim/nvim-lspconfig" }) -- enable LSP
 	use({ "williamboman/mason.nvim" }) -- simple to use language server installer
 	use({ "williamboman/mason-lspconfig.nvim" })
-	use({ "mhartington/formatter.nvim" })
+	use({ "mhartington/formatter.nvim" }) -- Formatting can use mason installed formatters.
 
 	-- Git
-	use({ "lewis6991/gitsigns.nvim" })
+	use({ "lewis6991/gitsigns.nvim" }) -- Show Modified lines
 	use({ "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim" })
 
 	-- File manager
