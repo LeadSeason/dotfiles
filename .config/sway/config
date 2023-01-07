@@ -9,7 +9,7 @@
 
 # Mod1 = alt
 set $mod Mod1
-set $term kitty --single-instance
+set $term foot
 set $file nemo
 set $WOBSOCK $XDG_RUNTIME_DIR/wob.sock
 
