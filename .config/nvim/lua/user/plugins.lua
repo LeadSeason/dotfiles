@@ -46,7 +46,7 @@ return packer.startup(function(use)
 	-- Color Scheme
 	use({ "catppuccin/nvim", as = "catppuccin" })
 
-	use({"nvim-tree/nvim-web-devicons"}) -- devIcons used by multiple plugins
+	use({ "nvim-tree/nvim-web-devicons" }) -- devIcons used by multiple plugins
 	use({ "glepnir/dashboard-nvim" })
 	use({ "windwp/nvim-autopairs" })
 	use({ "lukas-reineke/indent-blankline.nvim" }) -- indent lines
@@ -54,6 +54,9 @@ return packer.startup(function(use)
 	use({ "andweeb/presence.nvim" }) -- Discord rich presence
 	use({ "sQVe/sort.nvim" }) -- :Sort
 	use({ "jdhao/whitespace.nvim", event = "VimEnter" })
+	use({ "rcarriga/nvim-notify" })
+	-- use({ "ahmedkhalf/project.nvim" })
+	use({ "akinsho/toggleterm.nvim", tag = "*" })
 
 	-- Tab line
 	use({

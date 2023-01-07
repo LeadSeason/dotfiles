@@ -190,6 +190,11 @@ _G.packer_plugins = {
     path = "/home/leadseason/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
   },
+  ["nvim-notify"] = {
+    loaded = true,
+    path = "/home/leadseason/.local/share/nvim/site/pack/packer/start/nvim-notify",
+    url = "https://github.com/rcarriga/nvim-notify"
+  },
   ["nvim-tree.lua"] = {
     loaded = true,
     path = "/home/leadseason/.local/share/nvim/site/pack/packer/start/nvim-tree.lua",
@@ -234,6 +239,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/leadseason/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
+  },
+  ["toggleterm.nvim"] = {
+    loaded = true,
+    path = "/home/leadseason/.local/share/nvim/site/pack/packer/start/toggleterm.nvim",
+    url = "https://github.com/akinsho/toggleterm.nvim"
   },
   ["whitespace.nvim"] = {
     loaded = false,
