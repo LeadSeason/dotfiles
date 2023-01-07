@@ -1,7 +1,6 @@
 local status_ok, catppuccin = pcall(require, "catppuccin")
-
 if not status_ok then
-    assert(false, "catppuccin not found setup failed")
+	return
 end
 
 -- catppuccin setup
@@ -47,4 +46,4 @@ catppuccin.setup({
 	},
 })
 
-vim.cmd.colorscheme "catppuccin"
+vim.cmd.colorscheme("catppuccin")

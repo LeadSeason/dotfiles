@@ -215,6 +215,11 @@ _G.packer_plugins = {
     path = "/home/leadseason/.local/share/nvim/site/pack/packer/start/presence.nvim",
     url = "https://github.com/andweeb/presence.nvim"
   },
+  ["sort.nvim"] = {
+    loaded = true,
+    path = "/home/leadseason/.local/share/nvim/site/pack/packer/start/sort.nvim",
+    url = "https://github.com/sQVe/sort.nvim"
+  },
   ["telescope-fzf-native.nvim"] = {
     loaded = true,
     path = "/home/leadseason/.local/share/nvim/site/pack/packer/start/telescope-fzf-native.nvim",

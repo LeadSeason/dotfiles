@@ -1,9 +1,7 @@
 local status_ok, lualine = pcall(require, "lualine")
-
 if not status_ok then
-    assert(false, "lualine not found setup failed")
+	return
 end
-
 
 lualine.setup({
 	options = {

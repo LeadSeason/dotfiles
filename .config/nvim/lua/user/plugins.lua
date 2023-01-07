@@ -23,7 +23,7 @@ vim.cmd([[
   augroup end
 ]])
 
--- Use a protected call so we don"t error out on first use
+-- Use a protected call so we don't error out on first use
 local status_ok, packer = pcall(require, "packer")
 if not status_ok then
 	return
@@ -40,76 +40,76 @@ packer.init({
 
 -- Install your plugins here
 return packer.startup(function(use)
-    -- My plugins here
-	use { "wbthomason/packer.nvim" } -- Have packer manage itself
+	-- My plugins here
+	use({ "wbthomason/packer.nvim" }) -- Have packer manage itself
 
-    -- Color Scheme
-    use { "catppuccin/nvim", as = "catppuccin" }
+	-- Color Scheme
+	use({ "catppuccin/nvim", as = "catppuccin" })
 
+	use({ "glepnir/dashboard-nvim" })
+	use({ "windwp/nvim-autopairs" })
+	use({ "lukas-reineke/indent-blankline.nvim" })
+	use({ "lewis6991/impatient.nvim" })
+	use({ "andweeb/presence.nvim" })
+	use({ "sQVe/sort.nvim" })
 
-    use { "glepnir/dashboard-nvim" }
-    use { "windwp/nvim-autopairs" }
-    use { "lukas-reineke/indent-blankline.nvim" }
-    use { "lewis6991/impatient.nvim" }
-    use { "andweeb/presence.nvim" }
+	-- Lualine
+	use({
+		"nvim-lualine/lualine.nvim",
+		requires = { "kyazdani42/nvim-web-devicons", opt = true },
+	})
 
-    -- Lualine
-    use {
-      "nvim-lualine/lualine.nvim",
-      requires = { "kyazdani42/nvim-web-devicons", opt = true }
-    }
+	-- Telescope
+	use({
+		"nvim-telescope/telescope.nvim",
+		tag = "0.1.0",
+		-- or                            , branch = "0.1.x",
+		requires = { { "nvim-lua/plenary.nvim" } },
+	})
+	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
 
-    -- Telescope
-    use {
-      "nvim-telescope/telescope.nvim", tag = "0.1.0",
-    -- or                            , branch = "0.1.x",
-      requires = { {"nvim-lua/plenary.nvim"} }
-    }
-    use {"nvim-telescope/telescope-fzf-native.nvim", run = "make" }
-
-    -- Treesitter
-    use{
+	-- Treesitter
+	use({
 		"nvim-treesitter/nvim-treesitter",
 		run = ":TSUpdate",
-	}
+	})
 
-    -- cmp
-    use { "hrsh7th/nvim-cmp" } -- The completion plugin
-    use { "hrsh7th/cmp-nvim-lsp" }
-	use { "hrsh7th/cmp-buffer" } -- buffer completions
-	use { "hrsh7th/cmp-path" } -- path completions
-    use { "hrsh7th/cmp-cmdline" }
-    use { "saadparwaiz1/cmp_luasnip" } -- snippet completions
-    use { "hrsh7th/cmp-nvim-lsp-signature-help" }
-    use { "hrsh7th/cmp-nvim-lua" }
+	-- cmp
+	use({ "hrsh7th/nvim-cmp" }) -- The completion plugin
+	use({ "hrsh7th/cmp-nvim-lsp" })
+	use({ "hrsh7th/cmp-buffer" }) -- buffer completions
+	use({ "hrsh7th/cmp-path" }) -- path completions
+	use({ "hrsh7th/cmp-cmdline" })
+	use({ "saadparwaiz1/cmp_luasnip" }) -- snippet completions
+	use({ "hrsh7th/cmp-nvim-lsp-signature-help" })
+	use({ "hrsh7th/cmp-nvim-lua" })
 
-    -- snippets
-	use { "L3MON4D3/LuaSnip" } --snippet engine
-	use { "rafamadriz/friendly-snippets" } -- a bunch of snippets to use
+	-- snippets
+	use({ "L3MON4D3/LuaSnip" }) --snippet engine
+	use({ "rafamadriz/friendly-snippets" }) -- a bunch of snippets to use
 
-    -- LSP
-    use { "neovim/nvim-lspconfig" } -- enable LSP
-    use { "williamboman/mason.nvim" } -- simple to use language server installer
-    use { "williamboman/mason-lspconfig.nvim" }
-    use { "mhartington/formatter.nvim" }
+	-- LSP
+	use({ "neovim/nvim-lspconfig" }) -- enable LSP
+	use({ "williamboman/mason.nvim" }) -- simple to use language server installer
+	use({ "williamboman/mason-lspconfig.nvim" })
+	use({ "mhartington/formatter.nvim" })
 
-    -- Git
-    use { "lewis6991/gitsigns.nvim" }
-    use { "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim" }
+	-- Git
+	use({ "lewis6991/gitsigns.nvim" })
+	use({ "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim" })
 
-    -- File manager
-    use {
-        "nvim-tree/nvim-tree.lua",
-        requires = {
-        "nvim-tree/nvim-web-devicons", -- optional, for file icons
-        },
-        tag = "nightly" -- optional, updated every week. (see issue #1193)
-    }
+	-- File manager
+	use({
+		"nvim-tree/nvim-tree.lua",
+		requires = {
+			"nvim-tree/nvim-web-devicons", -- optional, for file icons
+		},
+		tag = "nightly", -- optional, updated every week. (see issue #1193)
+	})
 
-    -- Automatically set up your configuration after cloning packer.nvim
-    -- Put this at the end after all plugins
+	-- Automatically set up your configuration after cloning packer.nvim
+	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()
 	end
 end)
-

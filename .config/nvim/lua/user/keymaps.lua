@@ -4,24 +4,25 @@ local keymap = vim.keymap.set
 -- Silent keymap option
 local opts = { silent = true }
 
--- Telescope 
+-- Telescope
 local Telescope_status_ok, _ = pcall(require, "telescope")
-
 if Telescope_status_ok then
-    local builtin = require('telescope.builtin')
-    keymap('n', '<C-T>', builtin.find_files, {})
+	local builtin = require("telescope.builtin")
+	-- Telescope keymap
+	keymap("n", "<C-T>", builtin.find_files, {})
 end
 
 -- nvim-tree
-local status_ok, _ = pcall(require, "nvim-tree")
-
-if status_ok then
-    keymap("n", "<C-B>", "<CMD>NvimTreeOpen<cr>", opts)
+local Tree_status_ok, _ = pcall(require, "nvim-tree")
+if Tree_status_ok then
+	-- nvim-tree keymap
+	keymap("n", "<C-B>", "<CMD>NvimTreeOpen<cr>", opts)
 end
 
-
+-- Exit Terminal using CTRL + esc
 keymap("n", "<C-esc>", "<C-\\><C-N>", opts)
 
+-- CTRL + move to move to a split
 keymap("n", "<C-J>", "<C-W><C-J>", opts)
 keymap("n", "<C-K>", "<C-W><C-K>", opts)
 keymap("n", "<C-L>", "<C-W><C-L>", opts)

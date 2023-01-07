@@ -40,7 +40,7 @@ local kind_icons = {
 
 cmp.setup({
 
-    -- Keyboard mapping
+	-- Keyboard mapping
 	mapping = cmp.mapping.preset.insert({
 		["<C-b>"] = cmp.mapping.scroll_docs(-4),
 		["<C-f>"] = cmp.mapping.scroll_docs(4),
@@ -65,42 +65,42 @@ cmp.setup({
 		end, { "i", "s" }),
 	}),
 
-    -- Sources for completions
-    sources = cmp.config.sources({
-        { name = "nvim_lsp" },
-        { name = 'luasnip' },
-        { name = "nvim_lsp_signature_help" },
-	    { name = "nvim_lua" },
-        { name = "buffer" },
-        { name = "path" },
-        { name = 'cmdline', option = { ignore_cmds = { 'Man', '!' } } },
-    }),
+	-- Sources for completions
+	sources = cmp.config.sources({
+		{ name = "nvim_lsp" },
+		{ name = "luasnip" },
+		{ name = "nvim_lsp_signature_help" },
+		{ name = "nvim_lua" },
+		{ name = "buffer" },
+		{ name = "path" },
+		{ name = "cmdline", option = { ignore_cmds = { "Man", "!" } } },
+	}),
 
-    -- Snippets
-    snippet = {
-        expand = function(args)
-            luasnip.lsp_expand(args.body)
-        end
-    },
+	-- Snippets
+	snippet = {
+		expand = function(args)
+			luasnip.lsp_expand(args.body)
+		end,
+	},
 
-    -- What it will look like
+	-- What it will look like
 	formating = {
-        fields = { "kind", "abbr", "menu" },
+		fields = { "kind", "abbr", "menu" },
 		format = function(entry, vim_item)
 			vim_item.menu = ({
 				nvim_lsp = "[LSP]",
 				buffer = "[BUFF]",
-                path = "[PATH]",
-                luasnip = "[SNIP]",
+				path = "[PATH]",
+				luasnip = "[SNIP]",
 			})[entry.source.name]
 			return vim_item
 		end,
 	},
 
-    window = {
-        completion = cmp.config.window.bordered(),
-        documentation = cmp.config.window.bordered(),
-    },
+	window = {
+		completion = cmp.config.window.bordered(),
+		documentation = cmp.config.window.bordered(),
+	},
 })
 
 -- Set configuration for specific filetype.
