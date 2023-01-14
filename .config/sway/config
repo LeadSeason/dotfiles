@@ -9,7 +9,7 @@
 
 # Mod1 = alt
 set $mod Mod1
-set $term foot
+set $term footclient
 set $file nemo
 set $WOBSOCK $XDG_RUNTIME_DIR/wob.sock
 
@@ -87,6 +87,7 @@ exec_always {
 #
 
 exec mkdir -p "/home/leadseason/.cache/swaylog"
+exec foot --server
 exec wl-paste -t text --watch clipman store --no-persist
 exec autotiling
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
