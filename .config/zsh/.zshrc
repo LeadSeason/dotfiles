@@ -75,7 +75,7 @@ alias icat="kitty +kitten icat"
 alias nvim="PATH=\"$NVIM_PATH\" nvim"
 alias neovide="neovide --multigrid"
 alias nvide="swaymsg 'layout tabbed' && neovide --nofork; swaymsg 'layout toggle split'"
-alias autoremove="sudo pacman -Rcns $(pacman -Qdtq) --noconfirm"
+alias autoremove="sudo pacman -Rcns \$(pacman -Qdtq) --noconfirm"
 alias showcolors="curl https://gist.githubusercontent.com/HaleTom/89ffe32783f89f403bba96bd7bcd1263/raw/ | bash"
 
 
