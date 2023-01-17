@@ -95,9 +95,10 @@ exec /usr/lib/kdeconnectd
 exec swaync
 exec ~/.config/waybar/scipts/getupdates-server.sh
 exec waybar
-exec kdeconnect-indicator
-exec nm-applet --indicator
-exec blueman-applet
+# No more applet tray
+# exec kdeconnect-indicator
+# exec nm-applet --indicator
+# exec blueman-applet
 exec sworkstyle
 exec swayidle timeout 180 "pgrep swaylock || swaylock --grace 3" before-sleep "pgrep swaylock || swaylock"
 exec rm -f $WOBSOCK && mkfifo $WOBSOCK && tail -f $WOBSOCK | wob
