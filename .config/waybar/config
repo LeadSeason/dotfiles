@@ -27,7 +27,8 @@
 	],
 	"custom/os_icon": {
 		"format": "",
-		"on-click": "/home/leadseason/.config/rofi/powermenu.sh"
+		"on-click": "/home/leadseason/.config/rofi/powermenu.sh",
+		"tooltip": false
 	},
 	"custom/seperator": {
 		"format": "|"
@@ -129,8 +130,9 @@
 	},
 	"custom/archupdates": {
 		"format": " {}",
-		"exec": "cat /tmp/updates 2> /dev/null | wc -l",
+		"exec": "$HOME/.config/waybar/scipts/getupdates-client.sh",
 		"exec-if": "exit 0",
+		"return-type": "json",
 		"on-click": "kitty --hold -e $HOME/.config/waybar/scipts/getupdates-update.sh",
 		"interval": 1
 	},
