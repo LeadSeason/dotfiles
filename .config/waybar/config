@@ -6,7 +6,8 @@
 	"modules-left": [
 		"custom/os_icon",
 		"wlr/workspaces",
-		"sway/workspaces"
+		"sway/workspaces",
+		"sway/mode"
 	],
 	"modules-center": [
 		"clock"
@@ -25,7 +26,7 @@
 		"custom/notification"
 	],
 	"custom/os_icon": {
-		"format": " ",
+		"format": "",
 		"on-click": "/home/leadseason/.config/rofi/powermenu.sh"
 	},
 	"custom/seperator": {
@@ -129,6 +130,7 @@
 	"custom/archupdates": {
 		"format": " {}",
 		"exec": "cat /tmp/updates 2> /dev/null | wc -l",
+		"exec-if": "exit 0",
 		"on-click": "kitty --hold -e $HOME/.config/waybar/scipts/getupdates-update.sh",
 		"interval": 1
 	},
@@ -158,7 +160,7 @@
 		"escape": true
 	},
 	"battery": {
-		// "bat": "BAT0",
+		// "bat": "",
 		"interval": 10,
 		"states": {
 			"warning": 30,
