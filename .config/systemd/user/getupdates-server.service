@@ -1,0 +1,12 @@
+[Unit]
+Description=Update checker
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+ExecStart=/home/leadseason/.config/waybar/scipts/getupdates-server.sh
+
+[Install]
+WantedBy=multi-user.target
+

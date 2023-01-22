@@ -9,7 +9,7 @@
 
 # Mod1 = alt
 set $mod Mod1
-set $term footclient
+set $term kitty
 set $file nemo
 set $WOBSOCK $XDG_RUNTIME_DIR/wob.sock
 
@@ -93,7 +93,8 @@ exec autotiling
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec /usr/lib/kdeconnectd
 exec swaync
-exec ~/.config/waybar/scipts/getupdates-server.sh
+# Manage by systemd Un comment
+# exec ~/.config/waybar/scipts/getupdates-server.sh
 exec waybar
 # No more applet tray
 # exec kdeconnect-indicator
