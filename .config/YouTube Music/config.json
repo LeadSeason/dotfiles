@@ -18,7 +18,8 @@
 			"/home/leadseason/.config/YouTube Music/Themes/youtube-music-mocha.css"
 		],
 		"singleInstanceLock": true,
-		"ForceShowLikeButtons": true
+		"ForceShowLikeButtons": true,
+		"hideMenuWarned": true
 	},
 	"plugins": {
 		"navigation": {
@@ -45,8 +46,8 @@
 		"discord": {
 			"enabled": true,
 			"activityTimoutEnabled": true,
-			"activityTimoutTime": 600000,
-			"listenAlong": true,
+			"activityTimoutTime": 30000,
+			"listenAlong": false,
 			"hideDurationLeft": false
 		},
 		"notifications": {
