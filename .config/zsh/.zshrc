@@ -1,7 +1,6 @@
 
 # start wm on tty1 login
 if [ "$(tty)" = "/dev/tty1" ]; then
-    unset ACTION
     # Load All Enviroment variables
     source ~/.zshenv
 
