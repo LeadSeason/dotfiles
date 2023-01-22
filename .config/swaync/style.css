@@ -12,6 +12,7 @@
 .notification-row:focus {
   background: @mantle;
 }
+
 .notification-row:hover {
   background: @mantle;
 }
