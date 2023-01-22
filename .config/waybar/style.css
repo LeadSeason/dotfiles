@@ -2,7 +2,7 @@
 
 
 * {
-    font-family: "Symbols Nerd Font Mono", "Iosevka light";
+  font-family: "Symbols Nerd Font Mono", "JetBrainsMono Nerd Font";
 	font-size: 20px;
 	min-height: 0;
 }
@@ -10,128 +10,122 @@
 #waybar {
 	background: transparent;
 	color: @text;
-	margin: 5px 5px;
+	margin: 5px 5px 5px 5px;
 }
 
 #custom-os_icon {
   border-radius: 1rem;
   background: @base;
   color: @sapphire;
-  padding: 1rem;
-  padding-left: 1.3rem;
-  margin: 5px 0px;
-  margin-left: .5rem;
+  padding: 5px .7rem 5px .7rem;
+  margin: 5px 0px 5px .5rem;
 }
-
 #workspaces {
   border-radius: 1rem;
-  margin: 5px 0px;
+  margin: 5px 0px 5px .5rem;
   background-color: @base;
-  margin-left: .5rem;
 }
-
 #workspaces button {
   color: @lavender;
   border-radius: 1rem;
-  padding: 0.5rem;
+  padding: 5px 0.5rem;
 }
-
 #workspaces button.focused {
   color: @sapphire;
   border-radius: 1rem;
 }
-
 #workspaces button.visable {
   color: @sky;
   border-radius: 1rem;
 }
-
 #workspaces button:hover {
   color: @sapphire;
   background: @base;
   border-color: @base;
   border-radius: 1rem;
 }
-
 #clock {
   background-color: @base;
   color: @lavender;
   border-radius: 1rem 1rem 1rem 1rem;
-  margin: 5px 0px;
-  padding: 1rem
+  margin: 5px 0px 5px 0px;
+  padding: 5px .5rem
 }
-
 #idle_inhibitor {
   background-color: @base;
   color: @pink;
   border-radius: 1rem 0rem 0rem 1rem;
-  margin: 5px 0px;
-  padding: 1rem
+  margin: 5px 0px 5px 0px;
+  padding: 5px 1rem
 }
 
 #backlight {
   background-color: @base;
   color: @mauve;
   border-radius: 0rem;
-  margin: 5px 0px;
-  padding: 1rem
+  margin: 5px 0px 5px 0px;
+  padding: 5px 1rem
 }
 #pulseaudio {
   background-color: @base;
   color: @red;
   border-radius: 0rem;
-  margin: 5px 0px;
-  padding: 1rem
+  margin: 5px 0px 5px 0px;
+  padding: 5px 1rem
 }
 #battery {
   background-color: @base;
   color: @maroon;
   border-radius: 0rem;
-  margin: 5px 0px;
-  padding: 1rem
+  margin: 5px 0px 5px 0px;
+  padding: 5px 1rem
 }
 #network {
   background-color: @base;
   color: @peach;
   border-radius: 0rem;
-  margin: 5px 0px;
-  padding: 1rem
+  margin: 5px 0px 5px 0px;
+  padding: 5px 1rem
 }
 #cpu {
   background-color: @base;
   color: @green;
   border-radius: 0rem;
-  margin: 5px 0px;
-  padding: 1rem
+  margin: 5px 0px 5px 0px;
+  padding: 5px 1rem
 }
 #memory {
   background-color: @base;
   color: @teal;
   border-radius: 0rem;
-  margin: 5px 0px;
-  padding: 1rem
+  margin: 5px 0px 5px 0px;
+  padding: 5px 1rem
 }
 #temperature {
   background-color: @base;
   color: @sky;
   border-radius: 0rem;
-  margin: 5px 0px;
-  padding: 1rem
+  margin: 5px 0px 5px 0px;
+  padding: 5px 1rem
 }
 #custom-archupdates {
   background-color: @base;
   color: @sapphire;
   border-radius: 0rem 1rem 1rem 0rem;
-  margin: 5px 0px;
-  padding: 1rem
+  margin: 5px 0px 5px 0px;
+  padding: 5px 1rem
 }
-
+#tray {
+  background-color: @base;
+  color: @lavender;
+  border-radius: 1rem;
+  padding: 5px .7rem 5px .7rem;
+  margin: 5px 1rem 5px 1rem;
+}
 #custom-notification {
   background-color: @base;
   color: @lavender;
-  border-radius: 1rem 1rem 1rem 1rem;
-  padding: 1.3rem;
-  margin: 5px 0px;
-  margin-left: 1rem;
-  margin-right: 1rem;
+  border-radius: 1rem;
+  padding: 5px .7rem 5px .7rem;
+  margin: 5px 1rem 5px 1rem;
 }
