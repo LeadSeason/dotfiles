@@ -29,6 +29,7 @@ SAVEHIST=100000000
 setopt SHARE_HISTORY
 setopt HIST_IGNORE_ALL_DUPS
 ZPLUG_HOME=~/.local/share/zsh/zplug
+fpath=($ZDOTDIR/completion $fpath)
 PATH="$HOME/.local/bin:$PATH"
 NVIM_PATH="${PATH:-}"
 
