@@ -53,7 +53,7 @@ set $crust     #11111b
 
 include ~/.config/sway/config.d/*
 
-output * bg ~/.config/sway/wp/saber-wallpaper.png stretch $base
+output * bg ~/.config/sway/wp/shuttle.mocha.jpg stretch $base
 
 # font
 font JetBrainsMono Nerd Font Mono:style=Medium,Regular 8
@@ -87,7 +87,7 @@ exec_always {
 #
 
 exec mkdir -p "/home/leadseason/.cache/swaylog"
-exec foot --server
+# exec foot --server
 exec wl-paste -t text --watch clipman store --no-persist
 exec autotiling
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
