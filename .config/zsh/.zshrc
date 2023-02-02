@@ -32,6 +32,7 @@ ZPLUG_HOME=~/.local/share/zsh/zplug
 fpath=($ZDOTDIR/completion $fpath)
 PATH="$HOME/.local/bin:$PATH"
 NVIM_PATH="${PATH:-}"
+REPORTTIME=1
 
 export NVIM_PATH PATH ZPLUG_HOME SAVEHIST HISTSIZE HISTFILE
 
@@ -46,7 +47,6 @@ zplug "chrissicool/zsh-256color"
 zplug "zsh-users/zsh-syntax-highlighting"
 zplug "zsh-users/zsh-history-substring-search"
 zplug "zsh-users/zsh-autosuggestions"
-zplug "popstas/zsh-command-time"
 zplug "woefe/git-prompt.zsh"
 
 if ! zplug check; then
@@ -95,32 +95,9 @@ zstyle ':completion:*' matcher-list \
     '+r:|[._-]=* r:|=*' \
     '+l:|=*'
 
-
-# Functions
-
-zsh_command_time() {
-    if [ -n "$ZSH_COMMAND_TIME" ]; then
-        local hours=$(($ZSH_COMMAND_TIME/3600))
-        local min=$(($ZSH_COMMAND_TIME/60))
-        local sec=$(($ZSH_COMMAND_TIME%60))
-        if [ "$ZSH_COMMAND_TIME" -le 60 ]; then
-            local timer_show="$fg[green]${ZSH_COMMAND_TIME}s"
-        elif [ "$ZSH_COMMAND_TIME" -gt 60 ] && [ "$ZSH_COMMAND_TIME" -le 180 ]; then
-            local timer_show="$fg[yellow]${min}min ${sec}s"
-        else
-            if [ "$hours" -gt 0 ]; then
-                local min=$(($min%60))
-                local timer_show="$fg[red]${hours}h ${min}min ${sec}s"
-            else
-				local timer_show="$fg[red]${min}min ${sec}s"
-            fi
-        fi
-		printf "${ZSH_COMMAND_TIME_MSG}\n" "$timer_show"
-    fi
-}
-
 precmd() {
 	# 
+	# →
 	local exit_code=(${?})
     local git_branch=" $(gitprompt)"
 
@@ -130,11 +107,11 @@ precmd() {
 
 	if [[ "$exit_code" == "0" ]] then;
 		PS1="$fg[blue]$USER$fg[white]@$fg[blue]$HOST $fg[green]%(5~|%-1~/…/%3~|%4~)$reset_color$git_branch$py_venv
- → %{$reset_color%}"
+ -> %{$reset_color%}"
 
 	else
 		PS1="$fg[blue]$USER$fg[white]@$fg[blue]$HOST$reset_color [$fg[red]$exit_code$reset_color] $fg[green]%(5~|%-1~/…/%3~|%4~)$reset_color$git_branch$py_venv
- → %{$reset_color%}"
+ -> %{$reset_color%}"
 	fi
 
 	unset ZSH_TIMER_SHOW

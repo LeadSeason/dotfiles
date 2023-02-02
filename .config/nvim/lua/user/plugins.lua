@@ -55,6 +55,7 @@ return packer.startup(function(use)
 	use({ "sQVe/sort.nvim" }) -- :Sort
 	use({ "jdhao/whitespace.nvim", event = "VimEnter" })
 	use({ "rcarriga/nvim-notify" })
+	use({ "norcalli/nvim-colorizer.lua" })
 	-- use({ "ahmedkhalf/project.nvim" })
 	use({ "akinsho/toggleterm.nvim", tag = "*" })
 
