@@ -57,6 +57,7 @@ return packer.startup(function(use)
 	use({ "rcarriga/nvim-notify" })
 	-- use({ "ahmedkhalf/project.nvim" })
 	use({ "akinsho/toggleterm.nvim", tag = "*" })
+	use({ "Pocco81/auto-save.nvim", })
 
 	-- Tab line
 	use({
@@ -115,6 +116,9 @@ return packer.startup(function(use)
 		},
 		tag = "nightly", -- optional, updated every week. (see issue #1193)
 	})
+
+	-- Arduino
+	use({ "vlelo/arduino-helper.nvim" })
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
