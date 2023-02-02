@@ -66,11 +66,11 @@ gaps top 0
 
 
 # target                 title     bg    text   indicator  border
-client.focused           $sapphire $base $text  $rosewater $sapphire
-client.focused_inactive  $mauve    $base $text  $rosewater $mauve
-client.unfocused         $mauve    $base $text  $rosewater $mauve
-client.urgent            $peach    $base $peach $overlay0  $peach
-client.placeholder       $overlay0 $base $text  $overlay0  $overlay0
+client.focused           $sapphire $base $text  $red       $sapphire
+client.focused_inactive  $mauve    $base $text  $surface1  $surface0
+client.unfocused         $mauve    $base $text  $surface1  $surface0
+client.urgent            $peach    $base $peach $peach     $peach
+client.placeholder       $overlay0 $base $text  $surface1  $overlay0
 client.background        $base
 
 exec_always {
@@ -101,7 +101,7 @@ exec waybar
 # exec nm-applet --indicator
 # exec blueman-applet
 exec sworkstyle
-exec swayidle timeout 180 "pgrep swaylock || swaylock --grace 3" before-sleep "pgrep swaylock || swaylock"
+exec swayidle timeout 180 "pgrep swaylock || swaylock --grace 3 --fade-in 3 " before-sleep "pgrep swaylock || swaylock"
 exec rm -f $WOBSOCK && mkfifo $WOBSOCK && tail -f $WOBSOCK | wob
 exec /usr/lib/xdg-desktop-portal-wlr
 exec /usr/lib/xdg-desktop-portal
@@ -129,9 +129,8 @@ input type:touchpad {
 # Finnish keymap
 input "type:keyboard" {
     xkb_layout fi
+	xkb_options caps:escape
 }
-
-# xkb_options caps:escape
 
 # Mouse settings
 input type:pointer {
@@ -167,9 +166,9 @@ bindsym XF86MonBrightnessDown exec brightnessctl set 10%-
 bindsym $mod+F12 exec brightnessctl set 100%
 
 # start wofi (a program launcher)
-bindsym $mod+d exec wofi -i -I --show drun
-bindsym $mod+Shift+d exec wofi -i -I --show run
-bindsym $mod+Shift+v exec clipman pick -t wofi
+bindsym $mod+d exec pgrep wofi || wofi -i -I --show drun
+bindsym $mod+Shift+d exec pgrep wofi || wofi -i -I --show run
+bindsym $mod+Shift+v exec pgrep wofi || clipman pick -t wofi
 
 # rofi
 bindsym $mod+period exec rofi -show emoji
