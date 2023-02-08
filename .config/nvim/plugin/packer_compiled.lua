@@ -79,6 +79,16 @@ _G.packer_plugins = {
     path = "/home/leadseason/.local/share/nvim/site/pack/packer/start/LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
+  ["arduino-helper.nvim"] = {
+    loaded = true,
+    path = "/home/leadseason/.local/share/nvim/site/pack/packer/start/arduino-helper.nvim",
+    url = "https://github.com/vlelo/arduino-helper.nvim"
+  },
+  ["auto-save.nvim"] = {
+    loaded = true,
+    path = "/home/leadseason/.local/share/nvim/site/pack/packer/start/auto-save.nvim",
+    url = "https://github.com/Pocco81/auto-save.nvim"
+  },
   ["barbar.nvim"] = {
     loaded = true,
     path = "/home/leadseason/.local/share/nvim/site/pack/packer/start/barbar.nvim",
