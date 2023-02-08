@@ -1,0 +1,13 @@
+@import url("https://catppuccin.github.io/discord/dist/catppuccin-mocha-blue.theme.css");
+
+:root {
+--Chat-Font-Used: "JetBrainsMono Nerd Font";
+}
+:not([class="hljs"]):not(code){
+font-family: var(--Chat-Font-Used)!important;
+}
+
+.markup:not(code) {
+font-size: var(--Chat-Font-Size)!important;
+}
+/* 14.03  ->*/
