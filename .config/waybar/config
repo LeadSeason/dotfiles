@@ -113,7 +113,8 @@
 	"cpu": {
 		"format": " {usage}%",
 		"tooltip": false,
-		"interval": 2
+		"interval": 2,
+		"on-click": "kitty -e htop"
 	},
 	"memory": {
 		"format": " {}%",
