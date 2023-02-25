@@ -54,8 +54,8 @@ return packer.startup(function(use)
 	use({ "andweeb/presence.nvim" }) -- Discord rich presence
 	use({ "sQVe/sort.nvim" }) -- :Sort
 	use({ "jdhao/whitespace.nvim", event = "VimEnter" })
-	use({ "rcarriga/nvim-notify" })
-	use({ "norcalli/nvim-colorizer.lua" })
+	use({ "rcarriga/nvim-notify" }) -- Notifications bacily unused
+	use({ "norcalli/nvim-colorizer.lua" }) -- Show coolors of variables
 	-- use({ "ahmedkhalf/project.nvim" })
 	use({ "akinsho/toggleterm.nvim", tag = "*" })
 	use({ "Pocco81/auto-save.nvim", })
