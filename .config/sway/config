@@ -11,6 +11,7 @@
 set $mod Mod1
 set $term kitty
 set $file nemo
+set $browser firefox-nightly
 set $WOBSOCK $XDG_RUNTIME_DIR/wob.sock
 
 # xwayland disable
@@ -77,6 +78,26 @@ exec_always {
 	gsettings set org.gnome.desktop.interface cursor-size 12
 	gsettings set org.cinnamon.desktop.interface cursor-size 12
 }
+
+# Sway-FX
+# Uncomment if running Sway-FX
+# Corners
+corner_radius 14
+smart_corner_radius on
+
+# windows shadows
+shadows on
+shadows_on_csd on|off (Note: The shadow might not fit some windows)
+shadow_blur_radius 5
+shadow_color #1e1e2eFF ex, #0000007F
+
+# Dim
+# default_dim_inactive 0.3
+# dim_inactive_colors.unfocused $base ex, #000000FF
+# dim_inactive_colors.urgent $base ex, #fab387FF
+
+for_window [app_id="org.kde.kdeconnect.daemon"] floating enable
+
 #
 # ██████╗░██████╗░░█████╗░░██████╗░██████╗░░█████╗░███╗░░░███╗░██████╗
 # ██╔══██╗██╔══██╗██╔══██╗██╔════╝░██╔══██╗██╔══██╗████╗░████║██╔════╝
@@ -95,7 +116,13 @@ exec /usr/lib/kdeconnectd
 exec swaync
 # Manage by systemd Un comment
 # exec ~/.config/waybar/scipts/getupdates-server.sh
+
+# Compile the getupdates-client script
+exec g++ ~/.config/waybar/scipts/getupdates-client.cpp -O2 -march=native -o ~/.config/waybar/scipts/getupdates-client
+# Use Custom built waybar for Juusto
 exec waybar
+# exec ~/var/build/Waybar/build/waybar
+
 # No more applet tray
 # exec kdeconnect-indicator
 # exec nm-applet --indicator
@@ -149,6 +176,9 @@ bindsym $mod+Return exec $term
 # start a filebrowser
 bindsym $mod+A exec $file
 
+# open browser
+bindsym $mod+S exec $browser
+
 # start terminal with bpython running
 bindsym $mod+p exec $term -e "bpython"
 
@@ -156,7 +186,7 @@ bindsym $mod+p exec $term -e "bpython"
 bindsym $mod+c exec bash -c 'grim -g "$(slurp)" - | swappy -f - -o - | ~/.local/bin/timhostuploader'
 
 # lock
-bindsym $mod+r exec "swaylock --grace 3"
+bindsym $mod+r exec "swaylock --grace 3 & "
 
 # Brightness controls
 bindsym XF86MonBrightnessUp exec brightnessctl set 10%+

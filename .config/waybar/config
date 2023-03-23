@@ -131,7 +131,7 @@
 	},
 	"custom/archupdates": {
 		"format": " {}",
-		"exec": "$HOME/.config/waybar/scipts/getupdates-client.sh",
+		"exec": "$HOME/.config/waybar/scipts/getupdates-client",
 		"exec-if": "exit 0",
 		"return-type": "json",
 		"on-click": "kitty --hold -e $HOME/.config/waybar/scipts/getupdates-update.sh",
