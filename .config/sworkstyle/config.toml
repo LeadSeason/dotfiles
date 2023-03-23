@@ -11,7 +11,7 @@ fallback = ''
 '/(?i)Github.*Firefox/' = ''
 '/(?i)YouTube.*Firefox/' = ''
 'firefox' = ''
-'Nightly' = ''
+'firefox-nightly' = ''
 'firefoxdeveloperedition' = ''
 
 # Steam
@@ -26,7 +26,7 @@ fallback = ''
 
 # Misc Using
 '/Minecraft?\w*/' = ''
-'/YouTube Music/' = ' '
+'/YouTube Music/' = ''
 '/node/' = ''
 '/npm/' = ''
 '/swayimg?\w*/' = ''
