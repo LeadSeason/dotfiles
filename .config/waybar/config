@@ -135,7 +135,7 @@
 		"exec-if": "exit 0",
 		"return-type": "json",
 		"on-click": "kitty --hold -e $HOME/.config/waybar/scipts/getupdates-update.sh",
-		"interval": 1
+		"interval": 20
 	},
 	"clock": {
 		"timezone": "Europe/Helsinki",
@@ -164,7 +164,7 @@
 	},
 	"battery": {
 		// "bat": "",
-		"interval": 10,
+		"interval": 20,
 		"states": {
 			"warning": 30,
 			"critical": 15
