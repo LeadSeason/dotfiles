@@ -65,7 +65,7 @@ gaps inner 10
 gaps outer 10
 gaps top 0
 
-
+# Colors
 # target                 title     bg    text   indicator  border
 client.focused           $sapphire $base $text  $red       $sapphire
 client.focused_inactive  $mauve    $base $text  $surface1  $surface0
@@ -107,7 +107,6 @@ for_window [app_id="org.kde.kdeconnect.daemon"] floating enable
 # ╚═╝░░░░░╚═╝░░╚═╝░╚════╝░░╚═════╝░╚═╝░░╚═╝╚═╝░░╚═╝╚═╝░░░░░╚═╝╚═════╝░
 #
 
-exec mkdir -p "/home/leadseason/.cache/swaylog"
 # exec foot --server
 exec wl-paste -t text --watch clipman store --no-persist
 exec autotiling
@@ -128,8 +127,15 @@ exec waybar
 # exec nm-applet --indicator
 # exec blueman-applet
 exec sworkstyle
-exec swayidle timeout 180 "pgrep swaylock || swaylock --grace 3 --fade-in 3 " before-sleep "pgrep swaylock || swaylock"
 exec rm -f $WOBSOCK && mkfifo $WOBSOCK && tail -f $WOBSOCK | wob
+exec swayidle \
+	timeout 120 "brightnessctl get > ~/.cache/resume_brightness; brightnessctl set 20%" \
+    resume "brightnessctl set \$(cat ~/.cache/resume_brightness)" \
+	timeout 180 "pgrep swaylock || swaylock --grace 3 --fade-in 3" \
+	timeout 200 'swaymsg "output * dpms off"' \
+	resume 'swaymsg "output * dpms on"' \
+	before-sleep "pgrep swaylock || swaylock"
+
 exec /usr/lib/xdg-desktop-portal-wlr
 exec /usr/lib/xdg-desktop-portal
 exec /usr/lib/xdg-desktop-portal-gtk
