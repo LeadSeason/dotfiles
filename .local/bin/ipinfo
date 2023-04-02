@@ -26,6 +26,9 @@ except keyring.errors.KeyringLocked:
     print("No token in storage", file=sys.stderr)
     cfg_token = ""
 
+if cfg_token == None:
+    cfg_token = ""
+
 try:
     ip = args.IPs[0]
 except IndexError:
