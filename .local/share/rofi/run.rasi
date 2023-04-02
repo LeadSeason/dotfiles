@@ -1,6 +1,6 @@
 /* vim:ft=css */
 
-@import                          "shared/mocha.rasi"
+@import "shared/mocha.rasi"
 
 * {
     width: 1275px;
@@ -15,25 +15,26 @@ element-text, element-icon , mode-switcher {
 window {
     height: 575px;
     border: 3px;
-    border-color: @border-col;
-    background-color: @bg-col;
+    border-radius: 14px;
+    border-color: @Sapphire;
+    background-color: @Base;
 }
 
 mainbox {
-    background-color: @bg-col;
+    background-color: @Base;
 }
 
 inputbar {
     children: [prompt,entry];
-    background-color: @bg-col;
+    background-color: @Base;
     border-radius: 5px;
     padding: 2px;
 }
 
 prompt {
-    background-color: @blue;
+    background-color: @Sapphire;
     padding: 6px;
-    text-color: @bg-col;
+    text-color: @Base;
     border-radius: 3px;
     margin: 20px 0px 0px 20px;
 }
@@ -46,32 +47,36 @@ textbox-prompt-colon {
 entry {
     padding: 6px;
     margin: 20px 0px 0px 10px;
-    text-color: @fg-col;
-    background-color: @bg-col;
+    text-color: @Text;
+    background-color: @Base;
 }
 
 listview {
     border: 0px 0px 0px;
     padding: 6px 0px 0px;
-    margin: 10px 0px 0px 20px;
+    margin: 0px 20px 0px 20px;
     columns: 1;
     lines: 5;
-    background-color: @bg-col;
+    background-color: @Base;
 }
 
 element {
-    padding: 5px;
-    background-color: @bg-col;
-    text-color: @fg-col  ;
+    padding: 7px;
+    background-color: @Base;
+    text-color: @Text;
 }
 
 element-icon {
-    size: 25px;
+	padding: 0px 5px 0px 0px;
+    size: 30px;
 }
 
 element selected {
-    background-color:  @selected-col ;
-    text-color: @fg-col2  ;
+	border: 2px;
+	border-color: @Sapphire;
+	border-radius: 8px;
+    background-color: @Base;
+    text-color: @Sapphire;
 }
 
 mode-switcher {
@@ -80,13 +85,13 @@ mode-switcher {
 
 button {
     padding: 10px;
-    background-color: @bg-col-light;
-    text-color: @grey;
+    background-color: @Base;
+    text-color: @Overlay0;
     vertical-align: 0.5;
     horizontal-align: 0.5;
 }
 
 button selected {
-  background-color: @bg-col;
-  text-color: @blue;
+  background-color: @Base;
+  text-color: @Sapphire;
 }
