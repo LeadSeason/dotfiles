@@ -196,9 +196,9 @@ bindsym XF86MonBrightnessDown exec brightnessctl set 10%-
 bindsym $mod+F12 exec brightnessctl set 100%
 
 # start wofi (a program launcher)
-bindsym $mod+d exec pgrep wofi || wofi -i -I --show drun
-bindsym $mod+Shift+d exec pgrep wofi || wofi -i -I --show run
-bindsym $mod+Shift+v exec pgrep wofi || clipman pick -t wofi
+bindsym $mod+d exec pgrep rofi || rofi -I -show drun
+bindsym $mod+Shift+d exec pgrep rofi || rofi -I -show run
+bindsym $mod+Shift+v exec pgrep rofi || clipman pick -t rofi
 
 # rofi
 bindsym $mod+period exec rofi -show emoji
