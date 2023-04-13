@@ -1,5 +1,6 @@
 #!/usr/bin/env sh
 
+sudo pacman -Syu --noconfirm
 yay -Syu --noconfirm --sudoloop
 sudo pacman -Rcns $(pacman -Qdtq) --noconfirm
 echo -n > /tmp/updates
