@@ -22,11 +22,11 @@ window {
     enabled:                     true;
     margin:                      0px;
     padding:                     0px;
-    border:                      0px solid;
-    border-radius:               12px;
-    border-color:                @selected-col;
+    border:                      3px solid;
+    border-radius:               14px;
+    border-color:                @Sapphire;
     cursor:                      "default";
-    background-color:            @bg-col;
+    background-color:            @Base;
 }
 
 /*****----- Main Box -----*****/
@@ -37,7 +37,7 @@ mainbox {
     padding:                     15px;
     border:                      0px solid;
     border-radius:               0px;
-    border-color:                @selected-col;
+    border-color:                @Base;
     background-color:            transparent;
     children:                    [ "listview" ];
 }
@@ -50,9 +50,9 @@ inputbar {
     padding:                     0px;
     border:                      0px;
     border-radius:               0px;
-    border-color:                @selected-col;
+    border-color:                @Base;
     background-color:            transparent;
-    text-color:                  @fg-col;
+    text-color:                  @Text;
     children:                    [ "textbox-prompt-colon", "prompt"];
 }
 
@@ -66,15 +66,15 @@ textbox-prompt-colon {
     str:                         "";
     padding:                     12px 16px;
     border-radius:               0px;
-    background-color:            @blue;
-    text-color:                  @bg-col;
+    background-color:            @Sapphire;
+    text-color:                  @Base;
 }
 prompt {
     enabled:                     true;
     padding:                     12px;
     border-radius:               0px;
-    background-color:            @fg-col2;
-    text-color:                  @bg-col;
+    background-color:            @Text;
+    text-color:                  @Base;
 }
 
 /*****----- Message -----*****/
@@ -84,16 +84,16 @@ message {
     padding:                     12px;
     border:                      0px solid;
     border-radius:               100%;
-    border-color:                @selected-col;
-    background-color:            @bg-col-light;
-    text-color:                  @fg-col;
+    border-color:                @Base;
+    background-color:            @Surface0;
+    text-color:                  @Text;
 }
 textbox {
     background-color:            inherit;
     text-color:                  inherit;
     vertical-align:              0.5;
     horizontal-align:            0.5;
-    placeholder-color:           @fg-col;
+    placeholder-color:           @Text;
     blink:                       true;
     markup:                      true;
 }
@@ -101,9 +101,9 @@ error-message {
     padding:                     12px;
     border:                      0px solid;
     border-radius:               0px;
-    border-color:                @selected-col;
-    background-color:            @bg-col;
-    text-color:                  @fg-col;
+    border-color:                @Base;
+    background-color:            @Base;
+    text-color:                  @Text;
 }
 
 /*****----- Listview -----*****/
@@ -124,9 +124,9 @@ listview {
     padding:                     0px;
     border:                      0px solid;
     border-radius:               0px;
-    border-color:                @selected-col;
+    border-color:                @Base;
     background-color:            transparent;
-    text-color:                  @fg-col;
+    text-color:                  @Text;
     cursor:                      "default";
 }
 
@@ -138,9 +138,9 @@ element {
     padding:                     20px 0px;
     border:                      0px solid;
     border-radius:               100%;
-    border-color:                @selected-col;
-    background-color:            @bg-col-light;
-    text-color:                  @fg-col;
+    border-color:                @Base;
+    background-color:            @Base;
+    text-color:                  @Text;
     cursor:                      pointer;
 }
 element-text {
@@ -149,9 +149,10 @@ element-text {
     text-color:                  inherit;
     cursor:                      inherit;
     vertical-align:              0.5;
-    horizontal-align:            0.5;
+    horizontal-align:            0.45;
 }
 element selected.normal {
-    background-color:            var(fg-col2);
-    text-color:                  var(bg-col);
+	border:						 3px;
+	border-color:				 @Sapphire;
+	text-color:					 @Sapphire;
 }

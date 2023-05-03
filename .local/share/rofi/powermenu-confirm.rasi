@@ -14,8 +14,10 @@ window {
     fullscreen:                  false;
     width:                       500px;
     border-radius:               20px;
+	border:						 3px;
+	border-color:				 @Sapphire;
     cursor:                      "default";
-    background-color:            @bg-col;
+    background-color:            @Base;
 }
 
 /*****----- Main Box -----*****/
@@ -31,15 +33,15 @@ message {
     margin:                      0px;
     padding:                     20px;
     border-radius:               20px;
-    background-color:            @bg-col;
-    text-color:                  @fg-col;
+    background-color:            @Sapphire;
+    text-color:                  @Base;
 }
 textbox {
     background-color:            inherit;
     text-color:                  inherit;
     vertical-align:              0.5;
     horizontal-align:            0.5;
-    placeholder-color:           @fg-col;
+    placeholder-color:           @Text;
     blink:                       true;
     markup:                      true;
 }
@@ -58,7 +60,7 @@ listview {
 
     spacing:                     30px;
     background-color:            transparent;
-    text-color:                  @fg-col;
+    text-color:                  @Text;
     cursor:                      "default";
 }
 
@@ -66,8 +68,8 @@ listview {
 element {
     padding:                     60px 10px;
     border-radius:               20px;
-    background-color:            @bg-col;
-    text-color:                  @fg-col;
+    background-color:            @Base;
+    text-color:                  @Text;
     cursor:                      pointer;
 }
 element-text {
@@ -79,6 +81,7 @@ element-text {
     horizontal-align:            0.5;
 }
 element selected.normal {
-    background-color:            var(fg-col2);
-    text-color:                  var(bg-col);
+	border:						 3px;
+	border-color:				 @Sapphire;
+	text-color:					 @Sapphire;
 }
