@@ -1,4 +1,4 @@
-/* vim:ft=css */
+/* vim: ft=css tabstop=2 shiftwidth=2 : */
 configuration {
 	modi: "window,run,ssh,drun,emoji,filebrowser";
 	font: "Iosevka 12, Symbols Nerd Font 12";
