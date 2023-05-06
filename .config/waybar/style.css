@@ -19,11 +19,13 @@
   	color: @sapphire;
   	padding: 5px .7rem 5px .7rem;
   	margin: 5px 0px 5px .5rem;
+	border: 2px solid @sapphire;
 }
 #workspaces {
 	border-radius: 1rem;
   	margin: 5px 0px 5px .5rem;
   	background-color: @base;
+	border: 2px solid @sapphire;
 }
 #workspaces button {
 	color: @lavender;
@@ -49,14 +51,18 @@
 	color: @lavender;
 	border-radius: 1rem 1rem 1rem 1rem;
 	margin: 5px 0px 5px 0px;
-	padding: 5px .5rem
+	padding: 5px .5rem;
+	border: 2px solid @sapphire;
 }
 #idle_inhibitor {
 	background-color: @base;
 	color: @pink;
 	border-radius: 1rem 0rem 0rem 1rem;
 	margin: 5px 0px 5px 0px;
-	padding: 5px 1rem
+	padding: 5px 1rem;
+	border-style: solid none solid solid;
+	border-color: @sapphire;
+	border-width: 2px;
 }
 
 #backlight {
@@ -64,56 +70,80 @@
 	color: @mauve;
 	border-radius: 0rem;
 	margin: 5px 0px 5px 0px;
-	padding: 5px 1rem
+	padding: 5px 1rem;
+	border-style: solid none solid ;
+	border-color: @sapphire;
+	border-width: 2px;
 }
 #pulseaudio {
 	background-color: @base;
 	color: @red;
 	border-radius: 0rem;
 	margin: 5px 0px 5px 0px;
-	padding: 5px 1rem
+	padding: 5px 1rem;
+	border-style: solid none solid none;
+	border-color: @sapphire;
+	border-width: 2px;
 }
 #battery {
 	background-color: @base;
 	color: @maroon;
 	border-radius: 0rem;
 	margin: 5px 0px 5px 0px;
-	padding: 5px 1rem
+	padding: 5px 1rem;
+	border-style: solid none solid none;
+	border-color: @sapphire;
+	border-width: 2px;
 }
 #network {
 	background-color: @base;
 	color: @peach;
 	border-radius: 0rem;
 	margin: 5px 0px 5px 0px;
-	padding: 5px 1rem
+	padding: 5px 1rem;
+	border-style: solid none solid none;
+	border-color: @sapphire;
+	border-width: 2px;
 }
 #cpu {
 	background-color: @base;
 	color: @green;
 	border-radius: 0rem;
 	margin: 5px 0px 5px 0px;
-	padding: 5px 1rem
+	padding: 5px 1rem;
+	border-style: solid none solid none;
+	border-color: @sapphire;
+	border-width: 2px;
 }
 #memory {
 	background-color: @base;
 	color: @teal;
 	border-radius: 0rem;
 	margin: 5px 0px 5px 0px;
-	padding: 5px 1rem
+	padding: 5px 1rem;
+	border-style: solid none solid none;
+	border-color: @sapphire;
+	border-width: 2px;
 }
 #temperature {
 	background-color: @base;
 	color: @sky;
 	border-radius: 0rem;
 	margin: 5px 0px 5px 0px;
-	padding: 5px 1rem
+	padding: 5px 1rem;
+	border-style: solid none solid none;
+	border-color: @sapphire;
+	border-width: 2px;
 }
 #custom-archupdates {
 	background-color: @base;
 	color: @sapphire;
 	border-radius: 0rem 1rem 1rem 0rem;
 	margin: 5px 0px 5px 0px;
-	padding: 5px 1rem
+	padding: 5px 1rem;
+	border-style: solid solid solid none;
+	border-color: @sapphire;
+	border-width: 2px;
 }
 #tray {
 	background-color: @base;
@@ -121,6 +151,7 @@
 	border-radius: 1rem;
 	padding: 5px .7rem 5px .7rem;
 	margin: 5px 1rem 5px 1rem;
+	border: 2px solid @sapphire;
 }
 #custom-notification {
 	background-color: @base;
@@ -128,4 +159,5 @@
 	border-radius: 1rem;
 	padding: 5px .7rem 5px .7rem;
 	margin: 5px 1rem 5px 1rem;
+	border: 2px solid @sapphire;
 }
