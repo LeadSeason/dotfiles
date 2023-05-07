@@ -52,13 +52,13 @@
 		"on-scroll-down": "brightnessctl set 2%+ & brightnessctl i | grep -o \"([0-9]*%)\" | grep -o \"[0-9]*\" > /run/user/1000/wob.sock",
 		"on-scroll-up": "brightnessctl set 2%- & brightnessctl i | grep -o \"([0-9]*%)\" | grep -o \"[0-9]*\" > /run/user/1000/wob.sock",
 		"format-icons": [
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			""
+			"󰃚",
+			"󰃛",
+			"󰃜",
+			"󰃝",
+			"󰃞",
+			"󰃟",
+			"󰃠"
 		]
 	},
 	"idle_inhibitor": {
@@ -111,7 +111,7 @@
 		"on-click": "networkmanager_dmenu"
 	},
 	"cpu": {
-		"format": " {usage}%",
+		"format": " {usage}%",
 		"tooltip": false,
 		"interval": 2,
 		"on-click": "kitty -e htop"
@@ -123,14 +123,14 @@
 		"interval": 5
 	},
 	"temperature": {
-		"hwmon-path-abs": "/sys/devices/platform/nct6775.2592/hwmon",
-		"input-filename": "temp7_input",
+		// "hwmon-path-abs": "/sys/devices/platform/nct6775.2592/hwmon",
+		// "input-filename": "temp7_input",
 		"critical-threshold": 70,
 		"format": "{temperatureC}°C",
 		"interval": 2
 	},
 	"custom/archupdates": {
-		"format": " {}",
+		"format": "󰁠 {}",
 		"exec": "$HOME/.config/waybar/scipts/getupdates-client",
 		"exec-if": "exit 0",
 		"return-type": "json",
