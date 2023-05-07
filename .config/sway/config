@@ -54,7 +54,7 @@ set $crust     #11111b
 
 include ~/.config/sway/config.d/*
 
-output * bg ~/.config/sway/wp/shuttle.mocha.jpg stretch $base
+# output * bg ~/.config/sway/wp/shuttle.mocha.jpg stretch $base
 
 # font
 font JetBrainsMono Nerd Font Mono:style=Medium,Regular 8
@@ -112,6 +112,11 @@ exec wl-paste -t text --watch clipman store --no-persist
 exec autotiling
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec /usr/lib/kdeconnectd
+
+# Init wallpaper server
+exec swww init
+# Pick random wallpapers ever 4 - 8 hours
+exec zsh -c "sleep 1; cd /home/leadseason/.config/sway/wallpapers; pwd; while (true); do; ls |sort -R |head -n1| read x; swww img \$x; echo \$x; sleep \$(( ( RANDOM % 14400) + 14400)); done;" > wps
 exec swaync
 # Manage by systemd Un comment
 # exec ~/.config/waybar/scipts/getupdates-server.sh
@@ -119,8 +124,8 @@ exec swaync
 # Compile the getupdates-client script
 exec g++ ~/.config/waybar/scipts/getupdates-client.cpp -O2 -march=native -o ~/.config/waybar/scipts/getupdates-client
 # Use Custom built waybar for Juusto
-exec waybar
-# exec ~/var/build/Waybar/build/waybar
+# exec waybar
+exec ~/var/build/Waybar/build/waybar
 
 # No more applet tray
 # exec kdeconnect-indicator
