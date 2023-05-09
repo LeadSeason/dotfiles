@@ -17,6 +17,7 @@ fallback = '󰳤'
 # Steam
 'steam_app?\w*/' = ''
 'Steam' = ''
+'steamwebhelper' = ''
 
 # Terminals
 'Alacritty' = ''
