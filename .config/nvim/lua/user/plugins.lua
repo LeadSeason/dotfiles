@@ -59,12 +59,24 @@ return packer.startup(function(use)
 	-- use({ "ahmedkhalf/project.nvim" })
 	use({ "akinsho/toggleterm.nvim", tag = "*" })
 	use({ "Pocco81/auto-save.nvim", })
+	use({
+		"theRealCarneiro/hyprland-vim-syntax",
+		dependencies = { "nvim-treesitter/nvim-treesitter" },
+		ft = "hypr",
+	})
 
 	-- Tab line
 	use({
 		"romgrk/barbar.nvim",
 		wants = "nvim-web-devicons",
 	})
+	use {
+		'romgrk/barbar.nvim',
+		requires = {
+			'lewis6991/gitsigns.nvim', -- OPTIONAL: for git status
+			'nvim-tree/nvim-web-devicons', -- OPTIONAL: for file icons
+		}
+	}
 	-- Lualine
 	use({
 		"nvim-lualine/lualine.nvim",

@@ -116,7 +116,7 @@ exec /usr/lib/kdeconnectd
 # Init wallpaper server
 exec swww init
 # Pick random wallpapers ever 4 - 8 hours
-exec zsh -c "sleep 1; cd /home/leadseason/.config/sway/wallpapers; pwd; while (true); do; ls |sort -R |head -n1| read x; swww img \$x; echo \$x; sleep \$(( ( RANDOM % 14400) + 14400)); done;" > wps
+exec zsh -c "sleep 1; cd /home/leadseason/.local/share/wallpapers; pwd; while (true); do; ls |sort -R |head -n1| read x; swww img \$x; echo \$x; sleep \$(( ( RANDOM % 14400) + 14400)); done;"
 exec swaync
 # Manage by systemd Un comment
 # exec ~/.config/waybar/scipts/getupdates-server.sh

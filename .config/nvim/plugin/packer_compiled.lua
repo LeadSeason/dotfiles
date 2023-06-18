@@ -160,6 +160,13 @@ _G.packer_plugins = {
     path = "/home/leadseason/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
     url = "https://github.com/lewis6991/gitsigns.nvim"
   },
+  ["hyprland-vim-syntax"] = {
+    loaded = false,
+    needs_bufread = true,
+    only_cond = false,
+    path = "/home/leadseason/.local/share/nvim/site/pack/packer/opt/hyprland-vim-syntax",
+    url = "https://github.com/theRealCarneiro/hyprland-vim-syntax"
+  },
   ["impatient.nvim"] = {
     loaded = true,
     path = "/home/leadseason/.local/share/nvim/site/pack/packer/start/impatient.nvim",
@@ -272,10 +279,19 @@ _G.packer_plugins = {
 time([[Defining packer_plugins]], false)
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
+  -- Filetype lazy-loads
+time([[Defining lazy-load filetype autocommands]], true)
+vim.cmd [[au FileType hypr ++once lua require("packer.load")({'hyprland-vim-syntax'}, { ft = "hypr" }, _G.packer_plugins)]]
+time([[Defining lazy-load filetype autocommands]], false)
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
 vim.cmd [[au VimEnter * ++once lua require("packer.load")({'whitespace.nvim'}, { event = "VimEnter *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
+vim.cmd("augroup END")
+vim.cmd [[augroup filetypedetect]]
+time([[Sourcing ftdetect script at: /home/leadseason/.local/share/nvim/site/pack/packer/opt/hyprland-vim-syntax/ftdetect/hypr.vim]], true)
+vim.cmd [[source /home/leadseason/.local/share/nvim/site/pack/packer/opt/hyprland-vim-syntax/ftdetect/hypr.vim]]
+time([[Sourcing ftdetect script at: /home/leadseason/.local/share/nvim/site/pack/packer/opt/hyprland-vim-syntax/ftdetect/hypr.vim]], false)
 vim.cmd("augroup END")
 
 _G._packer.inside_compile = false
