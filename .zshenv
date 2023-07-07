@@ -12,5 +12,6 @@ export XDG_CURRENT_DESKTOP=sway
 export MOZ_ENABLE_WAYLAND=1
 export MOZ_WEBRENDER=1
 export QT_QPA_PLATFORM=wayland
+export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
 export QT_QPA_PLATFORMTHEME=qt5ct
 export GTK_THEME=Catppuccin-Mocha-Standard-Blue-Dark

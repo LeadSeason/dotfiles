@@ -9,4 +9,3 @@ font-family: var(--Chat-Font-Used)!important;
 .markup:not(code) {
 font-size: var(--Chat-Font-Size)!important;
 }
-/* 14.03  ->*/

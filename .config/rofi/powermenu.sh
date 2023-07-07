@@ -64,11 +64,15 @@ run_cmd() {
 			systemctl suspend
 		elif [[ $1 == '--logout' ]]; then
 			if [[ "$DESKTOP_SESSION" == 'i3' ]]; then
-				echo i3-msg exit
+				i3-msg exit
 			elif [[ "$DESKTOP_SESSION" == 'sway' ]]; then
 				swaymsg exit
+			elif [[ "$DESKTOP_SESSION" == 'Hyprland' ]]; then
+				systemctl --user stop hyprland-session.target
+				hyprctl dispatch exit ''
 			else
-				swaymsg exit
+				test a
+				# killall -u $USER
 			fi
 		fi
 	else

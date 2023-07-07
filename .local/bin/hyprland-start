@@ -1,0 +1,17 @@
+#!/usr/bin/env sh
+
+cd
+# Load All Enviroment variables
+source ~/.zshenv
+
+pkill gnome-keyring-daemon
+# starting gnome-keyring-daemon for ssh, secrets, and gpg key unloking
+eval $(gnome-keyring-daemon --start -c pkcs11,secrets,ssh)
+
+# exporting keyring variables
+export SSH_AUTH_SOCK
+export GNOME_KEYRING_CONTROL
+
+export DESKTOP_SESSION=Hyprland
+# starting sway
+exec Hyprland

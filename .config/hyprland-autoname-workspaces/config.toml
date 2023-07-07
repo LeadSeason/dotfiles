@@ -1,0 +1,92 @@
+[format]
+dedup = false
+delim = " "
+client = "{icon}{delim}"
+client_active = "<span color='#74c7ec'>{icon}</span>"
+workspace = "<span color='#74c7ec'>{id}:</span>{delim}{clients}"
+workspace_empty = "<span color='#74c7ec'>{id}</span>{delim}{clients}"
+client_dup = "{icon}{counter_sup}{delim}"
+client_dup_fullscreen = "[{icon}]{delim}{icon}{counter_unfocused_sup}"
+client_fullscreen = "[{icon}]{delim}"
+
+[icons_active]
+DEFAULT="{icon}"
+
+[icons]
+DEFAULT = '󰳤'
+
+# Vim
+'/nvim ?\w*/' = ''
+'/vim ?\w*/' = ''
+'Neovide' = ''
+
+# Firefox
+'/(?i)Github.*Firefox/' = ''
+'/(?i)YouTube.*Firefox/' = ''
+'firefox' = ''
+'firefox-nightly' = ''
+'firefoxdeveloperedition' = ''
+
+# Steam
+'steam_app?\w*/' = ''
+'Steam' = ''
+'steamwebhelper' = ''
+
+# Terminals
+'Alacritty' = ''
+'foot' = ''
+'foot-client' = ''
+'kitty' = ''
+
+# Misc Using
+'/Minecraft?\w*/' = '󰍳'
+'/YouTube Music/' = ''
+'/node/' = '󰎙'
+'/npm/' = '󰎙'
+'/swayimg?\w*/' = ''
+'/yarn/' = '󰎙'
+'Code' = ''
+'org.fritzing.Fritzing' = ''
+'Fritzing' = ''
+'Burger🍔👍' = '󰚅'
+'balena-etcher' = ''
+'blueman-manager' = ''
+'com/.https://ultimaker.Ultimaker-Cura' = ''
+'cura' = ''
+'discord' = '󰙯'
+'factorio' = ''
+'gamescope' = ''
+'gcr-prompter' = ''
+'krita' = ''
+'nemo' = ''
+'xdg-desktop-portal-gtk' = ''
+'mpv' = ''
+'nm-connection-editor' = ''
+'org.freecadweb.FreeCAD' = ''
+'FreeCAD' = ''
+'org.telegram.desktop' = ''
+'org.gnome.baobab' = '󰋊'
+'org.kde.kcolorchooser' = ''
+'org.kde.kdeconnect-settings' = ''
+'org.kde.kdeconnect.app' = ''
+'org.prismlauncher.PrismLauncher' = '󰍳'
+'osu!' = '󰲡'
+'swappy' = ''
+
+# Misc default
+'Bitwarden' = ''
+'Chia Blockchain' = ''
+'Chromium' = ''
+'GitHub Desktop' = ''
+'Google-chrome' = ''
+'Insomnia' = ''
+'Postman' = ''
+'Slack' = ''
+'Spotify' = ''
+'Thunderbird' = ''
+'code-oss' = ''
+'jetbrains-studio' = ''
+'org.qbittorrent.qBittorrent' = ''
+'thunderbird' = ''
+'vlc' = ''
+

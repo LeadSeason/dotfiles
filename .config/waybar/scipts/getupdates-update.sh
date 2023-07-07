@@ -1,5 +1,7 @@
 #!/usr/bin/env sh
 
+set -e
+
 sudo pacman -Syu --noconfirm
 yay -Syu --noconfirm --sudoloop
 sudo pacman -Rcns $(pacman -Qdtq) --noconfirm
