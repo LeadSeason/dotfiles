@@ -86,10 +86,26 @@ corner_radius 14
 smart_corner_radius on
 
 # windows shadows
-shadows on
-shadows_on_csd on|off (Note: The shadow might not fit some windows)
-shadow_blur_radius 5
-shadow_color #1e1e2eFF ex, #0000007F
+# shadows on
+# shadows_on_csd on
+# shadow_blur_radius 30
+# shadow_color #000000FF ex, #00000000
+
+blur enable
+blur_xray disable
+blur_passes 3
+blur_radius 3
+
+# shadows enable|disable
+# shadows_on_csd enable|disable (Note: The shadow might not fit some windows)
+# shadow_blur_radius <integer value 0 - 100>
+# shadow_color <hex color with alpha> ex, #0000007F
+
+# default_dim_inactive <float value 0.0 - 1.0>
+# for_window [CRITERIA_HERE] dim_inactive <float value 0.0 - 1.0>
+# dim_inactive_colors.unfocused <hex color> ex, #000000FF
+# dim_inactive_colors.urgent <hex color> ex, #900000FF
+
 
 # Dim
 # default_dim_inactive 0.3
@@ -116,7 +132,8 @@ exec /usr/lib/kdeconnectd
 # Init wallpaper server
 exec swww init
 # Pick random wallpapers ever 4 - 8 hours
-exec zsh -c "sleep 1; cd /home/leadseason/.local/share/wallpapers; pwd; while (true); do; ls |sort -R |head -n1| read x; swww img \$x; echo \$x; sleep \$(( ( RANDOM % 14400) + 14400)); done;"
+# @TODO This will keepgoing if server dies. resulting in multiple instances
+exec zsh -c "sleep 1; cd /home/leadseason/.local/share/wallpapers; pwd; while (true); do; ls |sort -R |head -n1| read x; swww img \$x; echo \$x; sleep \$(( ( RANDOM % 3600) + 1800)); done;"
 exec swaync
 # Manage by systemd Un comment
 # exec ~/.config/waybar/scipts/getupdates-server.sh
