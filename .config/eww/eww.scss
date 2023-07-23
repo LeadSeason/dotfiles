@@ -1,0 +1,158 @@
+$base: #1e1e2e;
+$mantle: #181825;
+$crust: #11111b;
+$text: #cdd6f4;
+$subtext0: #a6adc8;
+$subtext1: #bac2de;
+$surface0: #313244;
+$surface1: #45475a;
+$surface2: #585b70;
+$overlay0: #6c7086;
+$overlay1: #7f849c;
+$overlay2: #9399b2;
+$blue: #89b4fa;
+$lavender: #b4befe;
+$sapphire: #74c7ec;
+$sky: #89dceb;
+$teal: #94e2d5;
+$green: #a6e3a1;
+$yellow: #f9e2af;
+$peach: #fab387;
+$maroon: #eba0ac;
+$red: #f38ba8;
+$mauve: #cba6f7;
+$pink: #f5c2e7;
+$flamingo: #f2cdcd;
+$rosewater: #f5e0dc;
+
+* {
+	all: unset;
+}
+
+/*
+* {
+	all: unset;
+	font-size: 20px;
+	font-family: "Symbols Nerd Font Mono", "JetBrainsMono Nerd Font";
+	transition-duration: 500ms;
+}
+
+//Global Styles
+.bar {
+  background-color: transparent;
+}
+
+.os_icon {
+
+}
+
+.os_icon button {
+  	background: $base;
+  	color: $sapphire;
+  	padding: .6rem .7rem;
+  	margin: .3rem .0rem 0px .5rem;
+	border: 2px solid $surface0;
+	border-radius: 1rem;
+}
+
+.os_icon button:hover {
+	background:  $surface0;
+	border: 2px solid $surface1;
+}
+
+.os_icon button:active {
+	transition-duration: 0ms;
+	background:  $surface1;
+	border: 2px solid $surface2;
+}
+
+.sway_workspaces {
+  	background: $base;
+  	color: $lavender;
+  	padding: .3rem .7rem;
+  	margin: .4rem .7rem 0px;
+	border: 2px solid $surface0;
+	border-radius: 1rem;
+}
+
+.sway_workspaces .focused {
+	color:  $sapphire;
+
+}
+
+.sway_workspaces button {
+	background: $base;
+	transition-delay: 250ms;
+	border: 2px solid $base;
+	border-radius: .5rem;
+}
+
+.sway_workspaces button:hover {
+	background: $surface1;
+	transition-delay: 0ms;
+	border: 2px solid $surface2;
+}
+
+.sway_workspaces button:active {
+	transition-duration: 0ms;
+	transition-delay: 0ms;
+	background: $surface1;
+	border: 2px solid $sapphire;
+}
+
+.clock {
+  	background: $base;
+  	color: $lavender;
+  	padding: .0rem .0rem;
+  	margin: .4rem .7rem 0px;
+	border: 2px solid $surface0;
+	border-radius: 1rem;
+}
+
+.clock hover {
+	background: $surface0;
+	border: 2px solid $surface1;
+}
+
+.clock_rev {
+	margin: 0px 0px 0px 1rem;
+}
+
+.swaync button {
+  	background: $base;
+  	color: $lavender;
+  	padding: .3rem .8rem .3rem .7rem;
+  	margin: .4rem .9rem 0px .4rem;
+	border: 2px solid $surface0;
+	border-radius: 1rem;
+}
+
+.swaync button:hover {
+	background:  $surface0;
+	border: 2px solid $surface1;
+}
+
+.swaync button:active {
+	transition-duration: 0ms;
+	background:  $surface1;
+	border: 2px solid $surface2;
+}
+
+.notification-badge {
+	border-radius: 1rem;
+	padding: 0px 3px;
+	margin: 0px .4rem 0px 0px;
+	color: $crust;
+	background: $red;
+}
+
+
+.right_stuff {
+  	background: $base;
+  	color: $lavender;
+  	padding: .3rem .7rem;
+  	margin: .4rem .7rem 0px;
+	border: 2px solid $surface0;
+	border-radius: 1rem;
+}
+*/

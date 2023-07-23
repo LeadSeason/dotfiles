@@ -1,0 +1,71 @@
+#!/bin/python
+# vim:ft=python
+
+import i3ipc
+from i3ipc.aio import Connection
+from i3ipc import Event
+
+import sys
+import asyncio
+import argparse
+# import logging
+# logging.basicConfig(level=logging.DEBUG)
+
+
+async def main():
+    async def on_event(self, e):
+        await update_status()
+
+    async def on_event_close(self, e):
+        # Yeah sleeping makes stuff happen a lot slower but,
+        # on close event it takes a short time to update
+        # Sleeping 100ms make sure window is closed before
+        # looking up
+        await asyncio.sleep(0.1)
+        await update_status()
+
+    async def update_status():
+        workspaces = await connector.get_workspaces()
+        for x in workspaces:
+            x: i3ipc.replies.WorkspaceReply = x
+            workspaceType = ""
+            if x.output == args.monitor:
+                if x.urgent:
+                    workspaceType = "urgent"
+                elif x.focused:
+                    workspaceType = "focused"
+                print(f'(button :onclick "swaymsg workspace number {x.name[:1]}" :class "{workspaceType}" (label :text "{x.name}")) ', end="", flush=True)
+        # Wont update without flush, Python buffering
+        print("", flush=True)
+
+    global connector
+    connector = await Connection(auto_reconnect=True).connect()
+
+    outputs = await connector.get_outputs()
+    if args.monitor not in [x.name for x in outputs]:
+        print("Invalid monitor specified.\nValid outputs: {}".format(", ".join([x.name for x in outputs])))
+        sys.exit(1)
+
+    connector.on(Event.WINDOW, on_event)
+    connector.on(Event.WINDOW_CLOSE, on_event_close)
+    connector.on(Event.WINDOW_NEW, on_event)
+    connector.on(Event.WORKSPACE_INIT, on_event)
+    connector.on(Event.WORKSPACE_MOVE, on_event)
+    connector.on(Event.WORKSPACE_RENAME, on_event)
+    connector.on(Event.WORKSPACE_URGENT, on_event)
+
+    await update_status()
+
+    await connector.main()
+
+if __name__ == "__main__":
+    p = argparse.ArgumentParser(description="eww display workspaces on selected monitor")
+    p.add_argument('--monitor', '-t', help="Monitor to be monitored")
+
+    args = p.parse_args()
+    if args.monitor is None:
+        print("Monitor is required. Use -t <monitor> or --monitor <monitor>")
+        sys.exit(1)
+
+    eventLoop = asyncio.get_event_loop()
+    eventLoop.run_until_complete(main())

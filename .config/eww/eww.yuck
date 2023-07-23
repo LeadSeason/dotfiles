@@ -1,0 +1,228 @@
+(defvar eww "/bin/eww -c $HOME/.config/eww")
+
+(defwindow bar
+  :monitor 2
+  :geometry (geometry
+    :x "0%"
+    :y "0%"
+    :width "100%"
+    :height "30px"
+    :anchor "top center"
+  )
+  :staking "overlay"
+  :exclusive true
+  :reserve (struts
+    :distance "40px"
+    :side "top"
+  )
+  :windowtype "dock"
+  :wm-ignore false
+  (centerbox
+    :orientation "h"
+    (left_bar)
+    (center_bar)
+    (right_bar)
+  )
+)
+
+(defwidget sep []
+  (box
+    :class "module-2"
+    :vexpand "false"
+    :hexpand "false"
+    (label
+      :class "separ"
+      :text "|"
+    )
+  )
+)
+
+; ################
+; # Left widgets #
+; ################
+
+(defwidget left_bar []
+  (box
+    :space-evenly false
+    :spacing 0
+    :orientation "h"
+    :class "left_bar"
+    :halign "start"
+    (os_icon)
+    (sway_workspaces)
+  )
+)
+
+(defwidget os_icon[]
+  (box
+    :class "os_icon"
+    :orientation "horizontal"
+    (button
+      :onclick "if pgrep rofi; then pkill rofi; else /home/leadseason/.config/rofi/powermenu.sh; fi;"
+      ""
+    )
+  )
+)
+
+(defwidget sway_workspaces []
+  (literal
+    :class "sway_workspaces"
+    :content {sway_workspaces != "" ? "(box :space-evenly false :spacing 10 ${sway_workspaces})" : ""}
+  )
+)
+(deflisten sway_workspaces
+  "scripts/workspaces -t DP-1"
+)
+
+; ##################
+; # Center widgets #
+; ##################
+
+(defwidget center_bar []
+  (box
+    :class "right_bar"
+    :halign "end"
+    (clock)
+  )
+)
+
+; ###############
+; # Maybe later #
+; ###############
+
+(defwidget music []
+  (box
+    :class "music_widget"
+    {music-listener != "" ? "${music-listener}" : ""}
+  )
+)
+
+(deflisten music-listener
+  :inital ""
+  "playerctl --follow metadata --format '{{ artist }} - {{ title }}' || true"
+)
+
+(defpoll clock_time :interval "5s" "date +\%H:\%M")
+(defpoll clock_wday :interval "5s" "date +\%a")
+(defpoll clock_lday :interval "5s" "date +%d.%m.%Y")
+(defvar clock_rev false)
+
+(defwidget clock []
+  (eventbox
+    :onhover "${eww} update clock_rev=true"
+    :onhoverlost "${eww} update clock_rev=false"
+    (box
+      :space-evenly false
+      :spacing 10
+      :class "clock"
+      (revealer
+        :transition "slideright"
+        :reveal clock_rev
+        :duration "350ms"
+        :class clock_rev
+        (label
+          :text "(${clock_wday})"
+        )
+      )
+      (label
+        :text "${clock_time}"
+      )
+      (revealer
+        :transition "slideleft"
+        :reveal clock_rev
+        :duration "350ms"
+        :class clock_rev
+        (label
+          :text "${clock_lday}"
+        )
+      )
+    )
+  )
+)
+
+; #################
+; # Right widgets #
+; #################
+
+(defwidget right_bar []
+  (box
+    :space-evenly false
+    :spacing 0
+    :orientation "h"
+    :class "right_bar"
+    :halign "end"
+    (right_stuff)
+    (swaync)
+  )
+)
+
+(defwidget swaync []
+  (box
+    :class "swaync"
+    (button
+      :onclick "swaync-client -t -sw"
+      :onrightclick "swaync-client -d -sw"
+      (box
+        :space-evenly false
+        (revealer
+          :reveal "${nclistener["text"] != 0}"
+          :transition "slideright"
+          :duration "350ms"
+          (label
+            :class "notification-badge"
+            :text "${nclistener["text"] == 0 ? "" : nclistener["text"]}"
+          )
+        )
+        (label
+          :text "${matches(nclistener["alt"], "^dnd.*") ? "" : ""}"
+        )
+      )
+    )
+  )
+)
+
+(deflisten nclistener
+  "swaync-client -swb"
+)
+
+(defwidget right_stuff []
+  (box
+    :space-evenly false
+    :spacing 0
+    :orientation "h"
+    :halign "end"
+    :class "right_stuff"
+    "hellow"
+  )
+)
+
+
+(defwindow barbutton
+  :monitor 2
+  :geometry (geometry
+    :x "0%"
+    :y "0%"
+    :width "100%"
+    :height "30px"
+    :anchor "top center"
+  )
+  :staking "overlay"
+  :exclusive true
+  :reserve (struts
+    :distance "40px"
+    :side "top"
+  )
+  :windowtype "dock"
+  :wm-ignore false
+  (epicbutton)
+)
+
+
+(defwidget epicbutton []
+  (box
+    (button
+      :onclick "notify-send \"deeznuts \$(date +%N)\""
+      "yellow"
+    )
+  )
+)
