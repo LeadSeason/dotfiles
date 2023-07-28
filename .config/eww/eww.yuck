@@ -58,7 +58,7 @@
     :class "os_icon"
     :orientation "horizontal"
     (button
-      :onclick "if pgrep rofi; then pkill rofi; else /home/leadseason/.config/rofi/powermenu.sh; fi;"
+      :onclick "bash -c \"if pgrep rofi; then pkill rofi; else /home/leadseason/.config/rofi/powermenu.sh; fi;\" & "
       ""
     )
   )
@@ -71,7 +71,7 @@
   )
 )
 (deflisten sway_workspaces
-  "scripts/workspaces -t DP-1"
+  "scripts/workspaces -t DP-3"
 )
 
 ; ##################
@@ -167,7 +167,7 @@
         (revealer
           :reveal "${nclistener["text"] != 0}"
           :transition "slideright"
-          :duration "350ms"
+          :duration "750ms"
           (label
             :class "notification-badge"
             :text "${nclistener["text"] == 0 ? "" : nclistener["text"]}"
@@ -188,41 +188,33 @@
 (defwidget right_stuff []
   (box
     :space-evenly false
-    :spacing 0
+    :spacing 10
     :orientation "h"
     :halign "end"
     :class "right_stuff"
-    "hellow"
+    (b)
+    (archupdates)
   )
 )
 
-
-(defwindow barbutton
-  :monitor 2
-  :geometry (geometry
-    :x "0%"
-    :y "0%"
-    :width "100%"
-    :height "30px"
-    :anchor "top center"
-  )
-  :staking "overlay"
-  :exclusive true
-  :reserve (struts
-    :distance "40px"
-    :side "top"
-  )
-  :windowtype "dock"
-  :wm-ignore false
-  (epicbutton)
-)
-
-
-(defwidget epicbutton []
+(defwidget archupdates []
   (box
+    :class "rightmodule archupdates"
     (button
-      :onclick "notify-send \"deeznuts \$(date +%N)\""
-      "yellow"
+      :tooltip "${archupdates["tooltip"]}"
+      :onclick "kitty --hold -e $HOME/.config/waybar/scipts/getupdates-update.sh &"
+      "󰁠 ${archupdates["text"]}"
+    )
+  )
+)
+
+(defpoll archupdates :interval "20s" "scripts/getupdates/getupdates-client")
+
+(defwidget b []
+  (box
+    :class "rightmodule"
+    (label
+      :text "b2"
     )
   )
 )

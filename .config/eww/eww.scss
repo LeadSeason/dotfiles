@@ -27,11 +27,6 @@ $rosewater: #f5e0dc;
 
 * {
 	all: unset;
-}
-
-/*
-* {
-	all: unset;
 	font-size: 20px;
 	font-family: "Symbols Nerd Font Mono", "JetBrainsMono Nerd Font";
 	transition-duration: 500ms;
@@ -150,9 +145,44 @@ $rosewater: #f5e0dc;
 .right_stuff {
   	background: $base;
   	color: $lavender;
-  	padding: .3rem .7rem;
+  	padding: .2rem .7rem;
   	margin: .4rem .7rem 0px;
 	border: 2px solid $surface0;
 	border-radius: 1rem;
 }
-*/
+
+.rightmodule {
+	padding: .0rem .0rem;
+	border-radius: .5rem;
+}
+
+.rightmodule button {
+	padding: 0px .3rem;
+	transition-delay: 250ms;
+	border: 2px solid $base;
+	border-radius: .5rem;
+}
+
+.rightmodule button:hover {
+	background: $surface1;
+	transition-delay: 0ms;
+	border: 2px solid $surface2;
+}
+
+.rightmodule button:active {
+	transition-duration: 0ms;
+	transition-delay: 0ms;
+	background: $surface1;
+	border: 2px solid $sapphire;
+}
+
+.archupdates {
+	color: $sapphire;
+}
+
+tooltip {
+	color: $text;
+	background: $base;
+	border: 2px solid $surface0;
+	border-radius: 1rem;
+}
