@@ -27,6 +27,7 @@ async def main():
     async def update_status():
         workspaces = await connector.get_workspaces()
         for x in workspaces:
+            # I hate python's handeling of types, this makes autocomplete happy
             x: i3ipc.replies.WorkspaceReply = x
             workspaceType = ""
             if x.output == args.monitor:
@@ -35,6 +36,7 @@ async def main():
                 elif x.focused:
                     workspaceType = "focused"
                 print(f'(button :onclick "swaymsg workspace number {x.name[:1]}" :class "{workspaceType}" (label :text "{x.name}")) ', end="", flush=True)
+
         # Wont update without flush, Python buffering
         print("", flush=True)
 

@@ -1,3 +1,11 @@
+* {
+	all: unset;
+	font-size: 20px;
+	font-family: "Symbols Nerd Font Mono", "JetBrainsMono Nerd Font";
+	transition-duration: 500ms;
+}
+
+/* Catppuccin Mocha color pallet */
 $base: #1e1e2e;
 $mantle: #181825;
 $crust: #11111b;
@@ -25,11 +33,84 @@ $pink: #f5c2e7;
 $flamingo: #f2cdcd;
 $rosewater: #f5e0dc;
 
-* {
-	all: unset;
-	font-size: 20px;
-	font-family: "Symbols Nerd Font Mono", "JetBrainsMono Nerd Font";
-	transition-duration: 500ms;
+/* Make colors in to classes */
+.base {
+	color: $base;
+}
+.mantle {
+	color: $mantle;
+}
+.crust {
+	color: $crust;
+}
+.text {
+	color: $text;
+}
+.subtext0 {
+	color: $subtext0;
+}
+.subtext1 {
+	color: $subtext1;
+}
+.surface0 {
+	color: $surface0;
+}
+.surface1 {
+	color: $surface1;
+}
+.surface2 {
+	color: $surface2;
+}
+.overlay0 {
+	color: $overlay0;
+}
+.overlay1 {
+	color: $overlay1;
+}
+.overlay2 {
+	color: $overlay2;
+}
+.blue {
+	color: $blue;
+}
+.lavender {
+	color: $lavender;
+}
+.sapphire {
+	color: $sapphire;
+}
+.sky {
+	color: $sky;
+}
+.teal {
+	color: $teal;
+}
+.green {
+	color: $green;
+}
+.yellow {
+	color: $yellow;
+}
+.peach {
+	color: $peach;
+}
+.maroon {
+	color: $maroon;
+}
+.red {
+	color: $red;
+}
+.mauve {
+	color: $mauve;
+}
+.pink {
+	color: $pink;
+}
+.flamingo {
+	color: $flamingo;
+}
+.rosewater {
+	color: $rosewater;
 }
 
 //Global Styles
@@ -150,6 +231,7 @@ $rosewater: #f5e0dc;
 	border: 2px solid $surface0;
 	border-radius: 1rem;
 }
+
 
 .rightmodule {
 	padding: .0rem .0rem;

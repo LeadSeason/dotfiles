@@ -1,7 +1,9 @@
 (defvar eww "/bin/eww -c $HOME/.config/eww")
 
+; base mantle crust text subtext0 subtext1 surface0 surface1 surface2 overlay0 overlay1 overlay2 blue lavender sapphire sky teal green yellow peach maroon red mauve pink flamingo rosewater
+
 (defwindow bar
-  :monitor 2
+  :monitor 0
   :geometry (geometry
     :x "0%"
     :y "0%"
@@ -67,11 +69,12 @@
 (defwidget sway_workspaces []
   (literal
     :class "sway_workspaces"
-    :content {sway_workspaces != "" ? "(box :space-evenly false :spacing 10 ${sway_workspaces})" : ""}
+    :content {sway_workspaces != "" ? "(box :space-evenly false :spacing 5 ${sway_workspaces})" : ""}
   )
 )
+
 (deflisten sway_workspaces
-  "scripts/workspaces -t DP-3"
+  "scripts/workspaces -t eDP-1"
 )
 
 ; ##################
@@ -188,18 +191,19 @@
 (defwidget right_stuff []
   (box
     :space-evenly false
-    :spacing 10
+    :spacing 20
     :orientation "h"
     :halign "end"
     :class "right_stuff"
-    (b)
+	(cpu)
+	(mem)
     (archupdates)
   )
 )
 
 (defwidget archupdates []
   (box
-    :class "rightmodule archupdates"
+    :class "rightmodule sapphire"
     (button
       :tooltip "${archupdates["tooltip"]}"
       :onclick "kitty --hold -e $HOME/.config/waybar/scipts/getupdates-update.sh &"
@@ -210,11 +214,30 @@
 
 (defpoll archupdates :interval "20s" "scripts/getupdates/getupdates-client")
 
-(defwidget b []
+(defwidget mem []
   (box
-    :class "rightmodule"
+    :class "rightmodule teal"
     (label
-      :text "b2"
+      :text " ${round(EWW_RAM["used_mem_perc"], 0)}%"
+    )
+  )
+)
+
+(defwidget temp []
+  (box
+    :class "rightmodule sky"
+	; Failed to turn EWW_TEMPS in to json
+    (label
+      :text "${EWW_TEMPS[0]}°C"
+    )
+  )
+)
+
+(defwidget cpu []
+  (box
+    :class "rightmodule green"
+    (label
+      :text " ${round(EWW_CPU["avg"], 0)}%"
     )
   )
 )
