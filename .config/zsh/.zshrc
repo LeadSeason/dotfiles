@@ -60,24 +60,26 @@ source /home/leadseason/.config/zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh
 
 
 # alias defenitions
-alias saberfetch="neofetch --ascii ~/.config/neofetch/saber.ascii --gap -567"
-alias copy="wl-copy"
 alias :q="exit"
-alias ls="lsd -F --color=auto"
-alias ll="lsd -Flh --color=auto"
-alias la="lsd -Flha --color=auto"
-alias clear="printf '\033[2J\033[3J\033[1;1H'"
-alias grep="grep --color"
-alias lynx="lynx -accept_all_cookies"
-alias s="s -p duckduckgo"
-alias make="make -j24"
+alias autoremove="sudo pacman -Rcns \$(pacman -Qdtq) --noconfirm"
 alias cc="COLORTERM="" pygmentize -g"
+alias clear="printf '\033[2J\033[3J\033[1;1H'"
+alias copy="wl-copy"
+alias ff="fastfetch"
+alias grep="grep --color"
 alias icat="kitty +kitten icat"
-alias nvim="PATH=\"$NVIM_PATH\" nvim"
+alias la="lsd -Flha --color=auto"
+alias ll="lsd -Flh --color=auto"
+alias ls="lsd -F --color=auto"
+alias lynx="lynx -accept_all_cookies"
+alias make="make -j24"
 alias neovide="neovide --multigrid"
 alias nvide="swaymsg 'layout tabbed' && neovide --nofork; swaymsg 'layout toggle split'"
-alias autoremove="sudo pacman -Rcns \$(pacman -Qdtq) --noconfirm"
+alias nvim="PATH=\"$NVIM_PATH\" nvim"
+alias s="s -p duckduckgo"
+alias saberfetch="neofetch --ascii ~/.config/neofetch/saber.ascii --gap -567"
 alias showcolors="curl https://gist.githubusercontent.com/HaleTom/89ffe32783f89f403bba96bd7bcd1263/raw/ | bash"
+alias ssh="TERM=xterm ssh"
 
 
 # Bindings
