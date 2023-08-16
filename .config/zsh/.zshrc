@@ -66,6 +66,7 @@ alias cc="COLORTERM="" pygmentize -g"
 alias clear="printf '\033[2J\033[3J\033[1;1H'"
 alias copy="wl-copy"
 alias ff="fastfetch"
+alias ffs="fastfetch --load-config $HOME/.config/fastfetch/config-small.conf"
 alias grep="grep --color"
 alias icat="kitty +kitten icat"
 alias la="lsd -Flha --color=auto"
@@ -125,3 +126,4 @@ backward-delete-word-custom() {
 }
 
 zle -N backward-delete-word-custom
+ffs
