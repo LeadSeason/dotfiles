@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.config/zsh/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 
 # start wm on tty1 login
 if [ "$(tty)" = "/dev/tty1" ]; then
@@ -43,6 +50,7 @@ unset PS1
 source $ZPLUG_HOME/init.zsh
 
 zplug 'zplug/zplug', hook-build:'zplug --self-manage'
+zplug romkatv/powerlevel10k, as:theme, depth:1
 zplug "chrissicool/zsh-256color"
 zplug "zsh-users/zsh-syntax-highlighting"
 zplug "zsh-users/zsh-history-substring-search"
@@ -98,27 +106,27 @@ zstyle ':completion:*' matcher-list \
     '+r:|[._-]=* r:|=*' \
     '+l:|=*'
 
-precmd() {
-	# 
-	# →
-	local exit_code=(${?})
-    local git_branch=" $(gitprompt)"
-
-	if [[ $VIRTUAL_ENV_PROMPT ]] then;
-		local py_venv=" $VIRTUAL_ENV_PROMPT"
-	fi
-
-	if [[ "$exit_code" == "0" ]] then;
-		PS1="$fg[blue]$USER$fg[white]@$fg[blue]$HOST $fg[green]%(5~|%-1~/…/%3~|%4~)$reset_color$git_branch$py_venv
- -> %{$reset_color%}"
-
-	else
-		PS1="$fg[blue]$USER$fg[white]@$fg[blue]$HOST$reset_color [$fg[red]$exit_code$reset_color] $fg[green]%(5~|%-1~/…/%3~|%4~)$reset_color$git_branch$py_venv
- -> %{$reset_color%}"
-	fi
-
-	unset ZSH_TIMER_SHOW
-}
+# precmd() {
+# 	# 
+# 	# →
+# 	local exit_code=(${?})
+#     local git_branch=" $(gitprompt)"
+# 
+# 	if [[ $VIRTUAL_ENV_PROMPT ]] then;
+# 		local py_venv=" $VIRTUAL_ENV_PROMPT"
+# 	fi
+# 
+# 	if [[ "$exit_code" == "0" ]] then;
+# 		PS1="$fg[blue]$USER$fg[white]@$fg[blue]$HOST $fg[green]%(5~|%-1~/…/%3~|%4~)$reset_color$git_branch$py_venv
+#  -> %{$reset_color%}"
+# 
+# 	else
+# 		PS1="$fg[blue]$USER$fg[white]@$fg[blue]$HOST$reset_color [$fg[red]$exit_code$reset_color] $fg[green]%(5~|%-1~/…/%3~|%4~)$reset_color$git_branch$py_venv
+#  -> %{$reset_color%}"
+# 	fi
+# 
+# 	unset ZSH_TIMER_SHOW
+# }
 
 backward-delete-word-custom() {
     local WORDCHARS=${WORDCHARS/\//}
@@ -126,4 +134,6 @@ backward-delete-word-custom() {
 }
 
 zle -N backward-delete-word-custom
-ffs
+
+# To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
+[[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
