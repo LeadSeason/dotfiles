@@ -11,7 +11,6 @@ These dotfiles should be used as a example.
   <img src="https://github.com/LeadSeason/dotfiles/raw/main/assets/1.png">
   <img src="https://github.com/LeadSeason/dotfiles/raw/main/assets/2.png">
   <img src="https://github.com/LeadSeason/dotfiles/raw/main/assets/3.png">
-  <img src="https://github.com/LeadSeason/dotfiles/raw/main/assets/4.png">
 </p>
 
 ## Install
