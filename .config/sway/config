@@ -9,7 +9,7 @@
 
 # Mod1 = alt
 set $mod Mod1
-set $term foot
+set $term footclient
 set $file nemo
 set $browser firefox-nightly
 set $WOBSOCK $XDG_RUNTIME_DIR/wob.sock
@@ -77,6 +77,7 @@ client.background        $base
 exec_always {
 	gsettings set org.gnome.desktop.interface cursor-size 12
 	gsettings set org.cinnamon.desktop.interface cursor-size 12
+	nwg-look -a
 }
 
 # Sway-FX
@@ -113,6 +114,10 @@ shadow_color #1e1e2eff
 # dim_inactive_colors.urgent $base ex, #fab387FF
 
 for_window [app_id="org.kde.kdeconnect.daemon"] floating enable
+for_window [instance="origin.exe"] floating enable
+for_window [title="^Bitwarden —"] floating enable
+for_window [class="steam_app_218230"] saturation set 1.5
+
 
 #
 # ██████╗░██████╗░░█████╗░░██████╗░██████╗░░█████╗░███╗░░░███╗░██████╗
@@ -130,11 +135,16 @@ exec autotiling
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec /usr/lib/kdeconnectd
 
+# Aditional fancy pants programs
+exec discover-overlay
+exec sleep 5; noisetorch -u; noisetorch -i
+
+exec swaybg -i ~/.local/share/wallpapers/mocha-hald8-sunrise\ plane.jpg
 # Init wallpaper server
-exec swww init
+# exec swww init
 # Pick random wallpapers ever 4 - 8 hours
 # @TODO This will keepgoing if server dies. resulting in multiple instances
-exec zsh -c "sleep 1; cd /home/leadseason/.local/share/wallpapers; pwd; while (true); do; sleep \$(( ( RANDOM % 3600) + 1800)); ls |sort -R |head -n1| read x; swww img \$x; echo \$x; done;"
+# exec zsh -c "sleep 1; cd /home/leadseason/.local/share/wallpapers; pwd; while (true); do; sleep \$(( ( RANDOM % 3600) + 1800)); ls |sort -R |head -n1| read x; swww img \$x; echo \$x; done;"
 exec swaync
 # Manage by systemd Un comment
 # exec ~/.config/waybar/scipts/getupdates-server.sh
@@ -153,6 +163,8 @@ exec rm -f $WOBSOCK && mkfifo $WOBSOCK && tail -f $WOBSOCK | wob
 exec swayidle \
 	timeout 120 "brightnessctl get > ~/.cache/resume_brightness; brightnessctl set 20%" \
     resume "brightnessctl set \$(cat ~/.cache/resume_brightness)" \
+	timeout 120 "pkill Discord -STOP" \
+	resume 'pkill Discord -CONT' \
 	timeout 180 "pgrep swaylock || swaylock --grace 3 --fade-in 3" \
 	timeout 200 'swaymsg "output * dpms off"' \
 	resume 'swaymsg "output * dpms on"' \
@@ -186,6 +198,7 @@ input type:touchpad {
 	tap enabled
 }
 
+
 input "type:keyboard" {
 	# Finnish keymap
     xkb_layout fi
@@ -200,6 +213,7 @@ input type:pointer {
 
 # Hide cursor after 3 seconds
 seat * {
+  xcursor_theme "Bibata-Modern-Classic" 12
   hide_cursor 3000
 }
 
@@ -243,12 +257,15 @@ bindsym {
     $mod+Shift+v exec pgrep rofi || clipman pick -t rofi
 
     # rofi
-    $mod+period exec rofi -show emoji
+    $mod+period exec rofimoji -a copy
     $mod+Shift+s exec rofi -show ssh
     $mod+ctrl+Delete exec /home/leadseason/.config/rofi/powermenu.sh
 
     # Start a audio control program
-    $mod+Shift+e exec pavucontrol
+    $mod+Shift+w exec pavucontrol
+
+    # Start a network control program
+    $mod+Shift+e exec networkmanager_dmenu
 
     # Media player controls
     XF86AudioPlay exec playerctl play-pause
@@ -263,8 +280,8 @@ bindsym {
     $mod+F4 exec playerctl previous
 
     # Use pactl to adjust volume in PulseAudio.
-    XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +1% && pactl get-sink-volume @DEFAULT_SINK@ | head -n 1 | awk '{print substr($5, 1, length($5)-1)}' > $WOBSOCK
-    XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -1% && pactl get-sink-volume @DEFAULT_SINK@ | head -n 1 | awk '{print substr($5, 1, length($5)-1)}' > $WOBSOCK
+    # XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +1% && pactl get-sink-volume @DEFAULT_SINK@ | head -n 1 | awk '{print substr($5, 1, length($5)-1)}' > $WOBSOCK
+    # XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -1% && pactl get-sink-volume @DEFAULT_SINK@ | head -n 1 | awk '{print substr($5, 1, length($5)-1)}' > $WOBSOCK
     XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
     XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
     Pause exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
@@ -354,4 +371,10 @@ bindsym {
     $mod+Shift+8 move container to workspace number "8"
     $mod+Shift+9 move container to workspace number "9"
     $mod+Shift+0 move container to workspace number "0"
+}
+
+# add --input-device here late
+bindsym {
+    XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +1% && pactl get-sink-volume @DEFAULT_SINK@ | head -n 1 | awk '{print substr($5, 1, length($5)-1)}' > $WOBSOCK
+    XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -1% && pactl get-sink-volume @DEFAULT_SINK@ | head -n 1 | awk '{print substr($5, 1, length($5)-1)}' > $WOBSOCK
 }
