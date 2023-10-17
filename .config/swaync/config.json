@@ -1,5 +1,5 @@
 {
-    "$schema": "~/.config/swaync/configSchema.json",
+    "$schema": "/home/leadseason/.config/swaync/configSchema.json",
     "positionX": "right",
     "positionY": "top",
     "control-center-margin-top": 4,
@@ -10,7 +10,7 @@
     "timeout-low": 5,
     "timeout-critical": 0,
     "fit-to-screen": false,
-	"control-center-height": 1000,
+    "control-center-height": 1000,
     "control-center-width": 500,
     "notification-window-width": 500,
     "keyboard-shortcuts": true,
