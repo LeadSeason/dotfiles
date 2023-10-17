@@ -15,7 +15,12 @@ fallback = '󰳤'
 'firefoxdeveloperedition' = ''
 
 # Steam
-'steam_app?\w*/' = ''
+'steam_app_1454400' = '󰆘'
+'steam_app_1332010' = '󰄛'
+'steam_app_548430' = ''
+# Not implemented
+# 'steam_app_' = ''
+'steam' = ''
 'Steam' = ''
 'steamwebhelper' = ''
 
@@ -23,6 +28,7 @@ fallback = '󰳤'
 'Alacritty' = ''
 'foot' = ''
 'foot-client' = ''
+'footclient' = ''
 'kitty' = ''
 
 # Misc Using
