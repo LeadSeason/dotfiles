@@ -1,25 +1,23 @@
--- Based on AmitGolden's dotfiles
-require("user.options")
-require("user.keymaps")
-require("user.plugins")
-require("user.arduino")
-require("user.autocmd")
-require("user.autopairs")
-require("user.autosave")
-require("user.bufferline")
-require("user.catppuccin")
-require("user.cmp")
-require("user.colorizer")
-require("user.dashboard")
-require("user.diffview")
-require("user.formatter")
-require("user.gitsigns")
-require("user.lsp")
-require("user.lualine")
-require("user.nvim-tree")
-require("user.presence")
-require("user.project")
-require("user.sort")
-require("user.telescope")
-require("user.toggleterm")
-require("user.treesitter")
+if vim.loader and vim.fn.has "nvim-0.9.1" == 1 then vim.loader.enable() end
+
+for _, source in ipairs {
+  "astronvim.bootstrap",
+  "astronvim.options",
+  "astronvim.lazy",
+  "astronvim.autocmds",
+  "astronvim.mappings",
+} do
+  local status_ok, fault = pcall(require, source)
+  if not status_ok then vim.api.nvim_err_writeln("Failed to load " .. source .. "\n\n" .. fault) end
+end
+
+if astronvim.default_colorscheme then
+  if not pcall(vim.cmd.colorscheme, astronvim.default_colorscheme) then
+    require("astronvim.utils").notify(
+      ("Error setting up colorscheme: `%s`"):format(astronvim.default_colorscheme),
+      vim.log.levels.ERROR
+    )
+  end
+end
+
+require("astronvim.utils").conditional_func(astronvim.user_opts("polish", nil, false), true)

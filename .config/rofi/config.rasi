@@ -1,6 +1,6 @@
 /* vim: ft=css tabstop=2 shiftwidth=2 : */
 configuration {
-	modi: "window,run,ssh,drun,emoji,filebrowser";
+	modi: "window,run,ssh,drun,filebrowser";
 	font: "Iosevka 12, Symbols Nerd Font 12";
 /*	location: 0;*/
 /*	yoffset: 0;*/

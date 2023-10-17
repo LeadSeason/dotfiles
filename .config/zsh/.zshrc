@@ -6,10 +6,11 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 
+source ~/.zshenv
+
 # start wm on tty1 login
 if [ "$(tty)" = "/dev/tty1" ]; then
     # Load All Enviroment variables
-    source ~/.zshenv
 
     # starting gnome-keyring-daemon for ssh, secrets, and gpg key unloking
     eval $(gnome-keyring-daemon --start -c pkcs11,secrets,ssh)
@@ -49,7 +50,8 @@ unset PS1
 # Plugin managment
 source $ZPLUG_HOME/init.zsh
 
-zplug 'zplug/zplug', hook-build:'zplug --self-manage'
+zplug 'zplug/zplug', \
+	hook-build:'zplug --self-manage'
 zplug romkatv/powerlevel10k, as:theme, depth:1
 zplug "chrissicool/zsh-256color"
 zplug "zsh-users/zsh-syntax-highlighting"

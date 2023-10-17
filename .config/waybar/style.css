@@ -1,6 +1,5 @@
 @import "mocha.css";
 
-
 * {
 	font-family: "Symbols Nerd Font Mono", "JetBrainsMono Nerd Font";
 	font-size: 20px;
@@ -15,10 +14,10 @@
 
 #custom-os_icon {
 	border-radius: 1rem;
-  	background: @base;
-  	color: @sapphire;
-  	padding: 5px .7rem 5px .7rem;
-  	margin: 5px 0px 5px .5rem;
+  background: @base;
+  color: @sapphire;
+  padding: 5px .7rem 5px .7rem;
+  margin: 5px 0px 5px .5rem;
 	border: 2px solid @surface0;
 }
 #workspaces {
@@ -160,4 +159,9 @@
 	padding: 5px .7rem 5px .7rem;
 	margin: 5px 1rem 5px 1rem;
 	border: 2px solid @surface0;
+}
+
+tooltip {
+	color: @text;
+	background: @base;
 }
