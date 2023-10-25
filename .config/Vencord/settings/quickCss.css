@@ -1,0 +1,14 @@
+@import url("https://catppuccin.github.io/discord/dist/catppuccin-mocha-sapphire.theme.css");
+
+
+:root {
+--Chat-Font-Used: 'Maple Mono';
+--Chat-Font-Size: 15.5px;
+}
+:not([class="hljs"]):not(code){
+font-family: var(--Chat-Font-Used)!important;
+}
+
+.markup:not(code) {
+font-size: var(--Chat-Font-Size)!important;
+}
