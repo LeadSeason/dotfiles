@@ -11,7 +11,7 @@
 set $mod Mod1
 set $term footclient
 set $file nemo
-set $browser firefox-nightly
+set $browser firefox
 set $WOBSOCK $XDG_RUNTIME_DIR/wob.sock
 
 # xwayland disable
@@ -57,7 +57,7 @@ include ~/.config/sway/config.d/*
 # output * bg ~/.config/sway/wp/shuttle.mocha.jpg stretch $base
 
 # font
-font JetBrainsMono Nerd Font Mono:style=Medium,Regular 8
+font Maple Mono NF 11:style=Medium,Regular 8
 
 # Gaps
 default_border pixel 2
@@ -100,7 +100,7 @@ blur_radius 3
 shadows enable
 shadows_on_csd disable
 shadow_blur_radius 30
-shadow_color #1e1e2eff
+shadow_color #000000ff ex, #0000007F
 
 # default_dim_inactive <float value 0.0 - 1.0>
 # for_window [CRITERIA_HERE] dim_inactive <float value 0.0 - 1.0>
