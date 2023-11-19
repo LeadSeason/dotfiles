@@ -6,6 +6,7 @@ import traceback
 import json
 import getpass
 import argparse
+import random
 
 import asyncio
 import aiohttp
@@ -19,6 +20,7 @@ import filetype
 save_path = "/home/leadseason/visual-media/tims.host_uploads/"
 error_log_path = "/home/leadseason/.cache/timhostuploader-logs/"
 
+NOTIFICATION_REPLACE_ID = 120
 
 class bcolors:
     OK = '\033[92m'
@@ -41,7 +43,8 @@ async def logln(arg="", color=bcolors.NORMAL, end="\n"):
 async def logr(arg="", color=bcolors.NORMAL, end="\r"):
     if os.getenv("TERM") is not None and os.getenv("TERM") != "linux":
         overwrite = "".ljust(os.get_terminal_size()[1] - len(arg), " ")
-        print(f"{color}{arg}{bcolors.NORMAL}{overwrite}", end=end, file=sys.stderr)
+        print(f"{color}{arg}{bcolors.NORMAL}{overwrite}",
+              end=end, file=sys.stderr)
 
 
 async def save_error(message):
@@ -84,7 +87,7 @@ async def clipboard_handler(data):
         exit()
 
 
-async def Notification(summary, body="", icon_path=None, app_name="Timshostuploader", replaces_id=0, actions=[], urgency=1, expire_timeout=3000):
+async def Notification(summary, body="", icon_path=None, app_name="Timshostuploader", replaces_id=0, actions=[], urgency=1, expire_timeout:int = 3000, progress:int = None):
     """
         Shows notification to user that image has been uploaded
     """
@@ -96,9 +99,14 @@ async def Notification(summary, body="", icon_path=None, app_name="Timshostuploa
     else:
         icon_uri = ""
 
-    hints = {
+    hints = dict()
+    hints.update({
         "urgency": int(urgency)
-    }
+    })
+    if progress is not None:
+        hints.update({
+            "value": int(progress)
+        })
 
     notfy = dbus.Interface(
         dbus.SessionBus().get_object(
@@ -112,7 +120,6 @@ async def Notification(summary, body="", icon_path=None, app_name="Timshostuploa
     """
 
     notfy.Notify(app_name, replaces_id, icon_uri, summary, body, actions, hints, expire_timeout)
-
 
 async def save_to_file(image_path, url, img_format):
     """
@@ -151,7 +158,7 @@ async def save_to_file_no_upload(image_path, img_format):
     return filename
 
 
-async def file_sender(file_name="/dev/stdin", chunk_size=65536):
+async def file_sender(file_name="/dev/stdin", chunk_size=65536, verbose=False):
     if file_name != "/dev/stdin":
         file_size = os.path.getsize(file_name)
         readsofar = 0
@@ -161,9 +168,10 @@ async def file_sender(file_name="/dev/stdin", chunk_size=65536):
         while chunk:
             yield chunk
 
-            if file_name != "/dev/stdin":
+            if file_name != "/dev/stdin" and verbose:
                 readsofar += len(chunk)
                 percent = readsofar * 1e2 / file_size
+                await Notification(f"Uploading file ... {round(percent, 1)}", replaces_id=NOTIFICATION_REPLACE_ID, progress=percent)
                 await logr(f"Uploading file ... {round(percent, 1)}")
 
             chunk = await f.read(chunk_size)
@@ -235,7 +243,6 @@ async def main():
 
         file_name = "".join(x for x in file_name if x in valid_chars)
 
-
         try:
             headers = await header_get()
         except keyring.errors.KeyringLocked:
@@ -248,7 +255,8 @@ async def main():
             exit(1)
 
         formdata = aiohttp.FormData()
-        formdata.add_field("img", file_sender(file_name=in_file), filename=file_name)
+        formdata.add_field("img", file_sender(
+            file_name=in_file, verbose=True), filename=file_name)
 
         try:
             async with aiohttp.ClientSession() as session:
@@ -263,7 +271,7 @@ async def main():
                             await logln(url)
                             await clipboard_handler(url)
                             save_file = await save_to_file(in_file, url, file_name)
-                            await Notification(f"{file_type} has been uploaded", url, icon_path=save_file)
+                            await Notification(f"{file_type} has been uploaded", url, replaces_id=NOTIFICATION_REPLACE_ID, icon_path=save_file)
 
                         case 401:
                             await logln("Access denied: Invalid Token or User ID!")
@@ -274,7 +282,7 @@ async def main():
                                             Error code: {resp.status} go @Tim and yell at him\n
                                             {await resp.text()}""")
                             await Notification("Unable to connect to Tim host",
-                                            f"Error code: {resp.status} go @Tim and yell at him\n{await resp.text()}")
+                                               f"Error code: {resp.status} go @Tim and yell at him\n{await resp.text()}")
 
                             await logln("Fail", bcolors.FAIL)
 
@@ -293,9 +301,12 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
 
     parser.add_argument("-i", "--import_conf", help="Imports the config")
-    parser.add_argument("-s", "--setcfg", help="set the config manualy", action="store_true")
-    parser.add_argument("Upload_file", nargs=argparse.REMAINDER, help="File to be uploaded")
-    parser.add_argument("-v", "--verbose", help="Verbose mode enables logging debug", action="store_true")
+    parser.add_argument(
+        "-s", "--setcfg", help="set the config manualy", action="store_true")
+    parser.add_argument(
+        "Upload_file", nargs=argparse.REMAINDER, help="File to be uploaded")
+    parser.add_argument(
+        "-v", "--verbose", help="Verbose mode enables logging debug", action="store_true")
     args = parser.parse_args()
 
     if args.import_conf is not None:
@@ -304,8 +315,10 @@ if __name__ == "__main__":
             sys.exit(1)
         with open(args.import_conf) as fp:
             data = json.load(fp=fp)
-        keyring.set_password("pyuploader", "user", str(data["Headers"]["user"]))
-        keyring.set_password("pyuploader", "token", str(data["Headers"]["token"]))
+        keyring.set_password("pyuploader", "user",
+                             str(data["Headers"]["user"]))
+        keyring.set_password("pyuploader", "token",
+                             str(data["Headers"]["token"]))
         sys.exit()
     elif args.setcfg:
         keyring.set_password("pyuploader", "user", getpass.getpass("Userid:"))
@@ -324,4 +337,5 @@ if __name__ == "__main__":
             print("Fail")
             print(traceback.format_exc())
             asyncio.run(save_error(traceback.format_exc()))
-            asyncio.run(Notification("There was an error in the program while uploading", str(e)))
+            asyncio.run(Notification(
+                "There was an error in the program while uploading", str(e)))
