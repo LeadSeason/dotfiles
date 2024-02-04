@@ -1,0 +1,35 @@
+{
+    "files.autoSave": "afterDelay",
+    "files.associations": {
+        "*.json": "jsonc"
+    },
+    "python.linting.flake8Enabled": true,
+    // "python.linting.flake8Args": ["--ignore=F401,E501,F722,F841"],
+    "python.linting.flake8Args": ["--ignore=E501"],
+    "workbench.reduceMotion": "off",
+    "editor.inlayHints.fontFamily": "'Iosevka'",
+    "debug.console.fontFamily": "'Iosevka'",
+    "markdown.preview.fontFamily": "'Iosevka', -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif",
+    "workbench.preferredDarkColorTheme": "Red",
+    "telemetry.telemetryLevel": "off",
+    "window.titleBarStyle": "custom",
+    "python.linting.enabled": true,
+    "explorer.confirmDelete": false,
+    "workbench.colorTheme": "Catppuccin Mocha",
+    "catppuccin.accentColor": "pink",
+    "editor.fontFamily": "",
+    "editor.fontSize": 16,
+    "vim.useSystemClipboard": true,
+    "window.zoomLevel": 1,
+    "editor.largeFileOptimizations": false,
+    "python.linting.pylintCategorySeverity.error": "Warning",
+    "python.linting.mypyCategorySeverity.error": "Warning",
+    "editor.lineNumbers": "relative",
+    "cSpell.userWords": [
+        "decloak"
+    ],
+    "python.defaultInterpreterPath": "/home/leadseason/.config/eww/scripts/workspaces/venv/bin/python",
+    "git.openRepositoryInParentFolders": "never",
+    "explorer.confirmDragAndDrop": false,
+    "workbench.iconTheme": "catppuccin-mocha"
+}

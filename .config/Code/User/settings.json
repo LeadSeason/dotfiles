@@ -20,14 +20,13 @@
     "python.linting.flake8CategorySeverity.F": "Warning",
     "explorer.confirmDragAndDrop": false,
     "git.enableSmartCommit": true,
-    "editor.fontSize": 11,
+    "editor.fontSize": 13,
     "docker.enableDockerComposeLanguageService": true,
     "cmake.configureOnOpen": true,
     "python.defaultInterpreterPath": "/bin/python",
     "editor.fontFamily": "'JetBrainsMono Nerd Font'",
     "editor.fontLigatures": true,
     "files.autoSave": "afterDelay",
-    "arduino.path": "/home/leadseason/opt/arduino-1.8.19",
     "editor.largeFileOptimizations": false,
     "vim.useSystemClipboard": true,
     "git.confirmSync": false,
@@ -51,5 +50,11 @@
     "[python]": {
         "editor.formatOnType": true
     },
-    "window.zoomLevel": 2
+    "catppuccin.accentColor": "peach",
+    "window.zoomLevel": 1,
+    "workbench.iconTheme": "catppuccin-mocha",
+    "C_Cpp.default.compilerPath": "/usr/bin/g++",
+    "git.openRepositoryInParentFolders": "never",
+    "arduino.useArduinoCli": true,
+    "window.menuBarVisibility": "toggle"
 }
