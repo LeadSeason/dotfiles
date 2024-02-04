@@ -1,0 +1,22 @@
+@import "../../theme/mocha.scss";
+
+.SwayWorkspaces {
+	color: $peach70;
+	background-color: mix($peach20, transparent, 75%);
+
+	border-bottom: .15rem solid $peach;
+	border-top-right-radius: .3rem;
+	border-top-left-radius: .3rem;
+	margin: .3rem .5rem .0rem;
+}	
+
+.workspace {
+	border-top-right-radius: .3rem;
+	border-top-left-radius: .3rem;
+	padding: .3rem .6rem .4rem;
+}
+
+.focused {
+	color: $peach;
+	transition-duration: 300ms;
+}

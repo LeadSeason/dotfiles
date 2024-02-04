@@ -1,0 +1,379 @@
+/* This variable is inverted 100% = Opaque, 0% = Transparent*/
+$badgeTransparency: 75%;
+
+$text: #cdd6f4;
+$subtext0: #a6adc8;
+$subtext1: #bac2de;
+
+$base: rgb(30, 30, 46);
+.base {
+	color: $text;
+	background-color: mix($base, transparent, $badgeTransparency);
+	border-bottom: .15rem solid $text;
+}
+
+$mantle: rgb(24, 24, 37);
+$crust: rgb(17, 17, 27);
+
+
+$surface0: #313244;
+$surface1: #45475a;
+$surface2: #585b70;
+
+$overlay0: #6c7086;
+$overlay1: #7f849c;
+$overlay2: #9399b2;
+
+$rosewater10: rgb(24, 22, 22);
+$rosewater20: rgb(49, 45, 44);
+$rosewater30: rgb(74, 67, 66);
+$rosewater40: rgb(98, 90, 88);
+$rosewater50: rgb(122, 112, 110);
+$rosewater60: rgb(147, 134, 132);
+$rosewater70: rgb(172, 157, 154);
+$rosewater80: rgb(196, 179, 176);
+$rosewater90: rgb(220, 202, 198);
+$rosewater: rgb(245, 224, 220);
+
+.rosewater {
+	color: $rosewater;
+	background-color: mix($rosewater20, transparent, $badgeTransparency);
+	border-bottom: .15rem solid $rosewater;
+}
+
+.fgrosewater {
+	color: $rosewater;
+}
+
+.bgrosewater {
+	background-color: mix($rosewater20, transparent, $badgeTransparency);
+}
+
+$flamingo10: rgb(24, 20, 20);
+$flamingo20: rgb(48, 41, 41);
+$flamingo30: rgb(73, 62, 62);
+$flamingo40: rgb(97, 82, 82);
+$flamingo50: rgb(121, 102, 102);
+$flamingo60: rgb(145, 123, 123);
+$flamingo70: rgb(169, 144, 144);
+$flamingo80: rgb(194, 164, 164);
+$flamingo90: rgb(218, 184, 184);
+$flamingo: rgb(242, 205, 205);
+
+.flamingo {
+	color: $flamingo;
+	background-color: mix($flamingo20, transparent, $badgeTransparency);
+	border-bottom: .15rem solid $flamingo;
+}
+
+.fgflamingo {
+	color: $flamingo;
+}
+
+.bgflamingo {
+	background-color: mix($flamingo20, transparent, $badgeTransparency);
+}
+
+$pink10: rgb(24, 19, 23);
+$pink20: rgb(49, 39, 46);
+$pink30: rgb(74, 58, 69);
+$pink40: rgb(98, 78, 92);
+$pink50: rgb(122, 97, 116);
+$pink60: rgb(147, 116, 139);
+$pink70: rgb(172, 136, 162);
+$pink80: rgb(196, 155, 185);
+$pink90: rgb(220, 175, 208);
+$pink: rgb(245, 194, 231);
+
+.pink {
+	color: $pink;
+	background-color: mix($pink20, transparent, $badgeTransparency);
+	border-bottom: .15rem solid $pink;
+}
+
+.fgpink {
+	color: $pink;
+}
+
+.bgpink {
+	background-color: mix($pink20, transparent, $badgeTransparency);
+}
+
+$mauve10: rgb(20, 17, 25);
+$mauve20: rgb(41, 33, 49);
+$mauve30: rgb(61, 50, 74);
+$mauve40: rgb(81, 66, 99);
+$mauve50: rgb(102, 83, 124);
+$mauve60: rgb(122, 100, 148);
+$mauve70: rgb(142, 116, 173);
+$mauve80: rgb(162, 133, 198);
+$mauve90: rgb(183, 149, 222);
+$mauve: rgb(203, 166, 247);
+
+.mauve {
+	color: $mauve;
+	background-color: mix($mauve20, transparent, $badgeTransparency);
+	border-bottom: .15rem solid $mauve;
+}
+
+.fgmauve {
+	color: $mauve;
+}
+
+.bgmauve {
+	background-color: mix($mauve20, transparent, $badgeTransparency);
+}
+
+$red10: rgb(24, 14, 17);
+$red20: rgb(49, 28, 34);
+$red30: rgb(73, 42, 50);
+$red40: rgb(97, 56, 67);
+$red50: rgb(122, 70, 84);
+$red60: rgb(146, 83, 101);
+$red70: rgb(170, 97, 118);
+$red80: rgb(194, 111, 134);
+$red90: rgb(219, 125, 151);
+$red: rgb(243, 139, 168);
+
+.red {
+	color: $red;
+	background-color: mix($red20, transparent, $badgeTransparency);
+	border-bottom: .15rem solid $red;
+}
+
+.fgred {
+	color: $red;
+}
+
+.bgred {
+	background-color: mix($red20, transparent, $badgeTransparency);
+}
+
+$maroon10: rgb(24, 16, 17);
+$maroon20: rgb(47, 32, 34);
+$maroon30: rgb(70, 48, 52);
+$maroon40: rgb(94, 64, 69);
+$maroon50: rgb(118, 80, 86);
+$maroon60: rgb(141, 96, 103);
+$maroon70: rgb(164, 112, 120);
+$maroon80: rgb(188, 128, 138);
+$maroon90: rgb(212, 144, 155);
+$maroon: rgb(235, 160, 172);
+
+.maroon {
+	color: $maroon;
+	background-color: mix($maroon20, transparent, $badgeTransparency);
+	border-bottom: .15rem solid $maroon;
+}
+
+.fgmaroon {
+	color: $maroon;
+}
+
+.bgmaroon {
+	background-color: mix($maroon20, transparent, $badgeTransparency);
+}
+
+$peach10: rgb(25, 18, 14);
+$peach20: rgb(50, 36, 27);
+$peach30: rgb(75, 54, 40);
+$peach40: rgb(100, 72, 54);
+$peach50: rgb(125, 90, 68);
+$peach60: rgb(150, 107, 81);
+$peach70: rgb(175, 125, 94);
+$peach80: rgb(200, 143, 108);
+$peach90: rgb(225, 161, 122);
+$peach: rgb(250, 179, 135);
+
+.peach {
+	color: $peach;
+	background-color: mix($peach20, transparent, $badgeTransparency);
+	border-bottom: .15rem solid $peach;
+}
+
+.fgpeach {
+	color: $peach;
+}
+
+.bgpeach {
+	background-color: mix($peach20, transparent, $badgeTransparency);
+}
+
+$yellow10: rgb(25, 23, 18);
+$yellow20: rgb(50, 45, 35);
+$yellow30: rgb(75, 68, 52);
+$yellow40: rgb(100, 90, 70);
+$yellow50: rgb(124, 113, 88);
+$yellow60: rgb(149, 136, 105);
+$yellow70: rgb(174, 158, 122);
+$yellow80: rgb(199, 181, 140);
+$yellow90: rgb(224, 203, 158);
+$yellow: rgb(249, 226, 175);
+
+.yellow {
+	color: $yellow;
+	background-color: mix($yellow20, transparent, $badgeTransparency);
+	border-bottom: .15rem solid $yellow;
+}
+
+.fgyellow {
+	color: $yellow;
+}
+
+.bgyellow {
+	background-color: mix($yellow20, transparent, $badgeTransparency);
+}
+
+$green10: rgb(17, 23, 16);
+$green20: rgb(33, 45, 32);
+$green30: rgb(50, 68, 48);
+$green40: rgb(66, 91, 64);
+$green50: rgb(83, 114, 80);
+$green60: rgb(100, 136, 97);
+$green70: rgb(116, 159, 113);
+$green80: rgb(133, 182, 129);
+$green90: rgb(149, 204, 145);
+$green: rgb(166, 227, 161);
+
+.green {
+	color: $green;
+	background-color: mix($green20, transparent, $badgeTransparency);
+	border-bottom: .15rem solid $green;
+}
+
+.fggreen {
+	color: $green;
+}
+
+.bggreen {
+	background-color: mix($green20, transparent, $badgeTransparency);
+}
+
+$teal10: rgb(15, 23, 21);
+$teal20: rgb(30, 45, 43);
+$teal30: rgb(44, 68, 64);
+$teal40: rgb(59, 90, 85);
+$teal50: rgb(74, 113, 106);
+$teal60: rgb(89, 136, 128);
+$teal70: rgb(104, 158, 149);
+$teal80: rgb(118, 181, 170);
+$teal90: rgb(133, 203, 192);
+$teal: rgb(148, 226, 213);
+
+.teal {
+	color: $teal;
+	background-color: mix($teal20, transparent, $badgeTransparency);
+	border-bottom: .15rem solid $teal;
+}
+
+.fgteal {
+	color: $teal;
+}
+
+.bgteal {
+	background-color: mix($teal20, transparent, $badgeTransparency);
+}
+
+$sky10: rgb(14, 22, 24);
+$sky20: rgb(27, 44, 47);
+$sky30: rgb(41, 66, 70);
+$sky40: rgb(55, 88, 94);
+$sky50: rgb(68, 110, 118);
+$sky60: rgb(82, 132, 141);
+$sky70: rgb(96, 154, 164);
+$sky80: rgb(110, 176, 188);
+$sky90: rgb(123, 198, 212);
+$sky: rgb(137, 220, 235);
+
+.sky {
+	color: $sky;
+	background-color: mix($sky20, transparent, $badgeTransparency);
+	border-bottom: .15rem solid $sky;
+}
+
+.fgsky {
+	color: $sky;
+}
+
+.bgsky {
+	background-color: mix($sky20, transparent, $badgeTransparency);
+}
+
+$sapphire10: rgb(12, 20, 24);
+$sapphire20: rgb(23, 40, 47);
+$sapphire30: rgb(35, 60, 71);
+$sapphire40: rgb(46, 80, 94);
+$sapphire50: rgb(58, 100, 118);
+$sapphire60: rgb(70, 119, 142);
+$sapphire70: rgb(81, 139, 165);
+$sapphire80: rgb(93, 159, 189);
+$sapphire90: rgb(104, 179, 212);
+$sapphire: rgb(116, 199, 236);
+
+.sapphire {
+	color: $sapphire;
+	background-color: mix($sapphire20, transparent, $badgeTransparency);
+	border-bottom: .15rem solid $sapphire;
+}
+
+.fgsapphire {
+	color: $sapphire;
+}
+
+.bgsapphire {
+	background-color: mix($sapphire20, transparent, $badgeTransparency);
+}
+
+$blue10: rgb(14, 18, 25);
+$blue20: rgb(27, 36, 50);
+$blue30: rgb(41, 54, 75);
+$blue40: rgb(55, 72, 100);
+$blue50: rgb(68, 90, 125);
+$blue60: rgb(82, 108, 150);
+$blue70: rgb(96, 126, 175);
+$blue80: rgb(110, 144, 200);
+$blue90: rgb(123, 162, 225);
+$blue: rgb(137, 180, 250);
+
+.blue {
+	color: $blue;
+	background-color: mix($blue20, transparent, $badgeTransparency);
+	border-bottom: .15rem solid $blue;
+}
+
+.fgblue {
+	color: $blue;
+}
+
+.bgblue {
+	background-color: mix($blue20, transparent, $badgeTransparency);
+}
+
+$lavender10: rgb(18, 19, 25);
+$lavender20: rgb(36, 38, 51);
+$lavender30: rgb(54, 57, 76);
+$lavender40: rgb(72, 76, 102);
+$lavender50: rgb(90, 95, 127);
+$lavender60: rgb(108, 114, 152);
+$lavender70: rgb(126, 133, 178);
+$lavender80: rgb(144, 152, 203);
+$lavender90: rgb(162, 171, 229);
+$lavender: rgb(180, 190, 254);
+
+.lavender {
+	color: $lavender;
+	background-color: mix($lavender20, transparent, $badgeTransparency);
+	border-bottom: .15rem solid $lavender;
+}
+
+.fglavender {
+	color: $lavender;
+}
+
+.bglavender {
+	background-color: mix($lavender20, transparent, $badgeTransparency);
+}
+
+.gray {
+	color: $text;
+}

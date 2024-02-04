@@ -1,0 +1,30 @@
+@import "./theme/mocha.scss";
+@import "./widgets/bar/bar.scss";
+
+* {
+	all: unset;
+	font-family: "Symbols Nerd Font Mono", "JetBrainsMono Nerd Font";
+}
+
+button:hover {
+	background-color: mix($text, transparent, 15%);
+	transition-duration: 300ms;
+}
+
+tooltip {
+	color: $text;
+	background: $base;
+}
+
+.MainBar {
+	font-size: 20px;
+	background-color: mix($peach10, transparent, 25%);
+	border-bottom: .15rem solid mix($peach40, transparent, 25%);
+}
+
+.infoBox {
+	border-top-right-radius: .3rem;
+	border-top-left-radius: .3rem;
+	padding: .3rem .7rem .4rem;
+	margin: .3rem .5rem .0rem;
+}
