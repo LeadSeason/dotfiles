@@ -1,3 +1,6 @@
 [submodule ".local/share/zsh/zplug"]
 	path = .local/share/zsh/zplug
 	url = https://github.com/zplug/zplug
+[submodule ".config/nvim"]
+	path = .config/nvim
+	url = https://github.com/AstroNvim/AstroNvim
