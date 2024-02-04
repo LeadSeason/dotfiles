@@ -4,7 +4,7 @@
 
 * {
     width: 1275px;
-    font: "JetBrainsMono Nerd Font 14";
+    font: "Maple Mono SC NF 12";
 }
 
 element-text, element-icon , mode-switcher {
@@ -16,7 +16,7 @@ window {
     height: 575px;
     border: 3px;
     border-radius: 14px;
-    border-color: @Sapphire;
+    border-color: @Peach;
     background-color: @Base;
 }
 
@@ -32,7 +32,7 @@ inputbar {
 }
 
 prompt {
-    background-color: @Sapphire;
+    background-color: @Peach;
     padding: 6px;
     text-color: @Base;
     border-radius: 3px;
@@ -73,10 +73,10 @@ element-icon {
 
 element selected {
 	border: 2px;
-	border-color: @Sapphire;
+	border-color: @Peach;
 	border-radius: 8px;
     background-color: @Base;
-    text-color: @Sapphire;
+    text-color: @Peach;
 }
 
 mode-switcher {
@@ -93,5 +93,5 @@ button {
 
 button selected {
   background-color: @Base;
-  text-color: @Sapphire;
+  text-color: @Peach;
 }

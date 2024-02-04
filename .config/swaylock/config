@@ -6,7 +6,7 @@ indicator-caps-lock
 indicator
 clock
 timestr=%T
-font=JetBrainsMono Nerd Font
+font=Maple Mono
 indicator-idle-visible
 indicator-radius=180
 indicator-thickness=30
@@ -39,7 +39,7 @@ text-clear-color=#cdd6f4
 
 inside-color=#1e1e2e
 line-color=#00000000
-ring-color=#74c7ec
+ring-color=#fab387
 text-color=#cdd6f4
 
 inside-ver-color=#1e1e2e
