@@ -12,17 +12,21 @@ fallback = '󰳤'
 '/(?i)YouTube.*Firefox/' = ''
 'firefox' = ''
 'firefox-nightly' = ''
+'firefoxnightly' = ''
 'firefoxdeveloperedition' = ''
 
 # Steam
-'steam_app_1454400' = '󰆘'
-'steam_app_1332010' = '󰄛'
-'steam_app_548430' = ''
-# Not implemented
-# 'steam_app_' = ''
 'steam' = ''
 'Steam' = ''
 'steamwebhelper' = ''
+
+# Steam apps
+'steam_app_1454400' = '󰆘' # Cookie clicker
+'steam_app_1332010' = '󰄛' # Stray
+'steam_app_548430' = '' # DeepRock
+'steam_app_1966720' = '' # Lethal Company
+'vividstasis.exe' = '󰊜' # Vivid/Stasis
+'steam_app_275850' = ''
 
 # Terminals
 'Alacritty' = ''
@@ -31,7 +35,33 @@ fallback = '󰳤'
 'footclient' = ''
 'kitty' = ''
 
+# Discord
+'discord' = '󰙯'
+'vesktop' = '󰙯'
+'VencordDesktop' = '󰙯'
+
+# Flameshot
+'flameshot' = ''
+
+# 3D printing
+'org.freecadweb.FreeCAD' = ''
+'org.freecad.FreeCAD' = ''
+'FreeCAD' = ''
+'cura' = '󰆧'
+
+# Mail
+'Thunderbird' = ''
+'betterbird' = ''
+
+# osu!
+'osu!.exe' = '󰲡'
+'osu!' = '󰲡'
+
+# Wine
+'wineboot.exe' = '󰡶'
+
 # Misc Using
+'NoiseTorch' = '󰍯'
 '/Minecraft?\w*/' = '󰍳'
 '/YouTube Music/' = ''
 '/node/' = '󰎙'
@@ -45,25 +75,21 @@ fallback = '󰳤'
 'balena-etcher' = ''
 'blueman-manager' = ''
 'com/.https://ultimaker.Ultimaker-Cura' = ''
-'cura' = ''
-'discord' = '󰙯'
 'factorio' = ''
 'gamescope' = ''
 'gcr-prompter' = ''
 'krita' = ''
 'nemo' = ''
+'file-roller' = '󰛫'
 'xdg-desktop-portal-gtk' = ''
 'mpv' = ''
 'nm-connection-editor' = ''
-'org.freecadweb.FreeCAD' = ''
-'FreeCAD' = ''
 'org.telegram.desktop' = ''
 'org.gnome.baobab' = '󰋊'
 'org.kde.kcolorchooser' = ''
 'org.kde.kdeconnect-settings' = ''
 'org.kde.kdeconnect.app' = ''
 'org.prismlauncher.PrismLauncher' = '󰍳'
-'osu!' = '󰲡'
 'swappy' = ''
 
 # Misc default
@@ -76,7 +102,6 @@ fallback = '󰳤'
 'Postman' = ''
 'Slack' = ''
 'Spotify' = ''
-'Thunderbird' = ''
 'code-oss' = ''
 'jetbrains-studio' = ''
 'org.qbittorrent.qBittorrent' = ''
