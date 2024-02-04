@@ -1,0 +1,36 @@
+#!/home/leadseason/.config/eww/scripts/.venv/bin/python
+import asyncio
+import signal
+from contextlib import suppress
+from pprint import pprint
+
+import pulsectl_asyncio
+import pulsectl
+
+
+async def listen():
+    async with pulsectl_asyncio.PulseAsync('event-printer') as pulse:
+        async for event in pulse.subscribe_events('all'):
+            print((await pulse.server_info()).default_sink_name)
+            for y, x in enumerate(await pulse.sink_list()):
+                x: pulsectl.pulsectl.PulseSinkInfo = x
+                volume = int(round(x.volume.value_flat * 100, 0))
+                print("{}: {}".format(y, volume))
+                pass
+
+
+async def main():
+    listen_task = asyncio.create_task(listen())
+
+    # register signal handlers to cancel listener when program is asked to terminate
+    for sig in (signal.SIGTERM, signal.SIGHUP, signal.SIGINT):
+        loop.add_signal_handler(sig, listen_task.cancel)
+    # Alternatively, the PulseAudio event subscription can be ended by breaking/returning from the `async for` loop
+
+    with suppress(asyncio.CancelledError):
+        await listen_task
+
+
+if __name__ == "__main__":
+    loop = asyncio.get_event_loop()
+    loop.run_until_complete(main())

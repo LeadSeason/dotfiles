@@ -35,7 +35,10 @@ async def main():
                     workspaceType = "urgent"
                 elif x.focused:
                     workspaceType = "focused"
-                print(f'(button :onclick "swaymsg workspace number {x.name[:1]}" :class "{workspaceType}" (label :text "{x.name}")) ', end="", flush=True)
+                wName = x.name
+                if len(wName) == 1:
+                    wName = f"{wName}"
+                print(f'(button :onclick "swaymsg workspace number {x.name[:1]}" :class "{workspaceType}" (label :text "{wName}")) ', end="", flush=True)
 
         # Wont update without flush, Python buffering
         print("", flush=True)

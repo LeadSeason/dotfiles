@@ -74,7 +74,7 @@
 )
 
 (deflisten sway_workspaces
-  "scripts/workspaces -t eDP-1"
+  "scripts/workspaces -t DP-1"
 )
 
 ; ##################
@@ -195,8 +195,11 @@
     :orientation "h"
     :halign "end"
     :class "right_stuff"
-	(cpu)
-	(mem)
+    (vol)
+    (mic)
+    (cpu)
+    (mem)
+    (temp)
     (archupdates)
   )
 )
@@ -228,7 +231,7 @@
     :class "rightmodule sky"
 	; Failed to turn EWW_TEMPS in to json
     (label
-      :text "${EWW_TEMPS[0]}°C"
+      :text "${round(EWW_TEMPS["NCT6797_SMBUSMASTER_0"], 0)}°C"
     )
   )
 )
@@ -238,6 +241,24 @@
     :class "rightmodule green"
     (label
       :text " ${round(EWW_CPU["avg"], 0)}%"
+    )
+  )
+)
+
+(defwidget mic []
+  (box
+    :class "rightmodule peach"
+    (label
+        :text ""
+    )
+  )
+)
+
+(defwidget vol []
+  (box
+    :class "rightmodule red"
+    (label
+      :text ""
     )
   )
 )
