@@ -4,3 +4,6 @@
 [submodule ".config/nvim"]
 	path = .config/nvim
 	url = https://github.com/AstroNvim/AstroNvim
+[submodule ".config/nvim-user"]
+	path = .config/nvim-user
+	url = https://github.com/LeadSeason/astronvim_config
