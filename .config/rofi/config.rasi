@@ -1,21 +1,36 @@
-/* vim: ft=css tabstop=2 shiftwidth=2 : */
+/* 
+ * vim: ft=css tabstop=2 shiftwidth=2 :
+ */
 configuration {
-	modi: "window,run,ssh,drun,filebrowser";
-	font: "Iosevka 12, Symbols Nerd Font 12";
+  modi: "window,run,ssh,drun,filebrowser";
+  /* font: "maple mono"; */
+  icon-theme: "Papirus-Dark";
+
+  case-sensitive: false;
+  scroll-method: 1;
+  show-icons: true;
+
+  ssh-command: """{terminal} -e sh -c "{ssh-client} {host} [-p {port}]" """;
+  terminal: "kitty --single-instance";
+
+  timeout {
+    action: "kb-cancel";
+    delay:  0;
+  }
+  filebrowser {
+    directories-first: true;
+    sorting-method:    "name";
+  }
 /*	location: 0;*/
 /*	yoffset: 0;*/
 /*	xoffset: 0;*/
 /*	fixed-num-lines: true;*/
-	show-icons: true;
-	terminal: "kitty --single-instance";
 /*	ssh-client: "ssh";*/
-  	ssh-command: """{terminal} -e sh -c "{ssh-client} {host} [-p {port}]" """;
 /*	run-command: "{cmd}";*/
 /*	run-list-command: "";*/
 /*	run-shell-command: "{terminal} -e {cmd}";*/
 /*	window-command: "wmctrl -i -R {window}";*/
 /*	window-match-fields: "all";*/
-	icon-theme: "Papirus-Dark";
 /*	drun-match-fields: "name,generic,exec,categories,keywords";*/
 /*	drun-categories: ;*/
 /*	drun-show-actions: false;*/
@@ -25,7 +40,6 @@ configuration {
 /*	ignored-prefixes: "";*/
 /*	sort: false;*/
 /*	sorting-method: "normal";*/
-  	case-sensitive: false;
 /*	cycle: true;*/
 /*	sidebar-mode: false;*/
 /*	hover-select: false;*/
@@ -40,7 +54,6 @@ configuration {
 /*	filter: ;*/
 /*	dpi: -1;*/
 /*	threads: 0;*/
-	scroll-method: 1;
 /*	window-format: "{w}    {c}   {t}";*/
 /*	click-to-exit: true;*/
 /*	max-history-size: 25;*/
@@ -136,14 +149,6 @@ configuration {
 /*	me-select-entry: "MousePrimary";*/
 /*	me-accept-entry: "MouseDPrimary";*/
 /*	me-accept-custom: "Control+MouseDPrimary";*/
-  timeout {
-      action: "kb-cancel";
-      delay:  0;
-  }
-  filebrowser {
-      directories-first: true;
-      sorting-method:    "name";
-  }
 }
 
 @theme "/home/leadseason/.local/share/rofi/run.rasi"
