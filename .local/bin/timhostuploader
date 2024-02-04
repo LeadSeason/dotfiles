@@ -20,7 +20,8 @@ import filetype
 save_path = "/home/leadseason/visual-media/tims.host_uploads/"
 error_log_path = "/home/leadseason/.cache/timhostuploader-logs/"
 
-NOTIFICATION_REPLACE_ID = 120
+NOTIFICATION_REPLACE_ID = 1
+
 
 class bcolors:
     OK = '\033[92m'
@@ -87,7 +88,7 @@ async def clipboard_handler(data):
         exit()
 
 
-async def Notification(summary, body="", icon_path=None, app_name="Timshostuploader", replaces_id=0, actions=[], urgency=1, expire_timeout:int = 3000, progress:int = None):
+async def Notification(summary, body="", icon_path=None, app_name="Timshostuploader", replaces_id=0, actions=[], urgency=1, expire_timeout: int = 3000, progress: int = None):
     """
         Shows notification to user that image has been uploaded
     """
@@ -119,7 +120,9 @@ async def Notification(summary, body="", icon_path=None, app_name="Timshostuploa
         https://specifications.freedesktop.org/notification-spec/latest/ar01s09.html
     """
 
-    notfy.Notify(app_name, replaces_id, icon_uri, summary, body, actions, hints, expire_timeout)
+    notfy.Notify(app_name, replaces_id, icon_uri, summary,
+                 body, actions, hints, expire_timeout)
+
 
 async def save_to_file(image_path, url, img_format):
     """
@@ -278,11 +281,14 @@ async def main():
                             await Notification("Access denied: Invalid Token or User ID!", "")
 
                         case _:
-                            await logln(f"""Unable to connect to Tims host\n
+                            await logln(f"""Unable to connect to Tims.host\n
                                             Error code: {resp.status} go @Tim and yell at him\n
                                             {await resp.text()}""")
-                            await Notification("Unable to connect to Tim host",
-                                               f"Error code: {resp.status} go @Tim and yell at him\n{await resp.text()}")
+                            await Notification("Unable to connect to Tims.host",
+                                               f"Falling back to wl-copy\nError code: {resp.status} go @Tim and yell at him\n{await resp.text()}")
+
+                            save_file = await save_to_file_no_upload(in_file, file_name)
+                            os.system(f"cat {in_file} | wl-copy")
 
                             await logln("Fail", bcolors.FAIL)
 
