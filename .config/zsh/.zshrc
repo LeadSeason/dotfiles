@@ -1,13 +1,7 @@
-fastfetch --load-config $HOME/.config/fastfetch/config-small.conf
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.config/zsh/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
-
 source ~/.zshenv
 
 # start wm on tty1 login
@@ -25,6 +19,13 @@ if [ "$(tty)" = "/dev/tty1" ]; then
     # starting sway
     exec sway
 fi
+
+fastfetch --load-config $HOME/.config/fastfetch/config-small.conf
+
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 
 # auto loads and inits
 autoload -Uz compinit promptinit colors select-word-style
@@ -81,18 +82,20 @@ alias ff="fastfetch"
 alias ffs="fastfetch --load-config $HOME/.config/fastfetch/config-small.conf"
 alias grep="grep --color"
 alias icat="kitty +kitten icat"
+alias ip="ip -color=auto"
 alias la="lsd -Flha --color=auto"
 alias ll="lsd -Flh --color=auto"
 alias ls="lsd -F --color=auto"
 alias lynx="lynx -accept_all_cookies"
 alias make="make -j24"
-alias neovide="neovide --multigrid"
-alias nvide="swaymsg 'layout tabbed' && neovide --nofork; swaymsg 'layout toggle split'"
 alias nvim="PATH=\"$NVIM_PATH\" nvim"
+alias quit="exit"
+alias radeontop="radeontop -c"
 alias s="s -p duckduckgo"
 alias saberfetch="neofetch --ascii ~/.config/neofetch/saber.ascii --gap -567"
 alias showcolors="curl https://gist.githubusercontent.com/HaleTom/89ffe32783f89f403bba96bd7bcd1263/raw/ | bash"
 alias ssh="TERM=xterm ssh"
+alias tree="tree -C"
 
 
 # Bindings
