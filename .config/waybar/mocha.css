@@ -5,9 +5,9 @@
 *
 */
 
-@define-color base   #1e1e2e;
-@define-color mantle #181825;
-@define-color crust  #11111b;
+@define-color base   rgb(30, 30, 46);
+@define-color mantle rgb(24, 24, 37);
+@define-color crust  rgb(17, 17, 27);
 
 @define-color text     #cdd6f4;
 @define-color subtext0 #a6adc8;
@@ -21,17 +21,156 @@
 @define-color overlay1 #7f849c;
 @define-color overlay2 #9399b2;
 
-@define-color blue      #89b4fa;
-@define-color lavender  #b4befe;
-@define-color sapphire  #74c7ec;
-@define-color sky       #89dceb;
-@define-color teal      #94e2d5;
-@define-color green     #a6e3a1;
-@define-color yellow    #f9e2af;
-@define-color peach     #fab387;
-@define-color maroon    #eba0ac;
-@define-color red       #f38ba8;
-@define-color mauve     #cba6f7;
-@define-color pink      #f5c2e7;
-@define-color flamingo  #f2cdcd;
-@define-color rosewater #f5e0dc;
+@define-color rosewater10 rgb(24, 22, 22);
+@define-color rosewater20 rgb(49, 45, 44);
+@define-color rosewater30 rgb(74, 67, 66);
+@define-color rosewater40 rgb(98, 90, 88);
+@define-color rosewater50 rgb(122, 112, 110);
+@define-color rosewater60 rgb(147, 134, 132);
+@define-color rosewater70 rgb(172, 157, 154);
+@define-color rosewater80 rgb(196, 179, 176);
+@define-color rosewater90 rgb(220, 202, 198);
+@define-color rosewater rgb(245, 224, 220);
+
+@define-color flamingo10 rgb(24, 20, 20);
+@define-color flamingo20 rgb(48, 41, 41);
+@define-color flamingo30 rgb(73, 62, 62);
+@define-color flamingo40 rgb(97, 82, 82);
+@define-color flamingo50 rgb(121, 102, 102);
+@define-color flamingo60 rgb(145, 123, 123);
+@define-color flamingo70 rgb(169, 144, 144);
+@define-color flamingo80 rgb(194, 164, 164);
+@define-color flamingo90 rgb(218, 184, 184);
+@define-color flamingo rgb(242, 205, 205);
+
+@define-color pink10 rgb(24, 19, 23);
+@define-color pink20 rgb(49, 39, 46);
+@define-color pink30 rgb(74, 58, 69);
+@define-color pink40 rgb(98, 78, 92);
+@define-color pink50 rgb(122, 97, 116);
+@define-color pink60 rgb(147, 116, 139);
+@define-color pink70 rgb(172, 136, 162);
+@define-color pink80 rgb(196, 155, 185);
+@define-color pink90 rgb(220, 175, 208);
+@define-color pink rgb(245, 194, 231);
+
+@define-color mauve10 rgb(20, 17, 25);
+@define-color mauve20 rgb(41, 33, 49);
+@define-color mauve30 rgb(61, 50, 74);
+@define-color mauve40 rgb(81, 66, 99);
+@define-color mauve50 rgb(102, 83, 124);
+@define-color mauve60 rgb(122, 100, 148);
+@define-color mauve70 rgb(142, 116, 173);
+@define-color mauve80 rgb(162, 133, 198);
+@define-color mauve90 rgb(183, 149, 222);
+@define-color mauve rgb(203, 166, 247);
+
+@define-color red10 rgb(24, 14, 17);
+@define-color red20 rgb(49, 28, 34);
+@define-color red30 rgb(73, 42, 50);
+@define-color red40 rgb(97, 56, 67);
+@define-color red50 rgb(122, 70, 84);
+@define-color red60 rgb(146, 83, 101);
+@define-color red70 rgb(170, 97, 118);
+@define-color red80 rgb(194, 111, 134);
+@define-color red90 rgb(219, 125, 151);
+@define-color red rgb(243, 139, 168);
+
+@define-color maroon10 rgb(24, 16, 17);
+@define-color maroon20 rgb(47, 32, 34);
+@define-color maroon30 rgb(70, 48, 52);
+@define-color maroon40 rgb(94, 64, 69);
+@define-color maroon50 rgb(118, 80, 86);
+@define-color maroon60 rgb(141, 96, 103);
+@define-color maroon70 rgb(164, 112, 120);
+@define-color maroon80 rgb(188, 128, 138);
+@define-color maroon90 rgb(212, 144, 155);
+@define-color maroon rgb(235, 160, 172);
+
+@define-color peach10 rgb(25, 18, 14);
+@define-color peach20 rgb(50, 36, 27);
+@define-color peach30 rgb(75, 54, 40);
+@define-color peach40 rgb(100, 72, 54);
+@define-color peach50 rgb(125, 90, 68);
+@define-color peach60 rgb(150, 107, 81);
+@define-color peach70 rgb(175, 125, 94);
+@define-color peach80 rgb(200, 143, 108);
+@define-color peach90 rgb(225, 161, 122);
+@define-color peach rgb(250, 179, 135);
+
+@define-color yellow10 rgb(25, 23, 18);
+@define-color yellow20 rgb(50, 45, 35);
+@define-color yellow30 rgb(75, 68, 52);
+@define-color yellow40 rgb(100, 90, 70);
+@define-color yellow50 rgb(124, 113, 88);
+@define-color yellow60 rgb(149, 136, 105);
+@define-color yellow70 rgb(174, 158, 122);
+@define-color yellow80 rgb(199, 181, 140);
+@define-color yellow90 rgb(224, 203, 158);
+@define-color yellow rgb(249, 226, 175);
+
+@define-color green10 rgb(17, 23, 16);
+@define-color green20 rgb(33, 45, 32);
+@define-color green30 rgb(50, 68, 48);
+@define-color green40 rgb(66, 91, 64);
+@define-color green50 rgb(83, 114, 80);
+@define-color green60 rgb(100, 136, 97);
+@define-color green70 rgb(116, 159, 113);
+@define-color green80 rgb(133, 182, 129);
+@define-color green90 rgb(149, 204, 145);
+@define-color green rgb(166, 227, 161);
+
+@define-color teal10 rgb(15, 23, 21);
+@define-color teal20 rgb(30, 45, 43);
+@define-color teal30 rgb(44, 68, 64);
+@define-color teal40 rgb(59, 90, 85);
+@define-color teal50 rgb(74, 113, 106);
+@define-color teal60 rgb(89, 136, 128);
+@define-color teal70 rgb(104, 158, 149);
+@define-color teal80 rgb(118, 181, 170);
+@define-color teal90 rgb(133, 203, 192);
+@define-color teal rgb(148, 226, 213);
+
+@define-color sky10 rgb(14, 22, 24);
+@define-color sky20 rgb(27, 44, 47);
+@define-color sky30 rgb(41, 66, 70);
+@define-color sky40 rgb(55, 88, 94);
+@define-color sky50 rgb(68, 110, 118);
+@define-color sky60 rgb(82, 132, 141);
+@define-color sky70 rgb(96, 154, 164);
+@define-color sky80 rgb(110, 176, 188);
+@define-color sky90 rgb(123, 198, 212);
+@define-color sky rgb(137, 220, 235);
+
+@define-color sapphire10 rgb(12, 20, 24);
+@define-color sapphire20 rgb(23, 40, 47);
+@define-color sapphire30 rgb(35, 60, 71);
+@define-color sapphire40 rgb(46, 80, 94);
+@define-color sapphire50 rgb(58, 100, 118);
+@define-color sapphire60 rgb(70, 119, 142);
+@define-color sapphire70 rgb(81, 139, 165);
+@define-color sapphire80 rgb(93, 159, 189);
+@define-color sapphire90 rgb(104, 179, 212);
+@define-color sapphire rgb(116, 199, 236);
+
+@define-color blue10 rgb(14, 18, 25);
+@define-color blue20 rgb(27, 36, 50);
+@define-color blue30 rgb(41, 54, 75);
+@define-color blue40 rgb(55, 72, 100);
+@define-color blue50 rgb(68, 90, 125);
+@define-color blue60 rgb(82, 108, 150);
+@define-color blue70 rgb(96, 126, 175);
+@define-color blue80 rgb(110, 144, 200);
+@define-color blue90 rgb(123, 162, 225);
+@define-color blue rgb(137, 180, 250);
+
+@define-color lavender10 rgb(18, 19, 25);
+@define-color lavender20 rgb(36, 38, 51);
+@define-color lavender30 rgb(54, 57, 76);
+@define-color lavender40 rgb(72, 76, 102);
+@define-color lavender50 rgb(90, 95, 127);
+@define-color lavender60 rgb(108, 114, 152);
+@define-color lavender70 rgb(126, 133, 178);
+@define-color lavender80 rgb(144, 152, 203);
+@define-color lavender90 rgb(162, 171, 229);
+@define-color lavender rgb(180, 190, 254);

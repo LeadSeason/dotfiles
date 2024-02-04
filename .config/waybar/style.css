@@ -1,80 +1,145 @@
 @import "mocha.css";
 
 * {
-	font-family: "Symbols Nerd Font Mono", "Maple Mono";
-	font-feature-settings: "cv01";
+	font-family: "Symbols Nerd Font Mono", "Maple mono";
+  font-feature-settings: "cv01";
 	font-size: 20px;
 	min-height: 0;
+	transition-duration: 500ms;
 }
 
 #waybar {
 	background: transparent;
 	color: @text;
-	margin: 5px 5px 5px 5px;
+}
+
+tooltip {
+	color: @text;
+	background: @base;
 }
 
 #custom-os_icon {
-	border-radius: 1rem;
-  background: @base;
-  color: @sapphire;
-  padding: 5px .7rem 5px .7rem;
-  margin: 5px 0px 5px .5rem;
-	border: 2px solid @surface0;
+  color: @peach;
+  background: repeating-linear-gradient(@peach20, @peach20 .2%, @peach30 .5%, @peach20 .8%, @peach20 1%);
+  box-shadow: inset 3px 4px 5px @crust,
+              0px -1px 3px 4px alpha(@crust, .5);
+
+	border-radius: .6rem;
+	border: .1rem solid @peach60;
+
+  padding: .4rem .7rem;
+  margin: .3rem .5rem 4px .7rem;
 }
+
 #workspaces {
-	border-radius: 1rem;
-  	margin: 5px 0px 5px .5rem;
-  	background-color: @base;
-	border: 2px solid @surface0;
+  color: @peach;
+  background: @peach20;
+  background: repeating-linear-gradient(@peach20, @peach20 .2%, @peach30 .5%, @peach20 .8%, @peach20 1%);
+  box-shadow: inset 3px 4px 5px @crust,
+              0px -1px 3px 4px alpha(@crust, .5);
+
+	border-radius: .6rem;
+	border: .1rem solid @peach60;
+
+  padding: 0rem;
+  margin: .3rem .5rem 4px;
 }
+
 #workspaces button {
-	color: @lavender;
-	border-radius: 1rem;
-	padding: 5px 0.5rem;
+  color: @peach70;
+  margin: 0rem;
+  padding: .4rem .5rem;
+	transition-duration: 200ms;
 }
+
 #workspaces button.focused {
-	color: @sapphire;
-	border-radius: 1rem;
+	transition-duration: 200ms;
+  color: @peach;
 }
-#workspaces button.visable {
-	color: @sky;
-	border-radius: 1rem;
-}
-#workspaces button:hover {
-	color: @sapphire;
-	background: @base;
-	border-color: @base;
-	border-radius: 1rem;
-}
+
 #clock {
-	background-color: @base;
-	color: @lavender;
-	border-radius: 1rem 1rem 1rem 1rem;
-	margin: 5px 0px 5px 0px;
-	padding: 5px .5rem;
-	border: 2px solid @surface0;
+  color: @peach;
+  background: @peach20;
+  background: repeating-linear-gradient(@peach20, @peach20 .2%, @peach30 .5%, @peach20 .8%, @peach20 1%);
+  box-shadow: inset 3px 4px 5px @crust,
+              0px -1px 3px 4px alpha(@crust, .5);
+
+	border-radius: .6rem;
+	border: .1rem solid @peach60;
+
+  padding: .4rem .7rem;
+  margin: .3rem .5rem .3rem;
+
 }
+
+.modules-right {
+  color: @peach;
+  background: @peach20;
+  background: repeating-linear-gradient(@peach20, @peach20 .2%, @peach30 .5%, @peach20 .8%, @peach20 1%);
+  box-shadow: inset 3px 4px 5px @crust,
+              0px -1px 3px 4px alpha(@crust, .5);
+
+	border-radius: .6rem;
+	border: .1rem solid @peach60;
+
+  margin: .3rem .7rem 4px .5rem;
+}
+
 #idle_inhibitor {
-	background-color: @base;
-	color: @pink;
-	border-radius: 1rem 0rem 0rem 1rem;
-	margin: 5px 0px 5px 0px;
-	padding: 5px 1rem;
-	border-style: solid none solid solid;
-	border-color: @surface0;
-	border-width: 2px;
+  color: @rosewater;
+  padding: .4rem .7rem;
 }
 
 #backlight {
-	background-color: @base;
-	color: @mauve;
-	border-radius: 0rem;
-	margin: 5px 0px 5px 0px;
-	padding: 5px 1rem;
-	border-style: solid none solid ;
-	border-color: @surface0;
-	border-width: 2px;
+  color: @flamingo;
+  padding: .4rem .7rem;
 }
+
+#pulseaudio {
+  color: @red;
+  padding: .4rem .7rem;
+}
+
+#battery {
+  color: @maroon;
+  padding: .4rem .7rem;
+}
+
+#network {
+	color: @peach;
+  padding: .4rem .7rem;
+}
+
+#cpu {
+	color: @green;
+  padding: .4rem .7rem;
+}
+
+#memory {
+	color: @teal;
+  padding: .4rem .7rem;
+}
+
+#temperature {
+	color: @sky;
+  padding: .4rem .7rem;
+}
+
+#custom-archupdates {
+	color: @sapphire;
+  padding: .4rem .7rem;
+}
+
+#tray {
+	color: @lavender;
+  padding: .4rem .7rem;
+}
+
+#custom-notification {
+	color: @peach;
+  padding: .4rem .7rem;
+}
+/*
 #pulseaudio {
 	background-color: @base;
 	color: @red;
@@ -166,3 +231,4 @@ tooltip {
 	color: @text;
 	background: @base;
 }
+*/

@@ -9,9 +9,10 @@
 
 # Mod1 = alt
 set $mod Mod1
-set $term footclient
+# set $term footclient
+set $term kitty -1
 set $file nemo
-set $browser firefox
+set $browser firefox-nightly
 set $WOBSOCK $XDG_RUNTIME_DIR/wob.sock
 
 # xwayland disable
@@ -56,29 +57,35 @@ include ~/.config/sway/config.d/*
 
 # output * bg ~/.config/sway/wp/shuttle.mocha.jpg stretch $base
 
+# output * bg ~/.local/share/wallpapers/mocha-hald8-fate-astolfo_waifu2x_art_noise0_scale.png stretch $base
+output * bg ~/visual-media/wallpaper/fantasyart-1663166031505-4192.jpg stretch $base
+
 # font
-font Maple Mono NF 11:style=Medium,Regular 8
+font Maple Mono 11
 
 # Gaps
 default_border pixel 2
 gaps inner 10
 gaps outer 10
-gaps top 0
+
+# left | center | right
+# title_align left 
 
 # Colors
 # target                 title     bg    text   indicator  border
-client.focused           $sapphire $base $text  $red       $sapphire
-client.focused_inactive  $mauve    $base $text  $surface1  $surface0
-client.unfocused         $mauve    $base $text  $surface1  $surface0
-client.urgent            $peach    $base $peach $peach     $peach
+client.focused           $peach    $peach $base  $red $peach
+client.focused_inactive  $peach     $base $text  $surface1  $surface0
+client.focused_tab_title $peach     $base $text  $surface1  $surface0
+client.unfocused         $base     $base $text  $surface1  $surface0
+client.urgent            $peach    $base $red $peach     $red
 client.placeholder       $overlay0 $base $text  $surface1  $overlay0
-client.background        $base
+client.background        $crust
 
-exec_always {
-	gsettings set org.gnome.desktop.interface cursor-size 12
-	gsettings set org.cinnamon.desktop.interface cursor-size 12
-	nwg-look -a
-}
+exec_always gsettings set org.gnome.desktop.interface cursor-size 12
+exec_always gsettings set org.cinnamon.desktop.interface cursor-size 12
+exec_always gsettings set org.gnome.desktop.interface monospace-font-name 'Maple Mono NF 12'
+exec_always gsettings set org.gnome.desktop.interface document-font-name 'Maple Mono NF 12'
+exec_always gsettings set org.gnome.desktop.interface font-name 'Maple Mono NF 12'
 
 # Sway-FX
 # Uncomment if running Sway-FX
@@ -97,6 +104,19 @@ blur_xray disable
 blur_passes 3
 blur_radius 3
 
+# layer_effects "waybar" blur enable; corner_radius 0
+layer_effects "gjs" blur enable; corner_radius 0
+layer_effects "bar0" blur enable; corner_radius 0; shadows enable; border pixel 0
+layer_effects "bar1" blur enable; corner_radius 0; shadows enable; border pixel 0
+layer_effects "bar2" blur enable; corner_radius 0; shadows enable; border pixel 0
+
+# layer_effects "bar0" blur enable; corner_radius 14; shadows enable
+# layer_effects "bar1" blur enable; corner_radius 14; shadows enable 
+# layer_effects "bar2" blur enable; corner_radius 14; shadows enable
+
+layer_effects "ags" blur enable; corner_radius 0
+layer_effects "eww" blur enable; corner_radius 0
+
 shadows enable
 shadows_on_csd disable
 shadow_blur_radius 30
@@ -114,10 +134,16 @@ shadow_color #000000ff ex, #0000007F
 # dim_inactive_colors.urgent $base ex, #fab387FF
 
 for_window [app_id="org.kde.kdeconnect.daemon"] floating enable
+for_window [app_id="xdg-desktop-portal-gtk"] floating enable
 for_window [instance="origin.exe"] floating enable
 for_window [title="^Bitwarden —"] floating enable
+for_window [title="Remote Folder Picker - Celeste"] floating enable
+for_window [title="Local Folder Picker - Celeste"] floating enable
 for_window [class="steam_app_218230"] saturation set 1.5
-
+for_window [app_id="vivid/stasis"] fullscreen enable
+for_window [title="NoiseTorch"] floating enable
+for_window [app_id="flameshot"] border pixel 0, floating enable, fullscreen disable, move absolute position 0 0
+for_window [app_id="flameshot"] border pixel 0, fullscreen global
 
 #
 # ██████╗░██████╗░░█████╗░░██████╗░██████╗░░█████╗░███╗░░░███╗░██████╗
@@ -131,15 +157,11 @@ for_window [class="steam_app_218230"] saturation set 1.5
 # https://retardism.xyz/s/w7jXr300xDhQsb2
 exec foot --server
 exec wl-paste -t text --watch clipman store --no-persist
-exec autotiling
+# exec autotiling
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec /usr/lib/kdeconnectd
 
-# Aditional fancy pants programs
-exec discover-overlay
-exec sleep 5; noisetorch -u; noisetorch -i
 
-exec swaybg -i ~/.local/share/wallpapers/mocha-hald8-sunrise\ plane.jpg
 # Init wallpaper server
 # exec swww init
 # Pick random wallpapers ever 4 - 8 hours
@@ -155,26 +177,36 @@ exec g++ ~/.config/waybar/scipts/getupdates-client.cpp -O2 -march=native -o ~/.c
 exec ~/var/build/Waybar/build/waybar || waybar
 
 # No more applet tray
-# exec kdeconnect-indicator
-# exec nm-applet --indicator
-# exec blueman-applet
-exec sworkstyle
+exec kdeconnect-indicator
+exec nm-applet --indicator
+exec blueman-applet
+exec sworkstyle &> /tmp/sworkstyle.log
+# exec sworkstyle
 exec rm -f $WOBSOCK && mkfifo $WOBSOCK && tail -f $WOBSOCK | wob
 exec swayidle \
 	timeout 120 "brightnessctl get > ~/.cache/resume_brightness; brightnessctl set 20%" \
     resume "brightnessctl set \$(cat ~/.cache/resume_brightness)" \
-	timeout 120 "pkill Discord -STOP" \
-	resume 'pkill Discord -CONT' \
 	timeout 180 "pgrep swaylock || swaylock --grace 3 --fade-in 3" \
-	timeout 200 'swaymsg "output * dpms off"' \
-	resume 'swaymsg "output * dpms on"' \
 	before-sleep "pgrep swaylock || swaylock"
+
+
+   # timeout 200 'swaymsg "output * dpms off"' \
+   # resume 'swaymsg "output * dpms on"' \
+#     timeout 120 "pkill Discord -STOP" \
+#     resume 'pkill Discord -CONT' \
+
+exec nextcloud --background
+exec protonmail-bridge -n 
+
+# Aditional fancy pants programs
+exec discover-overlay
+exec sleep 20; noisetorch -i
 
 exec /usr/lib/xdg-desktop-portal-wlr
 exec /usr/lib/xdg-desktop-portal
 exec /usr/lib/xdg-desktop-portal-gtk
 
-exec systemctl --user import-environment XDG_CURRENT_DESKTOP XDG_SESSION_TYPE DISPLAY WAYLAND_DISPLAY SWAYSOCK SSH_AUTH_SOCK GNOME_KEYRING_CONTROL
+exec ystemctl --user import-environment XDG_CURRENT_DESKTOP XDG_SESSION_TYPE DISPLAY WAYLAND_DISPLAY SWAYSOCK SSH_AUTH_SOCK GNOME_KEYRING_CONTROL
 exec dbus-update-activation-environment --systemd XDG_CURRENT_DESKTOP XDG_SESSION_TYPE DISPLAY WAYLAND_DISPLAY SWAYSOCK SSH_AUTH_SOCK GNOME_KEYRING_CONTROL
 
 
@@ -202,6 +234,7 @@ input type:touchpad {
 input "type:keyboard" {
 	# Finnish keymap
     xkb_layout fi
+    # xkb_layout us
 	xkb_options caps:escape
 }
 
@@ -218,7 +251,7 @@ seat * {
 }
 
 # Warp mouse to the center of container
-mouse_warping container
+# mouse_warping container
 
 floating_modifier $mod normal
 
@@ -239,7 +272,10 @@ bindsym {
     $mod+p exec $term -e "bpython"
 
     # start screenshot
-    $mod+c exec bash -c 'grim -g "$(slurp)" - | swappy -f - -o - | ~/.local/bin/timhostuploader'
+    # $mod+c exec bash -c 'grim -g "$(slurp)" - | swappy -f - -o - | ~/.local/bin/timhostuploader'
+    $mod+c exec flameshot gui -r | ~/.local/bin/timhostuploader
+    # $mod+c exec flameshot gui -r | wl-copy
+
 
     # lock
     $mod+r exec "swaylock --grace 3 & "
@@ -262,10 +298,10 @@ bindsym {
     $mod+ctrl+Delete exec /home/leadseason/.config/rofi/powermenu.sh
 
     # Start a audio control program
-    $mod+Shift+w exec pavucontrol
+    $mod+Shift+e exec pavucontrol
 
     # Start a network control program
-    $mod+Shift+e exec networkmanager_dmenu
+    $mod+Shift+w exec networkmanager_dmenu
 
     # Media player controls
     XF86AudioPlay exec playerctl play-pause
@@ -315,6 +351,17 @@ bindsym {
     $mod+Shift+Up move up
     $mod+Shift+Right move right
 
+    Mod4+j resize shrink width 10 px or 10 ppt  
+    Mod4+k resize grow height 10 px or 10 ppt   
+    Mod4+l resize shrink height 10 px or 10 ppt 
+    Mod4+odiaeresis resize grow width 10 px or 10 ppt    
+
+    # alternatively, you can use the cursor keys:
+    Mod4+Left resize shrink width 10 px or 10 ppt  
+    Mod4+Down resize grow height 10 px or 10 ppt   
+    Mod4+Up resize shrink height 10 px or 10 ppt 
+    Mod4+Right resize grow width 10 px or 10 ppt    
+
     # move focused workspace
     $mod+Control+Shift+Left move workspace to output left
     $mod+Control+Shift+Down move workspace to output down
@@ -330,6 +377,7 @@ bindsym {
     # split in Horizontal or vertical orientation
     $mod+h split h
     $mod+v split v
+    $mod+n split n
 
     # enter fullscreen mode for the focused container
     $mod+f fullscreen toggle
