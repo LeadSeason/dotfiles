@@ -7,3 +7,12 @@
 [submodule ".config/nvim-user"]
 	path = .config/nvim-user
 	url = https://github.com/LeadSeason/astronvim_config
+[submodule ".mozilla/firefox/default/chrome/penguinFox"]
+	path = .mozilla/firefox/default/chrome/penguinFox
+	url = https://github.com/Haruzona/penguinFox.git
+[submodule ".mozilla/firefox/default/chrome/.mozilla/firefox/default/chrome/Photon"]
+	path = .mozilla/firefox/default/chrome/.mozilla/firefox/default/chrome/Photon
+	url = https://github.com/black7375/Firefox-UI-Fix.git
+[submodule ".mozilla/firefox/default/chrome/Photon"]
+	path = .mozilla/firefox/default/chrome/Photon
+	url = https://github.com/black7375/Firefox-UI-Fix.git
