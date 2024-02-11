@@ -3,7 +3,7 @@
 @import "shared/mocha.rasi"
 
 * {
-    width: 1275px;
+    width: 50%;
     font: "Maple Mono SC NF 12";
 }
 
@@ -13,20 +13,20 @@ element-text, element-icon , mode-switcher {
 }
 
 window {
-    height: 575px;
+    height: 50%;
     border: 3px;
     border-radius: 14px;
     border-color: @Peach;
-    background-color: @Base;
+    background-color: transparent;
 }
 
 mainbox {
-    background-color: @Base;
+    background-color: rgba(30, 30, 46, 0.70);
 }
 
 inputbar {
     children: [prompt,entry];
-    background-color: @Base;
+    background-color: transparent;
     border-radius: 5px;
     padding: 2px;
 }
@@ -48,7 +48,7 @@ entry {
     padding: 6px;
     margin: 20px 0px 0px 10px;
     text-color: @Text;
-    background-color: @Base;
+    background-color: transparent;
 }
 
 listview {
@@ -57,12 +57,12 @@ listview {
     margin: 0px 20px 0px 20px;
     columns: 1;
     lines: 5;
-    background-color: @Base;
+    background-color: transparent;
 }
 
 element {
     padding: 7px;
-    background-color: @Base;
+    background-color: transparent;
     text-color: @Text;
 }
 

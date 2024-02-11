@@ -116,6 +116,7 @@ layer_effects "bar2" blur enable; corner_radius 0; shadows enable; border pixel 
 
 layer_effects "ags" blur enable; corner_radius 0
 layer_effects "eww" blur enable; corner_radius 0
+layer_effects "rofi" blur enable; corner_radius 0; shadows enable
 
 shadows enable
 shadows_on_csd disable
