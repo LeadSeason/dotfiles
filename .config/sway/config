@@ -116,7 +116,7 @@ layer_effects "bar2" blur enable; corner_radius 0; shadows enable; border pixel 
 
 layer_effects "ags" blur enable; corner_radius 0
 layer_effects "eww" blur enable; corner_radius 0
-layer_effects "rofi" blur enable; corner_radius 0; shadows enable
+layer_effects "rofi" blur enable; corner_radius 0; shadows enable; corner_radius 14;
 
 shadows enable
 shadows_on_csd disable
@@ -207,7 +207,7 @@ exec /usr/lib/xdg-desktop-portal-wlr
 exec /usr/lib/xdg-desktop-portal
 exec /usr/lib/xdg-desktop-portal-gtk
 
-exec ystemctl --user import-environment XDG_CURRENT_DESKTOP XDG_SESSION_TYPE DISPLAY WAYLAND_DISPLAY SWAYSOCK SSH_AUTH_SOCK GNOME_KEYRING_CONTROL
+exec systemctl --user import-environment XDG_CURRENT_DESKTOP XDG_SESSION_TYPE DISPLAY WAYLAND_DISPLAY SWAYSOCK SSH_AUTH_SOCK GNOME_KEYRING_CONTROL
 exec dbus-update-activation-environment --systemd XDG_CURRENT_DESKTOP XDG_SESSION_TYPE DISPLAY WAYLAND_DISPLAY SWAYSOCK SSH_AUTH_SOCK GNOME_KEYRING_CONTROL
 
 
