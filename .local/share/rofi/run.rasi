@@ -21,7 +21,7 @@ window {
 }
 
 mainbox {
-    background-color: rgba(30, 30, 46, 0.70);
+    background-color: rgba(30, 30, 46, 0.85);
 }
 
 inputbar {
@@ -75,7 +75,7 @@ element selected {
 	border: 2px;
 	border-color: @Peach;
 	border-radius: 8px;
-    background-color: @Base;
+    background-color: transparent;
     text-color: @Peach;
 }
 
