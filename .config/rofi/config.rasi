@@ -2,7 +2,7 @@
  * vim: ft=css tabstop=2 shiftwidth=2 :
  */
 configuration {
-  modi: "window,run,ssh,drun,filebrowser";
+  modi: "window,run,ssh,drun,filebrowser,emoji";
   /* font: "maple mono"; */
   icon-theme: "Papirus-Dark";
 

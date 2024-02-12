@@ -294,7 +294,7 @@ bindsym {
     $mod+Shift+v exec pgrep rofi || clipman pick -t rofi
 
     # rofi
-    $mod+period exec rofimoji -a copy
+    $mod+period exec rofi -show emoji
     $mod+Shift+s exec rofi -show ssh
     $mod+ctrl+Delete exec /home/leadseason/.config/rofi/powermenu.sh
 
