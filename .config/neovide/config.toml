@@ -1,0 +1,9 @@
+neovim-bin = "/usr/bin/nvim"
+
+[font]
+normal = "Maple Mono"
+size = 16
+
+[font.features]
+MapleMono-Regular = ["+cv01", "+cv04", "+ss01", "+ss02", "+ss03", "+ss04", "+ss05"]
+
