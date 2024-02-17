@@ -18,6 +18,7 @@ fallback = '󰳤'
 # Steam
 'steam' = ''
 'Steam' = ''
+'/Steam/' = ''
 'steamwebhelper' = ''
 
 # Steam apps
@@ -26,7 +27,8 @@ fallback = '󰳤'
 'steam_app_548430' = '' # DeepRock
 'steam_app_1966720' = '' # Lethal Company
 'vividstasis.exe' = '󰊜' # Vivid/Stasis
-'steam_app_275850' = ''
+'steam_app_2093940' = '󰊜' # Vivid/Stasis
+'steam_app_275850' = '' # No Man's Sky
 
 # Terminals
 'Alacritty' = ''
@@ -61,6 +63,11 @@ fallback = '󰳤'
 'wineboot.exe' = '󰡶'
 
 # Misc Using
+'org.kde.ark' = ''
+'com.nextcloud.desktopclient.nextcloud' = ''
+'Xdg-desktop-portal-gtk' = ''
+'piper' = '󰍽'
+'gmic' = '󱇣'
 'NoiseTorch' = '󰍯'
 '/Minecraft?\w*/' = '󰍳'
 '/YouTube Music/' = ''

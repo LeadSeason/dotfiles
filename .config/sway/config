@@ -181,7 +181,8 @@ exec ~/var/build/Waybar/build/waybar || waybar
 exec kdeconnect-indicator
 exec nm-applet --indicator
 exec blueman-applet
-exec sworkstyle &> /tmp/sworkstyle.log
+exec sworkstyle >> ~/.cache/sworkstyle.log 2>&1
+# exec sworkstyle &> /tmp/sworkstyle.log
 # exec sworkstyle
 exec rm -f $WOBSOCK && mkfifo $WOBSOCK && tail -f $WOBSOCK | wob
 exec swayidle \
