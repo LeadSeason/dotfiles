@@ -6,18 +6,7 @@ source ~/.zshenv
 
 # start wm on tty1 login
 if [ "$(tty)" = "/dev/tty1" ]; then
-    # Load All Enviroment variables
-
-    # starting gnome-keyring-daemon for ssh, secrets, and gpg key unloking
-    eval $(gnome-keyring-daemon --start -c pkcs11,secrets,ssh)
-
-    # exporting keyring variables
-    export SSH_AUTH_SOCK
-    export GNOME_KEYRING_CONTROL
-
-    export DESKTOP_SESSION=sway
-    # starting sway
-    exec sway
+    sway-launch
 fi
 
 fastfetch --load-config $HOME/.config/fastfetch/config-small.conf
@@ -41,7 +30,6 @@ setopt SHARE_HISTORY
 setopt HIST_IGNORE_ALL_DUPS
 ZPLUG_HOME=~/.local/share/zsh/zplug
 fpath=($ZDOTDIR/completion $fpath)
-PATH="$HOME/.local/bin:$PATH"
 NVIM_PATH="${PATH:-}"
 REPORTTIME=1
 

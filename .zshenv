@@ -1,16 +1,9 @@
 export ZDOTDIR=$HOME/.config/zsh/
+PATH="$HOME/.local/bin:$PATH"
+
+# Editor
 export SYSTEMD_EDITOR=nvim
 export EDITOR=nvim
-
-# Wayland
-export GDK_BACKEND=wayland
-export CLUTTER_BACKEND=wayland
-export SDL_VIDEODRIVER=wayland
-export XDG_SESSION_TYPE=wayland
-export XDG_SESSION_DEFAULT=sway
-export XDG_CURRENT_DESKTOP=sway
-export MOZ_ENABLE_WAYLAND=1
-export QT_QPA_PLATFORM="wayland;xcb"
 
 # Theaming
 export GTK_THEME=Catppuccin-Mocha-Standard-Peach-Dark
