@@ -6,7 +6,7 @@ source ~/.zshenv
 
 # start wm on tty1 login
 if [ "$(tty)" = "/dev/tty1" ]; then
-    sway-launch
+    exec sway-launch
 fi
 
 fastfetch --load-config $HOME/.config/fastfetch/config-small.conf
