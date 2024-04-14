@@ -1,5 +1,8 @@
 export ZDOTDIR=$HOME/.config/zsh/
-PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+
+# This is stupid but it works
+export SSH_AUTH_SOCK="/run/user/1000/gcr/ssh"
 
 # Editor
 export SYSTEMD_EDITOR=nvim
