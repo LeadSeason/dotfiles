@@ -30,10 +30,9 @@ setopt SHARE_HISTORY
 setopt HIST_IGNORE_ALL_DUPS
 ZPLUG_HOME=~/.local/share/zsh/zplug
 fpath=($ZDOTDIR/completion $fpath)
-NVIM_PATH="${PATH:-}"
 REPORTTIME=1
 
-export NVIM_PATH PATH ZPLUG_HOME SAVEHIST HISTSIZE HISTFILE
+export PATH ZPLUG_HOME SAVEHIST HISTSIZE HISTFILE
 
 unset RPS1
 unset PS1
@@ -61,6 +60,7 @@ source /home/leadseason/.config/zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh
 
 
 # alias defenitions
+alias mtr="mtr --aslookup --show-ips"
 alias :q="exit"
 alias autoremove="sudo pacman -Rcns \$(pacman -Qdtq) --noconfirm"
 alias cc="COLORTERM="" pygmentize -g"
@@ -76,7 +76,7 @@ alias ll="lsd -Flh --color=auto"
 alias ls="lsd -F --color=auto"
 alias lynx="lynx -accept_all_cookies"
 alias make="make -j24"
-alias nvim="PATH=\"$NVIM_PATH\" nvim"
+alias vim="nvim"
 alias quit="exit"
 alias radeontop="radeontop -c"
 alias s="s -p duckduckgo"
@@ -130,7 +130,8 @@ backward-delete-word-custom() {
 
 zle -N backward-delete-word-custom
 
-eval "$(zoxide init zsh --cmd cd)"
+# This broke the nice zsh autocomplete.
+# eval "$(zoxide init zsh --cmd cd)"
 
 # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
 [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
