@@ -118,7 +118,7 @@
 		"on-click": "kitty -e htop"
 	},
 	"memory": {
-		"format": " {}%",
+		"format": " {}%",
 		"format-alt": "{used:0.1f}G/{total:0.1f}G",
 		"tooltip-format": "Memory: {used:0.1f}Gi / {total:0.1f}Gi\nSwap: {swapUsed:0.1f}Gi / {swapTotal:0.1f}Gi",
 		"interval": 5
