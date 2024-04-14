@@ -174,11 +174,14 @@ exec swaync
 # exec ~/.config/waybar/scipts/getupdates-server.sh
 
 # Compile the getupdates-client script
-exec g++ ~/.config/waybar/scipts/getupdates-client.cpp -O2 -march=native -o ~/.config/waybar/scipts/getupdates-client
+# exec g++ ~/.config/waybar/scipts/getupdates-client.cpp -O2 -march=native -o ~/.config/waybar/scipts/getupdates-client
 # Use Custom built waybar for Juusto
-exec ~/var/build/Waybar/build/waybar || waybar
+# exec ~/var/build/Waybar/build/waybar || waybar
 
-# No more applet tray
+exec g++ ~/.config/ags/scripts/getupdates-client.cpp -O2 -march=native -o ~/.config/ags/scripts/getupdates-client 
+exec ags 
+
+# !No more applet tray
 exec kdeconnect-indicator
 exec nm-applet --indicator
 exec blueman-applet
