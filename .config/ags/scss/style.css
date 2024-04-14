@@ -511,18 +511,6 @@
   color: #180e11;
   background: #f38ba8; }
 
-* {
-  all: unset;
-  font-family: "Symbols Nerd Font Mono", "JetBrainsMono Nerd Font"; }
-
-button:hover {
-  background-color: rgba(205, 214, 244, 0.15);
-  transition-duration: 300ms; }
-
-tooltip {
-  color: #cdd6f4;
-  background: #1e1e2e; }
-
 .MainBar {
   font-size: 20px;
   background-color: rgba(25, 18, 14, 0.25);
@@ -533,3 +521,15 @@ tooltip {
   border-top-left-radius: .3rem;
   padding: .3rem .7rem .4rem;
   margin: .3rem .5rem .0rem; }
+
+* {
+  all: unset;
+  font-family: "Symbols Nerd Font Mono", "Maple mono"; }
+
+button:hover {
+  background-color: rgba(205, 214, 244, 0.15);
+  transition-duration: 300ms; }
+
+tooltip {
+  color: #cdd6f4;
+  background: #1e1e2e; }

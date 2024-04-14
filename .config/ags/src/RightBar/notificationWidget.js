@@ -1,5 +1,4 @@
-import Widget from 'resource:///com/github/Aylur/ags/widget.js';
-import Variable from 'resource:///com/github/Aylur/ags/variable.js';
+import { execAsync } from 'resource:///com/github/Aylur/ags/utils.js';
 
 const NotificationLister = Variable('{"text": "0", "alt": "none", "tooltip": "", "class": "none"}', {
     listen: ["swaync-client -swb", out => JSON.parse(out)],
@@ -55,8 +54,11 @@ export default() => {
     });
 
     return Widget.Button({
-        // Add Actions
+        // TODO: Add Actions
         class_names: ["infoBox", "peach"],
-        child: iconBadgeSet
+        child: iconBadgeSet,
+        onPrimaryClick: () => execAsync("swaync-client -t -sw"),
+        onSecondaryClick: () => execAsync("swaync-client -d -sw"),
+        onMiddleClick: () => execAsync("swaync-client -C -sw"),
     });
 }

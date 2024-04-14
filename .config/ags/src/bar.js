@@ -1,19 +1,7 @@
-import { Widget } from 'resource:///com/github/Aylur/ags/widget.js';
-import * as Left from './LeftBar.js';
+import LeftBar from './LeftBar/main.js';
 import * as Center from "./CenterBar.js";
-import RightBar from "./RightBar.js";
+import RightBar from "./RightBar/main.js";
 
-// LeftBar
-const LeftBar = (monitor) => Widget.Box({
-	class_names: ["leftBar", "bar"],
-	hpack: "start",
-	children: [
-		Left.OsIcon(),
-		// Monitor needs to be passed to the workspace module to indicate
-		// what workspaces should be displayed on the monitor
-		Left.SwayWorkspaces(monitor),
-	]
-})
 
 const CenterBar = () => Widget.Box({
 	class_names: ["centerBar", "bar"],

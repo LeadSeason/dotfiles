@@ -1,13 +1,14 @@
-import archUpdates from "./RightBar/archUpdates.js";
-import notificationWidget from './RightBar/notificationWidget.js';
-import sysTray from './RightBar/sysTray.js';
-import sysStats from "./RightBar/sysStats.js";
-import { Widget } from "resource:///com/github/Aylur/ags/widget.js";
+import archUpdates from "./archUpdates.js";
+import notificationWidget from './notificationWidget.js';
+import sysTray from './sysTray.js';
+import sysStats from "./sysStats.js";
+import volWidget from "./volWidget.js";
 
 const rightGroup = () => Widget.Box({
     class_names: ["infoBox", "peach"],
     spacing: 20,
     children: [
+        volWidget(),
         sysStats(),
         archUpdates(),
         sysTray(),

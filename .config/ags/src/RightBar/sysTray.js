@@ -1,14 +1,13 @@
-import SystemTray from 'resource:///com/github/Aylur/ags/service/systemtray.js';
-import Widget from 'resource:///com/github/Aylur/ags/widget.js';
+const systemtray = await Service.import("systemtray")
 
-export default() => Widget.Box({
-    // @ts-ignore
-    children: SystemTray.bind('items').transform(items => {
-        return items.map(item => Widget.Button({
-            child: Widget.Icon({ binds: [['icon', item, 'icon']] }),
+export default () => Widget.Box({
+    spacing: 1,
+    children: systemtray.bind("items")
+        .as(items => items.map(item => Widget.Button({
+            child: Widget.Icon({ icon: item.bind("icon") }),
+            class_name: "trayitem",
             on_primary_click: (_, event) => item.activate(event),
             on_secondary_click: (_, event) => item.openMenu(event),
-            binds: [['tooltip-markup', item, 'tooltip-markup']],
-        }));
-    }),
+            tooltip_markup: item.bind("tooltip_markup"),
+        })))
 });

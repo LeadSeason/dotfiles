@@ -1,5 +1,3 @@
-import Widget from 'resource:///com/github/Aylur/ags/widget.js';
-import Variable from 'resource:///com/github/Aylur/ags/variable.js';
 
 /** @type {function([string, string] | string[]): number} */
 const divide = ([total, free]) => Number.parseInt(free) / Number.parseInt(total);
@@ -25,29 +23,26 @@ const tempData = Variable(0, {
 });
 
 
-const Cpu = () => Widget.Label({
-    class_name: "cpu",
-    // @ts-ignore
+const Cpu = () => Widget.Button({
+    class_names: ["cpu", "fggreen"],
     label: cpuData.bind().transform((v) => { return " " + Math.floor(v * 100).toString() })
 });
 
 const Mem = () => Widget.Button({
-    class_name: "mem",
-    // @ts-ignore
-    label: memData.bind().transform((v) => { return " " + Math.round(v * 100).toString() })
+    class_names: ["mem", "fgsky"],
+    label: memData.bind().transform((v) => { return " " + Math.round(v * 100).toString() })
 });
 
 const Temp = () => Widget.Button({
-    class_name: "temp",
+    class_names: ["temp", "fgteal"],
     label: tempData.bind().transform((v) => { return v.toString() + "°C" })
 });
 
 export default() => Widget.Box({
-    class_name: "fgyellow",
-    spacing: 10,
+    spacing: 15,
     children: [
-        Temp(),
         Cpu(),
         Mem(),
+        Temp(),
     ]
 })

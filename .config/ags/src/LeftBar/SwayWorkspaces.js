@@ -1,15 +1,4 @@
-import * as Utils from 'resource:///com/github/Aylur/ags/utils.js';
-import { Variable } from 'resource:///com/github/Aylur/ags/variable.js';
-import { Widget } from 'resource:///com/github/Aylur/ags/widget.js';
-import App from 'resource:///com/github/Aylur/ags/app.js'
-
-export const OsIcon = () => Widget.Button({
-    class_names: ["sapphire", "infoBox"],
-    hpack: 'start',
-    child: Widget.Label(''),
-
-    on_primary_click: () => Utils.execAsync("bash -c \"if pgrep rofi; then pkill rofi; else /home/leadseason/.config/rofi/powermenu.sh; fi;\" & ")
-});
+import { Variable } from 'resource:///com/github/Aylur/ags/variable.js'
 
 const swayWorkspaceState = new Variable("[]", {
     listen: App.configDir + '/scripts/workspace.py',
@@ -18,7 +7,7 @@ const swayWorkspaceState = new Variable("[]", {
 /**
  * @param {number} monitor
  */
-export const SwayWorkspaces = (monitor) => {
+export default (monitor) => {
 
     /**
      * @param {String} workspaceState 
@@ -47,8 +36,9 @@ export const SwayWorkspaces = (monitor) => {
         return workspaces;
     };
 
+    // @ts-ignore
     return Widget.Box({
-        class_names: ["SwayWorkspaces",],
+        class_names: ["SwayWorkspaces"],
         hpack: 'start',
         // @ts-ignore
         children: swayWorkspaceState.bind().transform(transformWorkspaceState),
