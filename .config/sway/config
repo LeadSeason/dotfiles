@@ -58,7 +58,7 @@ include ~/.config/sway/config.d/*
 # output * bg ~/.config/sway/wp/shuttle.mocha.jpg stretch $base
 
 # output * bg ~/.local/share/wallpapers/mocha-hald8-fate-astolfo_waifu2x_art_noise0_scale.png stretch $base
-output * bg ~/visual-media/wallpaper/fantasyart-1663166031505-4192.jpg stretch $base
+output * bg ~/.local/share/wallpapers/fantasyart-1663166031505-4192.jpg stretch $base
 
 # font
 font Maple Mono 11
