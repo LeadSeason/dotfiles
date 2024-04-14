@@ -9,8 +9,8 @@
 
 # Mod1 = alt
 set $mod Mod1
-# set $term footclient
-set $term kitty -1
+set $term footclient
+# set $term kitty -1
 set $file nemo
 set $browser firefox-nightly
 set $WOBSOCK $XDG_RUNTIME_DIR/wob.sock
@@ -138,6 +138,7 @@ for_window [app_id="org.kde.kdeconnect.daemon"] floating enable
 for_window [app_id="xdg-desktop-portal-gtk"] floating enable
 for_window [instance="origin.exe"] floating enable
 for_window [title="^Bitwarden —"] floating enable
+for_window [title="Extension: (Bitwarden - Free Password Manager) - Bitwarden — Firefox Nightly"] floating enable
 for_window [title="Remote Folder Picker - Celeste"] floating enable
 for_window [title="Local Folder Picker - Celeste"] floating enable
 for_window [class="steam_app_218230"] saturation set 1.5
@@ -184,7 +185,8 @@ exec blueman-applet
 exec sworkstyle >> ~/.cache/sworkstyle.log 2>&1
 # exec sworkstyle &> /tmp/sworkstyle.log
 # exec sworkstyle
-exec rm -f $WOBSOCK && mkfifo $WOBSOCK && tail -f $WOBSOCK | wob
+# Moved to systemd service
+# exec rm -f $WOBSOCK && mkfifo $WOBSOCK && tail -f $WOBSOCK | wob
 exec swayidle \
 	timeout 120 "brightnessctl get > ~/.cache/resume_brightness; brightnessctl set 20%" \
     resume "brightnessctl set \$(cat ~/.cache/resume_brightness)" \
@@ -202,7 +204,6 @@ exec protonmail-bridge -n
 
 # Aditional fancy pants programs
 exec discover-overlay
-exec sleep 20; noisetorch -i
 
 exec /usr/lib/xdg-desktop-portal-wlr
 exec /usr/lib/xdg-desktop-portal
@@ -289,21 +290,20 @@ bindsym {
     # Manual brightness to 100% if stuck at 0%
     $mod+F12 exec brightnessctl set 100%
 
-    # start wofi (a program launcher)
+    # start a program launcher (rofi)
     $mod+d exec pgrep rofi || rofi -I -show drun
     $mod+Shift+d exec pgrep rofi || rofi -I -show run
     $mod+Shift+v exec pgrep rofi || clipman pick -t rofi
 
-    # rofi
-    $mod+period exec rofi -show emoji
-    $mod+Shift+s exec rofi -show ssh
-    $mod+ctrl+Delete exec /home/leadseason/.config/rofi/powermenu.sh
+    # a rofi tool program
+    $mod+x exec pgrep rofi || rofi-bluetooth
+    $mod+period exec pgrep rofi || rofi -show emoji
+    $mod+ctrl+Delete exec pgrep rofi || /home/leadseason/.config/rofi/powermenu.sh
+    $mod+Shift+w exec pgrep rofi || networkmanager_dmenu
+    $mod+Shift+s exec pgrep rofi || rofi -show ssh
 
     # Start a audio control program
     $mod+Shift+e exec pavucontrol
-
-    # Start a network control program
-    $mod+Shift+w exec networkmanager_dmenu
 
     # Media player controls
     XF86AudioPlay exec playerctl play-pause
