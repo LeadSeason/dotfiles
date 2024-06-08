@@ -1,12 +1,6 @@
 [submodule ".local/share/zsh/zplug"]
 	path = .local/share/zsh/zplug
 	url = https://github.com/zplug/zplug
-[submodule ".config/nvim"]
-	path = .config/nvim
-	url = https://github.com/AstroNvim/AstroNvim
-[submodule ".config/nvim-user"]
-	path = .config/nvim-user
-	url = https://github.com/LeadSeason/astronvim_config
 [submodule ".mozilla/firefox/default/chrome/Photon"]
 	path = .mozilla/firefox/default/chrome/Photon
 	url = https://github.com/black7375/Firefox-UI-Fix.git
