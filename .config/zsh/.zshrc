@@ -9,7 +9,7 @@ if [ "$(tty)" = "/dev/tty1" ]; then
     exec sway-launch
 fi
 
-fastfetch --load-config $HOME/.config/fastfetch/config-small.conf
+fastfetch --load-config $HOME/.config/fastfetch/config-small.jsonc
 
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
@@ -67,7 +67,7 @@ alias cc="COLORTERM="" pygmentize -g"
 alias clear="printf '\033[2J\033[3J\033[1;1H'"
 alias copy="wl-copy"
 alias ff="fastfetch"
-alias ffs="fastfetch --load-config $HOME/.config/fastfetch/config-small.conf"
+alias ffs="fastfetch --load-config $HOME/.config/fastfetch/config-small.jsonc"
 alias grep="grep --color"
 alias icat="kitty +kitten icat"
 alias ip="ip -color=auto"
@@ -100,6 +100,34 @@ zstyle ':completion:*' matcher-list \
     'm:{[:lower:]}={[:upper:]}' \
     '+r:|[._-]=* r:|=*' \
     '+l:|=*'
+
+function hb {
+    url="https://bin.retardism.xyz"
+    up_uri="$url/documents"
+
+    response=$(cat $1 | curl -s -X POST -d @- "$up_uri")
+
+    if [ ! $? -eq 0 ]; then
+        echo "Failed to upload the document."
+        return 1
+    fi
+
+    hasteKey=$(echo $response | jq -r '.key')
+    url_final_v2_I_need_better_variable_names="$url/$hasteKey"
+    echo "$url_final_v2_I_need_better_variable_names"
+
+    if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+        if type "wl-copy" > /dev/null; then
+            wl-copy "$url_final_v2_I_need_better_variable_names"
+        fi
+
+    elif [ $XDG_SESSION_TYPE = "x11" ]; then
+        if type "xclip" > /dev/null; then
+            echo -n "$url_final_v2_I_need_better_variable_names" | xclip -sel c
+        fi
+    fi
+}
+
 
 # precmd() {
 # 	# 
