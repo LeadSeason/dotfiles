@@ -1,34 +1,67 @@
+# Make sure you got that NerdFonts in your fonts.
+
 fallback = '󰳤'
 
 [matching]
 
 # Vim
-'/nvim ?\w*/' = ''
+'/nvim ?\w*/' = ''
+'/NVIM ?\w*/' = ''
 '/vim ?\w*/' = ''
-'Neovide' = ''
+'Neovide' = ''
+'neovide' = ''
+
+# Other editors
+'Code' = '󰨞'
+'code-oss' = '󰨞'
+'gedit' = '󱩼'
+'org.kde.kate' = '󱩼'
 
 # Firefox
 '/(?i)Github.*Firefox/' = ''
-'/(?i)YouTube.*Firefox/' = ''
-'firefox' = ''
-'firefox-nightly' = ''
-'firefoxnightly' = ''
-'firefoxdeveloperedition' = ''
+'/(?i)YouTube.*Firefox/' = '󰗃'
+'/Mozilla Crash Reporter/' = '󰈹'
+'firefox' = '󰈹'
+'firefox-nightly' = '󰈹'
+'firefoxdeveloperedition' = '󰈹'
+'firefoxnightly' = '󰈹'
+
+'/YouTube Music/' = ''
+'YouTube Music' = ''
 
 # Steam
-'steam' = ''
-'Steam' = ''
 '/Steam/' = ''
+'Steam' = ''
+'steam' = ''
 'steamwebhelper' = ''
 
 # Steam apps
-'steam_app_1454400' = '󰆘' # Cookie clicker
+'steam_app_218230' = '🤡' # Planetside 2
+'steam_app_220200' = ''  # Kerbal Space Program
+'steam_app_242680' = ''  # Nuclear Throne
+'steam_app_271590' = 'V'  # Grand Theft Auto V
+'steam_app_275850' = ''  # No Man's Sky
+'steam_app_548430' = ''  # DeepRock
+'steam_app_553850' = '󰚑'  # HELLDIVERS™ 2
+'steam_app_782330' = ''  # Doom Eternal
+'steam_app_1268750' = '' # Starship Troopers: Extermination
 'steam_app_1332010' = '󰄛' # Stray
-'steam_app_548430' = '' # DeepRock
+'steam_app_1454400' = '󰆘' # Cookie clicker
 'steam_app_1966720' = '' # Lethal Company
-'vividstasis.exe' = '󰊜' # Vivid/Stasis
 'steam_app_2093940' = '󰊜' # Vivid/Stasis
-'steam_app_275850' = '' # No Man's Sky
+'steam_app_1794680' = '󰳬' # Vampire Survivors
+
+# Other games
+'/Minecraft?\w*/' = '󰍳'
+'/nuclearthrone/' = ''
+'BeamNG.drive.x64' = '󰞪'
+'factorio' = ''
+'gamescope' = ''
+'lutris' = ''
+'osu!' = '󰲡'
+'osu!.exe' = '󰲡'
+'vampiresurvivors.exe' = '󰳬'
+'vividstasis.exe' = '󰊜'
 
 # Terminals
 'Alacritty' = ''
@@ -36,82 +69,121 @@ fallback = '󰳤'
 'foot-client' = ''
 'footclient' = ''
 'kitty' = ''
+'/kitty/' = ''
 
 # Discord
-'discord' = '󰙯'
-'vesktop' = '󰙯'
-'VencordDesktop' = '󰙯'
+'de.shorsh.discord-screenaudio' = ''
+'discord' = ''
+'vesktop' = ''
+'Vesktop' = ''
+'VencordDesktop' = ''
 
-# Flameshot
-'flameshot' = ''
+# CAD 󰻬
+'org.freecadweb.FreeCAD' = ''
+'org.freecad.FreeCAD' = ''
+'FreeCAD' = ''
+'Ondsel ES' = ''
 
-# 3D printing
-'org.freecadweb.FreeCAD' = ''
-'org.freecad.FreeCAD' = ''
-'FreeCAD' = ''
+# Slicer
+'PrusaSlicer' = '󰆧'
 'cura' = '󰆧'
+'com/.https://ultimaker.Ultimaker-Cura' = ''
 
 # Mail
 'Thunderbird' = ''
+'thunderbird' = ''
 'betterbird' = ''
-
-# osu!
-'osu!.exe' = '󰲡'
-'osu!' = '󰲡'
 
 # Wine
 'wineboot.exe' = '󰡶'
+'control.exe' = '󰡶'
 
-# Misc Using
-'org.kde.ark' = ''
-'com.nextcloud.desktopclient.nextcloud' = ''
-'Xdg-desktop-portal-gtk' = ''
-'piper' = '󰍽'
-'gmic' = '󱇣'
-'NoiseTorch' = '󰍯'
-'/Minecraft?\w*/' = '󰍳'
-'/YouTube Music/' = ''
+# Video players
+'vlc' = '󰕼'
+'mpv' = ''
+'MPlayer' = ''
+
+# JS
+'/yarn/' = '󰎙'
 '/node/' = '󰎙'
 '/npm/' = '󰎙'
-'/swayimg?\w*/' = ''
-'/yarn/' = '󰎙'
-'Code' = ''
-'org.fritzing.Fritzing' = ''
-'Fritzing' = ''
-'Burger🍔👍' = '󰚅'
-'balena-etcher' = ''
-'blueman-manager' = ''
-'com/.https://ultimaker.Ultimaker-Cura' = ''
-'factorio' = ''
-'gamescope' = ''
-'gcr-prompter' = ''
+
+# Image manipulators
+'gmic' = '󱇣'
 'krita' = ''
-'nemo' = ''
-'file-roller' = '󰛫'
-'xdg-desktop-portal-gtk' = ''
-'mpv' = ''
+'swappy' = ''
+'flameshot' = ''
+
+'/swayimg?\w*/' = ''
+'org.kde.koko' = ''
+
+# File explorers
+'/Open Files/' = ''
+'Xdg-desktop-portal-gtk' = ''
+'nemo' = ''
+'xdg-desktop-portal-gtk' = ''
+
+'file-roller' = ''
+'org.gnome.FileRoller' = ''
+'org.kde.ark' = ''
+
+'balena-etcher' = '󱊞'
+'Ventoy2Disk.gtk3' = '󱊞'
+
+# Audio
+'com.github.wwmm.easyeffects' = ''
+'pavucontrol' = ''
+
+'org.rncbc.qjackctl' = '󱡫'
+'org.rncbc.qpwgraph' = '󱡫'
+
+'libreoffice-calc'= '󱎏'
+
+# Misc Using
+'/NoiseTorch/' = '󰍯'
+'/com.nextcloud.desktopclient.nextcloud/' = ''
+'/glxgears/' = ''
+'Burger🍔👍' = '󰚅'
+'Chromium' = ''
+'Fritzing' = ''
+'NoiseTorch' = '󰍯'
+'blueman-manager' = ''
+'com.nextcloud.desktopclient.nextcloud' = ''
+'com.obsproject.Studio' = '󰑋'
+'gcr-prompter' = ''
+'gcr-viewer' = '󰄤'
+'gnome-font-viewer' = ''
+'huawei configuration encryption and decryption tools.exe' = '󰌋'
 'nm-connection-editor' = ''
-'org.telegram.desktop' = ''
+'nwg-look' = ''
+'org.fritzing.Fritzing' = ''
+'org.gnome.Calendar' = '󰃭'
 'org.gnome.baobab' = '󰋊'
-'org.kde.kcolorchooser' = ''
+'org.gnome.font-viewer' = ''
+'org.gnome.tweaks' = ''
+'org.kde.kcoimage manipulationlorchooser' = ''
 'org.kde.kdeconnect-settings' = ''
 'org.kde.kdeconnect.app' = ''
+'org.kde.kdeconnect.daemon' = ''
 'org.prismlauncher.PrismLauncher' = '󰍳'
-'swappy' = ''
+'org.telegram.desktop' = ''
+'piper' = '󰍽'
+'polkit-gnome-authentication-agent-1' = '󰌋'
+'qt5ct' = ''
+'qt6ct' = ''
+'seahorse' = '󰌋'
+'virt-manager' = ''
+'io.missioncenter.MissionCenter' = ''
 
 # Misc default
 'Bitwarden' = ''
 'Chia Blockchain' = ''
-'Chromium' = ''
 'GitHub Desktop' = ''
 'Google-chrome' = ''
 'Insomnia' = ''
 'Postman' = ''
 'Slack' = ''
 'Spotify' = ''
-'code-oss' = ''
 'jetbrains-studio' = ''
 'org.qbittorrent.qBittorrent' = ''
-'thunderbird' = ''
-'vlc' = ''
 

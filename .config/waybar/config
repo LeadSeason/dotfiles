@@ -23,7 +23,7 @@
 		"memory",
 		"temperature",
 		"custom/archupdates",
-		"tray",
+		// "tray",
 		"custom/notification"
 	],
 	"custom/os_icon": {

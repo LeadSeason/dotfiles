@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=YouTube Music
-Exec=youtube-music --enable-features=UseOzonePlatform --ozone-platform=wayland
+Exec=youtube-music
 Terminal=false
 Type=Application
 Icon=youtube-music

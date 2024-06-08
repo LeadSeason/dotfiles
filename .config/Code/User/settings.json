@@ -15,9 +15,6 @@
     "python.linting.flake8Args": ["--ignore=E501,F401"],
     "security.workspace.trust.untrustedFiles": "open",
     "explorer.confirmDelete": false,
-    "python.linting.flake8Enabled": true,
-    "python.linting.flake8CategorySeverity.E": "Warning",
-    "python.linting.flake8CategorySeverity.F": "Warning",
     "explorer.confirmDragAndDrop": false,
     "git.enableSmartCommit": true,
     "editor.fontSize": 13,
@@ -56,5 +53,8 @@
     "C_Cpp.default.compilerPath": "/usr/bin/g++",
     "git.openRepositoryInParentFolders": "never",
     "arduino.useArduinoCli": true,
-    "window.menuBarVisibility": "toggle"
+    "window.menuBarVisibility": "toggle",
+    "javascript.updateImportsOnFileMove.enabled": "never",
+    "editor.minimap.enabled": false,
+    "javascript.suggest.autoImports": false
 }

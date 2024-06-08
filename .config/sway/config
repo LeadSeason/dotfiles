@@ -9,6 +9,12 @@
 
 # Mod1 = alt
 set $mod Mod1
+set $modalt Mod4
+
+# Mod4 = Super
+# set $mod Mod4
+# set $modalt Mod1
+
 set $term footclient
 # set $term kitty -1
 set $file nemo
@@ -282,7 +288,6 @@ bindsym {
     $mod+c exec flameshot gui -r | ~/.local/bin/timhostuploader
     # $mod+c exec flameshot gui -r | wl-copy
 
-
     # lock
     $mod+r exec "swaylock --grace 3 & "
 
@@ -356,16 +361,16 @@ bindsym {
     $mod+Shift+Up move up
     $mod+Shift+Right move right
 
-    Mod4+j resize shrink width 10 px or 10 ppt  
-    Mod4+k resize grow height 10 px or 10 ppt   
-    Mod4+l resize shrink height 10 px or 10 ppt 
-    Mod4+odiaeresis resize grow width 10 px or 10 ppt    
+    $modalt+j resize shrink width 10 px or 10 ppt  
+    $modalt+k resize grow height 10 px or 10 ppt   
+    $modalt+l resize shrink height 10 px or 10 ppt 
+    $modalt+odiaeresis resize grow width 10 px or 10 ppt    
 
     # alternatively, you can use the cursor keys:
-    Mod4+Left resize shrink width 10 px or 10 ppt  
-    Mod4+Down resize grow height 10 px or 10 ppt   
-    Mod4+Up resize shrink height 10 px or 10 ppt 
-    Mod4+Right resize grow width 10 px or 10 ppt    
+    $modalt+Left resize shrink width 10 px or 10 ppt  
+    $modalt+Down resize grow height 10 px or 10 ppt   
+    $modalt+Up resize shrink height 10 px or 10 ppt 
+    $modalt+Right resize grow width 10 px or 10 ppt    
 
     # move focused workspace
     $mod+Control+Shift+Left move workspace to output left
