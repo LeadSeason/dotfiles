@@ -1,5 +1,6 @@
 import { Variable } from 'resource:///com/github/Aylur/ags/variable.js'
 
+
 const swayWorkspaceState = new Variable("[]", {
     listen: App.configDir + '/scripts/workspace.py',
 })
@@ -26,7 +27,7 @@ export default (monitor) => {
         selectedDisplayWorkspaces.forEach(element => {
             const workspaceButton = Widget.Button({
                 on_primary_click: () => Utils.execAsync(`swaymsg workspace number ${element["workspaceID"]}`),
-                class_names: ["workspace", element["workspaceType"]],
+                class_names: ["barWorkspace", element["workspaceType"]],
                 child: Widget.Label(element["workspaceName"])
             });
 
@@ -36,11 +37,11 @@ export default (monitor) => {
         return workspaces;
     };
 
-    // @ts-ignore
     return Widget.Box({
-        class_names: ["SwayWorkspaces"],
+        class_names: ["barSwayWorkspaces"],
         hpack: 'start',
         // @ts-ignore
-        children: swayWorkspaceState.bind().transform(transformWorkspaceState),
+        children: swayWorkspaceState.bind().as(transformWorkspaceState),
     });
 };
+

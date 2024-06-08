@@ -3,7 +3,7 @@ import GLib from 'gi://GLib';
 
 var ClockTimeout;
 
-export function Clock() {
+function Clock() {
 	const dateText = Widget.Label({
 		setup: self => self
 			.poll(1000, self => Utils.execAsync(["date", "+%e.%m.%Y"])
@@ -33,7 +33,7 @@ export function Clock() {
 	})
 
 	const clockBadge = Widget.Button({
-		class_names: ["infoBox", "Clock", "peach"],
+		class_names: ["barInfoBox", "Clock", "peach"],
 		child: Widget.Box({
 			children: [
 				timeText,
@@ -59,3 +59,11 @@ export function Clock() {
 
 	return clockBadge;
 }
+
+export default () => Widget.Box({
+	class_names: ["barCenterBar", "bar"],
+	hpack: "center",
+	children: [
+		Clock(),
+	]
+})

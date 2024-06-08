@@ -43,9 +43,9 @@ async def main():
             }
 
             if x.urgent:
-                wdata["workspaceType"] = "urgent"
-            if x.focused:
-                wdata["workspaceType"] = "focused"
+                wdata["workspaceType"] = "barUrgent"
+            elif x.focused:
+                wdata["workspaceType"] = "barFocused"
 
             wdata["workspaceID"] = x.name.split(":")[0]
             wdata["workspaceName"] = x.name

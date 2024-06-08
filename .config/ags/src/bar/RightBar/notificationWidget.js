@@ -32,7 +32,7 @@ export default() => {
     };
 
     const badge = Widget.Label({
-        class_name: "notificationBadge",
+        class_name: "barNotificationBadge",
         label: NotificationLister.bind().transform(transformBadge),
     });
 
@@ -55,7 +55,7 @@ export default() => {
 
     return Widget.Button({
         // TODO: Add Actions
-        class_names: ["infoBox", "peach"],
+        class_names: ["barInfoBox", "peach"],
         child: iconBadgeSet,
         onPrimaryClick: () => execAsync("swaync-client -t -sw"),
         onSecondaryClick: () => execAsync("swaync-client -d -sw"),

@@ -12,6 +12,10 @@ $base: rgb(30, 30, 46);
 	border-bottom: .15rem solid $text;
 }
 
+.bgbase {
+	background-color: $base;
+}
+
 $mantle: rgb(24, 24, 37);
 $crust: rgb(17, 17, 27);
 

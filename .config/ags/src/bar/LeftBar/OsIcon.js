@@ -1,6 +1,6 @@
 
 export default() => Widget.Button({
-    class_names: ["sapphire", "infoBox"],
+    class_names: ["sapphire", "barInfoBox"],
     hpack: 'start',
     child: Widget.Label(''),
 

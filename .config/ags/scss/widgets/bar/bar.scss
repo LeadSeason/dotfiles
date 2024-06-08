@@ -1,13 +1,14 @@
+@import "../../theme/mocha.scss";
 @import "./swayWorkspaces.scss";
 @import "./rightBar.scss";
 
-.MainBar {
+.barMainBar {
 	font-size: 20px;
 	background-color: mix($peach10, transparent, 25%);
 	border-bottom: .15rem solid mix($peach40, transparent, 25%);
 }
 
-.infoBox {
+.barInfoBox {
 	border-top-right-radius: .3rem;
 	border-top-left-radius: .3rem;
 	padding: .3rem .7rem .4rem;

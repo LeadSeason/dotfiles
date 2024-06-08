@@ -1,9 +1,12 @@
 import OsIcon from "./OsIcon.js";
 import SwayWorkspaces from "./SwayWorkspaces.js";
 
-// LeftBar
+/**
+ * Leftbar
+ * @param {number} monitor
+ */
 export default (monitor) => Widget.Box({
-	class_names: ["leftBar", "bar"],
+	class_names: [],
 	hpack: "start",
 	children: [
 		OsIcon(),

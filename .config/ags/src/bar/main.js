@@ -1,15 +1,6 @@
 import LeftBar from './LeftBar/main.js';
-import * as Center from "./CenterBar.js";
+import CenterBar from "./CenterBar.js";
 import RightBar from "./RightBar/main.js";
-
-
-const CenterBar = () => Widget.Box({
-	class_names: ["centerBar", "bar"],
-	hpack: "center",
-	children: [
-		Center.Clock(),
-	]
-})
 
 
 /**
@@ -17,7 +8,7 @@ const CenterBar = () => Widget.Box({
  */
 export default monitor => Widget.Window({
 	monitor,
-	class_name: "MainBar",
+	class_name: "barMainBar",
 	name: `bar${monitor}`,
 	anchor: ['top', 'left', 'right'],
 	exclusivity: 'exclusive',

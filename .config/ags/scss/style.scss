@@ -1,5 +1,7 @@
 @import "./theme/mocha.scss";
+@import "./generic.scss";
 @import "./widgets/bar/bar.scss";
+@import "./widgets/volumeOverlay/style.scss";
 
 * {
 	all: unset;
@@ -14,4 +16,6 @@ button:hover {
 tooltip {
 	color: $text;
 	background: $base;
+	border: $subtext0;
 }
+
