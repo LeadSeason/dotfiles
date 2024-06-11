@@ -11,7 +11,7 @@ Utils.exec(`sassc ${scss} ${css}`);
 
 const windows = () => [
     forMonitors(Bar),
-    volumeOverlay()
+// volumeOverlay()
 ]
 
 App.config({
