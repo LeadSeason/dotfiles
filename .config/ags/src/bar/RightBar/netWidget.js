@@ -4,8 +4,8 @@ const network = await Service.import('network')
  * Widget should show straight away without hovering or clingking. 
  * Is ip set,
  * can reach gw,
- * widget pitäisi näytää suoraan onko esim onko ip, onko gw, onko pääsekö wan, onko nameserver
- * Sitten tooltipiksi laitaa lisä tietoa. Esimerkki Tim: https://tims.vxlan.fi/s/UKb5B0YkIHwpTfY
+ * widget should show imiedtly, is ip, is gw, is wan reachable, is dns working.
+ * Tooltip should contain more information. Example from Tims kde instance: https://tims.vxlan.fi/s/UKb5B0YkIHwpTfY
  */
 
 export default() => {
@@ -38,13 +38,20 @@ export default() => {
         transition: 'slide_right',
         child: WiredIndicator(),
     });
+    
+    const nullReveler = Widget.Revealer({
+        reveal_child: (network.primary == null),
+        transition: 'slide_right',
+        child: Widget.Label("󰅤"),
+    });
 
     network.connect("changed", ({ primary }) => {
         wifiReveler.reveal_child = ( primary == "wifi" );
         wiredReveler.reveal_child = ( primary == "wired" );
+        nullReveler.reveal_child = ( primary == null );
     });
 
     return Widget.Box({
-        children: [wifiReveler, wiredReveler],
+        children: [wifiReveler, wiredReveler, nullReveler],
     })
 }

@@ -1,5 +1,10 @@
+import { cpu } from "../../../options.js";
+
+
 /** @type {function([string, string] | string[]): number} */
-const divide = ([total, free]) => Number.parseInt(free) / Number.parseInt(total);
+function divide([total, free]) {
+    return Number.parseInt(free) / Number.parseInt(total);
+}
 
 const cpuData = Variable(0, {
     poll: [1000, 'top -b -n 1', out => divide(['100', out.split('\n')
@@ -16,7 +21,7 @@ const memData = Variable(0, {
 });
 
 const tempData = Variable(0, {
-    poll: [1000, "bash -c \"cat /sys/devices/platform/nct6775.2592/hwmon/*/temp7_input\"", n => {
+    poll: [1000, `bash -c "cat ${cpu.tempSensor} "`, n => {
         return Math.ceil(Number.parseInt(n) / 100_0);
     }],
 });

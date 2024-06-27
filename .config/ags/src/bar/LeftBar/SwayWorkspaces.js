@@ -1,9 +1,8 @@
-import { Variable } from 'resource:///com/github/Aylur/ags/variable.js'
+import { execAsync } from 'resource:///com/github/Aylur/ags/utils.js';
 
-
-const swayWorkspaceState = new Variable("[]", {
-    listen: App.configDir + '/scripts/workspace.py',
-})
+const swayWorkspaceState = Variable("[]", {
+    listen: [`${App.configDir}/scripts/workspace.py`]
+});
 
 /**
  * @param {number} monitor
@@ -15,6 +14,9 @@ export default (monitor) => {
      * @returns {Array}
      */
     const transformWorkspaceState = (workspaceState) => {
+        /**
+         * Takes the data from python script and creates all workspace buttons
+         */
         if (workspaceState === "[]") {
             return [];
         }
@@ -26,7 +28,7 @@ export default (monitor) => {
 
         selectedDisplayWorkspaces.forEach(element => {
             const workspaceButton = Widget.Button({
-                on_primary_click: () => Utils.execAsync(`swaymsg workspace number ${element["workspaceID"]}`),
+                on_primary_click: () => execAsync(`swaymsg workspace number ${element["workspaceID"]}`),
                 class_names: ["barWorkspace", element["workspaceType"]],
                 child: Widget.Label(element["workspaceName"])
             });
@@ -38,10 +40,9 @@ export default (monitor) => {
     };
 
     return Widget.Box({
-        class_names: ["barSwayWorkspaces"],
+        class_names: ["barSwayWorkspaces", "bgacentColor"],
         hpack: 'start',
         // @ts-ignore
-        children: swayWorkspaceState.bind().as(transformWorkspaceState),
+        children: swayWorkspaceState.bind().transform(transformWorkspaceState),
     });
 };
-

@@ -8,15 +8,16 @@ export default() => {
 
     const batLabel = Widget.Label({
         label: battery.bind('percent').as(p => p.toString() + "%")
-    })
+    });
 
     const batTimeLeft = battery.bind("time_remaining").as((p) => {
+        // @ts-ignore
         const date = new Date(null);
         date.setSeconds(p);
 
         let timeRemaings = date.toTimeString().split(" ")[0].split(":");
         return `${timeRemaings[0]} h ${timeRemaings[1]} min`;
-    })
+    });
 
     return Widget.Box({
         children: [
@@ -24,5 +25,5 @@ export default() => {
             batLabel,
         ],
         tooltip_text: batTimeLeft,
-    })
+    });
 }

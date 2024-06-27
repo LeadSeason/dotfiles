@@ -2,7 +2,7 @@ import { execAsync } from 'resource:///com/github/Aylur/ags/utils.js';
 
 const NotificationLister = Variable('{"text": "0", "alt": "none", "tooltip": "", "class": "none"}', {
     listen: ["swaync-client -swb", out => JSON.parse(out)],
-})
+});
 
 export default() => {
     const transformIcon = (value) => {
@@ -55,7 +55,7 @@ export default() => {
 
     return Widget.Button({
         // TODO: Add Actions
-        class_names: ["barInfoBox", "peach"],
+        class_names: ["barInfoBox", "acentColor"],
         child: iconBadgeSet,
         onPrimaryClick: () => execAsync("swaync-client -t -sw"),
         onSecondaryClick: () => execAsync("swaync-client -d -sw"),

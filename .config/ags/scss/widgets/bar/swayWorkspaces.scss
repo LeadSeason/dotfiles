@@ -1,10 +1,8 @@
 @import "../../theme/mocha.scss";
 
 .barSwayWorkspaces {
-	color: $peach70;
-	background-color: mix($peach20, transparent, 75%);
-
-	border-bottom: .15rem solid $peach;
+	color: $acentColor70;
+	border-bottom: .15rem solid $acentColor;
 	border-top-right-radius: .3rem;
 	border-top-left-radius: .3rem;
 	margin: .3rem .5rem .0rem;
@@ -17,7 +15,7 @@
 }
 
 .barFocused {
-	color: $peach;
+	color: $acentColor;
 	transition-duration: 300ms;
 }
 

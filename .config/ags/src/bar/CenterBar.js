@@ -11,7 +11,7 @@ function Clock() {
 	})
 
 	const separatorText = Widget.Label({
-		class_names: ["gray"],
+		class_names: ["fgcrust"],
 		label: " : ",
 	})
 
@@ -33,7 +33,7 @@ function Clock() {
 	})
 
 	const clockBadge = Widget.Button({
-		class_names: ["barInfoBox", "Clock", "peach"],
+		class_names: ["barInfoBox", "Clock", "acentColor"],
 		child: Widget.Box({
 			children: [
 				timeText,

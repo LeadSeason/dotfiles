@@ -1,24 +1,26 @@
-/* This variable is inverted 100% = Opaque, 0% = Transparent*/
-$badgeTransparency: 75%;
+/* Catppuccin Mocha */
+$rosewater: rgb(245, 224, 220);
+$flamingo: rgb(242, 205, 205);
+$pink: rgb(245, 194, 231);
+$mauve: rgb(203, 166, 247);
+$red: rgb(243, 139, 168);
+$maroon: rgb(235, 160, 172);
+$peach: rgb(250, 179, 135);
+$yellow: rgb(249, 226, 175);
+$green: rgb(166, 227, 161);
+$teal: rgb(148, 226, 213);
+$sky: rgb(137, 220, 235);
+$sapphire: rgb(116, 199, 236);
+$blue: rgb(137, 180, 250);
+$lavender: rgb(180, 190, 254);
 
 $text: #cdd6f4;
 $subtext0: #a6adc8;
 $subtext1: #bac2de;
 
 $base: rgb(30, 30, 46);
-.base {
-	color: $text;
-	background-color: mix($base, transparent, $badgeTransparency);
-	border-bottom: .15rem solid $text;
-}
-
-.bgbase {
-	background-color: $base;
-}
-
 $mantle: rgb(24, 24, 37);
 $crust: rgb(17, 17, 27);
-
 
 $surface0: #313244;
 $surface1: #45475a;
@@ -27,6 +29,61 @@ $surface2: #585b70;
 $overlay0: #6c7086;
 $overlay1: #7f849c;
 $overlay2: #9399b2;
+
+
+/* define acent color to cooking later */
+$acentColor: $peach;
+
+/* This variable is inverted 100% = Opaque, 0% = Transparent*/
+$badgeTransparency: 75%;
+
+.base {
+	color: $text;
+	background-color: mix($base, transparent, $badgeTransparency);
+	border-bottom: .15rem solid $text;
+  	box-shadow: inset 3px 4px 5px mix($crust, transparent, 50%);
+}
+
+.fgbase {
+	color: $text;
+}
+
+.bgbase {
+	background-color: $base;
+  	box-shadow: inset 3px 4px 5px mix($crust, transparent, 50%);
+}
+
+.mantle {
+	color: $text;
+	background-color: mix($mantle, transparent, $badgeTransparency);
+	border-bottom: .15rem solid $text;
+  	box-shadow: inset 3px 4px 5px mix($crust, transparent, 50%);
+}
+
+.fgmantle {
+	color: $text;
+}
+
+.bgmantle {
+	background-color: $mantle;
+  	box-shadow: inset 3px 4px 5px mix($crust, transparent, 50%);
+}
+
+.crust {
+	color: $text;
+	background-color: mix($crust, transparent, $badgeTransparency);
+	border-bottom: .15rem solid $text;
+  	box-shadow: inset 3px 4px 5px mix($crust, transparent, 50%);
+}
+
+.fgcrust {
+	color: $text;
+}
+
+.bgcrust {
+	background-color: $crust;
+  	box-shadow: inset 3px 4px 5px mix($crust, transparent, 50%);
+}
 
 $rosewater10: rgb(24, 22, 22);
 $rosewater20: rgb(49, 45, 44);
@@ -37,12 +94,18 @@ $rosewater60: rgb(147, 134, 132);
 $rosewater70: rgb(172, 157, 154);
 $rosewater80: rgb(196, 179, 176);
 $rosewater90: rgb(220, 202, 198);
-$rosewater: rgb(245, 224, 220);
 
 .rosewater {
 	color: $rosewater;
-	background-color: mix($rosewater20, transparent, $badgeTransparency);
+	background: repeating-linear-gradient(
+		$rosewater20,
+		$rosewater20 .2%,
+		$rosewater30 .5%,
+		$rosewater20 .8%,
+		$rosewater20 1%
+	);
 	border-bottom: .15rem solid $rosewater;
+  	box-shadow: inset 3px 4px 5px mix($crust, transparent, 50%);
 }
 
 .fgrosewater {
@@ -50,7 +113,14 @@ $rosewater: rgb(245, 224, 220);
 }
 
 .bgrosewater {
-	background-color: mix($rosewater20, transparent, $badgeTransparency);
+	background: repeating-linear-gradient(
+		$rosewater20,
+		$rosewater20 .2%,
+		$rosewater30 .5%,
+		$rosewater20 .8%,
+		$rosewater20 1%
+	);
+  	box-shadow: inset 3px 4px 5px mix($crust, transparent, 50%);
 }
 
 $flamingo10: rgb(24, 20, 20);
@@ -62,12 +132,18 @@ $flamingo60: rgb(145, 123, 123);
 $flamingo70: rgb(169, 144, 144);
 $flamingo80: rgb(194, 164, 164);
 $flamingo90: rgb(218, 184, 184);
-$flamingo: rgb(242, 205, 205);
 
 .flamingo {
 	color: $flamingo;
-	background-color: mix($flamingo20, transparent, $badgeTransparency);
+	background: repeating-linear-gradient(
+		$flamingo20,
+		$flamingo20 .2%,
+		$flamingo30 .5%,
+		$flamingo20 .8%,
+		$flamingo20 1%
+	);
 	border-bottom: .15rem solid $flamingo;
+  	box-shadow: inset 3px 4px 5px mix($crust, transparent, 50%);
 }
 
 .fgflamingo {
@@ -75,7 +151,14 @@ $flamingo: rgb(242, 205, 205);
 }
 
 .bgflamingo {
-	background-color: mix($flamingo20, transparent, $badgeTransparency);
+	background: repeating-linear-gradient(
+		$flamingo20,
+		$flamingo20 .2%,
+		$flamingo30 .5%,
+		$flamingo20 .8%,
+		$flamingo20 1%
+	);
+  	box-shadow: inset 3px 4px 5px mix($crust, transparent, 50%);
 }
 
 $pink10: rgb(24, 19, 23);
@@ -87,12 +170,18 @@ $pink60: rgb(147, 116, 139);
 $pink70: rgb(172, 136, 162);
 $pink80: rgb(196, 155, 185);
 $pink90: rgb(220, 175, 208);
-$pink: rgb(245, 194, 231);
 
 .pink {
 	color: $pink;
-	background-color: mix($pink20, transparent, $badgeTransparency);
+	background: repeating-linear-gradient(
+		$pink20,
+		$pink20 .2%,
+		$pink30 .5%,
+		$pink20 .8%,
+		$pink20 1%
+	);
 	border-bottom: .15rem solid $pink;
+  	box-shadow: inset 3px 4px 5px mix($crust, transparent, 50%);
 }
 
 .fgpink {
@@ -100,7 +189,14 @@ $pink: rgb(245, 194, 231);
 }
 
 .bgpink {
-	background-color: mix($pink20, transparent, $badgeTransparency);
+	background: repeating-linear-gradient(
+		$pink20,
+		$pink20 .2%,
+		$pink30 .5%,
+		$pink20 .8%,
+		$pink20 1%
+	);
+  	box-shadow: inset 3px 4px 5px mix($crust, transparent, 50%);
 }
 
 $mauve10: rgb(20, 17, 25);
@@ -112,12 +208,18 @@ $mauve60: rgb(122, 100, 148);
 $mauve70: rgb(142, 116, 173);
 $mauve80: rgb(162, 133, 198);
 $mauve90: rgb(183, 149, 222);
-$mauve: rgb(203, 166, 247);
 
 .mauve {
 	color: $mauve;
-	background-color: mix($mauve20, transparent, $badgeTransparency);
+	background: repeating-linear-gradient(
+		$mauve20,
+		$mauve20 .2%,
+		$mauve30 .5%,
+		$mauve20 .8%,
+		$mauve20 1%
+	);
 	border-bottom: .15rem solid $mauve;
+  	box-shadow: inset 3px 4px 5px mix($crust, transparent, 50%);
 }
 
 .fgmauve {
@@ -125,7 +227,14 @@ $mauve: rgb(203, 166, 247);
 }
 
 .bgmauve {
-	background-color: mix($mauve20, transparent, $badgeTransparency);
+	background: repeating-linear-gradient(
+		$mauve20,
+		$mauve20 .2%,
+		$mauve30 .5%,
+		$mauve20 .8%,
+		$mauve20 1%
+	);
+  	box-shadow: inset 3px 4px 5px mix($crust, transparent, 50%);
 }
 
 $red10: rgb(24, 14, 17);
@@ -137,12 +246,18 @@ $red60: rgb(146, 83, 101);
 $red70: rgb(170, 97, 118);
 $red80: rgb(194, 111, 134);
 $red90: rgb(219, 125, 151);
-$red: rgb(243, 139, 168);
 
 .red {
 	color: $red;
-	background-color: mix($red20, transparent, $badgeTransparency);
+	background: repeating-linear-gradient(
+		$red20,
+		$red20 .2%,
+		$red30 .5%,
+		$red20 .8%,
+		$red20 1%
+	);
 	border-bottom: .15rem solid $red;
+  	box-shadow: inset 3px 4px 5px mix($crust, transparent, 50%);
 }
 
 .fgred {
@@ -150,7 +265,14 @@ $red: rgb(243, 139, 168);
 }
 
 .bgred {
-	background-color: mix($red20, transparent, $badgeTransparency);
+	background: repeating-linear-gradient(
+		$red20,
+		$red20 .2%,
+		$red30 .5%,
+		$red20 .8%,
+		$red20 1%
+	);
+  	box-shadow: inset 3px 4px 5px mix($crust, transparent, 50%);
 }
 
 $maroon10: rgb(24, 16, 17);
@@ -162,12 +284,18 @@ $maroon60: rgb(141, 96, 103);
 $maroon70: rgb(164, 112, 120);
 $maroon80: rgb(188, 128, 138);
 $maroon90: rgb(212, 144, 155);
-$maroon: rgb(235, 160, 172);
 
 .maroon {
 	color: $maroon;
-	background-color: mix($maroon20, transparent, $badgeTransparency);
+	background: repeating-linear-gradient(
+		$maroon20,
+		$maroon20 .2%,
+		$maroon30 .5%,
+		$maroon20 .8%,
+		$maroon20 1%
+	);
 	border-bottom: .15rem solid $maroon;
+  	box-shadow: inset 3px 4px 5px mix($crust, transparent, 50%);
 }
 
 .fgmaroon {
@@ -175,7 +303,14 @@ $maroon: rgb(235, 160, 172);
 }
 
 .bgmaroon {
-	background-color: mix($maroon20, transparent, $badgeTransparency);
+	background: repeating-linear-gradient(
+		$maroon20,
+		$maroon20 .2%,
+		$maroon30 .5%,
+		$maroon20 .8%,
+		$maroon20 1%
+	);
+  	box-shadow: inset 3px 4px 5px mix($crust, transparent, 50%);
 }
 
 $peach10: rgb(25, 18, 14);
@@ -187,12 +322,18 @@ $peach60: rgb(150, 107, 81);
 $peach70: rgb(175, 125, 94);
 $peach80: rgb(200, 143, 108);
 $peach90: rgb(225, 161, 122);
-$peach: rgb(250, 179, 135);
 
 .peach {
 	color: $peach;
-	background-color: mix($peach20, transparent, $badgeTransparency);
+	background: repeating-linear-gradient(
+		$peach20,
+		$peach20 .2%,
+		$peach30 .5%,
+		$peach20 .8%,
+		$peach20 1%
+	);
 	border-bottom: .15rem solid $peach;
+  	box-shadow: inset 3px 4px 5px mix($crust, transparent, 50%);
 }
 
 .fgpeach {
@@ -200,7 +341,14 @@ $peach: rgb(250, 179, 135);
 }
 
 .bgpeach {
-	background-color: mix($peach20, transparent, $badgeTransparency);
+	background: repeating-linear-gradient(
+		$peach20,
+		$peach20 .2%,
+		$peach30 .5%,
+		$peach20 .8%,
+		$peach20 1%
+	);
+  	box-shadow: inset 3px 4px 5px mix($crust, transparent, 50%);
 }
 
 $yellow10: rgb(25, 23, 18);
@@ -212,12 +360,18 @@ $yellow60: rgb(149, 136, 105);
 $yellow70: rgb(174, 158, 122);
 $yellow80: rgb(199, 181, 140);
 $yellow90: rgb(224, 203, 158);
-$yellow: rgb(249, 226, 175);
 
 .yellow {
 	color: $yellow;
-	background-color: mix($yellow20, transparent, $badgeTransparency);
+	background: repeating-linear-gradient(
+		$yellow20,
+		$yellow20 .2%,
+		$yellow30 .5%,
+		$yellow20 .8%,
+		$yellow20 1%
+	);
 	border-bottom: .15rem solid $yellow;
+  	box-shadow: inset 3px 4px 5px mix($crust, transparent, 50%);
 }
 
 .fgyellow {
@@ -225,7 +379,14 @@ $yellow: rgb(249, 226, 175);
 }
 
 .bgyellow {
-	background-color: mix($yellow20, transparent, $badgeTransparency);
+	background: repeating-linear-gradient(
+		$yellow20,
+		$yellow20 .2%,
+		$yellow30 .5%,
+		$yellow20 .8%,
+		$yellow20 1%
+	);
+  	box-shadow: inset 3px 4px 5px mix($crust, transparent, 50%);
 }
 
 $green10: rgb(17, 23, 16);
@@ -237,12 +398,18 @@ $green60: rgb(100, 136, 97);
 $green70: rgb(116, 159, 113);
 $green80: rgb(133, 182, 129);
 $green90: rgb(149, 204, 145);
-$green: rgb(166, 227, 161);
 
 .green {
 	color: $green;
-	background-color: mix($green20, transparent, $badgeTransparency);
+	background: repeating-linear-gradient(
+		$green20,
+		$green20 .2%,
+		$green30 .5%,
+		$green20 .8%,
+		$green20 1%
+	);
 	border-bottom: .15rem solid $green;
+  	box-shadow: inset 3px 4px 5px mix($crust, transparent, 50%);
 }
 
 .fggreen {
@@ -250,7 +417,14 @@ $green: rgb(166, 227, 161);
 }
 
 .bggreen {
-	background-color: mix($green20, transparent, $badgeTransparency);
+	background: repeating-linear-gradient(
+		$green20,
+		$green20 .2%,
+		$green30 .5%,
+		$green20 .8%,
+		$green20 1%
+	);
+  	box-shadow: inset 3px 4px 5px mix($crust, transparent, 50%);
 }
 
 $teal10: rgb(15, 23, 21);
@@ -262,12 +436,18 @@ $teal60: rgb(89, 136, 128);
 $teal70: rgb(104, 158, 149);
 $teal80: rgb(118, 181, 170);
 $teal90: rgb(133, 203, 192);
-$teal: rgb(148, 226, 213);
 
 .teal {
 	color: $teal;
-	background-color: mix($teal20, transparent, $badgeTransparency);
+	background: repeating-linear-gradient(
+		$teal20,
+		$teal20 .2%,
+		$teal30 .5%,
+		$teal20 .8%,
+		$teal20 1%
+	);
 	border-bottom: .15rem solid $teal;
+  	box-shadow: inset 3px 4px 5px mix($crust, transparent, 50%);
 }
 
 .fgteal {
@@ -275,7 +455,14 @@ $teal: rgb(148, 226, 213);
 }
 
 .bgteal {
-	background-color: mix($teal20, transparent, $badgeTransparency);
+	background: repeating-linear-gradient(
+		$teal20,
+		$teal20 .2%,
+		$teal30 .5%,
+		$teal20 .8%,
+		$teal20 1%
+	);
+  	box-shadow: inset 3px 4px 5px mix($crust, transparent, 50%);
 }
 
 $sky10: rgb(14, 22, 24);
@@ -287,12 +474,18 @@ $sky60: rgb(82, 132, 141);
 $sky70: rgb(96, 154, 164);
 $sky80: rgb(110, 176, 188);
 $sky90: rgb(123, 198, 212);
-$sky: rgb(137, 220, 235);
 
 .sky {
 	color: $sky;
-	background-color: mix($sky20, transparent, $badgeTransparency);
+	background: repeating-linear-gradient(
+		$sky20,
+		$sky20 .2%,
+		$sky30 .5%,
+		$sky20 .8%,
+		$sky20 1%
+	);
 	border-bottom: .15rem solid $sky;
+  	box-shadow: inset 3px 4px 5px mix($crust, transparent, 50%);
 }
 
 .fgsky {
@@ -300,7 +493,14 @@ $sky: rgb(137, 220, 235);
 }
 
 .bgsky {
-	background-color: mix($sky20, transparent, $badgeTransparency);
+	background: repeating-linear-gradient(
+		$sky20,
+		$sky20 .2%,
+		$sky30 .5%,
+		$sky20 .8%,
+		$sky20 1%
+	);
+  	box-shadow: inset 3px 4px 5px mix($crust, transparent, 50%);
 }
 
 $sapphire10: rgb(12, 20, 24);
@@ -312,12 +512,18 @@ $sapphire60: rgb(70, 119, 142);
 $sapphire70: rgb(81, 139, 165);
 $sapphire80: rgb(93, 159, 189);
 $sapphire90: rgb(104, 179, 212);
-$sapphire: rgb(116, 199, 236);
 
 .sapphire {
 	color: $sapphire;
-	background-color: mix($sapphire20, transparent, $badgeTransparency);
+	background: repeating-linear-gradient(
+		$sapphire20,
+		$sapphire20 .2%,
+		$sapphire30 .5%,
+		$sapphire20 .8%,
+		$sapphire20 1%
+	);
 	border-bottom: .15rem solid $sapphire;
+  	box-shadow: inset 3px 4px 5px mix($crust, transparent, 50%);
 }
 
 .fgsapphire {
@@ -325,7 +531,14 @@ $sapphire: rgb(116, 199, 236);
 }
 
 .bgsapphire {
-	background-color: mix($sapphire20, transparent, $badgeTransparency);
+	background: repeating-linear-gradient(
+		$sapphire20,
+		$sapphire20 .2%,
+		$sapphire30 .5%,
+		$sapphire20 .8%,
+		$sapphire20 1%
+	);
+  	box-shadow: inset 3px 4px 5px mix($crust, transparent, 50%);
 }
 
 $blue10: rgb(14, 18, 25);
@@ -337,12 +550,18 @@ $blue60: rgb(82, 108, 150);
 $blue70: rgb(96, 126, 175);
 $blue80: rgb(110, 144, 200);
 $blue90: rgb(123, 162, 225);
-$blue: rgb(137, 180, 250);
 
 .blue {
 	color: $blue;
-	background-color: mix($blue20, transparent, $badgeTransparency);
+	background: repeating-linear-gradient(
+		$blue20,
+		$blue20 .2%,
+		$blue30 .5%,
+		$blue20 .8%,
+		$blue20 1%
+	);
 	border-bottom: .15rem solid $blue;
+  	box-shadow: inset 3px 4px 5px mix($crust, transparent, 50%);
 }
 
 .fgblue {
@@ -350,7 +569,14 @@ $blue: rgb(137, 180, 250);
 }
 
 .bgblue {
-	background-color: mix($blue20, transparent, $badgeTransparency);
+	background: repeating-linear-gradient(
+		$blue20,
+		$blue20 .2%,
+		$blue30 .5%,
+		$blue20 .8%,
+		$blue20 1%
+	);
+  	box-shadow: inset 3px 4px 5px mix($crust, transparent, 50%);
 }
 
 $lavender10: rgb(18, 19, 25);
@@ -362,12 +588,18 @@ $lavender60: rgb(108, 114, 152);
 $lavender70: rgb(126, 133, 178);
 $lavender80: rgb(144, 152, 203);
 $lavender90: rgb(162, 171, 229);
-$lavender: rgb(180, 190, 254);
 
 .lavender {
 	color: $lavender;
-	background-color: mix($lavender20, transparent, $badgeTransparency);
+	background: repeating-linear-gradient(
+		$lavender20,
+		$lavender20 .2%,
+		$lavender30 .5%,
+		$lavender20 .8%,
+		$lavender20 1%
+	);
 	border-bottom: .15rem solid $lavender;
+  	box-shadow: inset 3px 4px 5px mix($crust, transparent, 50%);
 }
 
 .fglavender {
@@ -375,9 +607,53 @@ $lavender: rgb(180, 190, 254);
 }
 
 .bglavender {
-	background-color: mix($lavender20, transparent, $badgeTransparency);
+	background: repeating-linear-gradient(
+		$lavender20,
+		$lavender20 .2%,
+		$lavender30 .5%,
+		$lavender20 .8%,
+		$lavender20 1%
+	);
+  	box-shadow: inset 3px 4px 5px mix($crust, transparent, 50%);
 }
 
-.gray {
-	color: $text;
+$acentColor10: mix($acentColor, black, 10%);
+$acentColor20: mix($acentColor, black, 20%);
+$acentColor30: mix($acentColor, black, 30%);
+$acentColor40: mix($acentColor, black, 40%);
+$acentColor50: mix($acentColor, black, 50%);
+$acentColor60: mix($acentColor, black, 60%);
+$acentColor70: mix($acentColor, black, 70%);
+$acentColor80: mix($acentColor, black, 80%);
+$acentColor90: mix($acentColor, black, 90%);
+
+.acentColor {
+	color: $acentColor;
+	background: repeating-linear-gradient(
+		$acentColor20,
+		$acentColor20 .2%,
+		$acentColor30 .5%,
+		$acentColor20 .8%,
+		$acentColor20 1%
+	);
+
+  	box-shadow: inset 3px 4px 5px mix($crust, transparent, 50%);
+			  /* 0px -1px 3px 4px mix($crust, transparent, 50%); */
+	border-bottom: .15rem solid $acentColor;
+}
+
+.fgacentColor {
+	color: $acentColor;
+}
+
+.bgacentColor {
+	background: repeating-linear-gradient(
+		$acentColor20,
+		$acentColor20 .2%,
+		$acentColor30 .5%,
+		$acentColor20 .8%,
+		$acentColor20 1%
+	);
+  	box-shadow: inset 3px 4px 5px mix($crust, transparent, 50%);
+			  /* 0px -1px 3px 4px mix($crust, transparent, 50%); */
 }

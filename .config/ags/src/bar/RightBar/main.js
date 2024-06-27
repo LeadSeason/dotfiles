@@ -7,7 +7,7 @@ import netWidget from "./netWidget.js";
 import batWidget from "./battery.js";
 
 const rightGroup = () => Widget.Box({
-    class_names: ["barInfoBox", "peach"],
+    class_names: ["barInfoBox", "acentColor"],
     spacing: 20,
     children: [
         volWidget(),

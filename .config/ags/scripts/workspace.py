@@ -1,11 +1,9 @@
 #!/bin/python
 # vim:ft=python
 
-import i3ipc
 from i3ipc.aio import Connection
 from i3ipc import Event
 
-from pprint import pprint
 import json
 import asyncio
 
@@ -15,10 +13,6 @@ async def main():
         await update_status()
 
     async def on_event_close(self, e):
-        # Yeah sleeping makes stuff happen a lot slower but,
-        # on close event it takes a short time to update
-        # Sleeping 100ms make sure window is closed before
-        # looking up
         await asyncio.sleep(0.1)
         await update_status()
 
@@ -30,10 +24,10 @@ async def main():
                 displays.append(x.output)
 
         displays.sort()
-        
+
         WSDataSets = {}
         for x in displays:
-            WSDataSets.update({x:[]})
+            WSDataSets.update({x: []})
 
         for x in workspaces:
             wdata = {
@@ -51,7 +45,7 @@ async def main():
             wdata["workspaceName"] = x.name
 
             WSDataSets[x.output].append(wdata)
-        
+
         print(json.dumps(WSDataSets), flush=True)
 
     global connector

@@ -1,4 +1,3 @@
-
 @import "../../theme/mocha.scss";
 
 .barNotificationBadge {
@@ -7,4 +6,8 @@
 	margin: 0px .4rem 0px 0px;
 	color: $red10;
 	background: $red;
+}
+
+.barVol50 {
+	color: mix($pink, transparent, 50%);
 }
