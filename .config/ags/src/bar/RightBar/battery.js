@@ -2,6 +2,10 @@ const battery = await Service.import('battery');
 
 
 export default() => {
+    if (!battery.available) {
+        return null;
+    }
+
     const batIcon = Widget.Icon({
         icon: battery.bind('icon_name') 
     });

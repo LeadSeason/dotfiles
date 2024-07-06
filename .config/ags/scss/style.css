@@ -1244,23 +1244,15 @@
   padding: .3rem .7rem .4rem;
   margin: 3rem 0; }
 
-scale slider {
-  min-width: 200px;
-  min-height: 2px;
-  -gtk-outline-bottom-left-radius: 6px;
-  -gtk-outline-bottom-right-radius: 6px;
-  -gtk-outline-top-left-radius: 6px;
-  -gtk-outline-top-right-radius: 6px;
-  opacity: 1;
-  outline: rgba(0, 0, 0, 0);
-  outline-offset: -4px;
-  outline-style: solid;
-  outline-width: 2px; }
-
-.monBox {
-  color: rgba(0, 0, 255, 0.5);
-  padding: .3rem .7rem .4rem;
-  margin: 3rem 0; }
+slider {
+  box-shadow: none;
+  background-color: transparent;
+  border: 2px solid transparent;
+  transition: 200ms;
+  border-radius: 14px;
+  min-height: 10px;
+  min-width: 10px;
+  margin: 20px; }
 
 * {
   all: unset;

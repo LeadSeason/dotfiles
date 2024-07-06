@@ -6,6 +6,8 @@ import volWidget from "./volWidget.js";
 import netWidget from "./netWidget.js";
 import batWidget from "./battery.js";
 
+// Some widgets may return null, on conditions. 
+// @ts-ignore
 const rightGroup = () => Widget.Box({
     class_names: ["barInfoBox", "acentColor"],
     spacing: 20,
@@ -16,7 +18,13 @@ const rightGroup = () => Widget.Box({
         sysStats(),
         archUpdates(),
         sysTray(),
-    ]
+    ].filter((w) => {
+        // Filter out all null types.
+        if (w === null)  {
+            return false;
+        }
+        return true;
+    })
 });
 
 export default() => Widget.Box({

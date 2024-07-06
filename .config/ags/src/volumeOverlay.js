@@ -6,10 +6,10 @@ var oldVolume = audio.speaker.volume;
 
 export default () => {
     const volSlider = Widget.Slider({
-        onChange: ({ value }) => audio.speaker.volume = value,
+        draw_value: false,
+        hexpand: true,
+        on_change: ({ value }) => audio.speaker.volume = value,
         value: audio.speaker.bind("volume"),
-        max: 1,
-        min: 0,
     })
 
     const volWidget = Widget.Box({

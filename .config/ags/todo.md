@@ -7,6 +7,6 @@
  - This will mean that workspaces will have cool animations
  - Might do when the sway service ~~drops~~ merges
 [ ] Battery indicatro. For hid (ie: Mouse, controller,) Dont show unless low battery
-[ ] Bring back That crt look I had with waybar 
-[ ] Add microphone indicator instead of 2 speakers. Use literal gradint to indicate 
+[x] Bring back That crt look I had with waybar 
+[x] Add microphone indicator instead of 2 speakers. Use literal gradint to indicate 
 [ ] getupdates-client Vois integroida ags sisään, With the help of utils.readFileAsync.  <>

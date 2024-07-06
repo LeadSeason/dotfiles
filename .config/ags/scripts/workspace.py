@@ -12,10 +12,6 @@ async def main():
     async def on_event(self, e):
         await update_status()
 
-    async def on_event_close(self, e):
-        await asyncio.sleep(0.1)
-        await update_status()
-
     async def update_status():
         workspaces = await connector.get_workspaces()
         displays = []
@@ -48,21 +44,20 @@ async def main():
 
         print(json.dumps(WSDataSets), flush=True)
 
-    global connector
     connector = await Connection(auto_reconnect=True).connect()
 
-    connector.on(Event.WINDOW, on_event)
-    connector.on(Event.WINDOW_CLOSE, on_event_close)
-    connector.on(Event.WINDOW_NEW, on_event)
+    connector.on(Event.WORKSPACE_FOCUS, on_event)
     connector.on(Event.WORKSPACE_INIT, on_event)
-    connector.on(Event.WORKSPACE_MOVE, on_event)
-    connector.on(Event.WORKSPACE_RENAME, on_event)
+    connector.on(Event.WORKSPACE_EMPTY, on_event)
     connector.on(Event.WORKSPACE_URGENT, on_event)
+    connector.on(Event.WORKSPACE_RELOAD, on_event)
+    connector.on(Event.WORKSPACE_RENAME, on_event)
+    connector.on(Event.WORKSPACE_RESTORED, on_event)
+    connector.on(Event.WORKSPACE_MOVE, on_event)
 
     await update_status()
 
     await connector.main()
 
 if __name__ == "__main__":
-    eventLoop = asyncio.get_event_loop()
-    eventLoop.run_until_complete(main())
+    asyncio.run(main())

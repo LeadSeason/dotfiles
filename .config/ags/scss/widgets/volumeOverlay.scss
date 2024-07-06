@@ -1,20 +1,33 @@
 @import "../theme/mocha.scss";
 
 .volumeOverlayMain {
-	padding: .3rem .7rem .4rem;
-	margin: 3rem 0;
+    padding: .3rem .7rem .4rem;
+    margin: 3rem 0;
+}
+trough {
+    transition: 200ms;
+    border-radius: 5px;
+    border: solid;
+    background-color: $base;
+    min-height: 20px;
+    min-width: 20px;
+
+    highlight,
+    progress {
+        border-radius: max(5px - 2px, 0);
+        background-image: $acentColor;
+        min-height: 20px;
+        min-width: 20px;
+    }
 }
 
-scale slider {
-	min-width: 200px;
-	min-height: 2px;
-	-gtk-outline-bottom-left-radius: 6px;
-	-gtk-outline-bottom-right-radius: 6px;
-	-gtk-outline-top-left-radius: 6px;
-	-gtk-outline-top-right-radius: 6px;
-	opacity: 1;
-	outline: rgba(0,0,0,0);
-	outline-offset: -4px;
-	outline-style: solid;
-	outline-width: 2px;
+slider {
+    box-shadow: none;
+    background-color: transparent;
+    border: 2px solid transparent;
+    transition: 200ms;
+    border-radius: 5px;
+    min-height: 20px;
+    min-width: 20px;
+    margin: -$slider-width;
 }
