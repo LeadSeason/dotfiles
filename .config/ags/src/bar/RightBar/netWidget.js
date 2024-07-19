@@ -52,6 +52,7 @@ export default() => {
     });
 
     return Widget.Box({
+        class_names: ["fgpeach"],
         children: [wifiReveler, wiredReveler, nullReveler],
     })
 }

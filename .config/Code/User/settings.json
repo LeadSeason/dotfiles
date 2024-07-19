@@ -47,7 +47,7 @@
     "[python]": {
         "editor.formatOnType": true
     },
-    "catppuccin.accentColor": "peach",
+    "catppuccin.accentColor": "pink",
     "window.zoomLevel": 1,
     "workbench.iconTheme": "catppuccin-mocha",
     "C_Cpp.default.compilerPath": "/usr/bin/g++",
@@ -56,5 +56,6 @@
     "window.menuBarVisibility": "toggle",
     "javascript.updateImportsOnFileMove.enabled": "never",
     "editor.minimap.enabled": false,
-    "javascript.suggest.autoImports": false
+    "javascript.suggest.autoImports": false,
+    "editor.unicodeHighlight.nonBasicASCII": false
 }

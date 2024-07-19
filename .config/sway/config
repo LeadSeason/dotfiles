@@ -64,7 +64,8 @@ include ~/.config/sway/config.d/*
 # output * bg ~/.config/sway/wp/shuttle.mocha.jpg stretch $base
 
 # output * bg ~/.local/share/wallpapers/mocha-hald8-fate-astolfo_waifu2x_art_noise0_scale.png stretch $base
-output * bg ~/.local/share/wallpapers/fantasyart-1663166031505-4192.jpg stretch $base
+# output * bg ~/.local/share/wallpapers/fantasyart-1663166031505-4192.jpg stretch $base
+output * bg ~/.local/share/wallpapers/asltolpo.png stretch #000000
 
 # font
 font Maple Mono 11
@@ -79,11 +80,11 @@ gaps outer 10
 
 # Colors
 # target                 title     bg    text   indicator  border
-client.focused           $peach    $peach $base  $red $peach
-client.focused_inactive  $peach     $base $text  $surface1  $surface0
-client.focused_tab_title $peach     $base $text  $surface1  $surface0
+client.focused           $pink    $pink $base  $red $pink
+client.focused_inactive  $pink     $base $text  $surface1  $surface0
+client.focused_tab_title $pink     $base $text  $surface1  $surface0
 client.unfocused         $base     $base $text  $surface1  $surface0
-client.urgent            $peach    $base $red $peach     $red
+client.urgent            $pink    $base $red $pink     $red
 client.placeholder       $overlay0 $base $text  $surface1  $overlay0
 client.background        $crust
 
@@ -140,6 +141,8 @@ shadow_color #000000ff ex, #0000007F
 # dim_inactive_colors.unfocused $base ex, #000000FF
 # dim_inactive_colors.urgent $base ex, #fab387FF
 
+for_window [app_id="SteamTinkerLaunch-MainMenu"] floating enable
+for_window [app_id="^SteamTinkerLaunch-*"] floating enable
 for_window [app_id="org.kde.kdeconnect.daemon"] floating enable
 for_window [app_id="xdg-desktop-portal-gtk"] floating enable
 for_window [instance="origin.exe"] floating enable

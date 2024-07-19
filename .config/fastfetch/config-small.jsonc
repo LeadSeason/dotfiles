@@ -3,12 +3,12 @@
   "logo": {
     "source": "/home/leadseason/.config/fastfetch/uwuarch.ascii",
     "color": {
-      "1": "93",
-      "2": "93"
+      "1": "35",
+      "2": "35"
     }
   },
   "display": {
-    "color": "93",
+    "color": "35",
     "separator": ""
   },
   "modules": [

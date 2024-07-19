@@ -16,7 +16,7 @@ window {
     height: 50%;
     border: 3px;
     border-radius: 14px;
-    border-color: @Peach;
+    border-color: @Acent;
     background-color: transparent;
 }
 
@@ -32,7 +32,7 @@ inputbar {
 }
 
 prompt {
-    background-color: @Peach;
+    background-color: @Acent;
     padding: 6px;
     text-color: @Base;
     border-radius: 3px;
@@ -73,10 +73,10 @@ element-icon {
 
 element selected {
 	border: 2px;
-	border-color: @Peach;
+	border-color: @Acent;
 	border-radius: 8px;
     background-color: transparent;
-    text-color: @Peach;
+    text-color: @Acent;
 }
 
 mode-switcher {
@@ -93,5 +93,5 @@ button {
 
 button selected {
   background-color: @Base;
-  text-color: @Peach;
+  text-color: @Acent;
 }
