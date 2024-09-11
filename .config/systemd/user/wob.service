@@ -1,0 +1,14 @@
+[Unit]
+Description=Solution to your Wayland Wallpaper Woes
+PartOf=graphical-session.target
+After=graphical-session.target
+
+[Service]
+Environment="WOBSOCK=/run/user/1000/wob.sock"
+ExecstartPre=/usr/bin/rm -f $WOBSOCK && /usr/bin/mkfifo $WOBSOCK
+ExecStart=/usr/bin/tail -f $WOBSOCK | /usr/bin/wob
+Restart=always
+RestartSec=10s
+
+[Install]
+WantedBy=sway-session.target

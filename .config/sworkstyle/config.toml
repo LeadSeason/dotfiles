@@ -1,6 +1,7 @@
 # Make sure you got that NerdFonts in your fonts.
 
 fallback = '󰳤'
+deduplicate_icons = true
 
 [matching]
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
-# Load All Enviroment variables
-source ~/.zshenv
+# Load all enviromental varibles
+source $ZDOTDIR/.zshenv
 
 # Wayland
 export CLUTTER_BACKEND=wayland
@@ -13,13 +13,6 @@ export SDL_VIDEODRIVER=wayland
 export XDG_CURRENT_DESKTOP=sway
 export XDG_SESSION_DEFAULT=sway
 export XDG_SESSION_TYPE=wayland
-
-# starting gnome-keyring-daemon for ssh, secrets, and gpg key unloking
-# eval $(gnome-keyring-daemon --start -c pkcs11,secrets,ssh)
-
-# exporting keyring variables
-# export SSH_AUTH_SOCK
-# export GNOME_KEYRING_CONTROL
 
 # starting sway
 exec sway

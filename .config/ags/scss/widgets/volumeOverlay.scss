@@ -15,7 +15,7 @@ trough {
     highlight,
     progress {
         border-radius: max(5px - 2px, 0);
-        background-image: $acentColor;
+        background-color: $acentColor;
         min-height: 20px;
         min-width: 20px;
     }
@@ -29,5 +29,5 @@ slider {
     border-radius: 5px;
     min-height: 20px;
     min-width: 20px;
-    margin: -$slider-width;
+    margin: 20px; 
 }

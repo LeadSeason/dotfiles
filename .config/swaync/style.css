@@ -60,7 +60,7 @@
 
 .floating-notifications.background .notification-row .notification-background .notification > *:last-child > * .notification-action:active {
   box-shadow: inset 0 0 0 1px #45475a;
-  background-color: #fab387;
+  background-color: #f38ba8;
   color: #cdd6f4;
 }
 
@@ -112,7 +112,7 @@
 
 .control-center .widget-title button:active {
   box-shadow: inset 0 0 0 1px #45475a;
-  background-color: #fab387;
+  background-color: #f38ba8;
   color: #1e1e2e;
 }
 
@@ -169,7 +169,7 @@
 
 .control-center .notification-row .notification-background .notification > *:last-child > * .notification-action:active {
   box-shadow: inset 0 0 0 1px #45475a;
-  background-color: #fab387;
+  background-color: #f38ba8;
   color: #cdd6f4;
 }
 
@@ -199,7 +199,7 @@
 
 .control-center .notification-row .notification-background:active {
   box-shadow: inset 0 0 0 1px #45475a;
-  background-color: #fab387;
+  background-color: #f38ba8;
   color: #cdd6f4;
 }
 
@@ -219,7 +219,7 @@ progressbar {
 
 .notification.low progress,
 .notification.normal progress {
-  background-color: #fab387;
+  background-color: #f38ba8;
 }
 
 trough {
@@ -261,7 +261,7 @@ trough {
 }
 
 .widget-dnd > switch:checked {
-  background: #fab387;
+  background: #f38ba8;
 }
 
 .widget-dnd > switch slider {

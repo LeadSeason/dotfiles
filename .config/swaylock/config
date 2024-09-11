@@ -6,7 +6,7 @@ indicator-caps-lock
 indicator
 clock
 timestr=%T
-font=Maple Mono
+font=FiraCode Nerd Font Propo
 indicator-idle-visible
 indicator-radius=180
 indicator-thickness=30
@@ -39,7 +39,7 @@ text-clear-color=#cdd6f4
 
 inside-color=#1e1e2e
 line-color=#00000000
-ring-color=#fab387
+ring-color=#f38ba8
 text-color=#cdd6f4
 
 inside-ver-color=#1e1e2e

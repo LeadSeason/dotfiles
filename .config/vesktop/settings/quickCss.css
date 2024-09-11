@@ -1,11 +1,11 @@
 @import url("https://catppuccin.github.io/discord/dist/catppuccin-mocha-pink.theme.css");
 
-
-:root {
---Chat-Font-Used: 'Maple Mono';
+:root{
+    --Chat-Font-Used: 'Maple Mono';
 font-feature-settings: "cv01", "cv04", "ss01", "ss02", "ss03", "ss04", "ss05";
 --Chat-Font-Size: 15.5px;
 }
+
 :not([class="hljs"]):not(code){
 font-family: var(--Chat-Font-Used)!important;
 }

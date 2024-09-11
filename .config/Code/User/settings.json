@@ -57,5 +57,8 @@
     "javascript.updateImportsOnFileMove.enabled": "never",
     "editor.minimap.enabled": false,
     "javascript.suggest.autoImports": false,
-    "editor.unicodeHighlight.nonBasicASCII": false
+    "editor.unicodeHighlight.nonBasicASCII": false,
+    "extensions.experimental.affinity": {
+        "asvetliakov.vscode-neovim": 1
+    }
 }

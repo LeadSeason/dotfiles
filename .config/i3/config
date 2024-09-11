@@ -23,7 +23,7 @@ set $mod Mod1
 font pango:monospace 8
 
 # Gaps
-for_window [class="^.*"] border pixel 2
+for_window [class="^.*"] border pixel 0
 gaps inner 5
 gaps outer 5
 
