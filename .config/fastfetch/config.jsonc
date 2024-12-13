@@ -57,7 +57,7 @@
     },
     {
       "type": "display",
-      "key": "DP({1})  \u001b[37m: "
+      "key": "DISP{1}  \u001b[37m: "
     },
     {
       "type": "shell",

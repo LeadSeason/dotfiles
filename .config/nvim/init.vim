@@ -21,3 +21,4 @@ set termguicolors
  " Stay in visual mode when indenting
 :vnoremap < <gv
 :vnoremap > >gv
+
