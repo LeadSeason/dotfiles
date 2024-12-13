@@ -1,17 +1,19 @@
 #!/usr/bin/env sh
 
-cd
-# Load All Enviroment variables
-source ~/.zshenv
+# Load all enviromental varibles
+source $ZDOTDIR/.zshenv
 
-pkill gnome-keyring-daemon
-# starting gnome-keyring-daemon for ssh, secrets, and gpg key unloking
-eval $(gnome-keyring-daemon --start -c pkcs11,secrets,ssh)
+# Wayland
+export CLUTTER_BACKEND=wayland
+export DESKTOP_SESSION=hyprland
+export GDK_BACKEND=wayland
+export MOZ_ENABLE_WAYLAND=1
+export QT_QPA_PLATFORM="wayland;xcb"
+export SDL_VIDEODRIVER=wayland
+export XDG_CURRENT_DESKTOP=hyprland
+export XDG_SESSION_DEFAULT=hyprland
+export XDG_SESSION_TYPE=wayland
 
-# exporting keyring variables
-export SSH_AUTH_SOCK
-export GNOME_KEYRING_CONTROL
-
-export DESKTOP_SESSION=Hyprland
-# starting sway
+# starting hyprland
 exec Hyprland
+
