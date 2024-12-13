@@ -1,9 +1,9 @@
-@import url("https://catppuccin.github.io/discord/dist/catppuccin-mocha-pink.theme.css");
+@import url("https://catppuccin.github.io/discord/dist/catppuccin-mocha-red.theme.css");
 
 :root{
-    --Chat-Font-Used: 'Maple Mono';
-font-feature-settings: "cv01", "cv04", "ss01", "ss02", "ss03", "ss04", "ss05";
---Chat-Font-Size: 15.5px;
+    --Chat-Font-Used: 'firacode nerd font propo';
+    src: url("https://www.programmingfonts.org/fonts/resources/firacode/firacode.woff2") format("woff");
+    --Chat-Font-Size: 15.5px;
 }
 
 :not([class="hljs"]):not(code){

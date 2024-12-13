@@ -21,9 +21,8 @@
     "docker.enableDockerComposeLanguageService": true,
     "cmake.configureOnOpen": true,
     "python.defaultInterpreterPath": "/bin/python",
-    "editor.fontFamily": "'JetBrainsMono Nerd Font'",
+    "editor.fontFamily": "\"Symbols Nerd Font Mono\", \"FiraCode Nerd Font Propo\"",
     "editor.fontLigatures": true,
-    "files.autoSave": "afterDelay",
     "editor.largeFileOptimizations": false,
     "vim.useSystemClipboard": true,
     "git.confirmSync": false,
@@ -47,7 +46,6 @@
     "[python]": {
         "editor.formatOnType": true
     },
-    "catppuccin.accentColor": "pink",
     "window.zoomLevel": 1,
     "workbench.iconTheme": "catppuccin-mocha",
     "C_Cpp.default.compilerPath": "/usr/bin/g++",
@@ -60,5 +58,7 @@
     "editor.unicodeHighlight.nonBasicASCII": false,
     "extensions.experimental.affinity": {
         "asvetliakov.vscode-neovim": 1
-    }
+    },
+    "catppuccin.accentColor": "red",
+    "files.autoSave": "afterDelay"
 }

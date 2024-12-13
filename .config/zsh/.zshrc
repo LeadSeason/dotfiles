@@ -56,7 +56,7 @@ zplug load
 
 
 # Plugin Configuration
-source /home/leadseason/.config/zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh
+source $HOME/.config/zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh
 
 
 # alias defenitions
@@ -79,7 +79,7 @@ alias lynx="lynx -accept_all_cookies"
 alias make="make -j24"
 alias mtr="mtr --aslookup --show-ips"
 alias quit="exit"
-alias radeontop="radeontop -c"
+alias radeontop="radeontop -cT"
 alias s="s -p duckduckgo"
 alias saberfetch="neofetch --ascii ~/.config/neofetch/saber.ascii --gap -567"
 alias showcolors="curl https://gist.githubusercontent.com/HaleTom/89ffe32783f89f403bba96bd7bcd1263/raw/ | bash"
@@ -87,7 +87,7 @@ alias ssh="TERM=xterm ssh"
 alias tree="tree -C"
 alias tty-clock="tty-clock -C 5"
 alias vim="nvim"
-alias xdg-ninja="COLORTERM="" xdg-ninja"
+alias xdg-ninja="COLORTERM=\"\" xdg-ninja"
 
 # Moving to XDG data dir
 alias adb='HOME="$XDG_DATA_HOME"/android adb'

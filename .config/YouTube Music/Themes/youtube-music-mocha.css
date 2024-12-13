@@ -19,7 +19,7 @@ html:not(.style-scope)
   --ctp-mantle: #181825;
   --ctp-crust: #11111b;
 
-  --ctp-accent: var(--ctp-pink);
+  --ctp-accent: var(--ctp-red);
 
   --unthemed-yet: inherit !important;
 
