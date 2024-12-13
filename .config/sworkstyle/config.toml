@@ -27,6 +27,8 @@ deduplicate_icons = true
 'firefoxdeveloperedition' = '󰈹'
 'firefoxnightly' = '󰈹'
 
+'Tor Browser' = ''
+
 '/YouTube Music/' = ''
 'YouTube Music' = ''
 
@@ -141,6 +143,8 @@ deduplicate_icons = true
 'libreoffice-calc'= '󱎏'
 
 # Misc Using
+'heroic' = '󱢾'
+'org.wireshark.Wireshark' = '󱢺'
 '/NoiseTorch/' = '󰍯'
 '/com.nextcloud.desktopclient.nextcloud/' = ''
 '/glxgears/' = ''
