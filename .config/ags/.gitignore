@@ -1,4 +1,2 @@
-__pycache__
-node_modules
-types
-package-lock.json
+@girs/
+node_modules/

@@ -1,0 +1,139 @@
+@use "sass:color";
+@use "themes/mocha" as theme;
+
+* {
+	all: unset;
+	font-family: "Symbols Nerd Font Mono", "FiraCode Nerd Font Propo";
+}
+
+window.Bar {
+    color: theme.$text;
+    font-size: 20px;
+    font-weight: normal;
+
+	.Barbox {
+		background-color: color.mix(theme.$accentColor20, transparent, 50%);
+		border-bottom: .15rem solid color.mix(theme.$accentColor50, transparent, 25%);
+	}
+
+	button {
+		all: unset;
+		background-color: transparent;
+		transition: 100ms;
+		border-radius: 7px;
+	}
+
+	button:hover {
+		background-color: color.adjust(theme.$text, $alpha: -0.84);
+		border-color: color.adjust(theme.$text, $alpha: -0.8);
+	}
+
+
+	button:active {
+		background-color: color.adjust(theme.$text, $alpha: -0.9);
+  	    box-shadow: inset 3px 4px 5px color.mix(theme.$crust, transparent, 50%);
+	}
+
+    .widgetbox {
+		border-top-right-radius: .3rem;
+		border-top-left-radius: .3rem;
+		padding: .3rem .7rem .4rem;
+		margin: .3rem .5rem -2px;
+
+        color: theme.$accentColor;
+        background: repeating-linear-gradient(
+            theme.$accentColor20,
+            theme.$accentColor20 .2%,
+            theme.$accentColor30 .5%,
+            theme.$accentColor20 .8%,
+            theme.$accentColor20 1%
+        );
+
+        box-shadow: inset 3px 4px 5px color.mix(theme.$crust, transparent, 50%);
+                  /* 0px -1px 3px 4px color.mix(theme.$crust, transparent, 50%); */
+        border-bottom:.15rem solid theme.$accentColor;
+    }
+
+	.Clock {
+		.Separator {
+			color: theme.$subtext0;
+		}
+	}
+	
+	.Notification {
+		.Badge {
+			border-radius: 1rem;
+			padding: 0px 3px;
+			margin: 0px .4rem 0px 0px;
+			color: theme.$red10;
+			background: theme.$red;
+		}
+	}
+	
+
+    .Noises {
+        * {
+			transition: 200ms;
+        }
+		
+		.vol50 {
+			color: theme.$accentColor50;
+		}
+
+    }
+
+	.OSIcon {
+		font-size: 24px;
+		button {
+			padding: .0rem .7rem .0rem;
+			border-top-right-radius: .3rem;
+			border-top-left-radius: .3rem;
+		}
+
+		margin: .3rem .5rem -2px;
+		border-top-right-radius: .3rem;
+		border-top-left-radius: .3rem;
+
+        color: theme.$sapphire;
+        background: repeating-linear-gradient(
+            theme.$sapphire20,
+            theme.$sapphire20 .2%,
+            theme.$sapphire30 .5%,
+            theme.$sapphire20 .8%,
+            theme.$sapphire20 1%
+        );
+
+        box-shadow: inset 3px 4px 5px color.mix(theme.$crust, transparent, 50%);
+                  /* 0px -1px 3px 4px color.mix(theme.$crust, transparent, 50%); */
+        border-bottom:.15rem solid theme.$sapphire;
+		
+	}
+
+    .Workspaces {
+		padding: 0px .7rem 0px;
+		margin: .3rem .5rem -2px;
+		border-top-right-radius: .3rem;
+		border-top-left-radius: .3rem;
+
+        color: theme.$accentColor60;
+        background: repeating-linear-gradient(
+            theme.$accentColor20,
+            theme.$accentColor20 .2%,
+            theme.$accentColor30 .5%,
+            theme.$accentColor20 .8%,
+            theme.$accentColor20 1%
+        );
+
+        box-shadow: inset 3px 4px 5px color.mix(theme.$crust, transparent, 50%);
+                  /* 0px -1px 3px 4px color.mix(theme.$crust, transparent, 50%); */
+        border-bottom:.15rem solid theme.$accentColor;
+
+
+		.focused label {
+			transition: 200ms;
+			color: theme.$accentColor;
+			border-color: theme.$accentColor;
+
+		}
+	}
+}
