@@ -85,9 +85,11 @@ include ~/.config/sway/config.d/*
 
 # output * bg ~/.config/sway/wp/shuttle.mocha.jpg stretch $base
 
-output * bg ~/.local/share/wallpapers/mocha-hald8-fate-astolfo_waifu2x_art_noise0_scale.png stretch $base
+# output * bg ~/.local/share/wallpapers/mocha-hald8-fate-astolfo_waifu2x_art_noise0_scale.png stretch $base
 # output * bg ~/.local/share/wallpapers/fantasyart-1663166031505-4192.jpg stretch $base
 # output * bg ~/.local/share/wallpapers/asltolpo.png stretch #000000
+# output * bg ~/.local/share/wallpapers/blobgirl.png  stretch $base
+
 # https://www.deviantart.com/thuberchs/art/Incoming-610485848
 output * bg ~/.local/share/wallpapers/incoming_by_thuberchs_da3gtw8.jpg stretch $base
 
@@ -103,13 +105,13 @@ gaps outer 10
 # title_align left 
 
 # Colors
-# target                 title     bg    text   indicator  border
-client.focused           $red    $red $base  $pink $red
-client.focused_inactive  $red     $base $text  $surface1  $surface0
-client.focused_tab_title $red     $base $text  $surface1  $surface0
-client.unfocused         $base     $base $text  $surface1  $surface0
-client.urgent            $red    $base $pink $red     $pink
-client.placeholder       $overlay0 $base $text  $surface1  $overlay0
+# target                 title      bg      text    indicator   border
+client.focused           $red       $red    $base   $red        $red
+client.focused_inactive  $red       $base   $text   $surface1   $surface0
+client.focused_tab_title $red       $base   $text   $surface1   $surface0
+client.unfocused         $base      $base   $text   $surface1   $surface0
+client.urgent            $peach     $base   $peach  $peach      $peach
+client.placeholder       $overlay0  $base   $text   $surface1   $overlay0
 client.background        $crust
 
 exec_always gsettings set org.gnome.desktop.interface cursor-size 12
@@ -141,6 +143,9 @@ layer_effects "gjs" blur enable; corner_radius 0
 layer_effects "bar0" blur enable; corner_radius 0; shadows enable; border pixel 0
 layer_effects "bar1" blur enable; corner_radius 0; shadows enable; border pixel 0
 layer_effects "bar2" blur enable; corner_radius 0; shadows enable; border pixel 0
+# layer_effects "AstralBar" blur enable; corner_radius 0; shadows enable; corner_radius 14;
+# layer_effects "AstralBar" blur enable; corner_radius 0; shadows disable ; corner_radius 14;
+layer_effects "AstralBar" blur enable; corner_radius 0; shadows enable; border pixel 0
 
 # layer_effects "bar0" blur enable; corner_radius 14; shadows enable
 # layer_effects "bar1" blur enable; corner_radius 14; shadows enable 
@@ -212,7 +217,7 @@ exec swaync
 # exec ~/var/build/Waybar/build/waybar || waybar
 
 exec g++ ~/.config/ags/scripts/getupdates-client.cpp -O2 -march=native -o ~/.config/ags/scripts/getupdates-client 
-exec ags 
+exec ags run
 
 # !No more applet tray
 exec kdeconnect-indicator
@@ -237,6 +242,7 @@ exec swayidle \
 
 exec nextcloud --background
 exec protonmail-bridge -n 
+exec playerctld daemon
 
 # additional fancy pants programs
 exec discover-overlay
@@ -471,8 +477,8 @@ bindsym --locked {
     # Alternatively Useing $mod + F-keys
     $mod+F2 exec playerctl play-pause
     $mod+F3 exec playerctl stop
-    $mod+F1 exec playerctl next
-    $mod+F4 exec playerctl previous
+    $mod+F4 exec playerctl next
+    $mod+F1 exec playerctl previous
 
     # Use pactl to adjust volume in PulseAudio.
     XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
