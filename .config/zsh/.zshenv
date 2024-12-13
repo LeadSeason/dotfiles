@@ -9,7 +9,7 @@ export SYSTEMD_EDITOR=nvim
 export EDITOR=nvim
 
 # Theaming
-export GTK_THEME=catppuccin-mocha-pink-standard+default
+export GTK_THEME=catppuccin-mocha-red-standard+default
 export QT_QPA_PLATFORMTHEME=qt5ct
 export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
 
