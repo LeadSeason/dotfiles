@@ -59,6 +59,6 @@
     "extensions.experimental.affinity": {
         "asvetliakov.vscode-neovim": 1
     },
-    "catppuccin.accentColor": "red",
+    "catppuccin.accentColor": "mauve",
     "files.autoSave": "afterDelay"
 }

@@ -62,6 +62,7 @@ set $mauve     #cba6f7
 set $red       #f38ba8
 set $maroon    #eba0ac
 set $peach     #fab387
+set $yellow    #f9e2af
 set $green     #a6e3a1
 set $teal      #94e2d5
 set $sky       #89dceb
@@ -88,10 +89,11 @@ include ~/.config/sway/config.d/*
 # output * bg ~/.local/share/wallpapers/mocha-hald8-fate-astolfo_waifu2x_art_noise0_scale.png stretch $base
 # output * bg ~/.local/share/wallpapers/fantasyart-1663166031505-4192.jpg stretch $base
 # output * bg ~/.local/share/wallpapers/asltolpo.png stretch #000000
-# output * bg ~/.local/share/wallpapers/blobgirl.png  stretch $base
 
 # https://www.deviantart.com/thuberchs/art/Incoming-610485848
-output * bg ~/.local/share/wallpapers/incoming_by_thuberchs_da3gtw8.jpg stretch $base
+# output * bg ~/.local/share/wallpapers/incoming_by_thuberchs_da3gtw8.jpg stretch $base
+
+output * bg ~/.local/share/wallpapers/blobgirl.png  stretch $base
 
 # font
 font FiraCode Nerd Font Propo 12
@@ -106,11 +108,11 @@ gaps outer 10
 
 # Colors
 # target                 title      bg      text    indicator   border
-client.focused           $red       $red    $base   $red        $red
-client.focused_inactive  $red       $base   $text   $surface1   $surface0
-client.focused_tab_title $red       $base   $text   $surface1   $surface0
+client.focused           $mauve     $mauve  $base   $yellow  $mauve
+client.focused_inactive  $mauve     $base   $text   $surface1   $surface0
+client.focused_tab_title $mauve     $base   $text   $surface1   $surface0
 client.unfocused         $base      $base   $text   $surface1   $surface0
-client.urgent            $peach     $base   $peach  $peach      $peach
+client.urgent            $red       $base   $red    $red        $red
 client.placeholder       $overlay0  $base   $text   $surface1   $overlay0
 client.background        $crust
 
@@ -228,15 +230,20 @@ exec sworkstyle >> ~/.cache/sworkstyle.log 2>&1
 # exec sworkstyle
 # Moved to systemd service
 # exec rm -f $WOBSOCK && mkfifo $WOBSOCK && tail -f $WOBSOCK | wob
+
+# Quit ags due to a bug with display mapping. Start it again on resume.
+# @TODO If britness is under 20%
 exec swayidle \
-	timeout 120 "brightnessctl get > ~/.cache/resume_brightness; brightnessctl set 20%" \
+	timeout 240 "brightnessctl get > ~/.cache/resume_brightness; brightnessctl set 20%" \
     resume "brightnessctl set \$(cat ~/.cache/resume_brightness)" \
-	timeout 180 "pgrep swaylock || swaylock --grace 3 --fade-in 3" \
-	before-sleep "pgrep swaylock || swaylock"
+	timeout 300 "pgrep swaylock || swaylock --grace 3 --fade-in 3" \
+    timeout 420 'swaymsg "output * dpms off" & ags quit' \
+    resume 'swaymsg "output * dpms on" & ags run'
 
+# Use -w so desktops arent visible after unsleeping
+exec swayidle -w \
+	before-sleep "pgrep swaylock || swaylock &" \
 
-   # timeout 200 'swaymsg "output * dpms off"' \
-   # resume 'swaymsg "output * dpms on"' \
 #     timeout 120 "pkill Discord -STOP" \
 #     resume 'pkill Discord -CONT' \
 
