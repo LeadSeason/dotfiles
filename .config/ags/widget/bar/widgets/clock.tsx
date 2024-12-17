@@ -7,7 +7,7 @@ export default () => {
     const date = Variable<string>("").poll(1000, () =>
         GLib.DateTime.new_now_local().format("%e.%m.%Y")!)
     const time = Variable<string>("").poll(1000, () =>
-        GLib.DateTime.new_now_local().format("%k:%M:%S")!)
+        GLib.DateTime.new_now_local().format("%k:%M:%S")!.replace(/\s/g, ""))
     const showRelveler = Variable<boolean>(false)
     const clockTimeout = Variable<GLib.Source>(setTimeout(() => {},0))
 

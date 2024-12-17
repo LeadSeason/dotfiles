@@ -35,11 +35,3 @@ export default() => {
         </revealer>
     </box>
 }
-
-function Wifi() {
-    return <icon
-        tooltipText={bind(wifi, "ssid").as(String)}
-        className="Wifi"
-        icon={bind(wifi, "iconName")}
-    />
-}

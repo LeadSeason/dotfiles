@@ -33,7 +33,7 @@ export default ({monitor}: { monitor: Gdk.Monitor }) => {
 
     return <box 
         className="Workspaces"
-        spacing={6}
+        spacing={15}
         onDestroy={() => wss.drop()}
         >
         {bind(wss).as((wss) => wss.map((ws) => {
