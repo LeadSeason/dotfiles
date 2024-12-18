@@ -187,6 +187,9 @@ for_window [app_id="vivid/stasis"] fullscreen enable
 for_window [title="NoiseTorch"] floating enable
 for_window [app_id="flameshot"] border pixel 0, floating enable, fullscreen disable, move absolute position 0 0
 for_window [app_id="flameshot"] border pixel 0, fullscreen global
+for_window [app_id="com.gabm.satty"] border pixel 0, floating enable, fullscreen disable, move absolute position 0 0
+for_window [app_id="com.gabm.satty"] border pixel 0, fullscreen global
+
 
 #
 # ██████╗░██████╗░░█████╗░░██████╗░██████╗░░█████╗░███╗░░░███╗░██████╗
@@ -426,6 +429,10 @@ bindsym {
     # alt tab
     $mod+tab workspace next_on_output
     $mod+Shift+tab workspace prev_on_output
+    
+    # Scratchpad
+    $mod+z scratchpad show
+    $mod+less move scratchpad
 
     # switch to workspace
     $mod+1 workspace number "1"
