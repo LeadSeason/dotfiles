@@ -128,12 +128,14 @@ window.Bar {
                   /* 0px -1px 3px 4px color.mix(theme.$crust, transparent, 50%); */
         border-bottom:.15rem solid theme.$accentColor;
 
+		label {
+			transition: 200ms;
+		}
 
 		.focused label {
-			transition: 200ms;
 			color: theme.$accentColor;
 			border-color: theme.$accentColor;
-
+			transition: 200ms;
 		}
 	}
 }
