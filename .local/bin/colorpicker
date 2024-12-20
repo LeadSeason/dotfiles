@@ -1,0 +1,5 @@
+#!/bin/bash
+
+Hcolor=$(hyprpicker)
+wl-copy $Hcolor
+notify-send -a "colorpicker" -i "color-select" "Color copied to cliboard" "$Hcolor"

@@ -139,3 +139,115 @@ window.Bar {
 		}
 	}
 }
+
+window.AstalConfirm {
+		background-color: color.mix(theme.$base, transparent, 30%);
+
+        .confirmBox {
+            margin: 10px;
+            padding: 6px;
+            box-shadow: 2px 3px 5px 0 color.mix(black, transparent, 40%);
+            border-radius: 11px;
+            background-color: theme.$base;
+            color: theme.$text;
+            min-width: 200px;
+        }
+
+        box > label {
+            font-size: large;
+            margin: 6px;
+        }
+
+        label.title {
+            font-size: 1.4em;
+        }
+
+        .action {
+            color: theme.$text;
+			font-weight: bold;
+        }
+		
+		button {
+            margin: 10px;
+            padding: 6px;
+            box-shadow: 2px 3px 5px 0 color.mix(black, transparent, 40%);
+            border-radius: 11px;
+            background-color: theme.$surface0;
+            color: theme.$text;
+            min-width: 200px;
+			transition: 200ms;
+		}
+		
+		button:hover {
+			background-color: theme.$surface1;
+			transition: 200ms;
+		}
+
+		button:active {
+			background-color: theme.$surface1;
+  	    	box-shadow: inset 3px 4px 5px color.mix(theme.$crust, transparent, 50%);
+			transition: 200ms;
+		}
+}
+
+// https://github.com/vinceliuice/Colloid-gtk-theme/blob/1a13048ea1bd4a6cb9b293b537afd16bf267e773/src/sass/gtk/_common-3.0.scss#L1671
+menu {
+	margin: 4px; 
+	padding: 4px;
+	background-color: theme.$base;
+	background-clip: border-box;
+	border-radius: 1rem;
+	border: 1px solid theme.$surface0;
+  
+  	separator { 
+		margin: 4px 0;
+		background-color: theme.$surface0;
+		min-height: 1px;
+		min-height: 1px;
+		
+	}
+	menuitem {
+		transition: 200ms;
+		min-height: 20px;
+		min-width: 40px;
+		padding: 4px 8px;
+		color: theme.$text;
+		border-radius: 1rem;
+
+		&:hover {
+			background-color: theme.$surface0;
+		}
+
+		&:active {
+			background-color: theme.$surface1;
+		}
+		
+		&:disabled {
+			color: theme.$overlay0;
+		}
+		// Submenu indicator
+		arrow {
+			min-height: 16px;
+			min-width: 16px;
+
+			&:dir(ltr) {
+				-gtk-icon-source: -gtk-icontheme('pan-end-symbolic');
+				margin-left: 8px;
+			}
+
+			&:dir(rtl) {
+				-gtk-icon-source:-gtk-icontheme('pan-end-symbolic-rtl');
+				margin-right: 8px;
+			}
+		}
+	}
+}
+
+tooltip {
+	margin: 6px; 
+	padding: 6px;
+	background-color: theme.$base;
+	background-clip: border-box;
+	border-radius: 1rem;
+	border: 1px solid theme.$surface0;
+}

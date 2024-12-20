@@ -147,7 +147,8 @@ layer_effects "bar1" blur enable; corner_radius 0; shadows enable; border pixel 
 layer_effects "bar2" blur enable; corner_radius 0; shadows enable; border pixel 0
 # layer_effects "AstralBar" blur enable; corner_radius 0; shadows enable; corner_radius 14;
 # layer_effects "AstralBar" blur enable; corner_radius 0; shadows disable ; corner_radius 14;
-layer_effects "AstralBar" blur enable; corner_radius 0; shadows enable; border pixel 0
+layer_effects "AstalBar" blur enable; corner_radius 0; shadows enable; border pixel 0
+layer_effects "AstalConfirm" blur enable; corner_radius 0; shadows enable; border pixel 0
 
 # layer_effects "bar0" blur enable; corner_radius 14; shadows enable
 # layer_effects "bar1" blur enable; corner_radius 14; shadows enable 
@@ -323,8 +324,8 @@ bindsym {
     # open browser
     $mod+S exec $browser
 
-    # start terminal with bpython running
-    $mod+p exec $term -e "bpython"
+    # Calculator
+    $mod+p exec "sway-floating kitty -e 'ptpython --vi'"
 
     # start screenshot
     # $mod+c exec bash -c 'grim -g "$(slurp)" - | swappy -f - -o - | ~/.local/bin/timhostuploader'
