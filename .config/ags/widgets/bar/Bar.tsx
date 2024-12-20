@@ -1,13 +1,10 @@
-import { App, astalify } from "astal/gtk3"
+import { App } from "astal/gtk3"
 import { Astal, Gtk, Gdk } from "astal/gtk3"
-import { Variable, GLib, bind, exec, execAsync } from "astal"
+import { bind, execAsync } from "astal"
 import Mpris from "gi://AstalMpris"
-import Hyprland from "gi://AstalHyprland"
 import Battery from "gi://AstalBattery"
-import Wp from "gi://AstalWp"
-import Network from "gi://AstalNetwork"
 import Tray from "gi://AstalTray"
-import Sway from "./widgets/sway"
+import SwayWS from "./widgets/swayWS"
 import Clock from "./widgets/clock"
 import Noises from "./widgets/noises"
 import Notification from "./widgets/notification"
@@ -89,13 +86,13 @@ function OSIcon() {
     </box>
 }
 
-export default function Bar(monitor: Gdk.Monitor) {
+export default function Bar(gdkmonitor: Gdk.Monitor) {
     const { TOP, LEFT, RIGHT } = Astal.WindowAnchor
 
     return <window
         className="Bar"
-        namespace={"AstralBar"}
-        gdkmonitor={monitor}
+        namespace={"AstalBar"}
+        gdkmonitor={gdkmonitor}
         exclusivity={Astal.Exclusivity.EXCLUSIVE}
         /*
             marginTop={10}
@@ -109,7 +106,7 @@ export default function Bar(monitor: Gdk.Monitor) {
         >
             <box hexpand halign={Gtk.Align.START}>
                 <OSIcon/>
-                <Sway monitor={monitor} />
+                <SwayWS monitor={gdkmonitor} />
             </box>
             <box>
                 <Clock />
