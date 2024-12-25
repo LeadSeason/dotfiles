@@ -4,3 +4,9 @@
 [submodule ".mozilla/firefox/default/chrome/Photon"]
 	path = .mozilla/firefox/default/chrome/Photon
 	url = https://github.com/black7375/Firefox-UI-Fix.git
+[submodule ".config/zsh/zsh-fsh"]
+	path = .config/zsh/zsh-fsh
+	url = https://github.com/catppuccin/zsh-fsh
+[submodule ".config/zsh/zsh-syntax-highlighting"]
+	path = .config/zsh/zsh-syntax-highlighting
+	url = https://github.com/catppuccin/zsh-syntax-highlighting.git

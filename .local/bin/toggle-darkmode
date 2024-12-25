@@ -1,0 +1,26 @@
+#!/bin/bash
+
+function current() {
+    # Get current scheme background color
+    bgcolor=$(flavours info -r $(flavours current) | sed -n '3 p')
+    # Get first character
+    character=${bgcolor:1:1}
+    # If its less than 5, normally is a dark scheme
+    if [[ $character < 5 ]]; then
+        echo "dark"
+    else
+        echo "light"
+    fi
+}
+
+# Switch scheme type
+if [ "$(current)" = "dark" ]; then
+    flavours apply -l catppuccin-latte 
+    gsettings set org.gnome.desktop.interface color-scheme prefer-light
+    gsettings set org.gnome.desktop.interface gtk-theme catppuccin-latte-mauve-standard+default
+else
+    flavours apply catppuccin-mocha
+    gsettings set org.gnome.desktop.interface color-scheme prefer-dark
+    gsettings set org.gnome.desktop.interface gtk-theme catppuccin-mocha-mauve-standard+default
+fi
+

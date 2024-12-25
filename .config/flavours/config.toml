@@ -30,20 +30,40 @@
 # Whether this hook should be executed when flavours is ran with lightweight flag
 # light = true
 
+shell = "bash -c '{}'"
 
-# shell = "bash -c '{}'"
 [[items]]
-file = "~/.config/sway/config"
+file = "~/.config/waybar/colors.css"
+template = "waybar"
+rewrite = true
+hook = "pkill waybar -USR2"
+
+[[items]]
+file = "~/.dotfiles/.config/ags/themes/flavours-colors.scss"
+template = "styles"
+subtemplate = "scss"
+rewrite = true
+hook = 'ags request "sass_reload" --instance astal'
+
+[[items]]
+file = "~/.config/sway/colors"
 template = "sway"
 subtemplate = "colors"
 hook = "swaymsg reload"
 light = false
 
-# [[items]]
-# file = "~/.config/waybar/colors.css"
-# template = "waybar"
-# rewrite = true
-# 
+[[item]]
+file = "~/.config/nvim/colors/base16.vim"
+template = "vim"
+rewrite = true
+
+[[item]]
+file = "~/.dotfiles/.config/kitty/colors.conf"
+template = "kitty"
+subtemplate = "default-256"
+rewrite = true
+hook = "kitty @ set-colors -a -c ~/.config/kitty/colors.conf; killall -USR1 zsh"
+
 # [[items]]
 # file = "~/.config/beautifuldiscord/style.css"
 # template = "styles"
