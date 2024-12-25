@@ -1,5 +1,5 @@
  " nvim v0.10.x only
-colorscheme vim
+colorscheme base16
 
 syntax on
 set modeline
@@ -22,3 +22,4 @@ set termguicolors
 :vnoremap < <gv
 :vnoremap > >gv
 
+autocmd FileType named setlocal syntax=named

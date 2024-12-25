@@ -55,9 +55,25 @@ fi
 zplug load
 
 
-# Plugin Configuration
-source $HOME/.config/zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh
+function current() {
+    # Get current scheme background color
+    bgcolor=$(flavours info -r $(flavours current) | sed -n '3 p')
+    # Get first character
+    character=${bgcolor:1:1}
+    # If its less than 5, normally is a dark scheme
+    if [[ $character < 5 ]]; then
+        echo "dark"
+    else
+        echo "light"
+    fi
+}
 
+# Switch scheme type
+if [ "$(current)" = "dark" ]; then
+    source $HOME/.config/zsh/zsh-syntax-highlighting/themes/catppuccin_mocha-zsh-syntax-highlighting.zsh
+else
+    source $HOME/.config/zsh/zsh-syntax-highlighting/themes/catppuccin_latte-zsh-syntax-highlighting.zsh
+fi
 
 # alias defenitions
 alias cls=clear
@@ -140,6 +156,17 @@ backward-delete-word-custom() {
 }
 
 zle -N backward-delete-word-custom
+
+TRAPUSR1() {
+    # Reload theme on command
+    if [[ -o INTERACTIVE ]]; then
+        if [ "$(current)" = "dark" ]; then
+            source $HOME/.config/zsh/zsh-syntax-highlighting/themes/catppuccin_mocha-zsh-syntax-highlighting.zsh
+        else
+            source $HOME/.config/zsh/zsh-syntax-highlighting/themes/catppuccin_latte-zsh-syntax-highlighting.zsh
+        fi
+    fi
+}
 
 # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
 [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
