@@ -3,7 +3,7 @@ import i3ipc from "gi://i3ipc"
 
 const conn = i3ipc.Connection.new(null)
 
-@register({ GTypeName: "SwayWSS" })
+@register({ GTypeName: "Sway" })
 export default class Sway extends GObject.Object {
     static instance: Sway
     
@@ -38,11 +38,11 @@ export default class Sway extends GObject.Object {
         return this.#wss
     } 
     
-    message (message: string): string {
-        return conn.message(i3ipc.MessageType.COMMAND, message);
+    message (message: string): Commands {
+        return JSON.parse(conn.message(i3ipc.MessageType.COMMAND, message));
     }
-    async message_async (message: string): Promise<string> {
-        return conn.message(i3ipc.MessageType.COMMAND, message);
+    async message_async (message: string): Promise<Commands> {
+        return await JSON.parse(conn.message(i3ipc.MessageType.COMMAND, message));
     }
     
     constructor() {
@@ -206,4 +206,11 @@ export interface Geometry {
     y: number
     width: number
     height: number
+}
+
+export type Commands = Command[]
+
+export interface Command {
+  success: boolean
+  parse_error?: boolean
 }

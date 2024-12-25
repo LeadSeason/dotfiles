@@ -1,5 +1,6 @@
 @use "sass:color";
-@use "themes/mocha" as theme;
+@use "themes/flavours-colors" as theme;
+@use "sass:string";
 
 * {
 	all: unset;
@@ -7,13 +8,13 @@
 }
 
 window.Bar {
-    color: theme.$text;
+    color: theme.$base05;
     font-size: 20px;
     font-weight: normal;
 
 	.Barbox {
-		background-color: color.mix(theme.$accentColor20, transparent, 50%);
-		border-bottom: .15rem solid color.mix(theme.$accentColor50, transparent, 25%);
+		background-color: color.mix(color.mix(theme.$base0E, black, 20%), transparent, 50%);
+		border-bottom: .15rem solid color.mix(color.mix(theme.$base0E, black, 50%), transparent, 25%);
 	}
 
 	button {
@@ -24,14 +25,14 @@ window.Bar {
 	}
 
 	button:hover {
-		background-color: color.adjust(theme.$text, $alpha: -0.84);
-		border-color: color.adjust(theme.$text, $alpha: -0.8);
+		background-color: color.adjust(theme.$base05, $alpha: -0.84);
+		border-color: color.adjust(theme.$base05, $alpha: -0.8);
 	}
 
 
 	button:active {
-		background-color: color.adjust(theme.$text, $alpha: -0.9);
-  	    box-shadow: inset 3px 4px 5px color.mix(theme.$crust, transparent, 50%);
+		background-color: color.adjust(theme.$base05, $alpha: -0.9);
+  	    box-shadow: inset 3px 4px 5px color.mix(black, transparent, 50%);
 	}
 
     .widgetbox {
@@ -40,23 +41,23 @@ window.Bar {
 		padding: .3rem .7rem .4rem;
 		margin: .3rem .5rem -2px;
 
-        color: theme.$accentColor;
+        color: theme.$base0E;
         background: repeating-linear-gradient(
-            theme.$accentColor20,
-            theme.$accentColor20 .2%,
-            theme.$accentColor30 .5%,
-            theme.$accentColor20 .8%,
-            theme.$accentColor20 1%
+            color.mix(theme.$base0E, black, 20%),
+            color.mix(theme.$base0E, black, 20%) .2%,
+            color.mix(theme.$base0E, black, 30%) .5%,
+            color.mix(theme.$base0E, black, 20%) .8%,
+            color.mix(theme.$base0E, black, 20%) 1%
         );
 
-        box-shadow: inset 3px 4px 5px color.mix(theme.$crust, transparent, 50%);
-                  /* 0px -1px 3px 4px color.mix(theme.$crust, transparent, 50%); */
-        border-bottom:.15rem solid theme.$accentColor;
+        box-shadow: inset 3px 4px 5px color.mix(black, transparent, 50%);
+                  /* 0px -1px 3px 4px color.mix(black, transparent, 50%); */
+        border-bottom:.15rem solid theme.$base0E;
     }
 
 	.Clock {
 		.Separator {
-			color: theme.$subtext0;
+			color: theme.$base04;
 		}
 	}
 	
@@ -65,8 +66,8 @@ window.Bar {
 			border-radius: 1rem;
 			padding: 0px 3px;
 			margin: 0px .4rem 0px 0px;
-			color: theme.$red10;
-			background: theme.$red;
+			color: color.mix(theme.$base08, black, 10%);
+			background: theme.$base08;
 		}
 	}
 	
@@ -77,7 +78,7 @@ window.Bar {
         }
 		
 		.vol50 {
-			color: theme.$accentColor50;
+			color: color.mix(theme.$base0E, black, 50%);
 		}
 
     }
@@ -94,18 +95,18 @@ window.Bar {
 		border-top-right-radius: .3rem;
 		border-top-left-radius: .3rem;
 
-        color: theme.$sapphire;
+        color: theme.$base0D;
         background: repeating-linear-gradient(
-            theme.$sapphire20,
-            theme.$sapphire20 .2%,
-            theme.$sapphire30 .5%,
-            theme.$sapphire20 .8%,
-            theme.$sapphire20 1%
+            color.mix(theme.$base0D, black, 20%),
+            color.mix(theme.$base0D, black, 20%) .2%,
+            color.mix(theme.$base0D, black, 30%) .5%,
+            color.mix(theme.$base0D, black, 20%) .8%,
+            color.mix(theme.$base0D, black, 20%) 1%
         );
 
-        box-shadow: inset 3px 4px 5px color.mix(theme.$crust, transparent, 50%);
-                  /* 0px -1px 3px 4px color.mix(theme.$crust, transparent, 50%); */
-        border-bottom:.15rem solid theme.$sapphire;
+        box-shadow: inset 3px 4px 5px color.mix(black, transparent, 50%);
+                  /* 0px -1px 3px 4px color.mix(black, transparent, 50%); */
+        border-bottom:.15rem solid theme.$base0D;
 		
 	}
 
@@ -115,41 +116,41 @@ window.Bar {
 		border-top-right-radius: .3rem;
 		border-top-left-radius: .3rem;
 
-        color: theme.$accentColor60;
+        color: color.mix(theme.$base0E, black, 60%);
         background: repeating-linear-gradient(
-            theme.$accentColor20,
-            theme.$accentColor20 .2%,
-            theme.$accentColor30 .5%,
-            theme.$accentColor20 .8%,
-            theme.$accentColor20 1%
+            color.mix(theme.$base0E, black, 20%),
+            color.mix(theme.$base0E, black, 20%) .2%,
+            color.mix(theme.$base0E, black, 30%) .5%,
+            color.mix(theme.$base0E, black, 20%) .8%,
+            color.mix(theme.$base0E, black, 20%) 1%
         );
 
-        box-shadow: inset 3px 4px 5px color.mix(theme.$crust, transparent, 50%);
-                  /* 0px -1px 3px 4px color.mix(theme.$crust, transparent, 50%); */
-        border-bottom:.15rem solid theme.$accentColor;
+        box-shadow: inset 3px 4px 5px color.mix(black, transparent, 50%);
+                  /* 0px -1px 3px 4px color.mix(black, transparent, 50%); */
+        border-bottom:.15rem solid theme.$base0E;
 
 		label {
 			transition: 200ms;
 		}
 
 		.focused label {
-			color: theme.$accentColor;
-			border-color: theme.$accentColor;
+			color: theme.$base0E;
+			border-color: theme.$base0E;
 			transition: 200ms;
 		}
 	}
 }
 
 window.AstalConfirm {
-		background-color: color.mix(theme.$base, transparent, 30%);
+		background-color: color.mix(theme.$base00, transparent, 30%);
 
         .confirmBox {
             margin: 10px;
             padding: 6px;
             box-shadow: 2px 3px 5px 0 color.mix(black, transparent, 40%);
             border-radius: 11px;
-            background-color: theme.$base;
-            color: theme.$text;
+            background-color: theme.$base00;
+            color: theme.$base05;
             min-width: 200px;
         }
 
@@ -163,7 +164,7 @@ window.AstalConfirm {
         }
 
         .action {
-            color: theme.$text;
+            color: theme.$base05;
 			font-weight: bold;
         }
 		
@@ -172,58 +173,140 @@ window.AstalConfirm {
             padding: 6px;
             box-shadow: 2px 3px 5px 0 color.mix(black, transparent, 40%);
             border-radius: 11px;
-            background-color: theme.$surface0;
-            color: theme.$text;
+            background-color: theme.$base02;
+            color: theme.$base05;
             min-width: 200px;
 			transition: 200ms;
 		}
 		
 		button:hover {
-			background-color: theme.$surface1;
+			background-color: theme.$base03;
 			transition: 200ms;
 		}
 
 		button:active {
-			background-color: theme.$surface1;
-  	    	box-shadow: inset 3px 4px 5px color.mix(theme.$crust, transparent, 50%);
+			background-color: theme.$base03;
+  	    	box-shadow: inset 3px 4px 5px color.mix(black, transparent, 50%);
 			transition: 200ms;
 		}
+}
+
+window.AstalDesktop {
+	all: unset;
+
+    background-image: url("/home/leadseason/.local/share/wallpapers/xenia.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+	.Time {
+		font-size: 46px;	
+		text-shadow: 4px 4px 8px theme.$base01;
+	}
+
+	.Date {
+		font-size: 36px;	
+		text-shadow: 4px 4px 8px theme.$base01;
+	}
+}
+
+window.AstalMixer {
+	border-radius: 1rem;
+	border: 2px solid theme.$base03;
+	background-color: theme.$base00;
+
+	icon {
+
+		margin-left: .6em;
+	}
+
+  	separator { 
+		margin: 4px 0;
+		background-color: theme.$base02;
+		min-height: 1px;
+		min-height: 1px;
+		
+	}
+
+	.AstalMixerBase {
+		margin: 4px;
+		padding: 4px;
+	}
+
+	.NameLabel {
+		margin-left: 1rem;
+	}
+	
+	.NameMuted {
+		color: theme.$base04;
+	}
+
+    .AstalMixerSlider {
+        * {
+            all: unset;
+        }
+
+
+        & {
+            margin: 0 1em;
+        }
+
+        trough {
+            background-color: color.adjust(theme.$base05, $alpha: -0.8);
+            border-radius: 7px;
+        }
+
+        highlight {
+            background-color: theme.$base0E;
+            min-height: .8em;
+            border-radius: 7px;
+        }
+
+        slider {
+            background-color: theme.$base05;
+            border-radius: 7px;
+            min-height: 1em;
+            min-width: 1em;
+            margin: -.2em;
+        }
+    }
 }
 
 // https://github.com/vinceliuice/Colloid-gtk-theme/blob/1a13048ea1bd4a6cb9b293b537afd16bf267e773/src/sass/gtk/_common-3.0.scss#L1671
 menu {
 	margin: 4px; 
 	padding: 4px;
-	background-color: theme.$base;
+	background-color: theme.$base00;
 	background-clip: border-box;
 	border-radius: 1rem;
-	border: 1px solid theme.$surface0;
+	border: 1px solid theme.$base02;
   
   	separator { 
 		margin: 4px 0;
-		background-color: theme.$surface0;
+		background-color: theme.$base02;
 		min-height: 1px;
 		min-height: 1px;
 		
 	}
+
 	menuitem {
 		transition: 200ms;
 		min-height: 20px;
 		min-width: 40px;
 		padding: 4px 8px;
-		color: theme.$text;
+		color: theme.$base05;
 		border-radius: 1rem;
 
 		&:hover {
-			background-color: theme.$surface0;
+			background-color: theme.$base02;
 		}
 
 		&:active {
-			background-color: theme.$surface1;
+			background-color: theme.$base03;
 		}
 		
 		&:disabled {
-			color: theme.$overlay0;
+			color: theme.$base04;
 		}
 		// Submenu indicator
 		arrow {
@@ -246,8 +329,67 @@ menu {
 tooltip {
 	margin: 6px; 
 	padding: 6px;
-	background-color: theme.$base;
+	background-color: theme.$base00;
 	background-clip: border-box;
 	border-radius: 1rem;
-	border: 1px solid theme.$surface0;
+	border: 1px solid theme.$base02;
+}
+
+
+@function gtkalpha($c, $a) {
+    @return string.unquote("alpha(#{$c},#{$a})");
+}
+
+// https://gitlab.gnome.org/GNOME/gtk/-/blob/gtk-3-24/gtk/theme/Adwaita/_colors-public.scss
+$fg-color: #{"@theme_fg_color"};
+$bg-color: #{"@theme_bg_color"};
+
+window#AstalLauncher {
+    all: unset;
+
+    box.Applauncher {
+        background-color: $bg-color;
+        border-radius: 11px;
+        margin: 1rem;
+        padding: .8rem;
+        box-shadow: 2px 3px 8px 0 gtkalpha(black, .4);
+
+        entry {
+            margin-bottom: .8rem;
+        }
+
+        button {
+            min-width: 0;
+            min-height: 0;
+            padding: .5rem;
+
+            icon {
+                font-size: 3em;
+                margin-right: .3rem;
+            }
+
+            label.name {
+                font-weight: bold;
+                font-size: 1.1em
+            }
+
+            label.description {
+                color: gtkalpha($fg-color, .8);
+            }
+        }
+
+        box.not-found {
+            padding: 1rem;
+
+            icon {
+                font-size: 6em;
+                color: gtkalpha($fg-color, .7);
+            }
+
+            label {
+                color: gtkalpha($fg-color, .9);
+                font-size: 1.2em;
+            }
+        }
+    }
 }

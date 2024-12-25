@@ -1,14 +1,8 @@
-import { App, Astal, astalify, Gdk, Gtk, Widget } from "astal/gtk3"
-import Sway from "../../lib/sway"
-import { execAsync } from "astal"
-
-const GtkScrolledWindow = astalify(Gtk.ScrolledWindow)
-const GtkMenu = astalify(Gtk.Menu)
-const GtkMenuItem = astalify(Gtk.MenuItem)
-const GtkEventBox = astalify(Gtk.EventBox)
-const GtkButton = astalify(Gtk.Button)
-const GtkSeparatorMenuItem = astalify(Gtk.SeparatorMenuItem)
-const GtkWindow = astalify(Gtk.Window)
+import { App, Astal, astalify, Gdk, Gtk, Widget } from "astal/gtk3";
+import { Variable } from "astal";
+import Sway from "../../lib/sway";
+import GLib from "gi://GLib"
+import { GtkMenu, GtkMenuItem, GtkSeparatorMenuItem } from "../../lib/astilfy";
  
 const sway = Sway.get_default()
 
@@ -29,6 +23,13 @@ function desktopMenu(gdkmonitor: Gdk.Monitor) {
                 // @ts-expect-error
                 on_activate: () => {
                     sway.message_async("exec \"sway-floating kitty -e 'ptpython --vi'\"")
+                }
+            }),
+            new GtkMenuItem({
+                label: "File manager",
+                // @ts-expect-error
+                on_activate: () => {
+                    sway.message_async("exec nemo")
                 }
             }),
             // @ts-expect-error
@@ -150,7 +151,10 @@ function desktopMenu(gdkmonitor: Gdk.Monitor) {
     return menu
 }
 
-async function dialog(gdkmonitor: Gdk.Monitor, action: string = "Detonate C4"): Promise<boolean> {
+async function dialog(
+    gdkmonitor: Gdk.Monitor,
+    action: string = "Detonate C4"
+): Promise<boolean> {
     const { TOP, BOTTOM, LEFT, RIGHT } = Astal.WindowAnchor;
     const { IGNORE } = Astal.Exclusivity;
     const { EXCLUSIVE } = Astal.Keymode;
@@ -171,8 +175,9 @@ async function dialog(gdkmonitor: Gdk.Monitor, action: string = "Detonate C4"): 
 
         function onKeyPress(w: Astal.Window, event: Gdk.Event) {
             if (event.get_keyval()[1] === Gdk.KEY_Escape) {
-                w.close();
                 resolve(false);
+                // @ts-expect-error
+                diagWindow.close()
             }
         }
 
@@ -186,8 +191,16 @@ async function dialog(gdkmonitor: Gdk.Monitor, action: string = "Detonate C4"): 
                 exclusivity={IGNORE}
                 keymode={EXCLUSIVE}
                 anchor={TOP | BOTTOM | LEFT | RIGHT}>
-                <box className="confirmBox" halign={CENTER} valign={CENTER} vertical>
-                    <label className="title" label="Are you sure you want to do" />
+                <box 
+                    className="confirmBox"
+                    halign={CENTER}
+                    valign={CENTER}
+                    vertical
+                >
+                    <label 
+                        className="title"
+                        label="Are you sure you want to do"
+                    />
                     <label className="action" label={`${action}?`} />
                     <box homogeneous>
                         <button onClicked={yes}>
@@ -207,13 +220,20 @@ async function dialog(gdkmonitor: Gdk.Monitor, action: string = "Detonate C4"): 
 
 
 export default function Bar(gdkmonitor: Gdk.Monitor) {
-    const { TOP, RIGHT, BOTTOM, LEFT } = Astal.WindowAnchor
+    const { TOP, RIGHT, BOTTOM, LEFT } = Astal.WindowAnchor;
     
-    const desktopMenuUwU = desktopMenu(gdkmonitor)
+    const desktopMenuUwU = desktopMenu(gdkmonitor);
+
+    const date = Variable<string>("").poll(1000, () =>
+        GLib.DateTime.new_now_local().format("%e.%m.%Y")!);
+    const time = Variable<string>("").poll(1000, () =>
+        GLib.DateTime.new_now_local().format("%k:%M:%S")!.replace(/\s/g, ""));
 
     return <window
-        className="desktop"
-        namespace={"AstralBg"}
+        
+        className="AstalDesktop"
+        name="AstalDesktop"
+        namespace={"AstalDesktop"}
         gdkmonitor={gdkmonitor}
         layer={Astal.Layer.BACKGROUND}
         exclusivity={Astal.Exclusivity.IGNORE}
@@ -230,6 +250,26 @@ export default function Bar(gdkmonitor: Gdk.Monitor) {
                 if (e.get_button()[1] === 3) {
                     desktopMenuUwU.popup_at_pointer(e);
                 }
-            }}/>
+            }}>
+                <box
+                    vertical
+                    valign={Gtk.Align.START}
+                    halign={Gtk.Align.END}
+                    spacing={20}
+                    marginTop={500}
+                    marginEnd={240}
+                >
+                    <label
+                        className="Time"
+                        onDestroy={() => time.drop()}
+                        label={time()}
+                    />
+                    <label
+                        className="Date"
+                        onDestroy={() => date.drop()}
+                        label={date()}
+                    />
+                </box>
+            </Widget.EventBox>
     </window>
 }

@@ -28,7 +28,9 @@ export default() => {
                 }
             }}
         >
-            <box>
+            <box
+                onDestroy={() => NotificationLister.drop()}
+            >
                 <revealer
                     transition_duration={250}
                     transitionType={Gtk.RevealerTransitionType.SLIDE_RIGHT}

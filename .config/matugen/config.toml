@@ -1,0 +1,18 @@
+[config.wallpaper]
+command = "swww"
+arguments = ["img", "--transition-type", "center"]
+set = true
+
+[templates.waybar]
+input_path = '~/.dotfiles/.config/matugen/templates/waybar-colors.css'
+output_path = '~/.dotfiles/.config/waybar/colors.css'
+post_hook = 'pkill -SIGUSR2 waybar'
+
+[templates.astal]
+input_path = '~/.dotfiles/.config/matugen/templates/astal-colors.scss'
+output_path = '~/.dotfiles/.config/ags/themes/matugen-colors.scss'
+post_hook = 'ags request "sass_reload" --instance astal'
+
+[templates.kitty]
+input_path = '~/.dotfiles/.config/matugen/templates/kitty-colors.conf'
+output_path = '~/.dotfiles/.config/kitty/colors.conf'

@@ -4,34 +4,31 @@ import { bind, execAsync } from "astal"
 import Mpris from "gi://AstalMpris"
 import Battery from "gi://AstalBattery"
 import Tray from "gi://AstalTray"
+
 import SwayWS from "./widgets/swayWS"
 import Clock from "./widgets/clock"
 import Noises from "./widgets/noises"
 import Notification from "./widgets/notification"
 import Net from "./widgets/net"
+import Updates from "./widgets/updates"
 
 function SysTray() {
     const tray = Tray.get_default()
 
-    return <box
-    spacing={5}
+    return <box 
+        className="SysTray"
+        spacing={5}
     >
-        {bind(tray, "items").as(items => items.map(item => {
-            if (item.iconThemePath)
-                App.add_icons(item.iconThemePath)
-
-            const menu = item.create_menu()
-
-            return <button
+        {bind(tray, "items").as(items => items.map(item => (
+            <menubutton
                 className="Trayicon"
                 tooltipMarkup={bind(item, "tooltipMarkup")}
-                onDestroy={() => menu?.destroy()}
-                onClickRelease={self => {
-                    menu?.popup_at_widget(self, Gdk.Gravity.SOUTH, Gdk.Gravity.NORTH, null)
-                }}>
-                <icon gIcon={bind(item, "gicon")} />
-            </button>
-        }))}
+                usePopover={false}
+                actionGroup={bind(item, "action-group").as(ag => ["dbusmenu", ag])}
+                menuModel={bind(item, "menu-model")}>
+                <icon gicon={bind(item, "gicon")} />
+            </menubutton>
+        )))}
     </box>
 }
 
@@ -119,6 +116,7 @@ export default function Bar(gdkmonitor: Gdk.Monitor) {
                     <BatteryLevel />
                     <Net />
                     <Noises />
+                    <Updates />
                     <SysTray />
                 </box>
                 <Notification />

@@ -1,7 +1,8 @@
-import { App, Gdk, Gtk } from "astal/gtk3"
-import style from "./style.scss"
-import Bar from "./widgets/bar/Bar"
-import Desktop from "./widgets/desktop/Desktop"
+import { App, Gdk, Gtk } from "astal/gtk3";
+import { exec, execAsync } from "astal/process";
+import Bar from "./widgets/bar/Bar";
+import Desktop from "./widgets/desktop/Desktop";
+import Launcher from "./widgets/launcher/Launcher";
 
 function main() {
     const bars = new Map<Gdk.Monitor, Gtk.Widget>()
@@ -25,7 +26,44 @@ function main() {
     })
 }
 
+function requestHandler(request: string, res: (response: string) => void) {
+    //  ags request "sass_reload" --instance astal
+    switch (request) {
+        case "sass_reload":
+            log("Astal: Reloading style ...")
+            execAsync("sass ./style.scss /tmp/style.css")
+                .then(() => {
+                    console.log("Astal: Style reloaded")
+                    App.apply_css("/tmp/style.css")
+                    res("Astal: Style reloaded")
+                })
+                .catch((e) => {
+                    console.log(e)
+
+                    res("Astal Error: Failed to apply style")
+                })
+            break;
+    
+        case "launcher":
+            const astalLauncher = App.get_window("AstalLauncher")
+            if (astalLauncher) {
+                astalLauncher.show()
+                return res("AstalLauncher: Opened")
+            } 
+            Launcher()
+                
+            return res("AstalLauncher: Launched")
+            
+        default:
+            res("Astal Error: unknown command")
+            break;
+    }
+}
+
+exec("sass ./style.scss /tmp/style.css")
+
 App.start({
-    css: style,
+    requestHandler,
+    css: "/tmp/style.css",
     main: main
 })

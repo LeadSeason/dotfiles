@@ -14,7 +14,7 @@ export default () => {
     return <button
         onHover={() => {
             showReveler.set(true)
-            // Destroy old timeout, if called before timeout has reached.
+            // Destroy old timeout.
             const ct =  clockTimeout.get()
             if (!ct.is_destroyed()) {
                 ct.destroy()

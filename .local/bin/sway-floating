@@ -1,18 +1,21 @@
 #!/usr/bin/env bash
 
 $@ &
+# The launched process
 pid=$!
 
 swaymsg -t subscribe -m '[ "window" ]' \
   | jq --unbuffered --argjson pid "$pid" '.container | select(.pid == $pid) | .id' \
   | xargs -I '@' -- swaymsg '[ con_id=@ ] floating enable' &
 
-subscription=$!
+# xargs process
+PID_OF_PROCESS_1=`jobs -p `
 
 echo Going into wait state
 
 # Wait for our process to close
 tail --pid=$pid -f /dev/null
 
+jobs -p
 echo Killing subscription
 kill $subscription

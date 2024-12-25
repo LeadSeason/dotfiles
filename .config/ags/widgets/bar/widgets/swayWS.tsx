@@ -1,7 +1,6 @@
 import { bind } from "astal";
 import Gdk from "gi://Gdk?version=3.0";
-import i3ipc from "gi://i3ipc?version=1.0";
-import Sway, { Displays } from "../../../lib/sway";
+import Sway from "../../../lib/sway";
 
 export default ({ monitor }: { monitor: Gdk.Monitor; }) => {
 	const sway = Sway.get_default();
