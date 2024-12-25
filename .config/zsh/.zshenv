@@ -32,22 +32,24 @@ export XDG_PICTURES_DIR="$HOME/visual-media"
 export XDG_VIDEOS_DIR="$HOME/visual-media"
 
 # Per application datadirs
-export GRADLE_USER_HOME="$XDG_DATA_HOME"/gradle
+export ANDROID_USER_HOME="$XDG_DATA_HOME"/android
+export CARGO_HOME="$XDG_DATA_HOME"/cargo 
+export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker 
+export DOTNET_CLI_HOME="$XDG_DATA_HOME"/dotnet
 export GOCACHE=$XDG_CACHE_HOME/go
 export GOPATH="$XDG_DATA_HOME"/go
-export ANDROID_USER_HOME="$XDG_DATA_HOME"/android
-export WINEPREFIX="$XDG_DATA_HOME"/wine
-export TEXMFVAR="$XDG_CACHE_HOME"/texlive/texmf-var 
-export NUGET_PACKAGES="$XDG_CACHE_HOME"/NuGetPackages
-export NODE_REPL_HISTORY="$XDG_DATA_HOME"/node_repl_history
-export MPLAYER_HOME="$XDG_CONFIG_HOME"/mplayer
-export LESSHISTFILE="$XDG_STATE_HOME"/less/history
-export KDEHOME="$XDG_CONFIG_HOME"/kde
-export XCURSOR_PATH=/usr/share/icons:$XDG_DATA_HOME/icons 
+export GRADLE_USER_HOME="$XDG_DATA_HOME"/gradle
 export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
-export DOTNET_CLI_HOME="$XDG_DATA_HOME"/dotnet
-export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker 
-export CARGO_HOME="$XDG_DATA_HOME"/cargo 
+export KDEHOME="$XDG_CONFIG_HOME"/kde
+export LESSHISTFILE="$XDG_STATE_HOME"/less/history
+export MPLAYER_HOME="$XDG_CONFIG_HOME"/mplayer
+export NODE_REPL_HISTORY="$XDG_DATA_HOME"/node_repl_history
+export NUGET_PACKAGES="$XDG_CACHE_HOME"/NuGetPackages
+export TEXMFVAR="$XDG_CACHE_HOME"/texlive/texmf-var 
+export WINEPREFIX="$XDG_DATA_HOME"/wine
+export XCURSOR_PATH=/usr/share/icons:$XDG_DATA_HOME/icons 
+
+export PYTHONSTARTUP="$XDG_CONFIG_HOME"/python/pythonrc
 
 # other
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
