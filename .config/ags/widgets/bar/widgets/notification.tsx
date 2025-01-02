@@ -1,13 +1,13 @@
-import { execAsync, bind, Variable } from "astal"
+import { execAsync, bind } from "astal"
 import { Gtk } from "astal/gtk3"
+import SwayNc from "../../../lib/swaync"
+
 
 export default() => {
-    const NotificationLister = Variable<swayncEvent>(
-        {"count": 0, "dnd": false, "visible": false, "inhibited": false})
-        .watch("swaync-client -s", out => JSON.parse(out))
+    const swayNc = SwayNc.get_default()
     
     return <box
-        className="widgetbox "
+        className="widgetbox"
     >
             <button
             className="Notification"
@@ -17,41 +17,30 @@ export default() => {
                         execAsync("swaync-client -t -sw")
                         break;
                     case 2:
-                        execAsync("swaync-client -d -sw")
-                        break;
-
-                    case 3:
                         execAsync("swaync-client -C -sw")
                         break;
-                
+                    case 3:
+                        execAsync("swaync-client -d -sw")
+                        break;
                     default:
                 }
             }}
         >
-            <box
-                onDestroy={() => NotificationLister.drop()}
-            >
+            <box>
                 <revealer
                     transition_duration={250}
                     transitionType={Gtk.RevealerTransitionType.SLIDE_RIGHT}
-                    revealChild={bind(NotificationLister).as((v) => {
-                        return v.count > 0;
+                    revealChild={bind(swayNc, "count").as((v) => {
+                        return v > 0;
                     })}
                 >
                     <label
                         className="Badge"
-                        label={bind(NotificationLister).as((v) => v.count.toString())} />                
+                        label={bind(swayNc, "count").as((v) => v.toString())} />                
                 </revealer>
-                <label label={bind(NotificationLister).as((v) => {
-                    return v.dnd ? "" : ""})}/>
+                <label label={bind(swayNc, "dnd").as((v) => {
+                    return v ? "" : ""})}/>
             </box>
         </button>
     </box>
-}
-
-export interface swayncEvent {
-  count: number
-  dnd: boolean
-  visible: boolean
-  inhibited: boolean
 }
