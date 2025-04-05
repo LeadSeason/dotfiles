@@ -2,6 +2,9 @@ import { bind, execAsync } from "astal";
 import { Gtk } from "astal/gtk3";
 import ArchUpdates from "../../../lib/updates";
 import conf from "../../../conf";
+import Sway from "../../../lib/sway";
+
+const sway = Sway.get_default();
 
 export default () => {
     const updates = ArchUpdates.get_default();
@@ -26,7 +29,7 @@ export default () => {
                 tooltipText={bind(updates, "updates")}
                 onClick={(self, event) => {
                     if (event.button === 1) {
-                        execAsync("bash -c 'kitty --hold -e $HOME/.config/waybar/scipts/getupdates-update.sh'")
+                        sway.message_async("exec bash -c 'kitty --hold -e $HOME/.config/waybar/scipts/getupdates-update.sh'")
                     }
                 }}
             />

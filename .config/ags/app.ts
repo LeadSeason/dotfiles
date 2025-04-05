@@ -1,5 +1,7 @@
 import { App, Gdk, Gtk } from "astal/gtk3";
 import { exec, execAsync } from "astal/process";
+import { monitorFile } from "astal/file";
+import conf from "./conf";
 import Bar from "./widgets/bar/Bar";
 import Desktop from "./widgets/desktop/Desktop";
 import Launcher from "./widgets/launcher/Launcher";
@@ -59,6 +61,20 @@ function requestHandler(request: string, res: (response: string) => void) {
             break;
     }
 }
+
+monitorFile("./style.scss", async f => {
+    if (conf.sassHotReload) {
+        log("Astal: Reloading style ...")
+        execAsync("sass ./style.scss /tmp/style.css")
+            .then(() => {
+                console.log("Astal: Style reloaded")
+                App.apply_css("/tmp/style.css")
+            })
+            .catch((e) => {
+                console.log(e)
+            })
+    }
+})
 
 exec("sass ./style.scss /tmp/style.css")
 

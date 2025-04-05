@@ -5,7 +5,7 @@ import GLib from "gi://GLib"
 
 export default () => {
     const date = Variable<string>("").poll(1000, () =>
-        GLib.DateTime.new_now_local().format("%e.%m.%Y")!)
+        GLib.DateTime.new_now_local().format("%e.%m.%Y")!.replace(/\s/g, ""))
     const time = Variable<string>("").poll(1000, () =>
         GLib.DateTime.new_now_local().format("%k:%M:%S")!.replace(/\s/g, ""))
     const showReveler = Variable<boolean>(false)

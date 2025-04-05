@@ -77,6 +77,7 @@ fi
 
 # alias defenitions
 alias cls=clear
+alias diff="diff --color"
 alias :q="exit"
 alias autoremove="sudo pacman -Rcns \$(pacman -Qdtq) --noconfirm"
 alias cc="COLORTERM="" pygmentize -g"

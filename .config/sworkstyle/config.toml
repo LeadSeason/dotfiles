@@ -177,6 +177,7 @@ deduplicate_icons = true
 'qt5ct' = ''
 'qt6ct' = ''
 'seahorse' = '󰌋'
+'org.gnome.seahorse.Application' = '󰌋'
 'virt-manager' = ''
 'io.missioncenter.MissionCenter' = ''
 

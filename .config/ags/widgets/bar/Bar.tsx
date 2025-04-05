@@ -11,6 +11,7 @@ import Noises from "./widgets/noises"
 import Notification from "./widgets/notification"
 import Net from "./widgets/net"
 import Updates from "./widgets/updates"
+import Bluetooth from "./widgets/bluetooth"
 
 function SysTray() {
     const tray = Tray.get_default()
@@ -36,11 +37,11 @@ function SysTray() {
 function BatteryLevel() {
     const bat = Battery.get_default()
 
-    return <box className="Battery"
+    return <box spacing={5} className="Battery"
         visible={bind(bat, "isPresent")}>
         <icon icon={bind(bat, "batteryIconName")} />
         <label label={bind(bat, "percentage").as(p =>
-            `${Math.floor(p * 100)} %`
+            `${Math.floor(p * 100)}%`
         )} />
     </box>
 }
@@ -96,7 +97,7 @@ export default function Bar(gdkmonitor: Gdk.Monitor) {
             marginLeft={20}
             marginRight={20}
         */
-        marginBottom={-10}
+        marginBottom={0}
         anchor={TOP | LEFT | RIGHT}>
         <centerbox
             className="Barbox"
@@ -113,9 +114,10 @@ export default function Bar(gdkmonitor: Gdk.Monitor) {
                     className="widgetbox rightbar"
                     spacing={14}
                     >
-                    <BatteryLevel />
+                    {/* <Bluetooth /> */}
                     <Net />
                     <Noises />
+                    <BatteryLevel />
                     <Updates />
                     <SysTray />
                 </box>

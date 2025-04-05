@@ -37,7 +37,7 @@ function MixerDropdown() {
         application={App}
         anchor={Astal.WindowAnchor.TOP | Astal.WindowAnchor.RIGHT}
         exclusivity={Astal.Exclusivity.IGNORE}
-        keymode={Astal.Keymode.ON_DEMAND}
+        keymode={Astal.Keymode.EXCLUSIVE}
         marginRight={42}
         marginTop={50}
         onKeyPressEvent={function (self, event: Gdk.Event) {
@@ -125,16 +125,16 @@ function MixerDropdown() {
 }
 
 function Sink() {
-    const speaker = Wp.get_default()?.audio.defaultSpeaker!
+    const device = Wp.get_default()?.audio.defaultSpeaker!
     
     return <button
         className="Sink"
         onScroll={(b, e: Astal.ScrollEvent) => {
-            speaker.volume -= e.delta_y / 150
+            device.volume -= e.delta_y / 150
         }}
         onButtonPressEvent={(self, event) => {
             if (event.get_button()[1] == 3) {
-                speaker.set_mute(!speaker.get_mute())
+                device.set_mute(!device.get_mute())
             } else if (event.get_button()[1] == 1) {
                 MixerDropdown();
             }
@@ -142,47 +142,49 @@ function Sink() {
     >
         <box
             spacing={5}
+            tooltipText={bind(device, "description").as((v) => `Active Device: ${v}`)}
         >
             <label 
-                className={bind(speaker, "mute").as((v) => {
+                className={bind(device, "mute").as((v) => {
                     return (v !== true) ? "vol" : "vol50"
                 })}
-                label={bind(speaker, "volume").as((v) => {
+                label={bind(device, "volume").as((v) => {
                     return Math.round(v * 100).toString() + "%"
                 })}
                 />
             <icon
                 className="volicon"
-                icon={bind(speaker, "volumeIcon")}
+                icon={bind(device, "volumeIcon")}
             />
         </box>
     </button>
 }
 
 function Source() {
-    const microphone = Wp.get_default()?.audio.defaultMicrophone!
+    const device = Wp.get_default()?.audio.defaultMicrophone!
     
     return <button
         className="Source"
         onScroll={(b, e: Astal.ScrollEvent) => {
-            microphone.volume -= e.delta_y / 150
+            device.volume -= e.delta_y / 150
         }}
-        onClick={() => microphone.set_mute(!microphone.get_mute())}
+        onClick={() => device.set_mute(!device.get_mute())}
     >
         <box
             spacing={5}
+            tooltipText={bind(device, "description").as((v) => `Active Device: ${v}`)}
         >
             <label 
-                className={bind(microphone, "mute").as((v) => {
+                className={bind(device, "mute").as((v) => {
                     return (v !== true) ? "vol" : "vol50"
                 })}
-                label={bind(microphone, "volume").as((v) => {
+                label={bind(device, "volume").as((v) => {
                     return Math.round(v * 100).toString() + "%"
                 })}
                 />
             <icon
                 className="volicon"
-                icon={bind(microphone, "volumeIcon")}
+                icon={bind(device, "volumeIcon")}
             />
         </box>
     </button>

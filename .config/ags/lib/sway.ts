@@ -10,7 +10,7 @@ export default class Sway extends GObject.Object {
     static get_default() {
         if (!this.instance)
             this.instance = new Sway()
-        
+
         return this.instance
     }
     

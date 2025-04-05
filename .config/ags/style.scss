@@ -95,18 +95,18 @@ window.Bar {
 		border-top-right-radius: .3rem;
 		border-top-left-radius: .3rem;
 
-        color: theme.$base0D;
+        color: theme.$base0E;
         background: repeating-linear-gradient(
-            color.mix(theme.$base0D, black, 20%),
-            color.mix(theme.$base0D, black, 20%) .2%,
-            color.mix(theme.$base0D, black, 30%) .5%,
-            color.mix(theme.$base0D, black, 20%) .8%,
-            color.mix(theme.$base0D, black, 20%) 1%
+            color.mix(theme.$base0E, black, 20%),
+            color.mix(theme.$base0E, black, 20%) .2%,
+            color.mix(theme.$base0E, black, 30%) .5%,
+            color.mix(theme.$base0E, black, 20%) .8%,
+            color.mix(theme.$base0E, black, 20%) 1%
         );
 
         box-shadow: inset 3px 4px 5px color.mix(black, transparent, 50%);
                   /* 0px -1px 3px 4px color.mix(black, transparent, 50%); */
-        border-bottom:.15rem solid theme.$base0D;
+        border-bottom:.15rem solid theme.$base0E;
 		
 	}
 
@@ -194,7 +194,7 @@ window.AstalConfirm {
 window.AstalDesktop {
 	all: unset;
 
-    background-image: url("/home/leadseason/.local/share/wallpapers/xenia.png");
+    background-image: url("/home/leadseason/.local/share/wallpapers/daniil-silantev-95iZ2UVvv0A-unsplash.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -272,6 +272,72 @@ window.AstalMixer {
     }
 }
 
+window.AstalBTDropdown {
+	border-radius: 1rem;
+	border: 2px solid theme.$base03;
+	background-color: theme.$base00;
+
+	icon {
+
+		margin-left: .6em;
+	}
+
+  	separator { 
+		margin: 4px 0;
+		background-color: theme.$base02;
+		min-height: 1px;
+		min-height: 1px;
+		
+	}
+
+	.Base {
+		margin: 4px;
+		padding: 4px;
+	}
+
+	switch {
+		border-radius: 5px;
+		border: 1px solid theme.$base02;
+		min-width: 4rem;
+		transition: 200ms;
+
+        slider {
+            background-color: theme.$base05;
+            border-radius: 7px;
+            min-height: 1em;
+            min-width: 1em;
+            margin: -.2em;
+        }
+
+		&:checked {
+			background-color: theme.$base0E;
+		}
+	}
+
+    .AstalMixerSlider {
+        * {
+            all: unset;
+        }
+
+
+        & {
+            margin: 0 1em;
+        }
+
+        trough {
+            background-color: color.adjust(theme.$base05, $alpha: -0.8);
+            border-radius: 7px;
+        }
+
+        highlight {
+            background-color: theme.$base0E;
+            min-height: .8em;
+            border-radius: 7px;
+        }
+
+    }
+}
+
 // https://github.com/vinceliuice/Colloid-gtk-theme/blob/1a13048ea1bd4a6cb9b293b537afd16bf267e773/src/sass/gtk/_common-3.0.scss#L1671
 menu {
 	margin: 4px; 
@@ -286,7 +352,6 @@ menu {
 		background-color: theme.$base02;
 		min-height: 1px;
 		min-height: 1px;
-		
 	}
 
 	menuitem {
@@ -336,32 +401,43 @@ tooltip {
 }
 
 
-@function gtkalpha($c, $a) {
-    @return string.unquote("alpha(#{$c},#{$a})");
-}
-
-// https://gitlab.gnome.org/GNOME/gtk/-/blob/gtk-3-24/gtk/theme/Adwaita/_colors-public.scss
-$fg-color: #{"@theme_fg_color"};
-$bg-color: #{"@theme_bg_color"};
 
 window#AstalLauncher {
     all: unset;
 
-    box.Applauncher {
-        background-color: $bg-color;
+    box.AppLauncher {
+        background-color: theme.$base00;
         border-radius: 11px;
         margin: 1rem;
         padding: .8rem;
-        box-shadow: 2px 3px 8px 0 gtkalpha(black, .4);
+        box-shadow: 2px 3px 8px 0 black;
+		border: 2px solid theme.$base03;
 
         entry {
-            margin-bottom: .8rem;
+			border: 2px solid theme.$base03;
+			border-radius: 11px;
+        	padding: .8rem;
         }
 
+		separator { 
+			margin: .8rem 0;
+			background-color: theme.$base02;
+			min-height: 1px;
+			min-height: 1px;
+		}
+
         button {
+			background-color: mix(white, transparent, 10%);
+			border-radius: 10px;
+			transition: 200ms;
+			
             min-width: 0;
             min-height: 0;
             padding: .5rem;
+
+			&:hover {
+				background-color: mix(white, transparent, 15%);
+			}
 
             icon {
                 font-size: 3em;
@@ -374,7 +450,7 @@ window#AstalLauncher {
             }
 
             label.description {
-                color: gtkalpha($fg-color, .8);
+                color: theme.$base04;
             }
         }
 
@@ -383,11 +459,11 @@ window#AstalLauncher {
 
             icon {
                 font-size: 6em;
-                color: gtkalpha($fg-color, .7);
+                color: theme.$base04;
             }
 
             label {
-                color: gtkalpha($fg-color, .9);
+                color: theme.$base04;
                 font-size: 1.2em;
             }
         }
