@@ -273,8 +273,8 @@ bindsym {
     XF86MonBrightnessDown exec brightnessctl set 10%-
 
     # start a program launcher (rofi)
-    # $mod+d exec pgrep rofi || rofi -I -show drun
-    $mod+d exec ags request "launcher" --instance astal
+    $mod+d exec pgrep rofi || rofi -I -show drun
+    # $mod+d exec ags request "launcher" --instance astal
 
     $mod+Shift+d exec pgrep rofi || rofi -I -show run
     $mod+Shift+v exec pgrep rofi || clipman pick -t rofi
