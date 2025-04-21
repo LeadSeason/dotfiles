@@ -116,6 +116,7 @@ for_window [app_id="^SteamTinkerLaunch-*"] floating enable
 for_window [app_id="org.kde.kdeconnect.daemon"] floating enable
 for_window [app_id="xdg-desktop-portal-gtk"] floating enable
 for_window [instance="origin.exe"] floating enable
+for_window [instance="tf_linux64"] fullscreen enable
 for_window [title="^Extension: .*Bitwarden.*"] floating enable
 for_window [title="Remote Folder Picker - Celeste"] floating enable
 for_window [title="Local Folder Picker - Celeste"] floating enable
@@ -144,7 +145,7 @@ exec /usr/lib/kdeconnectd
 
 
 # Init wallpaper server
-# exec swww-daemon
+exec swww-daemon
 # Pick random wallpapers ever 4 - 8 hours
 # @TODO This will keepgoing if server dies. resulting in multiple instances
 # exec zsh -c "sleep 1; cd /home/leadseason/.local/share/wallpapers; pwd; while (true); do; sleep \$(( ( RANDOM % 3600) + 1800)); ls |sort -R |head -n1| read x; swww img \$x; echo \$x; done;"
