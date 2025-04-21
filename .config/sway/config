@@ -175,7 +175,7 @@ exec swayidle \
 	timeout 240 "brightnessctl get > ~/.cache/resume_brightness; brightnessctl set 20%" \
     resume "brightnessctl set \$(cat ~/.cache/resume_brightness)" \
 	timeout 300 "pgrep swaylock || swaylock --grace 3 --fade-in 3" \
-    timeout 420 'swaymsg "output * dpms off" & ags quit' \
+    timeout 420 'swaymsg "output * dpms off"' \
     resume 'swaymsg "output * dpms on" & sleep 10; ags run'
 
 # Use -w so desktops arent visible after unsleeping
@@ -272,9 +272,6 @@ bindsym {
     # Brightness controls
     XF86MonBrightnessUp exec brightnessctl set 10%+
     XF86MonBrightnessDown exec brightnessctl set 10%-
-
-    # Manual brightness to 100% if stuck at 0%
-    $mod+F12 exec brightnessctl set 100%
 
     # start a program launcher (rofi)
     $mod+d exec pgrep rofi || rofi -I -show drun
@@ -438,4 +435,7 @@ bindsym --locked {
 
     XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +1% && pactl get-sink-volume @DEFAULT_SINK@ | head -n 1 | awk '{print substr($5, 1, length($5)-1)}' > $WOBSOCK
     XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -1% && pactl get-sink-volume @DEFAULT_SINK@ | head -n 1 | awk '{print substr($5, 1, length($5)-1)}' > $WOBSOCK
+
+    # Manaul way to force displays to on if they are dimmed
+    $mod+F12 "output * dpms on; exec brightnessctl set 100%"
 }
