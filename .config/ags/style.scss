@@ -15,6 +15,7 @@ window.Bar {
 	.Barbox {
 		background-color: color.mix(color.mix(theme.$base0E, black, 20%), transparent, 50%);
 		border-bottom: .15rem solid color.mix(color.mix(theme.$base0E, black, 50%), transparent, 25%);
+		box-shadow: 0px -7px 5px 0px rgba(0,0,0,0.10) inset;
 	}
 
 	button {
@@ -468,4 +469,35 @@ window#AstalLauncher {
             }
         }
     }
+}
+
+window.OSD {
+    box.OSD {
+        border-radius: 100px;
+        background-color: mix(theme.$base00, transparent, 75%);
+        padding: 10px 14px;
+        box-shadow: 3px 3px 7px 0 rgba(0,0,0,.4);
+		border: 2px solid mix(theme.$base03, transparent, 75%);
+    }
+
+    icon {
+		margin-right: 10px;
+    	font-size: 36px;
+    }
+
+    label {
+		margin-left: 10px;
+        font-size: 26px;
+    }
+
+	levelbar block.high, levelbar block:not(.empty) {
+		min-height: 10px;
+		border-radius: 10px;
+		background-color: theme.$base0E;
+	}
+
+	levelbar block.empty {
+		border-radius: 10px;
+		background-color: mix(theme.$base04, transparent, 75%);
+	}
 }

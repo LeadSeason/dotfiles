@@ -230,7 +230,6 @@ export default function Bar(gdkmonitor: Gdk.Monitor) {
         GLib.DateTime.new_now_local().format("%k:%M:%S")!.replace(/\s/g, ""));
 
     return <window
-        
         className="AstalDesktop"
         name="AstalDesktop"
         namespace={"AstalDesktop"}

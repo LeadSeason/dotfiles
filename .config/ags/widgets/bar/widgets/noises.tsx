@@ -14,6 +14,13 @@ export default () => {
     </box>
 } 
 
+function truncateText(text: string, maxLength: number = 60): string {
+    if (text.length <= maxLength) {
+        return text;
+    }
+    return text.substring(0, maxLength) + '...';
+}
+
 function MixerDropdown() {
     const astalMixer = App.get_window("AstalMixer")
 
@@ -68,7 +75,7 @@ function MixerDropdown() {
                             className={bind(speaker, "mute").as((v) => v ? "NameLabel NameMuted" : "NameLabel")}
                             halign={Gtk.Align.START}
                             css={bind(speaker, "isDefault").as(v => v ? "font-weight: bold;" : "")} 
-                            label={bind(speaker, "description")}
+                            label={bind(speaker, "description").as(v => truncateText(v))}
                         />
                         <box>
                             <slider
@@ -104,7 +111,7 @@ function MixerDropdown() {
                             className={bind(endpoint, "mute").as((v) => v ? "NameLabel NameMuted" : "NameLabel")}
                             halign={Gtk.Align.START}
                             label={bind(endpoint, "notify").as((_) => 
-                                `${endpoint.description}: ${endpoint.name}`)}
+                                truncateText(`${endpoint.description}: ${endpoint.name}`))}
                             />
                         <box>
                             <slider

@@ -6,74 +6,79 @@ const conn = i3ipc.Connection.new(null)
 @register({ GTypeName: "Sway" })
 export default class Sway extends GObject.Object {
     static instance: Sway
-    
+
     static get_default() {
         if (!this.instance)
             this.instance = new Sway()
 
         return this.instance
     }
-    
+
     #wss: Workspaces = JSON.parse(conn.message(i3ipc.MessageType.GET_WORKSPACES, ""));
     #outputs: Displays = JSON.parse(conn.message(i3ipc.MessageType.GET_OUTPUTS, ""));
-    
+
     @property()
-    get wss () { return this.#wss } 
-    
+    get wss () { return this.#wss };
+
     @property()
-    get display () { return this.#outputs } 
+    get display () { return this.#outputs };
+
+    @property()
+    get outputs () { return this.#outputs };
 
     @property(Number)
-    get focused () { 
+    get focused () {
         return this.#wss.find(ws => ws.focused)?.id ?? 0;
     }
-    
+
     @property(Number)
-    get urgent() { 
+    get urgent() {
         return this.#wss.find(ws => ws.urgent)?.id ?? 0;
     }
-    
+
     @property()
-    get rename () { 
+    get rename () {
         return this.#wss
-    } 
-    
+    }
+
     message (message: string): Commands {
         return JSON.parse(conn.message(i3ipc.MessageType.COMMAND, message));
     }
     async message_async (message: string): Promise<Commands> {
         return await JSON.parse(conn.message(i3ipc.MessageType.COMMAND, message));
     }
-    
+
     constructor() {
         super()
-        
+
         conn.on("workspace", async (conn: i3ipc.Connection, event: i3ipc.WorkspaceEvent) => {
-            const v = await JSON.parse( conn.message(i3ipc.MessageType.GET_WORKSPACES, ""));
+            const v = await JSON.parse(conn.message(i3ipc.MessageType.GET_WORKSPACES, ""));
             this.#wss = v;
-            
+
             switch (event.change) {
                 case "focus":
-                this.notify("focused") 
-                break;
-                
+                    this.notify("focused")
+                    
+                    break;
+
                 case "urgent":
-                this.notify("urgent") 
-                break;
-                
+                    this.notify("urgent")
+                    break;
+
                 case "rename":
-                this.notify("rename") 
-                break;
-                
+                    this.notify("rename")
+                    break;
+
                 default:
-                this.notify("wss")
-                break;
+                    this.notify("wss")
+                    break;
             }
         });
-        
+
         conn.on("output", async (conn: i3ipc.Connection, event: i3ipc.WorkspaceEvent) => {
             const v = await JSON.parse(conn.message(i3ipc.MessageType.GET_OUTPUTS, ""));
             this.#outputs = v;
+            this.notify("outputs")
         });
     }
 }

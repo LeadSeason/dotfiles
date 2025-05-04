@@ -100,6 +100,7 @@ blur_passes 3
 blur_radius 3
 
 layer_effects "AstalBar" blur enable; corner_radius 0; shadows enable; border pixel 0
+layer_effects "astal-osd" blur enable; corner_radius 32;
 layer_effects "AstalConfirm" blur enable; corner_radius 0; shadows enable; border pixel 0
 # layer_effects "AstalLauncher" blur enable; corner_radius 0; shadows enable; border pixel 0
 
