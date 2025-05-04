@@ -425,7 +425,7 @@ bindsym --locked {
 
     # Alternatively Useing $mod + F-keys
     $mod+F2 exec playerctl play-pause
-    $mod+F3 exec playerctl stop
+    $mod+F3 exec playerctl play-pause
     $mod+F4 exec playerctl next
     $mod+F1 exec playerctl previous
 
