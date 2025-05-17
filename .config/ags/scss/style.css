@@ -1,0 +1,1282 @@
+/* Catppuccin Mocha */
+/* define acent color to cooking later */
+/* This variable is inverted 100% = Opaque, 0% = Transparent*/
+.base {
+  color: #cdd6f4;
+  background-color: rgba(30, 30, 46, 0.75);
+  border-bottom: 0.15rem solid #cdd6f4;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.fgbase {
+  color: #cdd6f4; }
+
+.bgbase {
+  background-color: #1e1e2e;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.mantle {
+  color: #cdd6f4;
+  background-color: rgba(24, 24, 37, 0.75);
+  border-bottom: 0.15rem solid #cdd6f4;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.fgmantle {
+  color: #cdd6f4; }
+
+.bgmantle {
+  background-color: #181825;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.crust {
+  color: #cdd6f4;
+  background-color: rgba(17, 17, 27, 0.75);
+  border-bottom: 0.15rem solid #cdd6f4;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.fgcrust {
+  color: #cdd6f4; }
+
+.bgcrust {
+  background-color: #11111b;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.rosewater {
+  color: #f5e0dc;
+  background: repeating-linear-gradient(#312d2c, #312d2c 0.2%, #4a4342 0.5%, #312d2c 0.8%, #312d2c 1%);
+  border-bottom: 0.15rem solid #f5e0dc;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.fgrosewater {
+  color: #f5e0dc; }
+
+.bgrosewater {
+  background: repeating-linear-gradient(#312d2c, #312d2c 0.2%, #4a4342 0.5%, #312d2c 0.8%, #312d2c 1%);
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.flamingo {
+  color: #f2cdcd;
+  background: repeating-linear-gradient(#302929, #302929 0.2%, #493e3e 0.5%, #302929 0.8%, #302929 1%);
+  border-bottom: 0.15rem solid #f2cdcd;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.fgflamingo {
+  color: #f2cdcd; }
+
+.bgflamingo {
+  background: repeating-linear-gradient(#302929, #302929 0.2%, #493e3e 0.5%, #302929 0.8%, #302929 1%);
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.pink {
+  color: #f5c2e7;
+  background: repeating-linear-gradient(#31272e, #31272e 0.2%, #4a3a45 0.5%, #31272e 0.8%, #31272e 1%);
+  border-bottom: 0.15rem solid #f5c2e7;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.fgpink {
+  color: #f5c2e7; }
+
+.bgpink {
+  background: repeating-linear-gradient(#31272e, #31272e 0.2%, #4a3a45 0.5%, #31272e 0.8%, #31272e 1%);
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.mauve {
+  color: #cba6f7;
+  background: repeating-linear-gradient(#292131, #292131 0.2%, #3d324a 0.5%, #292131 0.8%, #292131 1%);
+  border-bottom: 0.15rem solid #cba6f7;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.fgmauve {
+  color: #cba6f7; }
+
+.bgmauve {
+  background: repeating-linear-gradient(#292131, #292131 0.2%, #3d324a 0.5%, #292131 0.8%, #292131 1%);
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.red {
+  color: #f38ba8;
+  background: repeating-linear-gradient(#311c22, #311c22 0.2%, #492a32 0.5%, #311c22 0.8%, #311c22 1%);
+  border-bottom: 0.15rem solid #f38ba8;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.fgred {
+  color: #f38ba8; }
+
+.bgred {
+  background: repeating-linear-gradient(#311c22, #311c22 0.2%, #492a32 0.5%, #311c22 0.8%, #311c22 1%);
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.maroon {
+  color: #eba0ac;
+  background: repeating-linear-gradient(#2f2022, #2f2022 0.2%, #463034 0.5%, #2f2022 0.8%, #2f2022 1%);
+  border-bottom: 0.15rem solid #eba0ac;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.fgmaroon {
+  color: #eba0ac; }
+
+.bgmaroon {
+  background: repeating-linear-gradient(#2f2022, #2f2022 0.2%, #463034 0.5%, #2f2022 0.8%, #2f2022 1%);
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.peach {
+  color: #fab387;
+  background: repeating-linear-gradient(#32241b, #32241b 0.2%, #4b3628 0.5%, #32241b 0.8%, #32241b 1%);
+  border-bottom: 0.15rem solid #fab387;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.fgpeach {
+  color: #fab387; }
+
+.bgpeach {
+  background: repeating-linear-gradient(#32241b, #32241b 0.2%, #4b3628 0.5%, #32241b 0.8%, #32241b 1%);
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.yellow {
+  color: #f9e2af;
+  background: repeating-linear-gradient(#322d23, #322d23 0.2%, #4b4434 0.5%, #322d23 0.8%, #322d23 1%);
+  border-bottom: 0.15rem solid #f9e2af;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.fgyellow {
+  color: #f9e2af; }
+
+.bgyellow {
+  background: repeating-linear-gradient(#322d23, #322d23 0.2%, #4b4434 0.5%, #322d23 0.8%, #322d23 1%);
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.green {
+  color: #a6e3a1;
+  background: repeating-linear-gradient(#212d20, #212d20 0.2%, #324430 0.5%, #212d20 0.8%, #212d20 1%);
+  border-bottom: 0.15rem solid #a6e3a1;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.fggreen {
+  color: #a6e3a1; }
+
+.bggreen {
+  background: repeating-linear-gradient(#212d20, #212d20 0.2%, #324430 0.5%, #212d20 0.8%, #212d20 1%);
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.teal {
+  color: #94e2d5;
+  background: repeating-linear-gradient(#1e2d2b, #1e2d2b 0.2%, #2c4440 0.5%, #1e2d2b 0.8%, #1e2d2b 1%);
+  border-bottom: 0.15rem solid #94e2d5;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.fgteal {
+  color: #94e2d5; }
+
+.bgteal {
+  background: repeating-linear-gradient(#1e2d2b, #1e2d2b 0.2%, #2c4440 0.5%, #1e2d2b 0.8%, #1e2d2b 1%);
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.sky {
+  color: #89dceb;
+  background: repeating-linear-gradient(#1b2c2f, #1b2c2f 0.2%, #294246 0.5%, #1b2c2f 0.8%, #1b2c2f 1%);
+  border-bottom: 0.15rem solid #89dceb;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.fgsky {
+  color: #89dceb; }
+
+.bgsky {
+  background: repeating-linear-gradient(#1b2c2f, #1b2c2f 0.2%, #294246 0.5%, #1b2c2f 0.8%, #1b2c2f 1%);
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.sapphire {
+  color: #74c7ec;
+  background: repeating-linear-gradient(#17282f, #17282f 0.2%, #233c47 0.5%, #17282f 0.8%, #17282f 1%);
+  border-bottom: 0.15rem solid #74c7ec;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.fgsapphire {
+  color: #74c7ec; }
+
+.bgsapphire {
+  background: repeating-linear-gradient(#17282f, #17282f 0.2%, #233c47 0.5%, #17282f 0.8%, #17282f 1%);
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.blue {
+  color: #89b4fa;
+  background: repeating-linear-gradient(#1b2432, #1b2432 0.2%, #29364b 0.5%, #1b2432 0.8%, #1b2432 1%);
+  border-bottom: 0.15rem solid #89b4fa;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.fgblue {
+  color: #89b4fa; }
+
+.bgblue {
+  background: repeating-linear-gradient(#1b2432, #1b2432 0.2%, #29364b 0.5%, #1b2432 0.8%, #1b2432 1%);
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.lavender {
+  color: #b4befe;
+  background: repeating-linear-gradient(#242633, #242633 0.2%, #36394c 0.5%, #242633 0.8%, #242633 1%);
+  border-bottom: 0.15rem solid #b4befe;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.fglavender {
+  color: #b4befe; }
+
+.bglavender {
+  background: repeating-linear-gradient(#242633, #242633 0.2%, #36394c 0.5%, #242633 0.8%, #242633 1%);
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.acentColor {
+  color: #f38ba8;
+  background: repeating-linear-gradient(#311c22, #311c22 0.2%, #492a32 0.5%, #311c22 0.8%, #311c22 1%);
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5);
+  /* 0px -1px 3px 4px mix($crust, transparent, 50%); */
+  border-bottom: 0.15rem solid #f38ba8; }
+
+.fgacentColor {
+  color: #f38ba8; }
+
+.bgacentColor {
+  background: repeating-linear-gradient(#311c22, #311c22 0.2%, #492a32 0.5%, #311c22 0.8%, #311c22 1%);
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5);
+  /* 0px -1px 3px 4px mix($crust, transparent, 50%); */ }
+
+.round5 {
+  border-radius: .5rem; }
+
+.round10 {
+  border-radius: 10rem; }
+
+/* Catppuccin Mocha */
+/* define acent color to cooking later */
+/* This variable is inverted 100% = Opaque, 0% = Transparent*/
+.base {
+  color: #cdd6f4;
+  background-color: rgba(30, 30, 46, 0.75);
+  border-bottom: 0.15rem solid #cdd6f4;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.fgbase {
+  color: #cdd6f4; }
+
+.bgbase {
+  background-color: #1e1e2e;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.mantle {
+  color: #cdd6f4;
+  background-color: rgba(24, 24, 37, 0.75);
+  border-bottom: 0.15rem solid #cdd6f4;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.fgmantle {
+  color: #cdd6f4; }
+
+.bgmantle {
+  background-color: #181825;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.crust {
+  color: #cdd6f4;
+  background-color: rgba(17, 17, 27, 0.75);
+  border-bottom: 0.15rem solid #cdd6f4;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.fgcrust {
+  color: #cdd6f4; }
+
+.bgcrust {
+  background-color: #11111b;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.rosewater {
+  color: #f5e0dc;
+  background: repeating-linear-gradient(#312d2c, #312d2c 0.2%, #4a4342 0.5%, #312d2c 0.8%, #312d2c 1%);
+  border-bottom: 0.15rem solid #f5e0dc;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.fgrosewater {
+  color: #f5e0dc; }
+
+.bgrosewater {
+  background: repeating-linear-gradient(#312d2c, #312d2c 0.2%, #4a4342 0.5%, #312d2c 0.8%, #312d2c 1%);
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.flamingo {
+  color: #f2cdcd;
+  background: repeating-linear-gradient(#302929, #302929 0.2%, #493e3e 0.5%, #302929 0.8%, #302929 1%);
+  border-bottom: 0.15rem solid #f2cdcd;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.fgflamingo {
+  color: #f2cdcd; }
+
+.bgflamingo {
+  background: repeating-linear-gradient(#302929, #302929 0.2%, #493e3e 0.5%, #302929 0.8%, #302929 1%);
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.pink {
+  color: #f5c2e7;
+  background: repeating-linear-gradient(#31272e, #31272e 0.2%, #4a3a45 0.5%, #31272e 0.8%, #31272e 1%);
+  border-bottom: 0.15rem solid #f5c2e7;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.fgpink {
+  color: #f5c2e7; }
+
+.bgpink {
+  background: repeating-linear-gradient(#31272e, #31272e 0.2%, #4a3a45 0.5%, #31272e 0.8%, #31272e 1%);
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.mauve {
+  color: #cba6f7;
+  background: repeating-linear-gradient(#292131, #292131 0.2%, #3d324a 0.5%, #292131 0.8%, #292131 1%);
+  border-bottom: 0.15rem solid #cba6f7;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.fgmauve {
+  color: #cba6f7; }
+
+.bgmauve {
+  background: repeating-linear-gradient(#292131, #292131 0.2%, #3d324a 0.5%, #292131 0.8%, #292131 1%);
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.red {
+  color: #f38ba8;
+  background: repeating-linear-gradient(#311c22, #311c22 0.2%, #492a32 0.5%, #311c22 0.8%, #311c22 1%);
+  border-bottom: 0.15rem solid #f38ba8;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.fgred {
+  color: #f38ba8; }
+
+.bgred {
+  background: repeating-linear-gradient(#311c22, #311c22 0.2%, #492a32 0.5%, #311c22 0.8%, #311c22 1%);
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.maroon {
+  color: #eba0ac;
+  background: repeating-linear-gradient(#2f2022, #2f2022 0.2%, #463034 0.5%, #2f2022 0.8%, #2f2022 1%);
+  border-bottom: 0.15rem solid #eba0ac;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.fgmaroon {
+  color: #eba0ac; }
+
+.bgmaroon {
+  background: repeating-linear-gradient(#2f2022, #2f2022 0.2%, #463034 0.5%, #2f2022 0.8%, #2f2022 1%);
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.peach {
+  color: #fab387;
+  background: repeating-linear-gradient(#32241b, #32241b 0.2%, #4b3628 0.5%, #32241b 0.8%, #32241b 1%);
+  border-bottom: 0.15rem solid #fab387;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.fgpeach {
+  color: #fab387; }
+
+.bgpeach {
+  background: repeating-linear-gradient(#32241b, #32241b 0.2%, #4b3628 0.5%, #32241b 0.8%, #32241b 1%);
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.yellow {
+  color: #f9e2af;
+  background: repeating-linear-gradient(#322d23, #322d23 0.2%, #4b4434 0.5%, #322d23 0.8%, #322d23 1%);
+  border-bottom: 0.15rem solid #f9e2af;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.fgyellow {
+  color: #f9e2af; }
+
+.bgyellow {
+  background: repeating-linear-gradient(#322d23, #322d23 0.2%, #4b4434 0.5%, #322d23 0.8%, #322d23 1%);
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.green {
+  color: #a6e3a1;
+  background: repeating-linear-gradient(#212d20, #212d20 0.2%, #324430 0.5%, #212d20 0.8%, #212d20 1%);
+  border-bottom: 0.15rem solid #a6e3a1;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.fggreen {
+  color: #a6e3a1; }
+
+.bggreen {
+  background: repeating-linear-gradient(#212d20, #212d20 0.2%, #324430 0.5%, #212d20 0.8%, #212d20 1%);
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.teal {
+  color: #94e2d5;
+  background: repeating-linear-gradient(#1e2d2b, #1e2d2b 0.2%, #2c4440 0.5%, #1e2d2b 0.8%, #1e2d2b 1%);
+  border-bottom: 0.15rem solid #94e2d5;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.fgteal {
+  color: #94e2d5; }
+
+.bgteal {
+  background: repeating-linear-gradient(#1e2d2b, #1e2d2b 0.2%, #2c4440 0.5%, #1e2d2b 0.8%, #1e2d2b 1%);
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.sky {
+  color: #89dceb;
+  background: repeating-linear-gradient(#1b2c2f, #1b2c2f 0.2%, #294246 0.5%, #1b2c2f 0.8%, #1b2c2f 1%);
+  border-bottom: 0.15rem solid #89dceb;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.fgsky {
+  color: #89dceb; }
+
+.bgsky {
+  background: repeating-linear-gradient(#1b2c2f, #1b2c2f 0.2%, #294246 0.5%, #1b2c2f 0.8%, #1b2c2f 1%);
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.sapphire {
+  color: #74c7ec;
+  background: repeating-linear-gradient(#17282f, #17282f 0.2%, #233c47 0.5%, #17282f 0.8%, #17282f 1%);
+  border-bottom: 0.15rem solid #74c7ec;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.fgsapphire {
+  color: #74c7ec; }
+
+.bgsapphire {
+  background: repeating-linear-gradient(#17282f, #17282f 0.2%, #233c47 0.5%, #17282f 0.8%, #17282f 1%);
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.blue {
+  color: #89b4fa;
+  background: repeating-linear-gradient(#1b2432, #1b2432 0.2%, #29364b 0.5%, #1b2432 0.8%, #1b2432 1%);
+  border-bottom: 0.15rem solid #89b4fa;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.fgblue {
+  color: #89b4fa; }
+
+.bgblue {
+  background: repeating-linear-gradient(#1b2432, #1b2432 0.2%, #29364b 0.5%, #1b2432 0.8%, #1b2432 1%);
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.lavender {
+  color: #b4befe;
+  background: repeating-linear-gradient(#242633, #242633 0.2%, #36394c 0.5%, #242633 0.8%, #242633 1%);
+  border-bottom: 0.15rem solid #b4befe;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.fglavender {
+  color: #b4befe; }
+
+.bglavender {
+  background: repeating-linear-gradient(#242633, #242633 0.2%, #36394c 0.5%, #242633 0.8%, #242633 1%);
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.acentColor {
+  color: #f38ba8;
+  background: repeating-linear-gradient(#311c22, #311c22 0.2%, #492a32 0.5%, #311c22 0.8%, #311c22 1%);
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5);
+  /* 0px -1px 3px 4px mix($crust, transparent, 50%); */
+  border-bottom: 0.15rem solid #f38ba8; }
+
+.fgacentColor {
+  color: #f38ba8; }
+
+.bgacentColor {
+  background: repeating-linear-gradient(#311c22, #311c22 0.2%, #492a32 0.5%, #311c22 0.8%, #311c22 1%);
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5);
+  /* 0px -1px 3px 4px mix($crust, transparent, 50%); */ }
+
+/* Catppuccin Mocha */
+/* define acent color to cooking later */
+/* This variable is inverted 100% = Opaque, 0% = Transparent*/
+.base {
+  color: #cdd6f4;
+  background-color: rgba(30, 30, 46, 0.75);
+  border-bottom: 0.15rem solid #cdd6f4;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.fgbase {
+  color: #cdd6f4; }
+
+.bgbase {
+  background-color: #1e1e2e;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.mantle {
+  color: #cdd6f4;
+  background-color: rgba(24, 24, 37, 0.75);
+  border-bottom: 0.15rem solid #cdd6f4;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.fgmantle {
+  color: #cdd6f4; }
+
+.bgmantle {
+  background-color: #181825;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.crust {
+  color: #cdd6f4;
+  background-color: rgba(17, 17, 27, 0.75);
+  border-bottom: 0.15rem solid #cdd6f4;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.fgcrust {
+  color: #cdd6f4; }
+
+.bgcrust {
+  background-color: #11111b;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.rosewater {
+  color: #f5e0dc;
+  background: repeating-linear-gradient(#312d2c, #312d2c 0.2%, #4a4342 0.5%, #312d2c 0.8%, #312d2c 1%);
+  border-bottom: 0.15rem solid #f5e0dc;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.fgrosewater {
+  color: #f5e0dc; }
+
+.bgrosewater {
+  background: repeating-linear-gradient(#312d2c, #312d2c 0.2%, #4a4342 0.5%, #312d2c 0.8%, #312d2c 1%);
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.flamingo {
+  color: #f2cdcd;
+  background: repeating-linear-gradient(#302929, #302929 0.2%, #493e3e 0.5%, #302929 0.8%, #302929 1%);
+  border-bottom: 0.15rem solid #f2cdcd;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.fgflamingo {
+  color: #f2cdcd; }
+
+.bgflamingo {
+  background: repeating-linear-gradient(#302929, #302929 0.2%, #493e3e 0.5%, #302929 0.8%, #302929 1%);
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.pink {
+  color: #f5c2e7;
+  background: repeating-linear-gradient(#31272e, #31272e 0.2%, #4a3a45 0.5%, #31272e 0.8%, #31272e 1%);
+  border-bottom: 0.15rem solid #f5c2e7;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.fgpink {
+  color: #f5c2e7; }
+
+.bgpink {
+  background: repeating-linear-gradient(#31272e, #31272e 0.2%, #4a3a45 0.5%, #31272e 0.8%, #31272e 1%);
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.mauve {
+  color: #cba6f7;
+  background: repeating-linear-gradient(#292131, #292131 0.2%, #3d324a 0.5%, #292131 0.8%, #292131 1%);
+  border-bottom: 0.15rem solid #cba6f7;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.fgmauve {
+  color: #cba6f7; }
+
+.bgmauve {
+  background: repeating-linear-gradient(#292131, #292131 0.2%, #3d324a 0.5%, #292131 0.8%, #292131 1%);
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.red {
+  color: #f38ba8;
+  background: repeating-linear-gradient(#311c22, #311c22 0.2%, #492a32 0.5%, #311c22 0.8%, #311c22 1%);
+  border-bottom: 0.15rem solid #f38ba8;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.fgred {
+  color: #f38ba8; }
+
+.bgred {
+  background: repeating-linear-gradient(#311c22, #311c22 0.2%, #492a32 0.5%, #311c22 0.8%, #311c22 1%);
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.maroon {
+  color: #eba0ac;
+  background: repeating-linear-gradient(#2f2022, #2f2022 0.2%, #463034 0.5%, #2f2022 0.8%, #2f2022 1%);
+  border-bottom: 0.15rem solid #eba0ac;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.fgmaroon {
+  color: #eba0ac; }
+
+.bgmaroon {
+  background: repeating-linear-gradient(#2f2022, #2f2022 0.2%, #463034 0.5%, #2f2022 0.8%, #2f2022 1%);
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.peach {
+  color: #fab387;
+  background: repeating-linear-gradient(#32241b, #32241b 0.2%, #4b3628 0.5%, #32241b 0.8%, #32241b 1%);
+  border-bottom: 0.15rem solid #fab387;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.fgpeach {
+  color: #fab387; }
+
+.bgpeach {
+  background: repeating-linear-gradient(#32241b, #32241b 0.2%, #4b3628 0.5%, #32241b 0.8%, #32241b 1%);
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.yellow {
+  color: #f9e2af;
+  background: repeating-linear-gradient(#322d23, #322d23 0.2%, #4b4434 0.5%, #322d23 0.8%, #322d23 1%);
+  border-bottom: 0.15rem solid #f9e2af;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.fgyellow {
+  color: #f9e2af; }
+
+.bgyellow {
+  background: repeating-linear-gradient(#322d23, #322d23 0.2%, #4b4434 0.5%, #322d23 0.8%, #322d23 1%);
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.green {
+  color: #a6e3a1;
+  background: repeating-linear-gradient(#212d20, #212d20 0.2%, #324430 0.5%, #212d20 0.8%, #212d20 1%);
+  border-bottom: 0.15rem solid #a6e3a1;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.fggreen {
+  color: #a6e3a1; }
+
+.bggreen {
+  background: repeating-linear-gradient(#212d20, #212d20 0.2%, #324430 0.5%, #212d20 0.8%, #212d20 1%);
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.teal {
+  color: #94e2d5;
+  background: repeating-linear-gradient(#1e2d2b, #1e2d2b 0.2%, #2c4440 0.5%, #1e2d2b 0.8%, #1e2d2b 1%);
+  border-bottom: 0.15rem solid #94e2d5;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.fgteal {
+  color: #94e2d5; }
+
+.bgteal {
+  background: repeating-linear-gradient(#1e2d2b, #1e2d2b 0.2%, #2c4440 0.5%, #1e2d2b 0.8%, #1e2d2b 1%);
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.sky {
+  color: #89dceb;
+  background: repeating-linear-gradient(#1b2c2f, #1b2c2f 0.2%, #294246 0.5%, #1b2c2f 0.8%, #1b2c2f 1%);
+  border-bottom: 0.15rem solid #89dceb;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.fgsky {
+  color: #89dceb; }
+
+.bgsky {
+  background: repeating-linear-gradient(#1b2c2f, #1b2c2f 0.2%, #294246 0.5%, #1b2c2f 0.8%, #1b2c2f 1%);
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.sapphire {
+  color: #74c7ec;
+  background: repeating-linear-gradient(#17282f, #17282f 0.2%, #233c47 0.5%, #17282f 0.8%, #17282f 1%);
+  border-bottom: 0.15rem solid #74c7ec;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.fgsapphire {
+  color: #74c7ec; }
+
+.bgsapphire {
+  background: repeating-linear-gradient(#17282f, #17282f 0.2%, #233c47 0.5%, #17282f 0.8%, #17282f 1%);
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.blue {
+  color: #89b4fa;
+  background: repeating-linear-gradient(#1b2432, #1b2432 0.2%, #29364b 0.5%, #1b2432 0.8%, #1b2432 1%);
+  border-bottom: 0.15rem solid #89b4fa;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.fgblue {
+  color: #89b4fa; }
+
+.bgblue {
+  background: repeating-linear-gradient(#1b2432, #1b2432 0.2%, #29364b 0.5%, #1b2432 0.8%, #1b2432 1%);
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.lavender {
+  color: #b4befe;
+  background: repeating-linear-gradient(#242633, #242633 0.2%, #36394c 0.5%, #242633 0.8%, #242633 1%);
+  border-bottom: 0.15rem solid #b4befe;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.fglavender {
+  color: #b4befe; }
+
+.bglavender {
+  background: repeating-linear-gradient(#242633, #242633 0.2%, #36394c 0.5%, #242633 0.8%, #242633 1%);
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.acentColor {
+  color: #f38ba8;
+  background: repeating-linear-gradient(#311c22, #311c22 0.2%, #492a32 0.5%, #311c22 0.8%, #311c22 1%);
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5);
+  /* 0px -1px 3px 4px mix($crust, transparent, 50%); */
+  border-bottom: 0.15rem solid #f38ba8; }
+
+.fgacentColor {
+  color: #f38ba8; }
+
+.bgacentColor {
+  background: repeating-linear-gradient(#311c22, #311c22 0.2%, #492a32 0.5%, #311c22 0.8%, #311c22 1%);
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5);
+  /* 0px -1px 3px 4px mix($crust, transparent, 50%); */ }
+
+.barSwayWorkspaces {
+  color: #aa6176;
+  border-bottom: 0.15rem solid #f38ba8;
+  border-top-right-radius: .3rem;
+  border-top-left-radius: .3rem;
+  margin: .3rem .5rem .0rem; }
+
+.barWorkspace {
+  border-top-right-radius: .3rem;
+  border-top-left-radius: .3rem;
+  padding: .3rem .6rem .4rem; }
+
+.barFocused {
+  color: #f38ba8;
+  transition-duration: 300ms; }
+
+.barUrgent {
+  color: #f38ba8;
+  transition-duration: 300ms; }
+
+/* Catppuccin Mocha */
+/* define acent color to cooking later */
+/* This variable is inverted 100% = Opaque, 0% = Transparent*/
+.base {
+  color: #cdd6f4;
+  background-color: rgba(30, 30, 46, 0.75);
+  border-bottom: 0.15rem solid #cdd6f4;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.fgbase {
+  color: #cdd6f4; }
+
+.bgbase {
+  background-color: #1e1e2e;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.mantle {
+  color: #cdd6f4;
+  background-color: rgba(24, 24, 37, 0.75);
+  border-bottom: 0.15rem solid #cdd6f4;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.fgmantle {
+  color: #cdd6f4; }
+
+.bgmantle {
+  background-color: #181825;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.crust {
+  color: #cdd6f4;
+  background-color: rgba(17, 17, 27, 0.75);
+  border-bottom: 0.15rem solid #cdd6f4;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.fgcrust {
+  color: #cdd6f4; }
+
+.bgcrust {
+  background-color: #11111b;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.rosewater {
+  color: #f5e0dc;
+  background: repeating-linear-gradient(#312d2c, #312d2c 0.2%, #4a4342 0.5%, #312d2c 0.8%, #312d2c 1%);
+  border-bottom: 0.15rem solid #f5e0dc;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.fgrosewater {
+  color: #f5e0dc; }
+
+.bgrosewater {
+  background: repeating-linear-gradient(#312d2c, #312d2c 0.2%, #4a4342 0.5%, #312d2c 0.8%, #312d2c 1%);
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.flamingo {
+  color: #f2cdcd;
+  background: repeating-linear-gradient(#302929, #302929 0.2%, #493e3e 0.5%, #302929 0.8%, #302929 1%);
+  border-bottom: 0.15rem solid #f2cdcd;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.fgflamingo {
+  color: #f2cdcd; }
+
+.bgflamingo {
+  background: repeating-linear-gradient(#302929, #302929 0.2%, #493e3e 0.5%, #302929 0.8%, #302929 1%);
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.pink {
+  color: #f5c2e7;
+  background: repeating-linear-gradient(#31272e, #31272e 0.2%, #4a3a45 0.5%, #31272e 0.8%, #31272e 1%);
+  border-bottom: 0.15rem solid #f5c2e7;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.fgpink {
+  color: #f5c2e7; }
+
+.bgpink {
+  background: repeating-linear-gradient(#31272e, #31272e 0.2%, #4a3a45 0.5%, #31272e 0.8%, #31272e 1%);
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.mauve {
+  color: #cba6f7;
+  background: repeating-linear-gradient(#292131, #292131 0.2%, #3d324a 0.5%, #292131 0.8%, #292131 1%);
+  border-bottom: 0.15rem solid #cba6f7;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.fgmauve {
+  color: #cba6f7; }
+
+.bgmauve {
+  background: repeating-linear-gradient(#292131, #292131 0.2%, #3d324a 0.5%, #292131 0.8%, #292131 1%);
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.red {
+  color: #f38ba8;
+  background: repeating-linear-gradient(#311c22, #311c22 0.2%, #492a32 0.5%, #311c22 0.8%, #311c22 1%);
+  border-bottom: 0.15rem solid #f38ba8;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.fgred {
+  color: #f38ba8; }
+
+.bgred {
+  background: repeating-linear-gradient(#311c22, #311c22 0.2%, #492a32 0.5%, #311c22 0.8%, #311c22 1%);
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.maroon {
+  color: #eba0ac;
+  background: repeating-linear-gradient(#2f2022, #2f2022 0.2%, #463034 0.5%, #2f2022 0.8%, #2f2022 1%);
+  border-bottom: 0.15rem solid #eba0ac;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.fgmaroon {
+  color: #eba0ac; }
+
+.bgmaroon {
+  background: repeating-linear-gradient(#2f2022, #2f2022 0.2%, #463034 0.5%, #2f2022 0.8%, #2f2022 1%);
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.peach {
+  color: #fab387;
+  background: repeating-linear-gradient(#32241b, #32241b 0.2%, #4b3628 0.5%, #32241b 0.8%, #32241b 1%);
+  border-bottom: 0.15rem solid #fab387;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.fgpeach {
+  color: #fab387; }
+
+.bgpeach {
+  background: repeating-linear-gradient(#32241b, #32241b 0.2%, #4b3628 0.5%, #32241b 0.8%, #32241b 1%);
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.yellow {
+  color: #f9e2af;
+  background: repeating-linear-gradient(#322d23, #322d23 0.2%, #4b4434 0.5%, #322d23 0.8%, #322d23 1%);
+  border-bottom: 0.15rem solid #f9e2af;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.fgyellow {
+  color: #f9e2af; }
+
+.bgyellow {
+  background: repeating-linear-gradient(#322d23, #322d23 0.2%, #4b4434 0.5%, #322d23 0.8%, #322d23 1%);
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.green {
+  color: #a6e3a1;
+  background: repeating-linear-gradient(#212d20, #212d20 0.2%, #324430 0.5%, #212d20 0.8%, #212d20 1%);
+  border-bottom: 0.15rem solid #a6e3a1;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.fggreen {
+  color: #a6e3a1; }
+
+.bggreen {
+  background: repeating-linear-gradient(#212d20, #212d20 0.2%, #324430 0.5%, #212d20 0.8%, #212d20 1%);
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.teal {
+  color: #94e2d5;
+  background: repeating-linear-gradient(#1e2d2b, #1e2d2b 0.2%, #2c4440 0.5%, #1e2d2b 0.8%, #1e2d2b 1%);
+  border-bottom: 0.15rem solid #94e2d5;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.fgteal {
+  color: #94e2d5; }
+
+.bgteal {
+  background: repeating-linear-gradient(#1e2d2b, #1e2d2b 0.2%, #2c4440 0.5%, #1e2d2b 0.8%, #1e2d2b 1%);
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.sky {
+  color: #89dceb;
+  background: repeating-linear-gradient(#1b2c2f, #1b2c2f 0.2%, #294246 0.5%, #1b2c2f 0.8%, #1b2c2f 1%);
+  border-bottom: 0.15rem solid #89dceb;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.fgsky {
+  color: #89dceb; }
+
+.bgsky {
+  background: repeating-linear-gradient(#1b2c2f, #1b2c2f 0.2%, #294246 0.5%, #1b2c2f 0.8%, #1b2c2f 1%);
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.sapphire {
+  color: #74c7ec;
+  background: repeating-linear-gradient(#17282f, #17282f 0.2%, #233c47 0.5%, #17282f 0.8%, #17282f 1%);
+  border-bottom: 0.15rem solid #74c7ec;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.fgsapphire {
+  color: #74c7ec; }
+
+.bgsapphire {
+  background: repeating-linear-gradient(#17282f, #17282f 0.2%, #233c47 0.5%, #17282f 0.8%, #17282f 1%);
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.blue {
+  color: #89b4fa;
+  background: repeating-linear-gradient(#1b2432, #1b2432 0.2%, #29364b 0.5%, #1b2432 0.8%, #1b2432 1%);
+  border-bottom: 0.15rem solid #89b4fa;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.fgblue {
+  color: #89b4fa; }
+
+.bgblue {
+  background: repeating-linear-gradient(#1b2432, #1b2432 0.2%, #29364b 0.5%, #1b2432 0.8%, #1b2432 1%);
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.lavender {
+  color: #b4befe;
+  background: repeating-linear-gradient(#242633, #242633 0.2%, #36394c 0.5%, #242633 0.8%, #242633 1%);
+  border-bottom: 0.15rem solid #b4befe;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.fglavender {
+  color: #b4befe; }
+
+.bglavender {
+  background: repeating-linear-gradient(#242633, #242633 0.2%, #36394c 0.5%, #242633 0.8%, #242633 1%);
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.acentColor {
+  color: #f38ba8;
+  background: repeating-linear-gradient(#311c22, #311c22 0.2%, #492a32 0.5%, #311c22 0.8%, #311c22 1%);
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5);
+  /* 0px -1px 3px 4px mix($crust, transparent, 50%); */
+  border-bottom: 0.15rem solid #f38ba8; }
+
+.fgacentColor {
+  color: #f38ba8; }
+
+.bgacentColor {
+  background: repeating-linear-gradient(#311c22, #311c22 0.2%, #492a32 0.5%, #311c22 0.8%, #311c22 1%);
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5);
+  /* 0px -1px 3px 4px mix($crust, transparent, 50%); */ }
+
+.barNotificationBadge {
+  border-radius: 1rem;
+  padding: 0px 3px;
+  margin: 0px .4rem 0px 0px;
+  color: #180e11;
+  background: #f38ba8; }
+
+.barVol50 {
+  color: rgba(245, 194, 231, 0.5); }
+
+.barMainBar {
+  font-size: 20px;
+  background-color: rgba(49, 28, 34, 0.5);
+  border-bottom: 0.15rem solid rgba(122, 70, 84, 0.25); }
+
+.barInfoBox {
+  border-top-right-radius: .3rem;
+  border-top-left-radius: .3rem;
+  padding: .3rem .7rem .4rem;
+  margin: .3rem .5rem .0rem; }
+
+/* Catppuccin Mocha */
+/* define acent color to cooking later */
+/* This variable is inverted 100% = Opaque, 0% = Transparent*/
+.base {
+  color: #cdd6f4;
+  background-color: rgba(30, 30, 46, 0.75);
+  border-bottom: 0.15rem solid #cdd6f4;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.fgbase {
+  color: #cdd6f4; }
+
+.bgbase {
+  background-color: #1e1e2e;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.mantle {
+  color: #cdd6f4;
+  background-color: rgba(24, 24, 37, 0.75);
+  border-bottom: 0.15rem solid #cdd6f4;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.fgmantle {
+  color: #cdd6f4; }
+
+.bgmantle {
+  background-color: #181825;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.crust {
+  color: #cdd6f4;
+  background-color: rgba(17, 17, 27, 0.75);
+  border-bottom: 0.15rem solid #cdd6f4;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.fgcrust {
+  color: #cdd6f4; }
+
+.bgcrust {
+  background-color: #11111b;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.rosewater {
+  color: #f5e0dc;
+  background: repeating-linear-gradient(#312d2c, #312d2c 0.2%, #4a4342 0.5%, #312d2c 0.8%, #312d2c 1%);
+  border-bottom: 0.15rem solid #f5e0dc;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.fgrosewater {
+  color: #f5e0dc; }
+
+.bgrosewater {
+  background: repeating-linear-gradient(#312d2c, #312d2c 0.2%, #4a4342 0.5%, #312d2c 0.8%, #312d2c 1%);
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.flamingo {
+  color: #f2cdcd;
+  background: repeating-linear-gradient(#302929, #302929 0.2%, #493e3e 0.5%, #302929 0.8%, #302929 1%);
+  border-bottom: 0.15rem solid #f2cdcd;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.fgflamingo {
+  color: #f2cdcd; }
+
+.bgflamingo {
+  background: repeating-linear-gradient(#302929, #302929 0.2%, #493e3e 0.5%, #302929 0.8%, #302929 1%);
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.pink {
+  color: #f5c2e7;
+  background: repeating-linear-gradient(#31272e, #31272e 0.2%, #4a3a45 0.5%, #31272e 0.8%, #31272e 1%);
+  border-bottom: 0.15rem solid #f5c2e7;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.fgpink {
+  color: #f5c2e7; }
+
+.bgpink {
+  background: repeating-linear-gradient(#31272e, #31272e 0.2%, #4a3a45 0.5%, #31272e 0.8%, #31272e 1%);
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.mauve {
+  color: #cba6f7;
+  background: repeating-linear-gradient(#292131, #292131 0.2%, #3d324a 0.5%, #292131 0.8%, #292131 1%);
+  border-bottom: 0.15rem solid #cba6f7;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.fgmauve {
+  color: #cba6f7; }
+
+.bgmauve {
+  background: repeating-linear-gradient(#292131, #292131 0.2%, #3d324a 0.5%, #292131 0.8%, #292131 1%);
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.red {
+  color: #f38ba8;
+  background: repeating-linear-gradient(#311c22, #311c22 0.2%, #492a32 0.5%, #311c22 0.8%, #311c22 1%);
+  border-bottom: 0.15rem solid #f38ba8;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.fgred {
+  color: #f38ba8; }
+
+.bgred {
+  background: repeating-linear-gradient(#311c22, #311c22 0.2%, #492a32 0.5%, #311c22 0.8%, #311c22 1%);
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.maroon {
+  color: #eba0ac;
+  background: repeating-linear-gradient(#2f2022, #2f2022 0.2%, #463034 0.5%, #2f2022 0.8%, #2f2022 1%);
+  border-bottom: 0.15rem solid #eba0ac;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.fgmaroon {
+  color: #eba0ac; }
+
+.bgmaroon {
+  background: repeating-linear-gradient(#2f2022, #2f2022 0.2%, #463034 0.5%, #2f2022 0.8%, #2f2022 1%);
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.peach {
+  color: #fab387;
+  background: repeating-linear-gradient(#32241b, #32241b 0.2%, #4b3628 0.5%, #32241b 0.8%, #32241b 1%);
+  border-bottom: 0.15rem solid #fab387;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.fgpeach {
+  color: #fab387; }
+
+.bgpeach {
+  background: repeating-linear-gradient(#32241b, #32241b 0.2%, #4b3628 0.5%, #32241b 0.8%, #32241b 1%);
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.yellow {
+  color: #f9e2af;
+  background: repeating-linear-gradient(#322d23, #322d23 0.2%, #4b4434 0.5%, #322d23 0.8%, #322d23 1%);
+  border-bottom: 0.15rem solid #f9e2af;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.fgyellow {
+  color: #f9e2af; }
+
+.bgyellow {
+  background: repeating-linear-gradient(#322d23, #322d23 0.2%, #4b4434 0.5%, #322d23 0.8%, #322d23 1%);
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.green {
+  color: #a6e3a1;
+  background: repeating-linear-gradient(#212d20, #212d20 0.2%, #324430 0.5%, #212d20 0.8%, #212d20 1%);
+  border-bottom: 0.15rem solid #a6e3a1;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.fggreen {
+  color: #a6e3a1; }
+
+.bggreen {
+  background: repeating-linear-gradient(#212d20, #212d20 0.2%, #324430 0.5%, #212d20 0.8%, #212d20 1%);
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.teal {
+  color: #94e2d5;
+  background: repeating-linear-gradient(#1e2d2b, #1e2d2b 0.2%, #2c4440 0.5%, #1e2d2b 0.8%, #1e2d2b 1%);
+  border-bottom: 0.15rem solid #94e2d5;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.fgteal {
+  color: #94e2d5; }
+
+.bgteal {
+  background: repeating-linear-gradient(#1e2d2b, #1e2d2b 0.2%, #2c4440 0.5%, #1e2d2b 0.8%, #1e2d2b 1%);
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.sky {
+  color: #89dceb;
+  background: repeating-linear-gradient(#1b2c2f, #1b2c2f 0.2%, #294246 0.5%, #1b2c2f 0.8%, #1b2c2f 1%);
+  border-bottom: 0.15rem solid #89dceb;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.fgsky {
+  color: #89dceb; }
+
+.bgsky {
+  background: repeating-linear-gradient(#1b2c2f, #1b2c2f 0.2%, #294246 0.5%, #1b2c2f 0.8%, #1b2c2f 1%);
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.sapphire {
+  color: #74c7ec;
+  background: repeating-linear-gradient(#17282f, #17282f 0.2%, #233c47 0.5%, #17282f 0.8%, #17282f 1%);
+  border-bottom: 0.15rem solid #74c7ec;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.fgsapphire {
+  color: #74c7ec; }
+
+.bgsapphire {
+  background: repeating-linear-gradient(#17282f, #17282f 0.2%, #233c47 0.5%, #17282f 0.8%, #17282f 1%);
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.blue {
+  color: #89b4fa;
+  background: repeating-linear-gradient(#1b2432, #1b2432 0.2%, #29364b 0.5%, #1b2432 0.8%, #1b2432 1%);
+  border-bottom: 0.15rem solid #89b4fa;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.fgblue {
+  color: #89b4fa; }
+
+.bgblue {
+  background: repeating-linear-gradient(#1b2432, #1b2432 0.2%, #29364b 0.5%, #1b2432 0.8%, #1b2432 1%);
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.lavender {
+  color: #b4befe;
+  background: repeating-linear-gradient(#242633, #242633 0.2%, #36394c 0.5%, #242633 0.8%, #242633 1%);
+  border-bottom: 0.15rem solid #b4befe;
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.fglavender {
+  color: #b4befe; }
+
+.bglavender {
+  background: repeating-linear-gradient(#242633, #242633 0.2%, #36394c 0.5%, #242633 0.8%, #242633 1%);
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5); }
+
+.acentColor {
+  color: #f38ba8;
+  background: repeating-linear-gradient(#311c22, #311c22 0.2%, #492a32 0.5%, #311c22 0.8%, #311c22 1%);
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5);
+  /* 0px -1px 3px 4px mix($crust, transparent, 50%); */
+  border-bottom: 0.15rem solid #f38ba8; }
+
+.fgacentColor {
+  color: #f38ba8; }
+
+.bgacentColor {
+  background: repeating-linear-gradient(#311c22, #311c22 0.2%, #492a32 0.5%, #311c22 0.8%, #311c22 1%);
+  box-shadow: inset 3px 4px 5px rgba(17, 17, 27, 0.5);
+  /* 0px -1px 3px 4px mix($crust, transparent, 50%); */ }
+
+.volumeOverlayMain {
+  padding: .3rem .7rem .4rem;
+  margin: 3rem 0; }
+
+trough {
+  transition: 200ms;
+  border-radius: 5px;
+  border: solid;
+  background-color: #1e1e2e;
+  min-height: 20px;
+  min-width: 20px; }
+  trough highlight,
+  trough progress {
+    border-radius: 3px;
+    background-color: #f38ba8;
+    min-height: 20px;
+    min-width: 20px; }
+
+slider {
+  box-shadow: none;
+  background-color: transparent;
+  border: 2px solid transparent;
+  transition: 200ms;
+  border-radius: 5px;
+  min-height: 20px;
+  min-width: 20px;
+  margin: 20px; }
+
+* {
+  all: unset;
+  font-family: "Symbols Nerd Font Mono", "FiraCode Nerd Font Propo"; }
+
+button:hover {
+  background-color: rgba(205, 214, 244, 0.15);
+  transition-duration: 300ms; }
+
+tooltip {
+  color: #cdd6f4;
+  background: #1e1e2e;
+  border: #a6adc8; }

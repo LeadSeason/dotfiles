@@ -6,21 +6,28 @@ import Bar from "./widgets/bar/Bar";
 // import Desktop from "./widgets/desktop/Desktop";
 import Launcher from "./widgets/launcher/Launcher";
 import OSD from "./widgets/osd/osd";
+import Media from "./widgets/media/media"
+import { Variable } from "astal";
+
+const mediaShow = Variable<boolean>(false);
 
 function main() {
     const bars = new Map<Gdk.Monitor, Gtk.Widget>()
     const osd = new Map<Gdk.Monitor, Gtk.Widget>()
+    const media = new Map<Gdk.Monitor, Gtk.Widget>()
     // const desktops = new Map<Gdk.Monitor, Gtk.Widget>()
 
     for (const gdkmonitor of App.get_monitors()) {
         bars.set(gdkmonitor, Bar(gdkmonitor))
         osd.set(gdkmonitor, OSD(gdkmonitor))
+        media.set(gdkmonitor, Media(gdkmonitor, mediaShow))
         // desktops.set(gdkmonitor, Desktop(gdkmonitor))
     }
 
     App.connect("monitor-added", (_, gdkmonitor) => {
         bars.set(gdkmonitor, Bar(gdkmonitor))
         osd.set(gdkmonitor, OSD(gdkmonitor))
+        media.set(gdkmonitor, Media(gdkmonitor, mediaShow))
         // desktops.set(gdkmonitor, Desktop(gdkmonitor))
     })
 
@@ -29,6 +36,8 @@ function main() {
         bars.delete(gdkmonitor)
         osd.get(gdkmonitor)?.destroy()
         osd.delete(gdkmonitor)
+        media.get(gdkmonitor)?.destroy()
+        media.delete(gdkmonitor)
         // desktops.get(gdkmonitor)?.destroy()
         // desktops.delete(gdkmonitor)
     })
@@ -62,8 +71,11 @@ function requestHandler(request: string, res: (response: string) => void) {
                 
             return res("AstalLauncher: Launched")
             
+        case "media":
+            mediaShow.set(true);
+            return res("Media: showing")
         default:
-            res("Astal Error: unknown command")
+            res(`Astal Error: unknown command "${request}"`)
             break;
     }
 }

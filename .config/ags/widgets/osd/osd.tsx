@@ -1,7 +1,7 @@
 import { App, Astal, Gdk, Gtk } from "astal/gtk3"
 import { timeout } from "astal/time"
 import Variable from "astal/variable"
-import Brightness from "./brightness"
+import Brightness from "../../lib/brightness"
 import Wp from "gi://AstalWp"
 
 function OnScreenProgress({ visible }: { visible: Variable<boolean> }) {
@@ -10,13 +10,15 @@ function OnScreenProgress({ visible }: { visible: Variable<boolean> }) {
 
     const iconName = Variable("")
     const value = Variable(0)
+    const levelMax = Variable(1)
 
     let count = 0
-    function show(v: number, icon: string) {
-
+    function show(v: number, icon: string, valueMax: number) {
+        levelMax.set(valueMax)
         visible.set(true)
         value.set(v)
         iconName.set(icon)
+
         count++
         timeout(2000, () => {
             count--
@@ -25,15 +27,16 @@ function OnScreenProgress({ visible }: { visible: Variable<boolean> }) {
     }
 
     return (
+        /* @ts-expect-error */
         <revealer
             setup={(self) => {
                 self.hook(brightness, "notify::screen", () =>
-                    show(brightness.screen, "display-brightness-symbolic"),
+                    show(brightness.screen, "display-brightness-symbolic", 1),
                 )
 
                 if (speaker) {
                     self.hook(speaker, "notify::volume", () =>
-                        show(speaker.volume, speaker.volumeIcon),
+                        show(speaker.volume, speaker.volumeIcon, 1.5),
                     )
                 }
             }}
@@ -47,13 +50,13 @@ function OnScreenProgress({ visible }: { visible: Variable<boolean> }) {
                     valign={Gtk.Align.CENTER}
                     widthRequest={200}
                     value={value(v => {
-                        if (v > 1.50) {
-                            return 1.50
+                        if (v > levelMax.get()) {
+                            return levelMax.get();
                         } 
                         return v
                     })}
                     minValue={0}
-                    maxValue={1.50}
+                    maxValue={levelMax()}
                 />
                 <label label={value(v => `${Math.round(v * 100)}%`)} />
             </box>
@@ -64,6 +67,7 @@ function OnScreenProgress({ visible }: { visible: Variable<boolean> }) {
 export default function OSD(monitor: Gdk.Monitor) {
     const visible = Variable<boolean>(false)
     const win = (
+    // @ts-expect-error
     <window
         gdkmonitor={monitor}
         className="OSD"
@@ -75,6 +79,7 @@ export default function OSD(monitor: Gdk.Monitor) {
         marginTop={20}
         marginLeft={40}
     >
+        {/* @ts-expect-error */}
         <eventbox onClick={() => visible.set(false)}>
             <OnScreenProgress visible={visible} />
         </eventbox>

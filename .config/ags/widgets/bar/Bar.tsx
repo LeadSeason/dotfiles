@@ -1,7 +1,5 @@
-import { App } from "astal/gtk3"
 import { Astal, Gtk, Gdk } from "astal/gtk3"
-import { bind, execAsync } from "astal"
-import Mpris from "gi://AstalMpris"
+import { bind, execAsync, Variable } from "astal"
 import Battery from "gi://AstalBattery"
 import Tray from "gi://AstalTray"
 
@@ -12,6 +10,8 @@ import Notification from "./widgets/notification"
 import Net from "./widgets/net"
 import Updates from "./widgets/updates"
 import Bluetooth from "./widgets/bluetooth"
+import Brightness from "../../lib/brightness"
+import powermenu from "../powermenu/powermenu"
 
 function SysTray() {
     const tray = Tray.get_default()
@@ -38,7 +38,14 @@ function BatteryLevel() {
     const bat = Battery.get_default()
 
     return <box spacing={5} className="Battery"
-        visible={bind(bat, "isPresent")}>
+        visible={bind(bat, "isPresent")}
+        tooltipMarkup={bind(bat, "time_to_empty").as(t =>  {
+            console.log(t)
+            const date = new Date(null);
+            date.setSeconds(t); // specify value for SECONDS here
+            return date.toISOString().slice(11, 19);
+        })}
+        >
         <icon icon={bind(bat, "batteryIconName")} />
         <label label={bind(bat, "percentage").as(p =>
             `${Math.floor(p * 100)}%`
@@ -46,28 +53,13 @@ function BatteryLevel() {
     </box>
 }
 
-function Media() {
-    const mpris = Mpris.get_default()
-
-    return <box className="Media">
-        {bind(mpris, "players").as(ps => ps[0] ? (
-            <box>
-                <box
-                    className="Cover"
-                    valign={Gtk.Align.CENTER}
-                    css={bind(ps[0], "coverArt").as(cover =>
-                        `background-image: url('${cover}');`
-                    )}
-                />
-                <label
-                    label={bind(ps[0], "title").as(() =>
-                        `${ps[0].title} - ${ps[0].artist}`
-                    )}
-                />
-            </box>
-        ) : (
-            "Nothing Playing"
-        ))}
+function DisplayBrightness() {
+    const brightness = Brightness.get_default()
+    const icons = "󰃠 󰃝 󰃟 󰃞 󰃜 󰃛 󰃚".split(" ").reverse()
+    return <box>
+        <label label={bind(brightness, "screen").as(v => 
+            `${Math.floor(v * 100)}% ${icons[Math.floor(v * 6)]}`
+        )}/>
     </box>
 }
 
@@ -76,11 +68,13 @@ function OSIcon() {
         className={"OSIcon"} 
     >
         <button
-        onClick={() => execAsync(
-            "bash -c \"if pgrep rofi; then pkill rofi; else /home/leadseason/.config/rofi/powermenu.sh; fi;\" & "
-        )}>
-                
-    </button>
+            // onClick={() => execAsync(
+                // "bash -c \"if pgrep rofi; then pkill rofi; else /home/leadseason/.config/rofi/powermenu.sh; fi;\" & "
+            // </box>)}
+            onClick={() => powermenu()}
+            >
+            
+        </button>
     </box>
 }
 
@@ -92,11 +86,6 @@ export default function Bar(gdkmonitor: Gdk.Monitor) {
         namespace={"AstalBar"}
         gdkmonitor={gdkmonitor}
         exclusivity={Astal.Exclusivity.EXCLUSIVE}
-        /*
-            marginTop={10}
-            marginLeft={20}
-            marginRight={20}
-        */
         marginBottom={0}
         anchor={TOP | LEFT | RIGHT}>
         <centerbox
@@ -117,6 +106,7 @@ export default function Bar(gdkmonitor: Gdk.Monitor) {
                     {/* <Bluetooth /> */}
                     <Net />
                     <Noises />
+                    <DisplayBrightness />
                     <BatteryLevel />
                     <Updates />
                     <SysTray />

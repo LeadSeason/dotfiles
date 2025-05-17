@@ -395,10 +395,11 @@ menu {
 tooltip {
 	margin: 6px; 
 	padding: 6px;
+	font-size: 18px;
 	background-color: theme.$base00;
 	background-clip: border-box;
-	border-radius: 1rem;
-	border: 1px solid theme.$base02;
+	border-radius: 1.2rem;
+	border: 1.6px solid theme.$base02;
 }
 
 
@@ -428,7 +429,7 @@ window#AstalLauncher {
 		}
 
         button {
-			background-color: mix(white, transparent, 10%);
+			background-color: color.mix(white, transparent, 10%);
 			border-radius: 10px;
 			transition: 200ms;
 			
@@ -437,7 +438,7 @@ window#AstalLauncher {
             padding: .5rem;
 
 			&:hover {
-				background-color: mix(white, transparent, 15%);
+				background-color: color.mix(white, transparent, 15%);
 			}
 
             icon {
@@ -474,10 +475,10 @@ window#AstalLauncher {
 window.OSD {
     box.OSD {
         border-radius: 100px;
-        background-color: mix(theme.$base00, transparent, 75%);
+        background-color: color.mix(theme.$base00, transparent, 75%);
         padding: 10px 14px;
         box-shadow: 3px 3px 7px 0 rgba(0,0,0,.4);
-		border: 2px solid mix(theme.$base03, transparent, 75%);
+		border: 2px solid color.mix(theme.$base03, transparent, 75%);
     }
 
     icon {
@@ -498,6 +499,94 @@ window.OSD {
 
 	levelbar block.empty {
 		border-radius: 10px;
-		background-color: mix(theme.$base04, transparent, 75%);
+		background-color: color.mix(theme.$base04, transparent, 75%);
+	}
+}
+
+window.Media {
+    all: unset;
+	box.MediaPlayer {
+		padding: .6rem;
+		border-radius: 30px;
+		border: 2px solid color.mix(theme.$base03, transparent, 75%);
+        background-color: color.mix(theme.$base00, transparent, 75%);
+
+		box.cover-art {
+			min-width: 120px;
+			min-height: 120px;
+			border-radius: 9px;
+			margin-right: .8rem;
+			background-size: contain;
+			background-position: center;
+		}
+
+		box.title {
+			label {
+				font-weight: bold;
+				font-size: 1.1em;
+			}
+		}
+
+		scale {
+			padding: 0;
+			margin: .4rem 0;
+
+			trough {
+				min-height: 8px;
+			}
+
+			highlight {
+				background-color: theme.$base05;
+			}
+
+			slider {
+				all: unset;
+			}
+		}
+
+		centerbox.actions {
+			min-width: 220px;
+
+			button {
+				min-width: 0;
+				min-height: 0;
+				padding: .4rem;
+				margin: 0 .2rem;
+			}
+		}
+	}
+}
+
+
+window.Powermenu {
+	all: unset;
+	background-color: color.mix(transparent, theme.$base00, 65%);
+
+	.menu {
+		margin: 10px;
+		padding: 6px;
+		box-shadow: 2px 3px 5px 0 color.mix(transparent, theme.$base00, 60);
+		border-radius: 11px;
+		background-color: theme.$base00;
+		color: theme.$base05;
+		min-width: 200px;
+	}
+
+	box > label {
+		font-size: large;
+		margin: 6px;
+	}
+
+	label.title {
+		font-size: 1.4em;
+	}
+
+	.action {
+		color: theme.$base05;
+		font-weight: bold;
+	}
+
+	button {
+		margin: 6px;
 	}
 }
