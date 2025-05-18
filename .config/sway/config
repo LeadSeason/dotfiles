@@ -96,12 +96,13 @@ smart_corner_radius on
 
 blur enable
 blur_xray disable
-blur_passes 3
-blur_radius 3
+blur_passes 2
+blur_radius 2
 
 layer_effects "AstalBar" blur enable; corner_radius 0; shadows enable; border pixel 0
 layer_effects "astal-osd" blur enable; corner_radius 32;
 layer_effects "AstalConfirm" blur enable; corner_radius 0; shadows enable; border pixel 0
+layer_effects "astal-powermenu" blur enable;
 # layer_effects "AstalLauncher" blur enable; corner_radius 0; shadows enable; border pixel 0
 
 layer_effects "eww" blur enable; corner_radius 0
@@ -424,10 +425,10 @@ bindsym --locked {
     XF86AudioPrev exec playerctl previous
 
     # Alternatively Useing $mod + F-keys
-    $mod+F2 exec playerctl play-pause
-    $mod+F3 exec playerctl play-pause
-    $mod+F4 exec playerctl next
-    $mod+F1 exec playerctl previous
+    $mod+F2 exec playerctl play-pause; exec ags request media --instance astal
+    $mod+F3 exec playerctl play-pause; exec ags request media --instance astal
+    $mod+F4 exec playerctl next; exec ags request media --instance astal
+    $mod+F1 exec playerctl previous; exec ags request media --instance astal
 
     # Use pactl to adjust volume in PulseAudio.
     XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
@@ -438,5 +439,5 @@ bindsym --locked {
     XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -1% && pactl get-sink-volume @DEFAULT_SINK@ | head -n 1 | awk '{print substr($5, 1, length($5)-1)}' > $WOBSOCK
 
     # Manaul way to force displays to on if they are dimmed
-    $mod+F12 "output * dpms on; exec brightnessctl set 100%"
+    $mod+F12 output * dpms on; exec "brightnessctl set 100%"
 }
