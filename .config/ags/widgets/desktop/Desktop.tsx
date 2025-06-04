@@ -245,7 +245,7 @@ export default function Bar(gdkmonitor: Gdk.Monitor) {
         marginBottom={-10}
         anchor={ TOP | RIGHT | BOTTOM | LEFT }>
         <Widget.EventBox
-            onButtonPressEvent={(_, e) => {
+            onbuttonpressevent={(_, e) => {
                 if (e.get_button()[1] === 3) {
                     desktopMenuUwU.popup_at_pointer(e);
                 }

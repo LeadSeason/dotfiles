@@ -1,4 +1,4 @@
-import { Astal, Gtk, Gdk } from "astal/gtk3"
+import { Astal, Gtk, Gdk, Widget } from "astal/gtk3"
 import { bind, execAsync, Variable } from "astal"
 import Battery from "gi://AstalBattery"
 import Tray from "gi://AstalTray"
@@ -12,6 +12,7 @@ import Updates from "./widgets/updates"
 import Bluetooth from "./widgets/bluetooth"
 import Brightness from "../../lib/brightness"
 import powermenu from "../powermenu/powermenu"
+import { GtkMenu, GtkMenuItem } from "../../lib/astilfy"
 
 function SysTray() {
     const tray = Tray.get_default()
@@ -32,10 +33,26 @@ function SysTray() {
         )))}
     </box>
 }
+function BatteryMenu(gtkmonitor: Gdk.Monitor) {
+    return new GtkMenu({
+        // @ts-expect-error
+        class: "battery-menu",
+        children: [
+            new GtkMenuItem({
+                label: "Web browser",
+                // @ts-expect-error
+                on_activate: () => {
+                    console.log("Hi!")
+                }
+            }),
+        ]
+    })
+}
 
-
-function BatteryLevel() {
+function BatteryLevel({gdkmonitor}: { gdkmonitor: Gdk.Monitor; }) {
     const bat = Battery.get_default()
+        
+    const batteryMenu = BatteryMenu(gdkmonitor)
 
     return <box spacing={5} className="Battery"
         visible={bind(bat, "isPresent")}
@@ -46,10 +63,15 @@ function BatteryLevel() {
             return date.toISOString().slice(11, 19);
         })}
         >
-        <icon icon={bind(bat, "batteryIconName")} />
-        <label label={bind(bat, "percentage").as(p =>
-            `${Math.floor(p * 100)}%`
-        )} />
+        <Widget.EventBox
+            >
+            <box>
+                <icon icon={bind(bat, "batteryIconName")} />
+                <label label={bind(bat, "percentage").as(p =>
+                    `${Math.floor(p * 100)}%`
+                )} />
+            </box>
+        </Widget.EventBox>
     </box>
 }
 
