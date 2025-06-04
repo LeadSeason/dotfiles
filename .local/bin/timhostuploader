@@ -264,7 +264,7 @@ async def main():
         try:
             async with aiohttp.ClientSession() as session:
                 async with session.post(
-                    "https://tims.host/upload",
+                    "https://images.fireproof.ovh/upload",
                     headers=headers,
                     data=formdata
                 ) as resp:
