@@ -22,4 +22,7 @@ set termguicolors
 :vnoremap < <gv
 :vnoremap > >gv
 
+:nnoremap <C-e> 5<C-e>
+:nnoremap <C-y> 5<C-y>
+
 autocmd FileType named setlocal syntax=named
