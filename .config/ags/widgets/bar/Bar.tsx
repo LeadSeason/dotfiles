@@ -1,7 +1,11 @@
-import { Astal, Gtk, Gdk, Widget } from "astal/gtk3"
-import { bind, execAsync, Variable } from "astal"
 import Battery from "gi://AstalBattery"
 import Tray from "gi://AstalTray"
+import { Astal, Gtk, Gdk, Widget } from "astal/gtk3"
+import { bind, execAsync, Variable } from "astal"
+
+import { GtkMenu, GtkMenuItem } from "../../lib/astilfy"
+import Brightness from "../../lib/brightness"
+import powermenu from "../powermenu/powermenu"
 
 import SwayWS from "./widgets/swayWS"
 import Clock from "./widgets/clock"
@@ -10,14 +14,12 @@ import Notification from "./widgets/notification"
 import Net from "./widgets/net"
 import Updates from "./widgets/updates"
 import Bluetooth from "./widgets/bluetooth"
-import Brightness from "../../lib/brightness"
-import powermenu from "../powermenu/powermenu"
-import { GtkMenu, GtkMenuItem } from "../../lib/astilfy"
+import BatteryLevel from "./widgets/battery"
 
 function SysTray() {
     const tray = Tray.get_default()
 
-    return <box 
+    return <box
         className="SysTray"
         spacing={5}
     >
@@ -33,53 +35,14 @@ function SysTray() {
         )))}
     </box>
 }
-function BatteryMenu(gtkmonitor: Gdk.Monitor) {
-    return new GtkMenu({
-        // @ts-expect-error
-        class: "battery-menu",
-        children: [
-            new GtkMenuItem({
-                label: "Web browser",
-                // @ts-expect-error
-                on_activate: () => {
-                    console.log("Hi!")
-                }
-            }),
-        ]
-    })
-}
-
-function BatteryLevel({gdkmonitor}: { gdkmonitor: Gdk.Monitor; }) {
-    const bat = Battery.get_default()
-        
-    const batteryMenu = BatteryMenu(gdkmonitor)
-
-    return <box spacing={5} className="Battery"
-        visible={bind(bat, "isPresent")}
-        tooltipMarkup={bind(bat, "time_to_empty").as(t =>  {
-            console.log(t)
-            const date = new Date(null);
-            date.setSeconds(t); // specify value for SECONDS here
-            return date.toISOString().slice(11, 19);
-        })}
-        >
-        <Widget.EventBox
-            >
-            <box>
-                <icon icon={bind(bat, "batteryIconName")} />
-                <label label={bind(bat, "percentage").as(p =>
-                    `${Math.floor(p * 100)}%`
-                )} />
-            </box>
-        </Widget.EventBox>
-    </box>
-}
 
 function DisplayBrightness() {
     const brightness = Brightness.get_default()
     const icons = "󰃠 󰃝 󰃟 󰃞 󰃜 󰃛 󰃚".split(" ").reverse()
-    return <box>
-        <label label={bind(brightness, "screen").as(v => 
+    return <box
+        visible={bind(brightness, "isPresent")}
+    >
+        <label label={bind(brightness, "screen").as(v =>
             `${Math.floor(v * 100)}% ${icons[Math.floor(v * 6)]}`
         )}/>
     </box>
@@ -87,7 +50,7 @@ function DisplayBrightness() {
 
 function OSIcon() {
     return <box
-        className={"OSIcon"} 
+        className={"OSIcon"}
     >
         <button
             // onClick={() => execAsync(

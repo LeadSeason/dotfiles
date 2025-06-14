@@ -160,7 +160,7 @@ function Sink() {
                 })}
                 />
             <icon
-                className="volicon"
+                className={"BarIcon"}
                 icon={bind(device, "volumeIcon")}
             />
         </box>
@@ -190,7 +190,7 @@ function Source() {
                 })}
                 />
             <icon
-                className="volicon"
+                className={"BarIcon"}
                 icon={bind(device, "volumeIcon")}
             />
         </box>

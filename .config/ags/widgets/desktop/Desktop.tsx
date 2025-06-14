@@ -151,7 +151,7 @@ function desktopMenu(gdkmonitor: Gdk.Monitor) {
     return menu
 }
 
-async function dialog(
+export async function dialog(
     gdkmonitor: Gdk.Monitor,
     action: string = "Detonate C4"
 ): Promise<boolean> {
@@ -245,7 +245,7 @@ export default function Bar(gdkmonitor: Gdk.Monitor) {
         marginBottom={-10}
         anchor={ TOP | RIGHT | BOTTOM | LEFT }>
         <Widget.EventBox
-            onbuttonpressevent={(_, e) => {
+            onbuttonpressevent={(_: Widget.EventBox, e: Gdk.Event) => {
                 if (e.get_button()[1] === 3) {
                     desktopMenuUwU.popup_at_pointer(e);
                 }

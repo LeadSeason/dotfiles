@@ -16,6 +16,7 @@ export default class Sway extends GObject.Object {
 
     #wss: Workspaces = JSON.parse(conn.message(i3ipc.MessageType.GET_WORKSPACES, ""));
     #outputs: Displays = JSON.parse(conn.message(i3ipc.MessageType.GET_OUTPUTS, ""));
+    #tree: Node = JSON.parse(conn.message(i3ipc.MessageType.GET_TREE, ""));
 
     @property()
     get wss () { return this.#wss };
@@ -52,13 +53,15 @@ export default class Sway extends GObject.Object {
         super()
 
         conn.on("workspace", async (conn: i3ipc.Connection, event: i3ipc.WorkspaceEvent) => {
-            const v = await JSON.parse(conn.message(i3ipc.MessageType.GET_WORKSPACES, ""));
-            this.#wss = v;
+            const workspaces = await JSON.parse(conn.message(i3ipc.MessageType.GET_WORKSPACES, ""));
+            this.#wss = workspaces;
+
+            const tree = await JSON.parse(conn.message(i3ipc.MessageType.GET_TREE, ""));
+            this.#tree = tree;
 
             switch (event.change) {
                 case "focus":
                     this.notify("focused")
-                    
                     break;
 
                 case "urgent":
@@ -78,7 +81,7 @@ export default class Sway extends GObject.Object {
         conn.on("output", async (conn: i3ipc.Connection, event: i3ipc.WorkspaceEvent) => {
             const v = await JSON.parse(conn.message(i3ipc.MessageType.GET_OUTPUTS, ""));
             this.#outputs = v;
-            this.notify("outputs")
+            this.notify("outputs");
         });
     }
 }
@@ -96,9 +99,9 @@ export interface Workspace {
     border: string
     current_border_width: number
     rect: Rect
-    deco_rect: DecoRect
-    window_rect: WindowRect
-    geometry: Geometry
+    deco_rect: Rect
+    window_rect: Rect
+    geometry: Rect
     name: string
     window: any
     nodes: any[]
@@ -113,48 +116,58 @@ export interface Workspace {
     visible: boolean
 }
 
-export type Displays = Display[]
+export type Displays = Node[]
 
-export interface Display {
-    id: number
-    type: string
-    orientation: string
-    percent: number
-    urgent: boolean
-    marks: any[]
-    layout: string
-    border: string
-    current_border_width: number
-    rect: Rect
-    deco_rect: DecoRect
-    window_rect: WindowRect
-    geometry: Geometry
-    name: string
-    window: any
-    nodes: any[]
-    floating_nodes: any[]
-    focus: number[]
-    fullscreen_mode: number
-    sticky: boolean
-    primary: boolean
-    make: string
-    model: string
-    serial: string
-    modes: Mode[]
-    non_desktop: boolean
-    active: boolean
-    dpms: boolean
-    power: boolean
-    scale: number
-    scale_filter: string
-    transform: string
-    adaptive_sync_status: string
-    layer_shell_surfaces: LayerShellSurface[]
-    current_workspace: string
-    current_mode: CurrentMode
-    max_render_time: number
-    focused: boolean
-    subpixel_hinting: string
+export type Commands = Command[]
+
+export interface Command {
+  success: boolean
+  parse_error?: boolean
+}
+
+export interface Node {
+  id: number
+  type: string
+  orientation: string
+  percent: number | null
+  urgent: boolean
+  marks: string[]
+  focused: boolean
+  layout: "splith" | "splitv" | "stacked" | "tabbed" | "dockarea" | "output"
+  border: "normal" | "none" | "pixel"
+  current_border_width: number
+  rect: Rect
+  deco_rect: Rect
+  window_rect: Rect
+  geometry: Rect
+  name: string
+  window: any
+  nodes: Node[]
+  floating_nodes: Workspace[]
+  focus: number[]
+  fullscreen_mode: number
+  sticky: boolean
+  floating: "root" | "output" | "con" | "floating_con" | "workspace" | "dockarea"
+  scratchpad_state: "none" | "fresh" | "changed"
+  primary?: boolean
+  make?: string
+  model?: string
+  serial?: string
+  modes?: Mode[]
+  non_desktop?: boolean
+  active?: boolean
+  dpms?: boolean
+  power?: boolean
+  scale?: number
+  scale_filter?: string
+  transform?: string
+  adaptive_sync_status?: string
+  layer_shell_surfaces?: LayerShellSurface[]
+  current_workspace?: string
+  current_mode?: CurrentMode
+  max_render_time?: number
+  allow_tearing?: boolean
+  subpixel_hinting: string
 }
 
 export interface Mode {
@@ -190,32 +203,4 @@ export interface Rect {
     y: number
     width: number
     height: number
-}
-
-export interface DecoRect {
-    x: number
-    y: number
-    width: number
-    height: number
-}
-
-export interface WindowRect {
-    x: number
-    y: number
-    width: number
-    height: number
-}
-
-export interface Geometry {
-    x: number
-    y: number
-    width: number
-    height: number
-}
-
-export type Commands = Command[]
-
-export interface Command {
-  success: boolean
-  parse_error?: boolean
 }

@@ -111,7 +111,9 @@ function OnScreenProgress({ data }: { data: Variable<boolean>[] }) {
         if (v) {
             show()
         }
-        mediaShow.set(false)
+        timeout(5, () => {
+            mediaShow.set(false)
+        })
     })
 
     return (

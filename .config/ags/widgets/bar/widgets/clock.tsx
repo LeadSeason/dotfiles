@@ -15,14 +15,14 @@ export default () => {
         onHover={() => {
             showReveler.set(true)
             // Destroy old timeout.
-            const ct =  clockTimeout.get()
+            const ct = clockTimeout.get()
             if (!ct.is_destroyed()) {
                 ct.destroy()
             }
         }}
         onHoverLost={() => {
             // Destroy old timeout, if called before timeout has reached.
-            const ct =  clockTimeout.get()
+            const ct = clockTimeout.get()
             if (!ct.is_destroyed()) {
                 ct.destroy()
             }

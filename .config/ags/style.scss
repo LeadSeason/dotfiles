@@ -36,6 +36,7 @@ window.Bar {
   	    box-shadow: inset 3px 4px 5px color.mix(black, transparent, 50%);
 	}
 
+
     .widgetbox {
 		border-top-right-radius: .3rem;
 		border-top-left-radius: .3rem;
@@ -567,26 +568,39 @@ window.Powermenu {
 		padding: 6px;
 		box-shadow: 2px 3px 5px 0 color.mix(transparent, theme.$base00, 60);
 		border-radius: 11px;
-		background-color: theme.$base00;
+		background-color: color.mix(transparent, theme.$base00, 30%);
 		color: theme.$base05;
 		min-width: 200px;
-	}
-
-	box > label {
-		font-size: large;
-		margin: 6px;
-	}
-
-	label.title {
-		font-size: 1.4em;
-	}
-
-	.action {
-		color: theme.$base05;
-		font-weight: bold;
+		border: 2px solid color.mix(theme.$base03, transparent, 75%);
 	}
 
 	button {
-		margin: 6px;
+		margin: 10px;
+		padding: 7px;
+		border: 2px solid transparent;
+
+		.icon {
+			padding-bottom: 12px;
+			font-size: 58px;
+		}
 	}
+
+	button.selected {
+		border-radius: 11px;
+		background-color: color.mix(transparent, theme.$base02, 30%);
+		border: 2px solid color.mix(theme.$base0E, transparent, 75%);
+	}
+
+	button:hover {
+		border-radius: 11px;
+		background-color: color.mix(transparent, theme.$base02, 30%);
+		border: 2px solid color.mix(theme.$base0E, transparent, 75%);
+	}
+	
+	button:checked {
+		/* Pressed down */
+		color: pink;
+		background-color: purple;		
+	}
+	
 }

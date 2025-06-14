@@ -19,13 +19,14 @@ export default() => {
                 transitionType={Gtk.RevealerTransitionType.NONE}
                 revealChild={bind(network, "primary").as((v) => {return v === 0})}
             >
-                <label label="󰅤" />
+                <label className={"BarIcon"} label="󰅤" />
             </revealer>
             <revealer
                 transitionType={Gtk.RevealerTransitionType.NONE}
                 revealChild={bind(network, "primary").as((v) => {return v === 1})}
             >
                 <icon 
+                    className={"BarIcon"}
                     icon={bind(network.wired, "iconName")}
                 />
             </revealer>
@@ -34,6 +35,7 @@ export default() => {
                 revealChild={bind(network, "primary").as((v) => {return v === 2})}
             >
                 <icon
+                    className={"BarIcon"}
                     icon={bind(network.wifi, "iconName")}
                     tooltipText={bind(network.wifi, "ssid").as(String)}
                 />

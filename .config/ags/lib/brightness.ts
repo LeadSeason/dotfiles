@@ -20,6 +20,7 @@ export default class Brightness extends GObject.Object {
     #kbd = get(`--device ${kbd} get`)
     #screenMax = get("max")
     #screen = get("get") / (get("max") || 1)
+    #isPresent = (screen == "") ? false : true; 
 
     @property(Number)
     get kbd() { return this.#kbd }
@@ -49,10 +50,13 @@ export default class Brightness extends GObject.Object {
             this.notify("screen")
         })
     }
+    
+    @property(Boolean)
+    get isPresent() {return this.#isPresent };
 
     constructor() {
         super()
-
+        
         const screenPath = `/sys/class/backlight/${screen}/brightness`
         const kbdPath = `/sys/class/leds/${kbd}/brightness`
 

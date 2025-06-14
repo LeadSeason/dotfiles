@@ -15,9 +15,10 @@ function OnScreenProgress({ visible }: { visible: Variable<boolean> }) {
     let count = 0
     function show(v: number, icon: string, valueMax: number) {
         levelMax.set(valueMax)
-        visible.set(true)
         value.set(v)
         iconName.set(icon)
+
+        visible.set(true)
 
         count++
         timeout(2000, () => {
@@ -27,7 +28,6 @@ function OnScreenProgress({ visible }: { visible: Variable<boolean> }) {
     }
 
     return (
-        /* @ts-expect-error */
         <revealer
             setup={(self) => {
                 self.hook(brightness, "notify::screen", () =>
@@ -67,7 +67,6 @@ function OnScreenProgress({ visible }: { visible: Variable<boolean> }) {
 export default function OSD(monitor: Gdk.Monitor) {
     const visible = Variable<boolean>(false)
     const win = (
-    // @ts-expect-error
     <window
         gdkmonitor={monitor}
         className="OSD"
@@ -79,7 +78,6 @@ export default function OSD(monitor: Gdk.Monitor) {
         marginTop={20}
         marginLeft={40}
     >
-        {/* @ts-expect-error */}
         <eventbox onClick={() => visible.set(false)}>
             <OnScreenProgress visible={visible} />
         </eventbox>

@@ -8,6 +8,7 @@ import Launcher from "./widgets/launcher/Launcher";
 import OSD from "./widgets/osd/osd";
 import Media from "./widgets/media/media"
 import { Variable } from "astal";
+import powermenu from "./widgets/powermenu/powermenu";
 
 const mediaShow = Variable<boolean>(false);
 
@@ -74,6 +75,10 @@ function requestHandler(request: string, res: (response: string) => void) {
         case "media":
             mediaShow.set(true);
             return res("Media: showing")
+        
+        case "powermenu":
+            powermenu()
+            return res("Powermenu: Launched")
         default:
             res(`Astal Error: unknown command "${request}"`)
             break;
