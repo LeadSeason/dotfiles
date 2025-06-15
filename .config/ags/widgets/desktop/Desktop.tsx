@@ -75,7 +75,7 @@ function desktopMenu(gdkmonitor: Gdk.Monitor) {
                             }),
                             // @ts-expect-error
                             on_activate: () => {
-                                dialog(gdkmonitor, "Logoff").then((b) => {
+                                dialog("Logoff").then((b) => {
                                     if (b) {
                                         sway.message_async("exit")
                                     }
@@ -95,7 +95,7 @@ function desktopMenu(gdkmonitor: Gdk.Monitor) {
                             }),
                             // @ts-expect-error
                             on_activate: () => {
-                                dialog(gdkmonitor, "Suspend system").then((b) => {
+                                dialog("Suspend system").then((b) => {
                                     if (b) {
                                         sway.message_async("exec systemctl suspend")
                                     }
@@ -115,7 +115,7 @@ function desktopMenu(gdkmonitor: Gdk.Monitor) {
                             }),
                             // @ts-expect-error
                             on_activate: () => {
-                                dialog(gdkmonitor, "Shutdown system").then((b) => {
+                                dialog("Shutdown system").then((b) => {
                                     if (b) {
                                         sway.message_async("exec systemctl poweroff")
                                     }
@@ -135,7 +135,7 @@ function desktopMenu(gdkmonitor: Gdk.Monitor) {
                             }),
                             // @ts-expect-error
                             on_activate: () => {
-                                dialog(gdkmonitor, "Restart system").then((b) => {
+                                dialog("Restart system").then((b) => {
                                     if (b) {
                                         sway.message_async("exec systemctl reboot")
                                     }
@@ -152,7 +152,6 @@ function desktopMenu(gdkmonitor: Gdk.Monitor) {
 }
 
 export async function dialog(
-    gdkmonitor: Gdk.Monitor,
     action: string = "Detonate C4"
 ): Promise<boolean> {
     const { TOP, BOTTOM, LEFT, RIGHT } = Astal.WindowAnchor;
@@ -183,7 +182,6 @@ export async function dialog(
 
         const diagWindow = (
             <window
-                gdkmonitor={gdkmonitor}
                 className="AstalConfirm"
                 name="AstalConfirm"
                 namespace={"AstalConfirm"}
