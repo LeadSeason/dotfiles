@@ -1,0 +1,21 @@
+@use "../../themes/flavours-colors.scss" as theme;
+@use "sass:color";
+
+window.AstalDesktop {
+	all: unset;
+
+    background-image: url("/home/leadseason/.local/share/wallpapers/daniil-silantev-95iZ2UVvv0A-unsplash.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+	.Time {
+		font-size: 46px;
+		text-shadow: 4px 4px 8px theme.$base01;
+	}
+
+	.Date {
+		font-size: 36px;
+		text-shadow: 4px 4px 8px theme.$base01;
+	}
+}

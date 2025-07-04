@@ -25,11 +25,11 @@ function SysTray() {
     >
         {bind(tray, "items").as(items => items.map(item => (
             <menubutton
-                className="Trayicon"
+                className="TrayIcon"
                 tooltipMarkup={bind(item, "tooltipMarkup")}
                 usePopover={false}
-                actionGroup={bind(item, "action-group").as(ag => ["dbusmenu", ag])}
-                menuModel={bind(item, "menu-model")}>
+                actionGroup={bind(item, "action_group").as(ag => ["dbusmenu", ag])}
+                menuModel={bind(item, "menu_model")}>
                 <icon gicon={bind(item, "gicon")} />
             </menubutton>
         )))}
@@ -39,13 +39,19 @@ function SysTray() {
 function DisplayBrightness() {
     const brightness = Brightness.get_default()
     const icons = "󰃠 󰃝 󰃟 󰃞 󰃜 󰃛 󰃚".split(" ").reverse()
-    return <box
-        visible={bind(brightness, "isPresent")}
+    return <button
+        onScroll={(b, e: Astal.ScrollEvent) => {
+            brightness.screen -= e.delta_y / 150
+        }}
     >
-        <label label={bind(brightness, "screen").as(v =>
-            `${Math.floor(v * 100)}% ${icons[Math.floor(v * 6)]}`
-        )}/>
-    </box>
+        <box
+            visible={bind(brightness, "isPresent")}
+        >
+            <label label={bind(brightness, "screen").as(v =>
+                `${Math.floor(v * 100)}% ${icons[Math.floor(v * 6)]}`
+            )}/>
+        </box>
+    </button>
 }
 
 function OSIcon() {
@@ -53,9 +59,6 @@ function OSIcon() {
         className={"OSIcon"}
     >
         <button
-            // onClick={() => execAsync(
-                // "bash -c \"if pgrep rofi; then pkill rofi; else /home/leadseason/.config/rofi/powermenu.sh; fi;\" & "
-            // </box>)}
             onClick={() => powermenu()}
             >
             
@@ -74,7 +77,7 @@ export default function Bar(gdkmonitor: Gdk.Monitor) {
         marginBottom={0}
         anchor={TOP | LEFT | RIGHT}>
         <centerbox
-            className="Barbox"
+            className="BarBox"
         >
             <box hexpand halign={Gtk.Align.START}>
                 <OSIcon/>
@@ -85,7 +88,7 @@ export default function Bar(gdkmonitor: Gdk.Monitor) {
             </box>
             <box hexpand halign={Gtk.Align.END} >
                 <box
-                    className="widgetbox rightbar"
+                    className="widgetBox"
                     spacing={14}
                     >
                     {/* <Bluetooth /> */}

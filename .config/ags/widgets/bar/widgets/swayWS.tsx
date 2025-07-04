@@ -4,7 +4,7 @@ import Sway from "../../../lib/sway";
 
 export default ({ monitor }: { monitor: Gdk.Monitor; }) => {
 	const sway = Sway.get_default();
-	
+
 	// Translate Screen coordinates into display names.
 	const displayData = sway.display;
 	const monitorWorkarea = monitor.get_workarea();
@@ -23,7 +23,7 @@ export default ({ monitor }: { monitor: Gdk.Monitor; }) => {
 				.filter((ws) => ws.output === displayName)
 				.map((ws) => <button
 					className={bind(sway, "focused").as(id => ws.id === id ? "focused" : "")}
-					onClick={() => 
+					onClick={() =>
 						sway.message_async(
 							`mouse_warping output; workspace number ${ws.num}; mouse_warping container`
 						)

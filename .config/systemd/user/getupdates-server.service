@@ -5,7 +5,7 @@ Description=Update checker
 Type=simple
 Restart=always
 RestartSec=1
-ExecStart=/home/leadseason/.config/waybar/scipts/getupdates-server.sh
+ExecStart=/home/leadseason/.config/waybar/scripts/getupdates-server.sh
 
 [Install]
 WantedBy=default.target

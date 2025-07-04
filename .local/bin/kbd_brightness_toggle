@@ -1,0 +1,2 @@
+#!/bin/zsh
+if [ "$(brightnessctl get -d tpacpi::kbd_backlight)" = "2" ]; then; brightnessctl set -d tpacpi::kbd_backlight 0; else; brightnessctl set -d tpacpi::kbd_backlight +1; fi

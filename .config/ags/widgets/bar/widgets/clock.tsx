@@ -33,9 +33,9 @@ export default () => {
         }}
     >
         <box
-            className="widgetbox Clock"
+            className="widgetBox Clock"
         >
-            <label 
+            <label
                 className="Time"
                 onDestroy={() => time.drop()}
                 label={time()}
@@ -46,11 +46,11 @@ export default () => {
                 revealChild={bind(showReveler)}
             >
                 <box>
-                    <label 
+                    <label
                         className="Separator"
                         label={" : "}
-                        />                
-                    <label 
+                        />
+                    <label
                         className="Date"
                         onDestroy={() => date.drop()}
                         label={date()}

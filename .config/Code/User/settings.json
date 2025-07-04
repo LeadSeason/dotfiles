@@ -59,6 +59,8 @@
     "extensions.experimental.affinity": {
         "asvetliakov.vscode-neovim": 1
     },
-    "catppuccin.accentColor": "mauve",
-    "files.autoSave": "afterDelay"
+    "catppuccin.accentColor": "yellow",
+    "files.autoSave": "afterDelay",
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "editor.renderWhitespace": "none"
 }

@@ -54,6 +54,17 @@ if ! zplug check; then
 fi
 zplug load
 
+# Set a title for the session so it easyer easyer easter, less difficult to pick out shell in the scractch pad.
+precmd () {
+    if [ "$TERM" = "xterm-kitty" ]; then
+        kitty @ set-window-title $PWD
+    fi
+}
+preexec () {
+    if [ "$TERM" = "xterm-kitty" ]; then
+        kitty @ set-window-title $1
+    fi
+}
 
 function current() {
     # Get current scheme background color

@@ -3,6 +3,7 @@ import { bind } from "astal"
 import Astal from "gi://Astal?version=3.0"
 import Wp from "gi://AstalWp"
 import { GtkSeparatorMenuItem } from "../../../lib/astilfy"
+import { truncateText } from "../../../tools/utils"
 
 export default () => {
     return <box
@@ -12,13 +13,6 @@ export default () => {
         <Source/>
         <Sink/>
     </box>
-} 
-
-function truncateText(text: string, maxLength: number = 60): string {
-    if (text.length <= maxLength) {
-        return text;
-    }
-    return text.substring(0, maxLength) + '...';
 }
 
 function MixerDropdown() {
@@ -67,14 +61,14 @@ function MixerDropdown() {
                     }
                 }}
                 ><box>
-                    <icon 
+                    <icon
                         icon={bind(speaker, "volumeIcon")}
                     />
                     <box vertical>
                         <label
                             className={bind(speaker, "mute").as((v) => v ? "NameLabel NameMuted" : "NameLabel")}
                             halign={Gtk.Align.START}
-                            css={bind(speaker, "isDefault").as(v => v ? "font-weight: bold;" : "")} 
+                            css={bind(speaker, "isDefault").as(v => v ? "font-weight: bold;" : "")}
                             label={bind(speaker, "description").as(v => truncateText(v))}
                         />
                         <box>
@@ -89,7 +83,7 @@ function MixerDropdown() {
                             <label label={bind(speaker, "volume").as((vol) => `${Math.round(vol * 100)}%`)}/>
                         </box>
                     </box>
-                </box></eventbox>                
+                </box></eventbox>
             }))}
         <GtkSeparatorMenuItem/>
             {bind(audio, "streams").as(v => v.map(endpoint => {
@@ -103,14 +97,14 @@ function MixerDropdown() {
                         }
                     }}
                 ><box>
-                    <icon 
+                    <icon
                         icon={bind(endpoint, "icon")}
                     />
                     <box vertical>
                         <label
                             className={bind(endpoint, "mute").as((v) => v ? "NameLabel NameMuted" : "NameLabel")}
                             halign={Gtk.Align.START}
-                            label={bind(endpoint, "notify").as((_) => 
+                            label={bind(endpoint, "notify").as((_) =>
                                 truncateText(`${endpoint.description}: ${endpoint.name}`))}
                             />
                         <box>
@@ -133,7 +127,7 @@ function MixerDropdown() {
 
 function Sink() {
     const device = Wp.get_default()?.audio.defaultSpeaker!
-    
+
     return <button
         className="Sink"
         onScroll={(b, e: Astal.ScrollEvent) => {
@@ -151,7 +145,7 @@ function Sink() {
             spacing={5}
             tooltipText={bind(device, "description").as((v) => `Active Device: ${v}`)}
         >
-            <label 
+            <label
                 className={bind(device, "mute").as((v) => {
                     return (v !== true) ? "vol" : "vol50"
                 })}
@@ -169,7 +163,7 @@ function Sink() {
 
 function Source() {
     const device = Wp.get_default()?.audio.defaultMicrophone!
-    
+
     return <button
         className="Source"
         onScroll={(b, e: Astal.ScrollEvent) => {
@@ -181,7 +175,7 @@ function Source() {
             spacing={5}
             tooltipText={bind(device, "description").as((v) => `Active Device: ${v}`)}
         >
-            <label 
+            <label
                 className={bind(device, "mute").as((v) => {
                     return (v !== true) ? "vol" : "vol50"
                 })}

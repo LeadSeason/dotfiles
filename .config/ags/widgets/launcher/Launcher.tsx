@@ -1,10 +1,10 @@
 import Apps from "gi://AstalApps"
 import { App, Astal, Gdk, Gtk } from "astal/gtk3"
-import { timeout, Variable } from "astal"
+import { Variable } from "astal"
 import { GtkSeparatorMenuItem } from "../../lib/astilfy";
 import conf from "../../conf";
 import Sway from "../../lib/sway";
- 
+
 const sway = Sway.get_default()
 
 function hide() {
@@ -16,7 +16,7 @@ function launchApp(application: Apps.Application) {
     // https://specifications.freedesktop.org/desktop-entry-spec/latest/exec-variables.html
     // Yeah, I could do the proper thing and fill in %i %c %k but I don't have any desktop entries where that would be a concern
     // %f %F %u %I Do not need to be filled in since we are'nt handling files.
-    sway.message_async(`exec ${application.executable.replace(/\%f|\%F|\%u|\%U|\%d|\%D|\%n|\%N|\%i|\%c|\%k|\%v|\%m/, "")}`)    
+    sway.message_async(`exec ${application.executable.replace(/\%f|\%F|\%u|\%U|\%d|\%D|\%n|\%N|\%i|\%c|\%k|\%v|\%m/, "")}`)
 }
 
 function AppButton({ app }: { app: Apps.Application }) {
@@ -53,7 +53,7 @@ export default async function AppLauncher() {
         launchApp(apps.fuzzy_query(text.get())?.[0])
         hide()
     }
-    
+
     return <window
         className="AstalLauncher"
         name="AstalLauncher"

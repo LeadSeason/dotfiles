@@ -29,10 +29,10 @@ export default () => {
                 tooltipText={bind(updates, "updates")}
                 onClick={(self, event) => {
                     if (event.button === 1) {
-                        sway.message_async("exec bash -c 'kitty --hold -e $HOME/.config/waybar/scipts/getupdates-update.sh'")
+                        sway.message_async("exec bash -c 'kitty --hold -e $HOME/.config/waybar/scripts/getupdates-update.sh'")
                     }
                 }}
             />
         </revealer>
     </box>
-} 
+}

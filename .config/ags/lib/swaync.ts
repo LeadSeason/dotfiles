@@ -11,12 +11,12 @@ export default class SwayNc extends GObject.Object {
         }
         return this.instance;
     }
-    
+
     #count: number = 0;
     #dnd: boolean = false;
     #visible: boolean = false;
     #inhibited: boolean = false;
-    
+
     @property(Number)
     get count (): number { return this.#count }
 
@@ -28,12 +28,12 @@ export default class SwayNc extends GObject.Object {
 
     @property(Boolean)
     get inhibited (): boolean { return this.#inhibited }
-    
-    
+
+
 
     constructor() {
         super();
-        
+
         const eventHandler = async (event: SwayNcEvent) => {
             if (event.count != this.#count) {
                 this.#count = event.count;
@@ -52,7 +52,7 @@ export default class SwayNc extends GObject.Object {
                 this.notify("inhibited");
             }
         }
-        
+
         subprocess(
             "swaync-client -s",
             (v) => {
@@ -61,7 +61,7 @@ export default class SwayNc extends GObject.Object {
             (v) => {
                 console.log("SwayNc:", v)
             }
-            
+
         )
     }
 }

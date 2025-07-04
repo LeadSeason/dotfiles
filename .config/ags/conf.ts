@@ -1,5 +1,4 @@
 export default {
-    sassHotReload: true,
     bar: {
         minUpdates: 50
     },

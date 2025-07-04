@@ -5,9 +5,9 @@ import SwayNc from "../../../lib/swaync"
 
 export default() => {
     const swayNc = SwayNc.get_default()
-    
+
     return <box
-        className="widgetbox"
+        className="widgetBox"
     >
             <button
             className="Notification"
@@ -36,7 +36,7 @@ export default() => {
                 >
                     <label
                         className="Badge"
-                        label={bind(swayNc, "count").as((v) => v.toString())} />                
+                        label={bind(swayNc, "count").as((v) => v.toString())} />
                 </revealer>
                 <label label={bind(swayNc, "dnd").as((v) => {
                     return v ? "" : ""})}/>

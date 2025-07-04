@@ -61,7 +61,7 @@ run_cmd() {
 		elif [[ $1 == '--reboot' ]]; then
 			systemctl reboot
 		elif [[ $1 == '--suspend' ]]; then
-			systemctl suspend
+			systemctl suspend-then-hibernate
 		elif [[ $1 == '--logout' ]]; then
 			if [[ "$DESKTOP_SESSION" == 'i3' ]]; then
 				i3-msg exit

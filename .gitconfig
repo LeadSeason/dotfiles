@@ -1,0 +1,6 @@
+[user]
+	email = admin@leadseason.eu
+	name = LeadSeason
+	signingkey = 41A20406C7C92B5AAF3F5AF1769781599B6F0A4B
+[commit]
+	gpgsign = true

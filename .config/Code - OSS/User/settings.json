@@ -16,7 +16,7 @@
     "python.linting.enabled": true,
     "explorer.confirmDelete": false,
     "workbench.colorTheme": "Catppuccin Mocha",
-    "catppuccin.accentColor": "pink",
+    "catppuccin.accentColor": "yellow",
     "editor.fontFamily": "",
     "editor.fontSize": 16,
     "vim.useSystemClipboard": true,

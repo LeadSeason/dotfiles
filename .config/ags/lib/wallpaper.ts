@@ -56,7 +56,7 @@ const bonjourrCollections = {
 @register({ GTypeName: "unsplashWallpaper" })
 export default class unsplashWallpaper extends GObject.Object {
     static instance: unsplashWallpaper;
-    
+
     static get_default() {
         if (!this.instance) {
             this.instance = new unsplashWallpaper();
@@ -64,11 +64,11 @@ export default class unsplashWallpaper extends GObject.Object {
 
         return this.instance;
     }
-    
-    
+
+
     constructor() {
         super();
-        
+
     }
 }
 

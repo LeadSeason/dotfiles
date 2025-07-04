@@ -8,5 +8,9 @@
     "minimizeToTray": false,
     "tray": true,
     "disableSmoothScroll": false,
-    "hardwareAcceleration": true
+    "hardwareAcceleration": true,
+    "spellCheckLanguages": [
+        "en-US",
+        "en"
+    ]
 }

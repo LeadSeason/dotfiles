@@ -4,7 +4,7 @@ import { exec, execAsync } from "astal/process"
 
 const get = (args: string) => Number(exec(`brightnessctl ${args}`))
 const screen = exec(`bash -c "ls -w1 /sys/class/backlight | head -1"`)
-const kbd = exec(`bash -c "ls -w1 /sys/class/leds | head -1"`)
+const kbd = exec(`bash -c "ls -w1 /sys/class/leds | grep kbd | head -1"`)
 
 @register({ GTypeName: "Brightness" })
 export default class Brightness extends GObject.Object {
@@ -20,7 +20,10 @@ export default class Brightness extends GObject.Object {
     #kbd = get(`--device ${kbd} get`)
     #screenMax = get("max")
     #screen = get("get") / (get("max") || 1)
-    #isPresent = (screen == "") ? false : true; 
+    #isPresent = (screen == "") ? false : true;
+
+    @property(Number)
+    get kbdMax() { return this.#kbdMax }
 
     @property(Number)
     get kbd() { return this.#kbd }
@@ -50,13 +53,13 @@ export default class Brightness extends GObject.Object {
             this.notify("screen")
         })
     }
-    
+
     @property(Boolean)
-    get isPresent() {return this.#isPresent };
+    get isPresent() { return this.#isPresent };
 
     constructor() {
         super()
-        
+
         const screenPath = `/sys/class/backlight/${screen}/brightness`
         const kbdPath = `/sys/class/leds/${kbd}/brightness`
 
@@ -68,7 +71,7 @@ export default class Brightness extends GObject.Object {
 
         monitorFile(kbdPath, async f => {
             const v = await readFileAsync(f)
-            this.#kbd = Number(v) / this.#kbdMax
+            this.#kbd = Number(v)
             this.notify("kbd")
         })
     }

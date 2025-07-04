@@ -24,8 +24,8 @@ function BTDropdown() {
             return <box
                 spacing={50}
             >
-                <label 
-                    css={bind(device, "connected").as(v => v ? "font-weight: bold;" : "")} 
+                <label
+                    css={bind(device, "connected").as(v => v ? "font-weight: bold;" : "")}
                     label={device.name}
                 />
                 <switch
@@ -84,4 +84,4 @@ export default () => {
         }}
     >
     </button>
-} 
+}

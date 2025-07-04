@@ -107,7 +107,7 @@
 		"format-wifi": " {signalStrength}%",
 		"format-ethernet": " ",
 		"format-linked": "{ifname} (No IP) 󰅤",
-		"format-disconnected": "Disconnected ⚠",
+		"format-disconnected": "󰅤",
 		"tooltip-format": "{ifname}: {ipaddr}/{cidr}\n{ifname} via {gwaddr}",
 		"on-click": "networkmanager_dmenu"
 	},
@@ -132,10 +132,10 @@
 	},
 	"custom/archupdates": {
 		"format": "󰁠 {}",
-		"exec": "$HOME/.config/waybar/scipts/getupdates-client",
+		"exec": "$HOME/.config/waybar/scripts/getupdates-client",
 		"exec-if": "exit 0",
 		"return-type": "json",
-		"on-click": "kitty --hold -e $HOME/.config/waybar/scipts/getupdates-update.sh",
+		"on-click": "kitty --hold -e $HOME/.config/waybar/scripts/getupdates-update.sh",
 		"interval": 20
 	},
 	"clock": {

@@ -86,7 +86,7 @@ exec_always gsettings set org.cinnamon.desktop.interface cursor-size 12
 exec_always gsettings set org.gnome.desktop.interface monospace-font-name 'FiraCode Nerd Font Propo 12'
 exec_always gsettings set org.gnome.desktop.interface document-font-name 'FiraCode Nerd Font Propo 12'
 exec_always gsettings set org.gnome.desktop.interface font-name 'FiraCode Nerd Font Propo 12'
-exec_always gsettings set org.gnome.desktop.interface gtk-theme catppuccin-mocha-mauve-standard+default
+exec_always gsettings set org.gnome.desktop.interface gtk-theme catppuccin-mocha-yellow-standard+default
 
 # Sway-FX
 # Uncomment if running Sway-FX
@@ -99,10 +99,11 @@ blur_xray disable
 blur_passes 2
 blur_radius 2
 
-layer_effects "AstalBar" blur enable; corner_radius 0; shadows enable; border pixel 0
+layer_effects "AstalBar" blur enable;
 layer_effects "astal-osd" blur enable; corner_radius 32;
-layer_effects "AstalConfirm" blur enable; corner_radius 0; shadows enable; border pixel 0
-layer_effects "astal-powermenu" blur enable;
+layer_effects "AstalConfirm" blur enable
+layer_effects "AstalPowermenu" blur enable;
+layer_effects "AstalDialog" blur enable;
 # layer_effects "AstalLauncher" blur enable; corner_radius 0; shadows enable; border pixel 0
 
 layer_effects "eww" blur enable; corner_radius 0
@@ -139,43 +140,22 @@ for_window [app_id="com.gabm.satty"] border pixel 0, fullscreen global
 # ╚═╝░░░░░╚═╝░░╚═╝░╚════╝░░╚═════╝░╚═╝░░╚═╝╚═╝░░╚═╝╚═╝░░░░░╚═╝╚═════╝░
 #
 
-# exec foot --server
 exec wl-paste -t text --watch clipman store --no-persist
-# exec autotiling
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec /usr/lib/kdeconnectd
 
-
-# Init wallpaper server
-exec swww-daemon
-# Pick random wallpapers ever 4 - 8 hours
-# @TODO This will keepgoing if server dies. resulting in multiple instances
-# exec zsh -c "sleep 1; cd /home/leadseason/.local/share/wallpapers; pwd; while (true); do; sleep \$(( ( RANDOM % 3600) + 1800)); ls |sort -R |head -n1| read x; swww img \$x; echo \$x; done;"
-exec swaync
-# Manage by systemd Un comment
-# exec ~/.config/waybar/scipts/getupdates-server.sh
-
-# Compile the getupdates-client script
-# exec g++ ~/.config/waybar/scipts/getupdates-client.cpp -O2 -march=native -o ~/.config/waybar/scipts/getupdates-client
-# Use Custom built waybar for Juusto
-# exec ~/var/build/Waybar/build/waybar || waybar
-
 exec ags run
+exec swww-daemon
+exec swaync
+exec sworkstyle >> ~/.cache/sworkstyle.log 2>&1
 
-# !No more applet tray
 exec kdeconnect-indicator
 exec nm-applet --indicator
 exec blueman-applet
-exec sworkstyle >> ~/.cache/sworkstyle.log 2>&1
 
-# Moved to systemd service
-# exec rm -f $WOBSOCK && mkfifo $WOBSOCK && tail -f $WOBSOCK | wob
-
-# Quit ags due to a bug with display mapping. Start it again on resume.
-# @TODO If britness is under 20% 
 exec swayidle \
-	timeout 240 "brightnessctl get > ~/.cache/resume_brightness; brightnessctl set 20%" \
-    resume "brightnessctl set \$(cat ~/.cache/resume_brightness)" \
+	timeout 240 "astal dim" \
+    resume "astal undo dim" \
 	timeout 300 "pgrep swaylock || swaylock --grace 3 --fade-in 3" \
     timeout 420 'swaymsg "output * dpms off"' \
     resume 'swaymsg "output * dpms on" & sleep 10; ags run'
@@ -184,15 +164,9 @@ exec swayidle \
 exec swayidle -w \
 	before-sleep "pgrep swaylock || swaylock" \
 
-#     timeout 120 "pkill Discord -STOP" \
-#     resume 'pkill Discord -CONT' \
-
 exec nextcloud --background
 exec protonmail-bridge -n 
 exec playerctld daemon
-
-# additional fancy pants programs
-exec discover-overlay
 
 exec /usr/lib/xdg-desktop-portal-wlr
 exec /usr/lib/xdg-desktop-portal
@@ -264,8 +238,8 @@ bindsym {
     $mod+p exec "sway-floating kitty -e 'ptpython --vi'"
 
     # start screenshot
-    # $mod+c exec bash -c 'grim -g "$(slurp)" - | swappy -f - -o - | ~/.local/bin/timhostuploader'
-    $mod+c exec flameshot gui -r | ~/.local/bin/timhostuploader
+    $mod+c exec bash -c 'grim -g "$(slurp)" - | swappy -f - -o - | ~/.local/bin/timhostuploader'
+    # $mod+c exec flameshot gui -r | ~/.local/bin/timhostuploader
     $mod+Shift+c exec flameshot gui -r | wl-copy
 
     # lock
@@ -274,6 +248,9 @@ bindsym {
     # Brightness controls
     XF86MonBrightnessUp exec brightnessctl set 10%+
     XF86MonBrightnessDown exec brightnessctl set 10%-
+
+    $mod+ctrl+Delete exec ags request --instance astal powermenu
+    $mod+t exec ags request --instance astal scratchpad
 
     # start a program launcher (rofi)
     $mod+d exec pgrep rofi || rofi -I -show drun
@@ -285,7 +262,7 @@ bindsym {
     # a rofi tool program
     $mod+x exec pgrep rofi || rofi-bluetooth
     $mod+period exec pgrep rofi || rofi -show emoji
-    $mod+ctrl+Delete exec pgrep rofi || /home/leadseason/.config/rofi/powermenu.sh
+    # $mod+ctrl+Delete exec pgrep rofi || /home/leadseason/.config/rofi/powermenu.sh
     $mod+Shift+w exec pgrep rofi || networkmanager_dmenu
     $mod+Shift+s exec pgrep rofi || rofi -show ssh
 
@@ -418,17 +395,20 @@ bindsym {
 
 # Allow the use of media keys while locked.
 bindsym --locked {
+    # Kbd brithness for Lenovo laptop
+    $modalt+space exec $HOME/.local/bin/kbd_brightness_toggle
+
     # Media player controls
-    XF86AudioPlay exec playerctl play-pause
-    XF86AudioStop exec playerctl stop
-    XF86AudioNext exec playerctl next
-    XF86AudioPrev exec playerctl previous
+    XF86AudioPlay exec playerctl play-pause; exec ags request media --instance astal
+    XF86AudioStop exec playerctl stop; exec ags request media --instance astal
+    XF86AudioNext exec playerctl next; exec ags request media --instance astal
+    XF86AudioPrev exec playerctl previous; exec ags request media --instance astal
 
     # Alternatively Useing $mod + F-keys
-    $mod+F2 exec playerctl play-pause; exec ags request media --instance astal
+    $mod+F1 exec playerctl previous; exec ags request media --instance astal
+    $mod+F2 exec ags request media --instance astal
     $mod+F3 exec playerctl play-pause; exec ags request media --instance astal
     $mod+F4 exec playerctl next; exec ags request media --instance astal
-    $mod+F1 exec playerctl previous; exec ags request media --instance astal
 
     # Use pactl to adjust volume in PulseAudio.
     XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle

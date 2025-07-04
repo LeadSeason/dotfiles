@@ -1,18 +1,27 @@
 import { App, Gdk, Gtk } from "astal/gtk3";
 import { exec, execAsync } from "astal/process";
-import { monitorFile } from "astal/file";
-import conf from "./conf";
+
+import powerManagement from "./tools/powerManagement";
+import { idleDim, idleDimReturn } from "./tools/powerManagement";
+
 import Bar from "./widgets/bar/Bar";
 // import Desktop from "./widgets/desktop/Desktop";
 import Launcher from "./widgets/launcher/Launcher";
 import OSD from "./widgets/osd/osd";
 import Media from "./widgets/media/media"
-import { Variable } from "astal";
 import powermenu from "./widgets/powermenu/powermenu";
+import scratchpad from "./widgets/scratchpad/scratchpad";
 
-const mediaShow = Variable<boolean>(false);
+import { showMedia } from "./widgets/media/media";
+import { GLib } from "astal";
+import dropdown from "./widgets/dropdown/dropdown";
+import { reduceEachTrailingCommentRange } from "typescript";
+
+const cssPath = `${GLib.get_user_cache_dir()}/astal/astal.css`
 
 function main() {
+    powerManagement()
+
     const bars = new Map<Gdk.Monitor, Gtk.Widget>()
     const osd = new Map<Gdk.Monitor, Gtk.Widget>()
     const media = new Map<Gdk.Monitor, Gtk.Widget>()
@@ -21,14 +30,14 @@ function main() {
     for (const gdkmonitor of App.get_monitors()) {
         bars.set(gdkmonitor, Bar(gdkmonitor))
         osd.set(gdkmonitor, OSD(gdkmonitor))
-        media.set(gdkmonitor, Media(gdkmonitor, mediaShow))
+        media.set(gdkmonitor, Media(gdkmonitor))
         // desktops.set(gdkmonitor, Desktop(gdkmonitor))
     }
 
     App.connect("monitor-added", (_, gdkmonitor) => {
         bars.set(gdkmonitor, Bar(gdkmonitor))
         osd.set(gdkmonitor, OSD(gdkmonitor))
-        media.set(gdkmonitor, Media(gdkmonitor, mediaShow))
+        media.set(gdkmonitor, Media(gdkmonitor))
         // desktops.set(gdkmonitor, Desktop(gdkmonitor))
     })
 
@@ -46,63 +55,65 @@ function main() {
 
 function requestHandler(request: string, res: (response: string) => void) {
     //  ags request "sass_reload" --instance astal
-    switch (request) {
-        case "sass_reload":
+    switch (request.toLowerCase().replace("_", " ")) {
+        case "sass reload":
+        case "scss reload":
+        case "css reload":
             log("Astal: Reloading style ...")
-            execAsync("sass ./style.scss /tmp/style.css")
+            execAsync(`sass ./style.scss ${cssPath}`)
                 .then(() => {
                     console.log("Astal: Style reloaded")
-                    App.apply_css("/tmp/style.css")
+                    App.apply_css(cssPath)
                     res("Astal: Style reloaded")
                 })
                 .catch((e) => {
                     console.log(e)
-
                     res("Astal Error: Failed to apply style")
                 })
             break;
-    
+
         case "launcher":
             const astalLauncher = App.get_window("AstalLauncher")
             if (astalLauncher) {
                 astalLauncher.show()
                 return res("AstalLauncher: Opened")
-            } 
+            }
             Launcher()
-                
             return res("AstalLauncher: Launched")
-            
+
         case "media":
-            mediaShow.set(true);
+            showMedia()
             return res("Media: showing")
-        
+
         case "powermenu":
             powermenu()
             return res("Powermenu: Launched")
+
+        case "scratchpad":
+            scratchpad()
+            return res("Scratchpad: Launched")
+        
+        case "dropdown":
+            dropdown()
+            return res("Dropdown: Launched")
+
+        case "dim":
+            idleDim()
+            return res("dimmed")
+
+        case "undo dim":
+            idleDimReturn()
+            return res("undid dim")
+
         default:
-            res(`Astal Error: unknown command "${request}"`)
-            break;
+            return res(`Astal Error: unknown command "${request}"`)
     }
 }
 
-monitorFile("./style.scss", async f => {
-    if (conf.sassHotReload) {
-        log("Astal: Reloading style ...")
-        execAsync("sass ./style.scss /tmp/style.css")
-            .then(() => {
-                console.log("Astal: Style reloaded")
-                App.apply_css("/tmp/style.css")
-            })
-            .catch((e) => {
-                console.log(e)
-            })
-    }
-})
-
-exec("sass ./style.scss /tmp/style.css")
+exec(`sass ./style.scss ${cssPath}`)
 
 App.start({
     requestHandler,
-    css: "/tmp/style.css",
+    css: cssPath,
     main: main
 })

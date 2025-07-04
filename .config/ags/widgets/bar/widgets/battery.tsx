@@ -1,26 +1,27 @@
 import { Astal, Gtk, Gdk, Widget } from "astal/gtk3"
 import { GtkMenu, GtkMenuItem } from "../../../lib/astilfy"
-import { bind } from "astal"
+import { bind, Variable } from "astal"
 import PowerProfiles from "gi://AstalPowerProfiles"
 import Battery from "gi://AstalBattery"
+import { secondsToTime } from "../../../tools/utils"
 
 function BatteryMenu(powerProfiles: PowerProfiles.PowerProfiles) {
-    powerProfiles.set_active_profile("performance")
-
     return <GtkMenu widthRequest={200}>
         <GtkMenuItem
+            /* @ts-ignore-error */
             submenu={<GtkMenu>
                 {powerProfiles.get_profiles().map((v) => {
                         return <GtkMenuItem
+                            /* @ts-ignore-error */
                             on_activate={() => powerProfiles.set_active_profile(v.profile)}
                         >
                             <box
                                 spacing={10}
                             >
                                 <icon icon={`power-profile-${v.profile}-symbolic`}/>
-                                <label 
+                                <label
                                     label={v.profile}
-                                    css={bind(powerProfiles, "active-profile").as((a) => (v.profile == a) ? `font-weight: bold;` : ``)}
+                                    css={bind(powerProfiles, "active_profile").as((a) => (v.profile == a) ? `font-weight: bold;` : ``)}
                                 />
                             </box>
                         </GtkMenuItem>
@@ -31,7 +32,7 @@ function BatteryMenu(powerProfiles: PowerProfiles.PowerProfiles) {
                 spacing={10}
             >
                 <icon icon={bind(powerProfiles, "icon_name")} />
-                <label label={bind(powerProfiles, "active-profile").as(
+                <label label={bind(powerProfiles, "active_profile").as(
                     (v) => v.toString()
                 )} />
             </box>
@@ -45,18 +46,29 @@ export default () => {
 
     const batteryMenu = BatteryMenu(powerProfiles)
 
+    const battState = Variable(secondsToTime(
+        (bat.charging) ? bat.timeToEmpty : bat.timeToEmpty))
+
+    bind(bat, "timeToEmpty").subscribe((v) => {
+        if (!bat.get_charging()) {
+            battState.set(secondsToTime(v))
+        }
+    })
+    bind(bat, "timeToFull").subscribe((v) => {
+        if (bat.get_charging()) {
+            battState.set(secondsToTime(v))
+        }
+    })
+
+
     return <box spacing={5} className="Battery"
         visible={bind(bat, "isPresent")}
-        tooltipMarkup={bind(bat, "time_to_empty").as(t =>  {
-            /* @ts-expect-error */
-            const date = new Date(null);
-            date.setSeconds(t); // specify value for SECONDS here
-            return date.toISOString().slice(11, 19);
-        })}
+        tooltipMarkup={bind(battState)}
         >
         <button
             onButtonPressEvent={(_, e) => {
                 if (e.get_button()[1] === 1) {
+                    /* @ts-ignore-error */
                     batteryMenu.popup_at_pointer(e)
                 }
             }}

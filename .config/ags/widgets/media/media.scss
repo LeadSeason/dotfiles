@@ -1,0 +1,66 @@
+@use "../../themes/flavours-colors.scss" as theme;
+@use "sass:color";
+
+window.Media {
+    all: unset;
+	box.MediaPlayer {
+		padding: .6rem;
+		border-radius: 30px;
+		border: 2px solid color.mix(theme.$base03, transparent, 75%);
+        background-color: color.mix(theme.$base00, transparent, 75%);
+
+		box.cover-art {
+			min-width: 120px;
+			min-height: 120px;
+			border-radius: 9px;
+			margin-right: .8rem;
+			background-size: contain;
+			background-position: center;
+		}
+
+		box.title {
+			label {
+				font-weight: bold;
+				font-size: 1.1em;
+			}
+		}
+
+		scale {
+			padding: 0;
+			margin: .4rem 0;
+
+			trough {
+				min-height: 8px;
+			}
+
+			highlight {
+				background-color: theme.$base05;
+			}
+
+			slider {
+				all: unset;
+			}
+		}
+
+		centerbox.actions {
+			min-width: 220px;
+
+			button {
+				border: 1px solid transparent;
+				min-width: 0;
+				min-height: 0;
+				padding: .4rem;
+				margin: 0 .2rem;
+				&:hover {
+					border-radius: 6px;
+					background-color: color.mix(transparent, theme.$base02, 30%);
+				}
+				&.enabled, &:active {
+					color: theme.$base0E;
+					border-radius: 6px;
+					border: 1px solid theme.$base0E;
+				}
+			}
+		}
+	}
+}

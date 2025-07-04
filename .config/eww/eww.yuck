@@ -209,7 +209,7 @@
     :class "rightmodule sapphire"
     (button
       :tooltip "${archupdates["tooltip"]}"
-      :onclick "kitty --hold -e $HOME/.config/waybar/scipts/getupdates-update.sh &"
+      :onclick "kitty --hold -e $HOME/.config/waybar/scripts/getupdates-update.sh &"
       "󰁠 ${archupdates["text"]}"
     )
   )

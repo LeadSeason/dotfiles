@@ -1,0 +1,266 @@
+@use "../../themes/flavours-colors.scss" as theme;
+@use "sass:color";
+
+window.Bar {
+    color: theme.$base05;
+    font-size: 20px;
+    font-weight: normal;
+
+	.BarBox {
+		background-color: color.mix(color.mix(theme.$base0E, black, 20%), transparent, 50%);
+		border-bottom: .15rem solid color.mix(color.mix(theme.$base0E, black, 50%), transparent, 25%);
+		box-shadow: 0px -7px 5px 0px rgba(0,0,0,0.10) inset;
+	}
+
+	button {
+		all: unset;
+		background-color: transparent;
+		transition: 100ms;
+		border-radius: 7px;
+	}
+
+	button:hover {
+		background-color: color.adjust(theme.$base05, $alpha: -0.84);
+		border-color: color.adjust(theme.$base05, $alpha: -0.8);
+	}
+
+
+	button:active {
+		background-color: color.adjust(theme.$base05, $alpha: -0.9);
+  	    box-shadow: inset 3px 4px 5px color.mix(black, transparent, 50%);
+	}
+
+
+    .widgetBox {
+		border-top-right-radius: .3rem;
+		border-top-left-radius: .3rem;
+		padding: .3rem .7rem .4rem;
+		margin: .3rem .5rem -2px;
+
+        color: theme.$base0E;
+        background: repeating-linear-gradient(
+            color.mix(theme.$base0E, black, 20%),
+            color.mix(theme.$base0E, black, 20%) .2%,
+            color.mix(theme.$base0E, black, 30%) .5%,
+            color.mix(theme.$base0E, black, 20%) .8%,
+            color.mix(theme.$base0E, black, 20%) 1%
+        );
+
+        box-shadow: inset 3px 4px 5px color.mix(black, transparent, 50%);
+                  /* 0px -1px 3px 4px color.mix(black, transparent, 50%); */
+        border-bottom:.15rem solid theme.$base0E;
+    }
+
+	.Clock {
+		button {
+			&:hover {
+				background-color: transparent;
+				border-color: transparent;
+			}
+		}
+		.Separator {
+			color: theme.$base04;
+		}
+	}
+
+	.Notification {
+		.Badge {
+			border-radius: 1rem;
+			padding: 0px 3px;
+			margin: 0px .4rem 0px 0px;
+			color: color.mix(theme.$base08, black, 10%);
+			background: theme.$base08;
+		}
+	}
+
+
+    .Noises {
+        * {
+			transition: 200ms;
+        }
+
+		.vol50 {
+			color: color.mix(theme.$base0E, black, 50%);
+		}
+
+    }
+
+	.OSIcon {
+		font-size: 24px;
+		button {
+			padding: .0rem .7rem .0rem;
+			border-top-right-radius: .3rem;
+			border-top-left-radius: .3rem;
+		}
+
+		margin: .3rem .5rem -2px;
+		border-top-right-radius: .3rem;
+		border-top-left-radius: .3rem;
+
+        color: theme.$base0E;
+        background: repeating-linear-gradient(
+            color.mix(theme.$base0E, black, 20%),
+            color.mix(theme.$base0E, black, 20%) .2%,
+            color.mix(theme.$base0E, black, 30%) .5%,
+            color.mix(theme.$base0E, black, 20%) .8%,
+            color.mix(theme.$base0E, black, 20%) 1%
+        );
+
+        box-shadow: inset 3px 4px 5px color.mix(black, transparent, 50%);
+                  /* 0px -1px 3px 4px color.mix(black, transparent, 50%); */
+        border-bottom:.15rem solid theme.$base0E;
+
+	}
+
+    .Workspaces {
+		padding: 0px .7rem 0px;
+		margin: .3rem .5rem -2px;
+		border-top-right-radius: .3rem;
+		border-top-left-radius: .3rem;
+
+        color: color.mix(theme.$base0E, black, 60%);
+        background: repeating-linear-gradient(
+            color.mix(theme.$base0E, black, 20%),
+            color.mix(theme.$base0E, black, 20%) .2%,
+            color.mix(theme.$base0E, black, 30%) .5%,
+            color.mix(theme.$base0E, black, 20%) .8%,
+            color.mix(theme.$base0E, black, 20%) 1%
+        );
+
+        box-shadow: inset 3px 4px 5px color.mix(black, transparent, 50%);
+                  /* 0px -1px 3px 4px color.mix(black, transparent, 50%); */
+        border-bottom:.15rem solid theme.$base0E;
+
+		label {
+			transition: 200ms;
+		}
+
+		.focused label {
+			color: theme.$base0E;
+			border-color: theme.$base0E;
+			transition: 200ms;
+		}
+	}
+}
+
+window.AstalMixer {
+	border-radius: 1rem;
+	border: 2px solid theme.$base03;
+	background-color: theme.$base00;
+
+	icon {
+		margin-left: .6em;
+	}
+
+  	separator {
+		margin: 4px 0;
+		background-color: theme.$base02;
+		min-height: 1px;
+		min-height: 1px;
+	}
+
+	.AstalMixerBase {
+		margin: 4px;
+		padding: 4px;
+	}
+
+	.NameLabel {
+		margin-left: 1rem;
+	}
+
+	.NameMuted {
+		color: theme.$base04;
+	}
+
+    .AstalMixerSlider {
+        * {
+            all: unset;
+        }
+
+        & {
+            margin: 0 1em;
+        }
+
+        trough {
+            background-color: color.adjust(theme.$base05, $alpha: -0.8);
+            border-radius: 7px;
+        }
+
+        highlight {
+            background-color: theme.$base0E;
+            min-height: .8em;
+            border-radius: 7px;
+        }
+
+        slider {
+            background-color: theme.$base05;
+            border-radius: 7px;
+            min-height: 1em;
+            min-width: 1em;
+            margin: -.2em;
+        }
+    }
+}
+
+window.AstalBTDropdown {
+	border-radius: 1rem;
+	border: 2px solid theme.$base03;
+	background-color: theme.$base00;
+
+	icon {
+		margin-left: .6em;
+	}
+
+  	separator {
+		margin: 4px 0;
+		background-color: theme.$base02;
+		min-height: 1px;
+		min-height: 1px;
+	}
+
+	.Base {
+		margin: 4px;
+		padding: 4px;
+	}
+
+	switch {
+		border-radius: 5px;
+		border: 1px solid theme.$base02;
+		min-width: 4rem;
+		transition: 200ms;
+
+        slider {
+            background-color: theme.$base05;
+            border-radius: 7px;
+            min-height: 1em;
+            min-width: 1em;
+            margin: -.2em;
+        }
+
+		&:checked {
+			background-color: theme.$base0E;
+		}
+	}
+
+    .AstalMixerSlider {
+        * {
+            all: unset;
+        }
+
+        & {
+            margin: 0 1em;
+        }
+
+        trough {
+            background-color: color.adjust(theme.$base05, $alpha: -0.8);
+            border-radius: 7px;
+        }
+
+        highlight {
+            background-color: theme.$base0E;
+            min-height: .8em;
+            border-radius: 7px;
+        }
+
+    }
+}

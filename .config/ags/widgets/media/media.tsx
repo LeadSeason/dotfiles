@@ -3,6 +3,7 @@ import { timeout } from "astal/time"
 import Variable from "astal/variable"
 import Mpris from "gi://AstalMpris"
 import { bind } from "astal"
+import { secondsToTime } from "../../tools/utils"
 
 function lengthStr(length: number) {
     const min = Math.floor(length / 60)
@@ -12,7 +13,31 @@ function lengthStr(length: number) {
 }
 
 
-function MediaPlayer({ player }: { player: Mpris.Player }) {
+const visible = Variable<boolean>(false)
+const visibleBlock = Variable<boolean>(false)
+let count = 0
+export const showMedia = (timeoutTime: number = 5000) => {
+    visible.set(true)
+    count++
+    timeout(timeoutTime, () => {
+        count--
+        if (count === 0 && !visibleBlock.get()) visible.set(false)
+    })
+}
+
+const playerVisible = Variable<number>(0)
+
+
+function MediaPlayer({ data: data }: { data: [Mpris.Player, number] }) {
+    const player = data[0]
+    const index = data[1]
+
+    // Which play to show logic
+    bind(player, "playbackStatus").subscribe((v) => {
+        if (v === Mpris.PlaybackStatus.PLAYING) {
+            playerVisible.set(index)
+        }
+    })
 
     const { START, END } = Gtk.Align
 
@@ -37,7 +62,10 @@ function MediaPlayer({ player }: { player: Mpris.Player }) {
             : "media-playback-start-symbolic"
     )
 
-    return <box className="MediaPlayer">
+    return <box
+            className="MediaPlayer"
+            visible={bind(playerVisible).as((v) => v === index)}
+        >
         <box className="cover-art" css={coverArt} />
         <box vertical>
             <box className="title">
@@ -74,6 +102,13 @@ function MediaPlayer({ player }: { player: Mpris.Player }) {
                         visible={bind(player, "canGoNext")}>
                         <icon icon="media-skip-forward-symbolic" />
                     </button>
+                    <button
+                        className={bind(player, "shuffleStatus").as((a) =>
+                            (a === 1) ? "enabled" : ""
+                        )}
+                        onClicked={() => player.shuffle()}>
+                        <icon icon="media-playlist-shuffle-symbolic" />
+                    </button>
                 </box>
                 <label
                     className="length"
@@ -87,34 +122,8 @@ function MediaPlayer({ player }: { player: Mpris.Player }) {
     </box>
 }
 
-function OnScreenProgress({ data }: { data: Variable<boolean>[] }) {
-    const visible = data[0]
-    const mediaShow = data[1]
+function MediaReveler() {
     const mpris = Mpris.get_default()
-
-    let count = 0
-    visible.subscribe((v) => {
-        if (v) {
-            show()
-        }
-    })
-    const show = () => {
-        visible.set(true)
-        count++
-        timeout(5000, () => {
-            count--
-            if (count === 0) visible.set(false)
-        })
-    }
-
-    mediaShow.subscribe((v) => {
-        if (v) {
-            show()
-        }
-        timeout(5, () => {
-            mediaShow.set(false)
-        })
-    })
 
     return (
         <revealer
@@ -123,20 +132,15 @@ function OnScreenProgress({ data }: { data: Variable<boolean>[] }) {
         >
             {bind(mpris, "players").as((arr) => {
                 arr.sort((a, b) => {return a.playbackStatus - b.playbackStatus})
-                arr.forEach(p => {
-                });
-                arr[0].playbackStatus
-                bind(arr[0], "playbackStatus").as(s => {
-                    show()
-                })
-                return <MediaPlayer player={arr[0]} />
+                return <box>
+                        {arr.map((player, index) => <MediaPlayer data={[player, index]} />)}
+                    </box>
             })}
         </revealer>
     )
 }
 
-export default function Media(monitor: Gdk.Monitor, mediaShow: Variable<boolean>) {
-    const visible = Variable<boolean>(false)
+export default function Media(monitor: Gdk.Monitor) {
     const win = (
     <window
         gdkmonitor={monitor}
@@ -149,8 +153,15 @@ export default function Media(monitor: Gdk.Monitor, mediaShow: Variable<boolean>
         marginTop={20}
         marginRight={40}
     >
-        <eventbox onClick={() => visible.set(false)}>
-            <OnScreenProgress data={[visible, mediaShow]} />
+        <eventbox
+            onClick={() => visible.set(false)}
+            onHover={() => visibleBlock.set(true)}
+            onHoverLost={() =>  {
+                visibleBlock.set(false)
+                showMedia()
+            }}
+        >
+            <MediaReveler />
         </eventbox>
     </window>)
     win.hide()

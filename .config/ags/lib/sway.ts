@@ -14,7 +14,7 @@ export default class Sway extends GObject.Object {
         return this.instance
     }
 
-    #wss: Workspaces = JSON.parse(conn.message(i3ipc.MessageType.GET_WORKSPACES, ""));
+    #wss: Node[] = JSON.parse(conn.message(i3ipc.MessageType.GET_WORKSPACES, ""));
     #outputs: Displays = JSON.parse(conn.message(i3ipc.MessageType.GET_OUTPUTS, ""));
     #tree: Node = JSON.parse(conn.message(i3ipc.MessageType.GET_TREE, ""));
 
@@ -23,6 +23,9 @@ export default class Sway extends GObject.Object {
 
     @property()
     get display () { return this.#outputs };
+
+    @property()
+    get tree () { return this.#tree };
 
     @property()
     get outputs () { return this.#outputs };
@@ -86,36 +89,6 @@ export default class Sway extends GObject.Object {
     }
 }
 
-export type Workspaces = Workspace[]
-
-export interface Workspace {
-    id: number
-    type: string
-    orientation: string
-    percent: any
-    urgent: boolean
-    marks: any[]
-    layout: string
-    border: string
-    current_border_width: number
-    rect: Rect
-    deco_rect: Rect
-    window_rect: Rect
-    geometry: Rect
-    name: string
-    window: any
-    nodes: any[]
-    floating_nodes: any[]
-    focus: number[]
-    fullscreen_mode: number
-    sticky: boolean
-    num: number
-    output: string
-    representation: string
-    focused: boolean
-    visible: boolean
-}
-
 export type Displays = Node[]
 
 export type Commands = Command[]
@@ -126,48 +99,65 @@ export interface Command {
 }
 
 export interface Node {
-  id: number
-  type: string
-  orientation: string
-  percent: number | null
-  urgent: boolean
-  marks: string[]
-  focused: boolean
-  layout: "splith" | "splitv" | "stacked" | "tabbed" | "dockarea" | "output"
-  border: "normal" | "none" | "pixel"
-  current_border_width: number
-  rect: Rect
-  deco_rect: Rect
-  window_rect: Rect
-  geometry: Rect
-  name: string
-  window: any
-  nodes: Node[]
-  floating_nodes: Workspace[]
-  focus: number[]
-  fullscreen_mode: number
-  sticky: boolean
-  floating: "root" | "output" | "con" | "floating_con" | "workspace" | "dockarea"
-  scratchpad_state: "none" | "fresh" | "changed"
-  primary?: boolean
-  make?: string
-  model?: string
-  serial?: string
-  modes?: Mode[]
-  non_desktop?: boolean
-  active?: boolean
-  dpms?: boolean
-  power?: boolean
-  scale?: number
-  scale_filter?: string
-  transform?: string
-  adaptive_sync_status?: string
-  layer_shell_surfaces?: LayerShellSurface[]
-  current_workspace?: string
-  current_mode?: CurrentMode
-  max_render_time?: number
-  allow_tearing?: boolean
-  subpixel_hinting: string
+    id: number
+    type: "root" | "output" | "con" | "floating_con" | "workspace" | "dockarea"
+    orientation: string
+    percent: number | null
+    urgent: boolean
+    marks: string[]
+    focused: boolean
+    layout: "splith" | "splitv" | "stacked" | "tabbed" | "dockarea" | "output"
+    border: "normal" | "none" | "pixel"
+    current_border_width: number
+    rect: Rect
+    deco_rect: Rect
+    window_rect: Rect
+    geometry: Rect
+    name: string
+    window: any
+    nodes: Node[]
+    floating_nodes: Node[]
+    focus: number[]
+    fullscreen_mode: number
+    sticky: boolean
+    floating: "root" | "output" | "con" | "floating_con" | "workspace" | "dockarea"
+    scratchpad_state: null | "none" | "fresh" | "changed"
+    pid?: number
+    app_id?: string
+    primary?: boolean
+    make?: string
+    model?: string
+    serial?: string
+    modes?: Mode[]
+    non_desktop?: boolean
+    active?: boolean
+    dpms?: boolean
+    power?: boolean
+    scale?: number
+    scale_filter?: string
+    transform?: string
+    adaptive_sync_status?: string
+    layer_shell_surfaces?: LayerShellSurface[]
+    current_workspace?: string
+    current_mode?: CurrentMode
+    max_render_time?: number
+    allow_tearing?: boolean
+    shell?: "xdg_shell" | "xwayland"
+    subpixel_hinting: string
+    num: number
+    output: string
+    representation: string
+    visible: boolean
+    window_properties?: WindowProperties
+}
+
+export interface WindowProperties {
+    class: string
+    instance: string
+    title: string
+    transient_from: null
+    window_role: string
+    window_type: string
 }
 
 export interface Mode {

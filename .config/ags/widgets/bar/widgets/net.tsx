@@ -25,7 +25,7 @@ export default() => {
                 transitionType={Gtk.RevealerTransitionType.NONE}
                 revealChild={bind(network, "primary").as((v) => {return v === 1})}
             >
-                <icon 
+                <icon
                     className={"BarIcon"}
                     icon={bind(network.wired, "iconName")}
                 />

@@ -1,0 +1,33 @@
+@use "../../themes/flavours-colors.scss" as theme;
+@use "sass:color";
+
+window.OSD {
+    box.OSD {
+        border-radius: 100px;
+        background-color: color.mix(theme.$base00, transparent, 75%);
+        padding: 10px 14px;
+        box-shadow: 3px 3px 7px 0 rgba(0,0,0,.4);
+		border: 2px solid color.mix(theme.$base03, transparent, 75%);
+    }
+
+    icon {
+		margin-right: 10px;
+    	font-size: 36px;
+    }
+
+    label {
+		margin-left: 10px;
+        font-size: 26px;
+    }
+
+	levelbar block.high, levelbar block:not(.empty) {
+		min-height: 10px;
+		border-radius: 10px;
+		background-color: theme.$base0E;
+	}
+
+	levelbar block.empty {
+		border-radius: 10px;
+		background-color: color.mix(theme.$base04, transparent, 75%);
+	}
+}

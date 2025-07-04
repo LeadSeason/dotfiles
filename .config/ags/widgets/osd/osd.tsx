@@ -45,14 +45,14 @@ function OnScreenProgress({ visible }: { visible: Variable<boolean> }) {
         >
             <box className="OSD">
                 <icon icon={iconName()} />
-                <levelbar 
+                <levelbar
                     className={"astalLevelBar"}
                     valign={Gtk.Align.CENTER}
                     widthRequest={200}
                     value={value(v => {
                         if (v > levelMax.get()) {
                             return levelMax.get();
-                        } 
+                        }
                         return v
                     })}
                     minValue={0}
