@@ -1,4 +1,6 @@
-import GObject, { register, property } from "astal/gobject"
+// import GObject, { register, property } from "astal/gobject"
+
+import GObject, { getter, register } from "ags/gobject"
 import i3ipc from "gi://i3ipc"
 
 const conn = i3ipc.Connection.new(null)
@@ -18,29 +20,29 @@ export default class Sway extends GObject.Object {
     #outputs: Displays = JSON.parse(conn.message(i3ipc.MessageType.GET_OUTPUTS, ""));
     #tree: Node = JSON.parse(conn.message(i3ipc.MessageType.GET_TREE, ""));
 
-    @property()
+    @getter(Array)
     get wss () { return this.#wss };
 
-    @property()
+    @getter(Array)
     get display () { return this.#outputs };
 
-    @property()
-    get tree () { return this.#tree };
+    @getter(Array)
+    get tree () { return this.#tree.nodes };
 
-    @property()
+    @getter(Array)
     get outputs () { return this.#outputs };
 
-    @property(Number)
+    @getter(Number)
     get focused () {
         return this.#wss.find(ws => ws.focused)?.id ?? 0;
     }
 
-    @property(Number)
+    @getter(Number)
     get urgent() {
         return this.#wss.find(ws => ws.urgent)?.id ?? 0;
     }
 
-    @property()
+    @getter(Array)
     get rename () {
         return this.#wss
     }
@@ -61,6 +63,7 @@ export default class Sway extends GObject.Object {
 
             const tree = await JSON.parse(conn.message(i3ipc.MessageType.GET_TREE, ""));
             this.#tree = tree;
+            this.notify("tree")
 
             switch (event.change) {
                 case "focus":

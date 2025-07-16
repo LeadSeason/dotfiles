@@ -33,17 +33,17 @@ $overlay1: #7f849c;
 $overlay2: #9399b2;
 
 /* define accent color to cooking later */
-$accentColor: $mauve;
+$accent: $yellow;
 
-$accentColor10: color.mix($accentColor, black, 10%);
-$accentColor20: color.mix($accentColor, black, 20%);
-$accentColor30: color.mix($accentColor, black, 30%);
-$accentColor40: color.mix($accentColor, black, 40%);
-$accentColor50: color.mix($accentColor, black, 50%);
-$accentColor60: color.mix($accentColor, black, 60%);
-$accentColor70: color.mix($accentColor, black, 70%);
-$accentColor80: color.mix($accentColor, black, 80%);
-$accentColor90: color.mix($accentColor, black, 90%);
+$accentColor10: color.mix($accent, black, 10%);
+$accentColor20: color.mix($accent, black, 20%);
+$accentColor30: color.mix($accent, black, 30%);
+$accentColor40: color.mix($accent, black, 40%);
+$accentColor50: color.mix($accent, black, 50%);
+$accentColor60: color.mix($accent, black, 60%);
+$accentColor70: color.mix($accent, black, 70%);
+$accentColor80: color.mix($accent, black, 80%);
+$accentColor90: color.mix($accent, black, 90%);
 
 $rosewater10: color.mix($rosewater, black, 10%);
 $rosewater20: color.mix($rosewater, black, 20%);

@@ -1,21 +1,22 @@
 @use "sass:color";
-@use "themes/flavours-colors" as theme;
+@use "themes/mocha.scss";
 @use "widgets/import.scss";
 
 * {
-	all: unset;
+	// all: unset;
 	font-family: "Symbols Nerd Font Mono", "FiraCode Nerd Font Propo";
 }
 
 // https://github.com/vinceliuice/Colloid-gtk-theme/blob/1a13048ea1bd4a6cb9b293b537afd16bf267e773/src/sass/gtk/_common-3.0.scss#L1671
+/*
 menu {
 	font-size: 20px;
 	margin: 4px;
 	padding: 4px;
-	background-color: theme.$base00;
+	background-color: theme.$base;
 	background-clip: border-box;
 	border-radius: 1rem;
-	border: 1px solid theme.$base02;
+	border: 1px solid theme.$color2;
 
 	icon {
 		font-size: 24px;
@@ -23,7 +24,7 @@ menu {
 
   	separator {
 		margin: 4px 0;
-		background-color: theme.$base02;
+		background-color: theme.$color2;
 		min-height: 1px;
 		min-height: 1px;
 	}
@@ -33,19 +34,19 @@ menu {
 		min-height: 20px;
 		min-width: 40px;
 		padding: 4px 8px;
-		color: theme.$base05;
+		color: theme.$color5;
 		border-radius: 1rem;
 
 		&:hover {
-			background-color: theme.$base02;
+			background-color: theme.$color2;
 		}
 
 		&:active {
-			background-color: theme.$base03;
+			background-color: theme.$color3;
 		}
 
 		&:disabled {
-			color: theme.$base04;
+			color: theme.$color4;
 		}
 		// Submenu indicator
 		arrow {
@@ -65,12 +66,17 @@ menu {
 	}
 }
 
+button {
+	
+}
+
 tooltip {
 	margin: 6px;
 	padding: 6px;
 	font-size: 18px;
-	background-color: theme.$base00;
+	background-color: theme.$color0;
 	background-clip: border-box;
 	border-radius: 1.2rem;
-	border: 1.6px solid theme.$base02;
+	border: 1.6px solid theme.$color2;
 }
+*/

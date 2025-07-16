@@ -4,7 +4,9 @@ import { exec, execAsync } from "astal/process"
 
 const get = (args: string) => Number(exec(`brightnessctl ${args}`))
 const screen = exec(`bash -c "ls -w1 /sys/class/backlight | head -1"`)
-const kbd = exec(`bash -c "ls -w1 /sys/class/leds | grep kbd | head -1"`)
+let kbd = exec(`bash -c "ls -w1 /sys/class/leds | grep kbd | head -1"`)
+if (!kbd)
+    kbd = exec(`bash -c "ls -w1 /sys/class/leds | head -1"`)
 
 @register({ GTypeName: "Brightness" })
 export default class Brightness extends GObject.Object {

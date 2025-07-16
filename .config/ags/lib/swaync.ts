@@ -1,5 +1,5 @@
-import GObject, { register, property } from "astal/gobject"
-import { subprocess, Variable } from "astal"
+import GObject, { getter, register } from "ags/gobject"
+import { subprocess } from "ags/process";
 
 @register({ GTypeName: "SwayNc" })
 export default class SwayNc extends GObject.Object {
@@ -17,16 +17,16 @@ export default class SwayNc extends GObject.Object {
     #visible: boolean = false;
     #inhibited: boolean = false;
 
-    @property(Number)
+    @getter(Number)
     get count (): number { return this.#count }
 
-    @property(Boolean)
+    @getter(Boolean)
     get dnd (): boolean { return this.#dnd }
 
-    @property(Boolean)
+    @getter(Boolean)
     get visible (): boolean { return this.#visible }
 
-    @property(Boolean)
+    @getter(Boolean)
     get inhibited (): boolean { return this.#inhibited }
 
 

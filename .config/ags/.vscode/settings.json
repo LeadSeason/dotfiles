@@ -17,6 +17,7 @@
         "gdkmonitor",
         "gicon",
         "gobject",
+        "Graphene",
         "halign",
         "hexpand",
         "keymode",
