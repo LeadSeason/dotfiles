@@ -1,0 +1,11 @@
+STATE_FILE="${XDG_RUNTIME_DIR:-/tmp}/sway-gaps-enabled"
+
+if [ -f "$STATE_FILE" ]; then
+    # Gaps currently enabled — disable them
+    swaymsg "gaps inner all set 0; gaps outer all set 0"
+    rm "$STATE_FILE"
+else
+    # Gaps currently disabled — enable them
+    swaymsg "gaps inner all set 10; gaps outer all set 10"
+    touch "$STATE_FILE"
+fi
