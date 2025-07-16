@@ -14,7 +14,7 @@ export default function Notify() {
     return <button
         onClicked={handleClick}
     >
-        <box>
+        <box spacing={4}>
             <revealer
                 transitionDuration={250}
                 transitionType={Gtk.RevealerTransitionType.SLIDE_RIGHT}

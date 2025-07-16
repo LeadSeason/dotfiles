@@ -6,6 +6,7 @@ import { Astal, Gtk, Gdk } from "ags/gtk4"
 import app from "ags/gtk4/app";
 import AstalApps from "gi://AstalApps"
 import Graphene from "gi://Graphene"
+import Fuse from "fuse.js";
 import { set } from "../../../../../../../usr/share/ags/js/gnim/src/util";
 
 const { TOP, BOTTOM, LEFT, RIGHT } = Astal.WindowAnchor
@@ -24,17 +25,26 @@ export default function Scratchpad() {
     })
 
     function search(text: string) {
-        setList(apps.get().filter((app, i, apps) => {
-            if (app.name.toLowerCase().match(text.toLowerCase()) !== null) {
-                return true
-            }
-
-            if (app.app_id?.toLowerCase().match(text.toLowerCase()) !== null && app.app_id !== null) {
-                return true
-            }
-
-            return false
-        }))
+        if (text.length < 1) {
+            setList(apps.get())
+            return
+        }
+        const fuse = new Fuse(apps.get(), {
+            keys: [
+                "name",
+                "app_id",
+                "window_properties.class",
+                "window_properties.instance",
+                "window_properties.title",
+                "window_properties.window_role",
+                "window_properties.window_type"
+            ],
+            threshold: 0.3,
+            ignoreLocation: true,
+            includeScore: true,
+        })
+        
+        setList(fuse.search(text).map(result => result.item))
     }
     
     function openApp(app: Node) {

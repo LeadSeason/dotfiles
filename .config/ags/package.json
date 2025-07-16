@@ -1,6 +1,7 @@
 {
     "name": "astal-shell",
     "dependencies": {
-        "ags": "*"
+        "ags": "*",
+        "fuse.js": "^7.1.0"
     }
 }
