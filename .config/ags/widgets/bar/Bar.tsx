@@ -82,7 +82,7 @@ function AudioOutput() {
         }}
       />
       <box spacing={6}>
-        <label label={createBinding(speaker, "volume").as((v) => (v * 100).toFixed(0) + "%")} />
+        <label label={createBinding(speaker, "volume").as((v: number) => (v * 100).toFixed(0) + "%")} />
         <image iconName={createBinding(speaker, "volumeIcon")} />
       </box>
       <popover>
@@ -111,41 +111,49 @@ function AudioOutput() {
 function BatteryLevel() {
   const bat = AstalBattery.get_default()
   const powerProfiles = AstalPowerProfiles.get_default()
+  
+  const batTimeConvert = (timeRemaining: number) => {{
+      let timeString = secondsToTime(timeRemaining)
+      if (timeString === "00:00:00") {
+        timeString = "Unknown time remaining"
+      }
+      if (bat.charging) {
+        timeString = "Charging...\n Time to full: " + timeString
+      } else {
+        timeString = "Discharging \n Time to empty: " + timeString
+      }
+      return timeString
+    }
+  }
 
-  const [batTime, setBatTime] = createState(secondsToTime(
+  const [batTime, setBatTime] = createState(batTimeConvert(
         (bat.charging) ? bat.timeToEmpty : bat.timeToEmpty))
 
   createBinding(bat, "timeToEmpty").subscribe(() => {
     if (!bat.get_charging()) {
-      setBatTime(secondsToTime(bat.timeToEmpty))
+      setBatTime(batTimeConvert(bat.timeToEmpty))
     }})
 
   createBinding(bat, "timeToFull").subscribe(() => {
     if (bat.get_charging()) {
-      setBatTime(secondsToTime(bat.timeToFull))
+      setBatTime(batTimeConvert(bat.timeToFull))
     }})
 
-  return <menubutton>
-    <box visible={createBinding(bat, "isPresent")}>
-      <label label={createBinding(bat, "percentage").as((v) => `${Math.floor(v * 100)}%`)} />
-      <image iconName={createBinding(bat, "iconName")} />
-    </box>
-    <box visible={createBinding(bat, "isPresent").as((v) => !v)}>
-      <image iconName={createBinding(powerProfiles, "activeProfile").as(v => `power-profile-${v}-symbolic`)} />
+  return <menubutton
+    tooltipText={batTime}
+  >
+    <box>
+      <box visible={createBinding(bat, "isPresent")}>
+        <label label={createBinding(bat, "percentage").as((v) => `${Math.floor(v * 100)}%`)} />
+        <image iconName={createBinding(bat, "iconName")} />
+      </box>
+      <box visible={createBinding(bat, "isPresent").as((v) => !v)}>
+        <image iconName={createBinding(powerProfiles, "activeProfile").as(v => `power-profile-${v}-symbolic`)} />
+      </box>
     </box>
     <popover>
       <box spacing={5} orientation={Gtk.Orientation.VERTICAL} class="battery-popover">
-        <label visible={createBinding(bat, "isPresent")} label={batTime.as((v) => {
-          if (v === "00:00:00") {
-            v = "Unknown time remaining"
-          }
-          if (bat.charging) {
-            v = "Charging... Time to full: " + v
-          } else {
-            v = "Discharging... Time to empty: " + v
-          }
-          return v
-        })} />
+        <label visible={createBinding(bat, "isPresent")} label={batTime} />
         <box spacing={5}>
           {powerProfiles.get_profiles().map((profile) => {
             console.log(profile.profile)
@@ -182,8 +190,8 @@ function DisplayBrightness() {
       brightness.screen += arg1 / 150
       return true
     }} />
-    <label label={createBinding(brightness, "screen").as((v) =>
-      `${Math.floor(v * 100)}% ${icons[Math.floor(v * 6)]}`
+    <label label={createBinding(brightness, "screen").as((v: number) =>
+      `${Math.floor(v * 100)}% ${icons[Math.floor(v * 5)]}`
       )} />
   </box>
 }
