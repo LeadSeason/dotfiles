@@ -10,15 +10,63 @@ window#AstalScratchpad {
         min-width: 600px;
         border-radius: 12px;
         padding: 10px;
+        min-height: 600px;
     }
-    button {
-        -gtk-icon-size: 2em;
+
+    entry {
+        background-color: theme.$surface0;
+        border: 2px solid transparent;
+        border-radius: 6px;
+        padding: 0.5rem;
+
+        text {
+            color: theme.$text;
+            placeholder  {
+                color: theme.$overlay1;
+            }
+        }
+
+        image {
+            margin-right: 0.5rem;
+        }
+    }
+
+	button {
+        background-color: theme.$surface0;
+		border-radius: 6px;
+		border: 2px solid transparent;
+
+        -gtk-icon-size: 2.5em;
+
         label.name {
             font-weight: bold;
             font-size: 1.1em;
         }
+
         label.description {
-            color: theme.$subtext0;
+            color: theme.$overlay1;
+        }
+
+		&:hover {
+		    border-radius: 6px;
+			background-color: theme.$surface0;
+			border: 2px solid theme.$surface2;
+		}
+
+		&:focus {
+		    border-radius: 6px;
+			background-color: theme.$surface0;
+			border: 2px solid theme.$accent;
+		}
+	}
+
+    box.not-found {
+        -gtk-icon-size: 6em;
+        padding: 1rem;
+        color: theme.$text;
+
+        label {
+            font-size: 1.2em;
         }
     }
     

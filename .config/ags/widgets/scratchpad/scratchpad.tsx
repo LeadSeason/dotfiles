@@ -1,13 +1,9 @@
 import Sway, { Node } from "../../lib/sway";
 
-import style from "./scratchpad.scss"
 import { For, createBinding, createState } from "ags"
 import { Astal, Gtk, Gdk } from "ags/gtk4"
-import app from "ags/gtk4/app";
-import AstalApps from "gi://AstalApps"
 import Graphene from "gi://Graphene"
 import Fuse from "fuse.js";
-import { set } from "../../../../../../../usr/share/ags/js/gnim/src/util";
 import { timeout } from "ags/time";
 
 const { TOP, BOTTOM, LEFT, RIGHT } = Astal.WindowAnchor
@@ -182,6 +178,7 @@ export default function Scratchpad() {
                             openApp(list.get()[0])
                         }}
                         placeholderText="Start typing to search"
+                        primaryIconName={"system-search-symbolic"}
                     />
                     <Gtk.Separator visible={list((l) => l.length > 0)} />
                     <box orientation={Gtk.Orientation.VERTICAL} spacing={6}>
@@ -190,6 +187,16 @@ export default function Scratchpad() {
                             <AppEntry app={app} />
                         )}
                         </For>
+                    </box>
+                    <box
+                        class="not-found"
+                        valign={Gtk.Align.CENTER}
+                        halign={Gtk.Align.CENTER}
+                        orientation={Gtk.Orientation.VERTICAL}
+                        visible={list((l) => l.length === 0)} 
+                    >
+                        <image iconName="system-search-symbolic" />
+                        <label label="No match found" />
                     </box>
                 </box>
             </revealer>
