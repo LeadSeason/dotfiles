@@ -1,231 +1,234 @@
-@import "colors.css";
+@import "mocha.css";
 
 * {
 	font-family: "Symbols Nerd Font Mono", "Maple mono";
-	font-feature-settings: "cv01";
+  font-feature-settings: "cv01";
 	font-size: 20px;
 	min-height: 0;
-	transition-duration: 200ms;
+	transition-duration: 500ms;
 }
 
 #waybar {
 	background: transparent;
-	color: @base05;
+	color: @text;
 }
 
 tooltip {
-	color: @base05;
-	background: @base00;
+	color: @text;
+	background: @base;
 }
 
 #custom-os_icon {
-	color: @base0E;
-	background: repeating-linear-gradient(mix(@base0E, black, 0.80), mix(@base0E, black, 0.80) .2%, mix(@base0E, black, 0.70) .5%, mix(@base0E, black, 0.80) .8%, mix(@base0E, black, 0.80) 1%);
-	box-shadow: inset 3px 4px 5px black,
-	0px -1px 3px 4px alpha(black, .5);
-	
+  color: @yellow;
+  background: repeating-linear-gradient(@yellow20, @yellow20 .2%, @yellow30 .5%, @yellow20 .8%, @yellow20 1%);
+  box-shadow: inset 3px 4px 5px @crust,
+              0px -1px 3px 4px alpha(@crust, .5);
+
 	border-radius: .6rem;
-	border: .1rem solid mix(@base0E, black, 0.60);
-	
-	padding: .4rem .7rem;
-	margin: .3rem .5rem 4px .7rem;
+	border: .1rem solid @yellow60;
+
+  padding: .4rem .7rem;
+  margin: .3rem .5rem 4px .7rem;
 }
 
 #workspaces {
-	color: @base0E;
-	background: repeating-linear-gradient(mix(@base0E, black, 0.80), mix(@base0E, black, 0.80) .2%, mix(@base0E, black, 0.70) .5%, mix(@base0E, black, 0.80) .8%, mix(@base0E, black, 0.80) 1%);
-	box-shadow: inset 3px 4px 5px black,
-	0px -1px 3px 4px alpha(black, .5);
-	
+  color: @yellow;
+  background: @yellow20;
+  background: repeating-linear-gradient(@yellow20, @yellow20 .2%, @yellow30 .5%, @yellow20 .8%, @yellow20 1%);
+  box-shadow: inset 3px 4px 5px @crust,
+              0px -1px 3px 4px alpha(@crust, .5);
+
 	border-radius: .6rem;
-	border: .1rem solid mix(@base0E, black, 0.60);
-	
-	padding: 0rem;
-	margin: .3rem .5rem 4px;
+	border: .1rem solid @yellow60;
+
+  padding: 0rem;
+  margin: .3rem .5rem 4px;
 }
 
 #workspaces button {
-	color: mix(@base0E, black,  0.40);
-	margin: 0rem;
-	padding: .4rem .5rem;
+  color: @yellow70;
+  margin: 0rem;
+  padding: .4rem .5rem;
 	transition-duration: 200ms;
 }
 
 #workspaces button.focused {
 	transition-duration: 200ms;
-	color: @base0E;
+  color: @yellow;
 }
 
 #clock {
-	color: @base0E;
-	background: repeating-linear-gradient(mix(@base0E, black, 0.80), mix(@base0E, black, 0.80) .2%, mix(@base0E, black, 0.70) .5%, mix(@base0E, black, 0.80) .8%, mix(@base0E, black, 0.80) 1%);
-	box-shadow: inset 3px 4px 5px black,
-	0px -1px 3px 4px alpha(black, .5);
-	
+  color: @yellow;
+  background: @yellow20;
+  background: repeating-linear-gradient(@yellow20, @yellow20 .2%, @yellow30 .5%, @yellow20 .8%, @yellow20 1%);
+  box-shadow: inset 3px 4px 5px @crust,
+              0px -1px 3px 4px alpha(@crust, .5);
+
 	border-radius: .6rem;
-	border: .1rem solid mix(@base0E, black, 0.60);
-	
-	padding: .4rem .7rem;
-	margin: .3rem .5rem .3rem;
-	
+	border: .1rem solid @yellow60;
+
+  padding: .4rem .7rem;
+  margin: .3rem .5rem .3rem;
+
 }
 
 .modules-right {
-	color: @base0E;
-	background: repeating-linear-gradient(mix(@base0E, black, 0.80), mix(@base0E, black, 0.80) .2%, mix(@base0E, black, 0.70) .5%, mix(@base0E, black, 0.80) .8%, mix(@base0E, black, 0.80) 1%);
-	box-shadow: inset 3px 4px 5px black,
-	0px -1px 3px 4px alpha(black, .5);
-	
+  color: @yellow;
+  background: @yellow20;
+  background: repeating-linear-gradient(@yellow20, @yellow20 .2%, @yellow30 .5%, @yellow20 .8%, @yellow20 1%);
+  box-shadow: inset 3px 4px 5px @crust,
+              0px -1px 3px 4px alpha(@crust, .5);
+
 	border-radius: .6rem;
-	border: .1rem solid mix(@base0E, black, 0.60);
-	
-	margin: .3rem .7rem 4px .5rem;
+	border: .1rem solid @yellow60;
+
+  margin: .3rem .7rem 4px .5rem;
 }
 
 #idle_inhibitor {
-	color: @base0F;
-	padding: .4rem .7rem;
+  color: @rosewater;
+  padding: .4rem .7rem;
 }
 
 #backlight {
-	color: @base0E;
-	padding: .4rem .7rem;
+  color: @flamingo;
+  padding: .4rem .7rem;
 }
 
 #pulseaudio {
-	color: @base0D;
-	padding: .4rem .7rem;
+  color: @red;
+  padding: .4rem .7rem;
 }
 
 #battery {
-	color: @base0C;
-	padding: .4rem .7rem;
+  color: @maroon;
+  padding: .4rem .7rem;
 }
 
 #network {
-	color: @base0B;
-	padding: .4rem .7rem;
+	color: @peach;
+  padding: .4rem .7rem;
 }
 
 #cpu {
-	color: @base0A;
-	padding: .4rem .7rem;
+	color: @green;
+  padding: .4rem .7rem;
 }
 
 #memory {
-	color: @base09;
-	padding: .4rem .7rem;
+	color: @teal;
+  padding: .4rem .7rem;
 }
 
 #temperature {
-	color: @base08;
-	padding: .4rem .7rem;
+	color: @sky;
+  padding: .4rem .7rem;
 }
 
 #custom-archupdates {
-	color: @base07;
-	padding: .4rem .7rem;
+	color: @sapphire;
+  padding: .4rem .7rem;
 }
 
 #tray {
-	color: @base06;
-	padding: .4rem .7rem;
+	color: @lavender;
+  padding: .4rem .7rem;
 }
 
 #custom-notification {
-	color: @base08;
-	padding: .4rem .7rem;
+	color: @red;
+  padding: .4rem .7rem;
 }
 /*
 #pulseaudio {
-background-color: @base;
-color: @red;
-border-radius: 0rem;
-margin: 5px 0px 5px 0px;
-padding: 5px 1rem;
-border-style: solid none solid none;
-border-color: @surface0;
-border-width: 2px;
+	background-color: @base;
+	color: @red;
+	border-radius: 0rem;
+	margin: 5px 0px 5px 0px;
+	padding: 5px 1rem;
+	border-style: solid none solid none;
+	border-color: @surface0;
+	border-width: 2px;
 }
 #battery {
-background-color: @base;
-color: @maroon;
-border-radius: 0rem;
-margin: 5px 0px 5px 0px;
-padding: 5px 1rem;
-border-style: solid none solid none;
-border-color: @surface0;
-border-width: 2px;
+	background-color: @base;
+	color: @maroon;
+	border-radius: 0rem;
+	margin: 5px 0px 5px 0px;
+	padding: 5px 1rem;
+	border-style: solid none solid none;
+	border-color: @surface0;
+	border-width: 2px;
 }
 #network {
-background-color: @base;
-color: @peach;
-border-radius: 0rem;
-margin: 5px 0px 5px 0px;
-padding: 5px 1rem;
-border-style: solid none solid none;
-border-color: @surface0;
-border-width: 2px;
+	background-color: @base;
+	color: @peach;
+	border-radius: 0rem;
+	margin: 5px 0px 5px 0px;
+	padding: 5px 1rem;
+	border-style: solid none solid none;
+	border-color: @surface0;
+	border-width: 2px;
 }
 #cpu {
-background-color: @base;
-color: @green;
-border-radius: 0rem;
-margin: 5px 0px 5px 0px;
-padding: 5px 1rem;
-border-style: solid none solid none;
-border-color: @surface0;
-border-width: 2px;
+	background-color: @base;
+	color: @green;
+	border-radius: 0rem;
+	margin: 5px 0px 5px 0px;
+	padding: 5px 1rem;
+	border-style: solid none solid none;
+	border-color: @surface0;
+	border-width: 2px;
 }
 #memory {
-background-color: @base;
-color: @teal;
-border-radius: 0rem;
-margin: 5px 0px 5px 0px;
-padding: 5px 1rem;
-border-style: solid none solid none;
-border-color: @surface0;
-border-width: 2px;
+	background-color: @base;
+	color: @teal;
+	border-radius: 0rem;
+	margin: 5px 0px 5px 0px;
+	padding: 5px 1rem;
+	border-style: solid none solid none;
+	border-color: @surface0;
+	border-width: 2px;
 }
 #temperature {
-background-color: @base;
-color: @sky;
-border-radius: 0rem;
-margin: 5px 0px 5px 0px;
-padding: 5px 1rem;
-border-style: solid none solid none;
-border-color: @surface0;
-border-width: 2px;
+	background-color: @base;
+	color: @sky;
+	border-radius: 0rem;
+	margin: 5px 0px 5px 0px;
+	padding: 5px 1rem;
+	border-style: solid none solid none;
+	border-color: @surface0;
+	border-width: 2px;
 }
 #custom-archupdates {
-background-color: @base;
-color: @sapphire;
-border-radius: 0rem 1rem 1rem 0rem;
-margin: 5px 0px 5px 0px;
-padding: 5px 1rem;
-border-style: solid solid solid none;
-border-color: @surface0;
-border-width: 2px;
+	background-color: @base;
+	color: @sapphire;
+	border-radius: 0rem 1rem 1rem 0rem;
+	margin: 5px 0px 5px 0px;
+	padding: 5px 1rem;
+	border-style: solid solid solid none;
+	border-color: @surface0;
+	border-width: 2px;
 }
 #tray {
-background-color: @base;
-color: @lavender;
-border-radius: 1rem;
-padding: 5px .7rem 5px .7rem;
-margin: 5px 0rem 5px 1rem;
-border: 2px solid @surface0;
+	background-color: @base;
+	color: @lavender;
+	border-radius: 1rem;
+	padding: 5px .7rem 5px .7rem;
+	margin: 5px 0rem 5px 1rem;
+	border: 2px solid @surface0;
 }
 #custom-notification {
-background-color: @base;
-color: @lavender;
-border-radius: 1rem;
-padding: 5px .7rem 5px .7rem;
-margin: 5px 1rem 5px 1rem;
-border: 2px solid @surface0;
+	background-color: @base;
+	color: @lavender;
+	border-radius: 1rem;
+	padding: 5px .7rem 5px .7rem;
+	margin: 5px 1rem 5px 1rem;
+	border: 2px solid @surface0;
 }
 
 tooltip {
-color: @base05;
-background: @base;
+	color: @text;
+	background: @base;
 }
 */

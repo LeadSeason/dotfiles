@@ -56,7 +56,9 @@ set $WOBSOCK $XDG_RUNTIME_DIR/wob.sock
 
 # Color scheme
 include ~/.config/sway/colors
+include ~/.config/sway/outputs
 include ~/.config/sway/config.d/*
+include /etc/sway/config.d/*
 
 # handled by Astal
 
@@ -72,14 +74,14 @@ gaps outer 10
 # title_align left 
 
 # Colors
-# target                    title      bg         text       indicator  border
-client.focused              $base0E    $base0E    $base00    $base0A    $base0E
-client.focused_inactive     $base0E    $base00    $base05    $base03    $base02
-client.focused_tab_title    $base0E    $base00    $base05    $base03    $base02
-client.unfocused            $base00    $base00    $base05    $base03    $base02
-client.urgent               $base08    $base00    $base08    $base08    $base08
-client.placeholder          $base04    $base00    $base05    $base03    $base04
-client.background           $base01
+# target                 title      bg      text    indicator   border
+client.focused           $yellow    $yellow $base   $blue       $yellow
+client.focused_inactive  $yellow    $base   $text   $surface1   $surface0
+client.focused_tab_title $yellow    $base   $text   $surface1   $surface0
+client.unfocused         $base      $base   $text   $surface1   $surface0
+client.urgent            $red       $base   $red    $red        $red
+client.placeholder       $overlay0  $base   $text   $surface1   $overlay0
+client.background        $crust
 
 exec_always gsettings set org.gnome.desktop.interface cursor-size 12
 exec_always gsettings set org.cinnamon.desktop.interface cursor-size 12
@@ -87,6 +89,8 @@ exec_always gsettings set org.gnome.desktop.interface monospace-font-name 'FiraC
 exec_always gsettings set org.gnome.desktop.interface document-font-name 'FiraCode Nerd Font Propo 12'
 exec_always gsettings set org.gnome.desktop.interface font-name 'FiraCode Nerd Font Propo 12'
 exec_always gsettings set org.gnome.desktop.interface gtk-theme catppuccin-mocha-yellow-standard+default
+
+exec_always xrandr --output XWAYLAND0 --primary
 
 # Sway-FX
 # Uncomment if running Sway-FX
@@ -144,7 +148,7 @@ exec wl-paste -t text --watch clipman store --no-persist
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec /usr/lib/kdeconnectd
 
-exec ags run
+exec ags run --gtk 3
 exec swww-daemon
 exec swaync
 exec sworkstyle >> ~/.cache/sworkstyle.log 2>&1
@@ -168,12 +172,12 @@ exec nextcloud --background
 exec protonmail-bridge -n 
 exec playerctld daemon
 
-exec /usr/lib/xdg-desktop-portal-wlr
-exec /usr/lib/xdg-desktop-portal
-exec /usr/lib/xdg-desktop-portal-gtk
+# exec /usr/lib/xdg-desktop-portal-wlr
+# exec /usr/lib/xdg-desktop-portal
+# exec /usr/lib/xdg-desktop-portal-gtk
 
-exec systemctl --user import-environment XDG_CURRENT_DESKTOP XDG_SESSION_TYPE DISPLAY WAYLAND_DISPLAY SWAYSOCK SSH_AUTH_SOCK GNOME_KEYRING_CONTROL
-exec dbus-update-activation-environment --systemd XDG_CURRENT_DESKTOP XDG_SESSION_TYPE DISPLAY WAYLAND_DISPLAY SWAYSOCK SSH_AUTH_SOCK GNOME_KEYRING_CONTROL
+# exec systemctl --user import-environment XDG_CURRENT_DESKTOP XDG_SESSION_TYPE DISPLAY WAYLAND_DISPLAY SWAYSOCK SSH_AUTH_SOCK GNOME_KEYRING_CONTROL
+# exec dbus-update-activation-environment --systemd XDG_CURRENT_DESKTOP XDG_SESSION_TYPE DISPLAY WAYLAND_DISPLAY SWAYSOCK SSH_AUTH_SOCK GNOME_KEYRING_CONTROL
 
 
 #
@@ -238,12 +242,14 @@ bindsym {
     $mod+p exec "sway-floating kitty -e 'ptpython --vi'"
 
     # start screenshot
-    $mod+c exec bash -c 'grim -g "$(slurp)" - | swappy -f - -o - | ~/.local/bin/timhostuploader'
-    # $mod+c exec flameshot gui -r | ~/.local/bin/timhostuploader
-    $mod+Shift+c exec flameshot gui -r | wl-copy
+    # $mod+c exec bash -c 'grim -g "$(slurp)" - | swappy -f - -o - | ~/.local/bin/timhostuploader'
+    $mod+c exec flameshot gui -r | ~/.local/bin/timhostuploader
+    $mod+Shift+c exec /usr/share/sway-contrib/grimshot save window - | ~/.local/bin/timhostuploader
 
     # lock
     $mod+r exec "swaylock --grace 3 & "
+
+    $mod+Shift+i exec "$HOME/.local/bin/sway-toggle-gaps"
 
     # Brightness controls
     XF86MonBrightnessUp exec brightnessctl set 10%+
@@ -269,7 +275,7 @@ bindsym {
     # Start a audio control program
     $mod+Shift+e exec pavucontrol
 
-    # Use Mouse+$mod to drag floating windows to their wanted position
+    $mod+section exec hyprmag
 
     # kill focused window
     $mod+Shift+q kill
@@ -395,7 +401,7 @@ bindsym {
 
 # Allow the use of media keys while locked.
 bindsym --locked {
-    # Kbd brithness for Lenovo laptop
+    # Kbd brightness for Lenovo laptop
     $modalt+space exec $HOME/.local/bin/kbd_brightness_toggle
 
     # Media player controls
@@ -404,7 +410,7 @@ bindsym --locked {
     XF86AudioNext exec playerctl next; exec ags request media --instance astal
     XF86AudioPrev exec playerctl previous; exec ags request media --instance astal
 
-    # Alternatively Useing $mod + F-keys
+    # Alternatively Using $mod + F-keys
     $mod+F1 exec playerctl previous; exec ags request media --instance astal
     $mod+F2 exec ags request media --instance astal
     $mod+F3 exec playerctl play-pause; exec ags request media --instance astal
@@ -415,8 +421,13 @@ bindsym --locked {
     XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
     Pause exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
-    XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +1% && pactl get-sink-volume @DEFAULT_SINK@ | head -n 1 | awk '{print substr($5, 1, length($5)-1)}' > $WOBSOCK
-    XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -1% && pactl get-sink-volume @DEFAULT_SINK@ | head -n 1 | awk '{print substr($5, 1, length($5)-1)}' > $WOBSOCK
+    XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +1%
+    XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -1%
+
+    $modalt+F1 exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+    $modalt+F2 exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+    $modalt+F3 exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+    $modalt+F4 exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
     # Manaul way to force displays to on if they are dimmed
     $mod+F12 output * dpms on; exec "brightnessctl set 100%"

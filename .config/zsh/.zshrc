@@ -79,13 +79,6 @@ function current() {
     fi
 }
 
-# Switch scheme type
-if [ "$(current)" = "dark" ]; then
-    source $HOME/.config/zsh/zsh-syntax-highlighting/themes/catppuccin_mocha-zsh-syntax-highlighting.zsh
-else
-    source $HOME/.config/zsh/zsh-syntax-highlighting/themes/catppuccin_latte-zsh-syntax-highlighting.zsh
-fi
-
 # alias defenitions
 alias cls=clear
 alias diff="diff --color"
@@ -103,6 +96,7 @@ alias ip="ip -color=auto"
 alias la="lsd -Flha --color=auto"
 alias ll="lsd -Flh --color=auto"
 alias ls="lsd -F --color=auto"
+alias lst="lsd -F --color=auto --tree"
 alias lynx="lynx -accept_all_cookies"
 alias make="make -j24"
 alias mtr="mtr --aslookup --show-ips"
@@ -170,14 +164,7 @@ backward-delete-word-custom() {
 zle -N backward-delete-word-custom
 
 TRAPUSR1() {
-    # Reload theme on command
-    if [[ -o INTERACTIVE ]]; then
-        if [ "$(current)" = "dark" ]; then
-            source $HOME/.config/zsh/zsh-syntax-highlighting/themes/catppuccin_mocha-zsh-syntax-highlighting.zsh
-        else
-            source $HOME/.config/zsh/zsh-syntax-highlighting/themes/catppuccin_latte-zsh-syntax-highlighting.zsh
-        fi
-    fi
+    # On USR1 signal.
 }
 
 # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
