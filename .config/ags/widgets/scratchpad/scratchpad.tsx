@@ -8,21 +8,30 @@ import AstalApps from "gi://AstalApps"
 import Graphene from "gi://Graphene"
 import Fuse from "fuse.js";
 import { set } from "../../../../../../../usr/share/ags/js/gnim/src/util";
+import { timeout } from "ags/time";
 
 const { TOP, BOTTOM, LEFT, RIGHT } = Astal.WindowAnchor
 
 export default function Scratchpad() {
     let contentBox: Gtk.Box
     let searchEntry: Gtk.Entry
+    let revealer: Gtk.Revealer
     let win: Astal.Window
 
     const sway = Sway.get_default()
-    
+
     const [apps, setApps] = createState((sway.tree.find(i => i.name === "__i3")?.nodes.find(i => i.name === "__i3_scratch")?.floating_nodes) as Node[])
     const [list, setList] = createState((sway.tree.find(i => i.name === "__i3")?.nodes.find(i => i.name === "__i3_scratch")?.floating_nodes) as Node[])
     createBinding(sway, "tree").subscribe(() => {
         setApps(sway.tree.find(i => i.name === "__i3")?.nodes.find(i => i.name === "__i3_scratch")?.floating_nodes as Node[])
     })
+
+    function hide() {
+        revealer.reveal_child = false
+        timeout(50, () => {
+            win.hide() 
+        })
+    }
 
     function search(text: string) {
         if (text.length < 1) {
@@ -43,17 +52,17 @@ export default function Scratchpad() {
             ignoreLocation: true,
             includeScore: true,
         })
-        
+
         setList(fuse.search(text).map(result => result.item))
     }
-    
+
     function openApp(app: Node) {
         sway.message_async(`[con_id=${app.id}] scratchpad show`)
-        win.hide()
+        hide()
         return
 
     }
-    
+
     // close on ESC
     // handle alt + number key
     function onKey(
@@ -63,18 +72,18 @@ export default function Scratchpad() {
         mod: number,
     ) {
         if (keyval === Gdk.KEY_Escape) {
-            win.hide()
+            hide()
             return
         }
     }
-    
+
     // close on click away
     function onClick(_e: Gtk.GestureClick, _: number, x: number, y: number) {
         const [, rect] = contentBox.compute_bounds(win)
         const position = new Graphene.Point({ x, y })
-        
+
         if (!rect.contains_point(position)) {
-            win.hide()
+            hide()
             return
         }
     }
@@ -131,7 +140,7 @@ export default function Scratchpad() {
         </button>
     }
 
-    
+
     return <window
             $={(ref) => (win = ref)}
             name="AstalScratchpad"
@@ -144,6 +153,7 @@ export default function Scratchpad() {
                 if (visible) {
                     setList(apps.get())
                     searchEntry.grab_focus()
+                    revealer.reveal_child = true
                 }
                 else {
                     searchEntry.set_text("")
@@ -155,30 +165,34 @@ export default function Scratchpad() {
         >
             <Gtk.EventControllerKey onKeyPressed={onKey} />
             <Gtk.GestureClick onPressed={onClick} />
-            <box
-                $={(ref) => (contentBox = ref)}
-                name="launcher-content"
-                valign={Gtk.Align.CENTER}
-                halign={Gtk.Align.CENTER}
-                orientation={Gtk.Orientation.VERTICAL}
+            <revealer
+                $={(ref) => (revealer = ref)}
             >
-                <entry
-                    $={(ref) => (searchEntry = ref)}
-                    onNotifyText={({ text }) => search(text)}
-                    onActivate={() => {
-                        openApp(list.get()[0])
-                    }}
-                    placeholderText="Start typing to search"
-                />
-                <Gtk.Separator visible={list((l) => l.length > 0)} />
-                <box orientation={Gtk.Orientation.VERTICAL} spacing={6}>
-                    <For each={list}>
-                    {(app, index) => (
-                        <AppEntry app={app} />
-                    )}
-                    </For>
+                <box
+                    $={(ref) => (contentBox = ref)}
+                    name="launcher-content"
+                    valign={Gtk.Align.CENTER}
+                    halign={Gtk.Align.CENTER}
+                    orientation={Gtk.Orientation.VERTICAL}
+                >
+                    <entry
+                        $={(ref) => (searchEntry = ref)}
+                        onNotifyText={({ text }) => search(text)}
+                        onActivate={() => {
+                            openApp(list.get()[0])
+                        }}
+                        placeholderText="Start typing to search"
+                    />
+                    <Gtk.Separator visible={list((l) => l.length > 0)} />
+                    <box orientation={Gtk.Orientation.VERTICAL} spacing={6}>
+                        <For each={list}>
+                        {(app, index) => (
+                            <AppEntry app={app} />
+                        )}
+                        </For>
+                    </box>
                 </box>
-            </box>
+            </revealer>
         </window>
 }
 /*

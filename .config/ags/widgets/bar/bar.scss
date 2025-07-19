@@ -13,6 +13,7 @@ window#AstalBar {
   }
 
   .tray {
+    -gtk-icon-size: 1em;
     button {
       all: unset;
       border-radius: 8px;
@@ -23,13 +24,10 @@ window#AstalBar {
   }
 
   button {
-    all: unset;
     border-radius: 8px;
     margin: 2px;
     min-height: 0;
     padding: 4px 8px;
-    
-    
   }
 
   .Badge {
@@ -42,5 +40,29 @@ window#AstalBar {
   .focused {
     color: theme.$accent;
     background-color: theme.$surface0;
+  }
+  
+  popover {
+    .background {
+      background-color: color.mix(theme.$mantle, transparent, 80%);
+      border-radius: 8px;
+      border: 1px solid color.mix(theme.$surface0, transparent, 80%);
+    }
+  }
+  .battery-popover {
+    
+    label {
+      color: theme.$text;
+      font-size: 14px;
+    }
+    
+    image {
+      width: 24px;
+      height: 24px;
+    }
+    
+    box {
+      margin-bottom: 10px;
+    }
   }
 }

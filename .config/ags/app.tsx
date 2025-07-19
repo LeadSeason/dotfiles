@@ -8,21 +8,22 @@ import { For, createBinding } from "ags";
 
 import Bar from "./widgets/bar/Bar";
 import Scratchpad from "./widgets/scratchpad/scratchpad";
+import { idleDim, idleDimReturn } from "./tools/powerManagement";
 
 const cssPath = `${GLib.get_user_cache_dir()}/astal/astal.css`
 
 let scratchpad:  Gtk.Window
 
 function main() {
-  const monitors = createBinding(app, "monitors")
-  scratchpad = Scratchpad() as Gtk.Window
+    const monitors = createBinding(app, "monitors")
+    scratchpad = Scratchpad() as Gtk.Window
     app.add_window(scratchpad)
 
-  return (
-    <For each={monitors} cleanup={(win) => (win as Gtk.Window).hide()}>
-      {(monitor) => <Bar gdkmonitor={monitor} />}
-    </For>
-  )
+    return (
+        <For each={monitors} cleanup={(win) => (win as Gtk.Window).hide()}>
+            {(monitor) => <Bar gdkmonitor={monitor} />}
+        </For>
+    )
 }
 
 function requestHandler(request: string, res: (response: string) => void) {
@@ -67,11 +68,6 @@ function requestHandler(request: string, res: (response: string) => void) {
             scratchpad.present()
             return res("Scratchpad: Launched")
         
-        /*
-        case "dropdown":
-            dropdown()
-            return res("Dropdown: Launched")
-
         case "dim":
             idleDim()
             return res("dimmed")
@@ -80,7 +76,6 @@ function requestHandler(request: string, res: (response: string) => void) {
             idleDimReturn()
             return res("undid dim")
 
-        */
         default:
             return res(`Astal Error: unknown command "${request}"`)
     }
@@ -91,5 +86,5 @@ exec(`sass ./style.scss ${cssPath}`)
 app.start({
     requestHandler,
     css: cssPath,
-    main: main
+    main: main,
 })

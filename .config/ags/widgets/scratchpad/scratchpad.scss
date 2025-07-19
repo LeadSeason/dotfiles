@@ -2,7 +2,6 @@
 @use "sass:color";
 
 window#AstalScratchpad {
-    background: color.mix(black, transparent, 20%);
     color: theme.$text;
     
     box#launcher-content {

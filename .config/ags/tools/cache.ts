@@ -1,6 +1,6 @@
 import GLib from "gi://GLib";
-import { readFile, readFileAsync, writeFile, writeFileAsync } from "astal/file";
-import GObject, { register, property } from "astal/gobject"
+import { readFile, readFileAsync, writeFile, writeFileAsync } from "ags/file";
+import GObject, { register, property, getter } from "ags/gobject"
 
 const cacheFile = `${GLib.get_user_cache_dir()}/astal/astalcache.json`
 
@@ -67,7 +67,6 @@ export default class Cache extends GObject.Object {
 
     #cache: cacheType = getCacheData();
 
-    @property(Cache)
     get data(): cacheType {
         return this.#cache;
     }

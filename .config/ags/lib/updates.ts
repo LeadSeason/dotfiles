@@ -1,5 +1,5 @@
-import GObject, { register, property } from "astal/gobject";
-import { monitorFile, readFileAsync } from "astal/file";
+import GObject, { register, getter } from "ags/gobject";
+import { monitorFile, readFileAsync } from "ags/file";
 
 
 @register({ GTypeName: "ArchUpdates" })
@@ -17,10 +17,10 @@ export default class ArchUpdates extends GObject.Object {
     // Cannot have Uppercase letter, this.notify wont work if it has uppercase letters
     #updatesnum: number = 0;
 
-    @property(String)
+    @getter(String)
     get updates (): string { return this.#updates }
 
-    @property(Number)
+    @getter(Number)
     get updatesnum (): number { return this.#updatesnum }
 
     constructor() {

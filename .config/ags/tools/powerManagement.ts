@@ -3,14 +3,15 @@ import Brightness from "../lib/brightness"
 import Cache from "./cache"
 import PowerProfiles from "gi://AstalPowerProfiles"
 import { secondsToTime } from "./utils"
-import { bind, execAsync, Variable } from "astal"
+import { createBinding, createState } from "ags"
+import { execAsync } from "ags/process"
 
 const bat = Battery.get_default()
 const brightness = Brightness.get_default()
 const cache = Cache.get_default()
 const power = PowerProfiles.get_default()
 
-const currentState = Variable(bat.charging)
+const [currentState, setCurrentState] = createState(bat.charging)
 
 
 function populateDefaultData() {
@@ -119,9 +120,10 @@ export function idleDimReturn() {
 export default async function powerManagement() {
     populateDefaultData()
 
-    bind(bat, "charging").subscribe((v) => {
+    createBinding(bat, "charging").subscribe(() => {
+        let v = bat.charging
         if (v !== currentState.get()) {
-            currentState.set(v)
+            setCurrentState(v)
             if (v) {
                 onAc()
             } else {
@@ -129,7 +131,8 @@ export default async function powerManagement() {
             }
         }
     })
-    bind(bat, "percentage").subscribe((v) => {
+    createBinding(bat, "percentage").subscribe(() => {
+        let v = bat.percentage
         if (!currentState.get()) {
             if (v === .20) {
                 execAsync(`notify-send -u normal -i battery-level-20-symbolic "Battery at ${v * 100}%" "Battery will last for ${secondsToTime(bat.get_time_to_empty())}"`)
