@@ -1,3 +1,4 @@
 node_modules/
 @girs/
+widgets-old/
 package-lock.json

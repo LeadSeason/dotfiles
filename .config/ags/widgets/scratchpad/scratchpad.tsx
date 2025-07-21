@@ -22,13 +22,6 @@ export default function Scratchpad() {
         setApps(sway.tree.find(i => i.name === "__i3")?.nodes.find(i => i.name === "__i3_scratch")?.floating_nodes as Node[])
     })
 
-    function hide() {
-        revealer.reveal_child = false
-        timeout(50, () => {
-            win.hide() 
-        })
-    }
-
     function search(text: string) {
         if (text.length < 1) {
             setList(apps.get())
@@ -57,6 +50,13 @@ export default function Scratchpad() {
         hide()
         return
 
+    }
+
+    function hide() {
+        revealer.reveal_child = false
+        timeout(50, () => {
+            win.hide() 
+        })
     }
 
     // close on ESC

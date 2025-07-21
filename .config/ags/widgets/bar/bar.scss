@@ -1,68 +1,106 @@
 @use "../../themes/mocha.scss" as theme;
 @use "sass:color";
 
+/**
+ * @TODO bar.scss
+ * Add styles for sliders
+ */
+
 window#AstalBar {
-  background: transparent;
-  color: theme.$text;
-  font-size: 20px;
-  font-weight: normal;
+    background: transparent;
+    color: theme.$text;
+    font-size: 20px;
+    font-weight: normal;
 
-  > box {
-    border-bottom: 2px solid color.mix(theme.$surface0, transparent, 80%);
-    background: color.mix(theme.$mantle, transparent, 80%);
-  }
+    > box {
+        border-bottom: theme.$surface0;
+        background: theme.$mantle;
+    }
 
-  .tray {
-    -gtk-icon-size: 1em;
+    .tray {
+        -gtk-icon-size: 1em;
+        padding: 0px 10px;
+        button {
+            padding: 0px 2px;
+        }
+    }
+
     button {
-      all: unset;
-      border-radius: 8px;
-      margin: 2px;
-      min-height: 0;
-      padding: 2px 0px;
-    }
-  }
+        border-radius: 8px;
+        margin: 2px;
+        min-height: 0;
 
-  button {
-    border-radius: 8px;
-    margin: 2px;
-    min-height: 0;
-    padding: 4px 8px;
-  }
+        // Padding is added by border, So if all values are basically +2px
+        padding: 0px 8px;
+        border: 2px solid transparent;
 
-  .Badge {
-    padding: 1px 4px;
-    border-radius: 14px;
-    color: theme.$crust;
-    background-color: theme.$red;
-  }
-  
-  .focused {
-    color: theme.$accent;
-    background-color: theme.$surface0;
-  }
-  
-  popover {
-    .background {
-      background-color: color.mix(theme.$mantle, transparent, 80%);
-      border-radius: 8px;
-      border: 1px solid color.mix(theme.$surface0, transparent, 80%);
+        border-radius: 6px;
+
+        &:hover {
+            background-color: theme.$surface0;
+            border: 2px solid theme.$surface2;
+        }
     }
-  }
-  .battery-popover {
-    
-    label {
-      color: theme.$text;
-      font-size: 14px;
+
+    .Badge {
+        padding: 1px 4px;
+        border-radius: 14px;
+        color: theme.$crust;
+        background-color: theme.$red;
     }
-    
-    image {
-      width: 24px;
-      height: 24px;
+
+    .focused {
+        color: theme.$accent;
+        background-color: theme.$surface0;
     }
-    
-    box {
-      margin-bottom: 10px;
+
+    .muted {
+        color: theme.$text;
+        opacity: 0.35;
     }
-  }
+
+    // GTK4 slider
+    scale {
+        padding: .2em .6em;
+        trough {
+            border-radius: 7px;
+            border: 1px solid theme.$surface1;
+            background-color: theme.$surface0;
+            highlight {
+                background-color: theme.$text;
+                border-radius: 7px;
+            }
+            slider {
+                background-color: theme.$accent;
+                border-radius: 2em;
+                min-height: 1em;
+                min-width: 1em;
+                margin: -.2em;
+            }
+        }
+    }
+
+    popover {
+        background-color: theme.$base;
+        border-radius: 10px;
+        padding: 0px;
+        box-shadow: 0 4px 12px theme.$overlay0;
+        border: 1px solid theme.$surface1;
+
+        popover label {
+            color: theme.$text;
+        }
+    }
+
+    .battery-popover {
+
+        label {
+            color: theme.$text;
+            font-size: 14px;
+        }
+
+        box {
+            margin-bottom: 10px;
+        }
+    }
 }
