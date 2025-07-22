@@ -8,6 +8,9 @@
 [ ] Tooltips  
     [ ] Network widget, Show ipv4, ipv6 upstreams and both gateways.  
 
+[ ] Handle Sway Toggle gaps
+    [ ] Also switch off shadows
+
 [ ] VPN module show if vpn enabled.
 
 ### V3 Rewrite
