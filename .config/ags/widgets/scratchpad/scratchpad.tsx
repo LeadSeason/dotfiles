@@ -110,8 +110,8 @@ export default function Scratchpad() {
             // Wayland app
             let elements = [
                 app?.app_id,
-                app?.name.split(" ")[0],
-                app?.name
+                (app.name != null) ? app.name.split(" ")[0] : "",
+                (app.name != null) ? app.name : ""
             ]
             elements.forEach(element => {
                 if (new Gtk.IconTheme().lookup_icon((element != null) ? element : "", null, 48, 1, null, null).get_icon_name() !== "image-missing") {
