@@ -160,13 +160,13 @@ exec blueman-applet
 exec swayidle \
 	timeout 240 "astal dim" \
     resume "astal undo dim" \
-	timeout 300 "pgrep swaylock || swaylock --grace 3 --fade-in 3" \
+	timeout 300 "pgrep --exact swaylock || swaylock --grace 3 --fade-in 3" \
     timeout 420 'swaymsg "output * dpms off"' \
     resume 'swaymsg "output * dpms on" & sleep 10; ags run'
 
 # Use -w so desktops arent visible after unsleeping
 exec swayidle -w \
-	before-sleep "pgrep swaylock || swaylock" \
+	before-sleep "pgrep --exact swaylock || swaylock" \
 
 exec nextcloud --background
 exec protonmail-bridge -n 
@@ -259,18 +259,18 @@ bindsym {
     $modalt+i exec astal -I
 
     # start a program launcher (rofi)
-    $mod+d exec pgrep rofi || rofi -I -show drun
+    $mod+d exec pgrep --exact rofi || rofi -I -show drun
     # $mod+d exec ags request "launcher" --instance astal
 
-    $mod+Shift+d exec pgrep rofi || rofi -I -show run
-    $mod+Shift+v exec pgrep rofi || clipman pick -t rofi
+    $mod+Shift+d exec pgrep --exact rofi || rofi -I -show run
+    $mod+Shift+v exec pgrep --exact rofi || clipman pick -t rofi
 
     # a rofi tool program
-    $mod+x exec pgrep rofi || rofi-bluetooth
-    $mod+period exec pgrep rofi || rofi -show emoji
-    # $mod+ctrl+Delete exec pgrep rofi || /home/leadseason/.config/rofi/powermenu.sh
-    $mod+Shift+w exec pgrep rofi || networkmanager_dmenu
-    $mod+Shift+s exec pgrep rofi || rofi -show ssh
+    $mod+x exec pgrep --exact rofi || rofi-bluetooth
+    $mod+period exec pgrep --exact rofi || rofi -show emoji
+    # $mod+ctrl+Delete exec pgrep --exact rofi || /home/leadseason/.config/rofi/powermenu.sh
+    $mod+Shift+w exec pgrep --exact rofi || networkmanager_dmenu
+    $mod+Shift+s exec pgrep --exact rofi || rofi -show ssh
 
     # Start a audio control program
     $mod+Shift+e exec pavucontrol
