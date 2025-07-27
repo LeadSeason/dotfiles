@@ -19,7 +19,7 @@ set $modalt Mod4
 # set $term footclient
 set $term kitty -1
 set $file nemo
-set $browser firefox-nightly
+set $browser firefox-nightly || firefox
 set $WOBSOCK $XDG_RUNTIME_DIR/wob.sock
 
 # xwayland disable
