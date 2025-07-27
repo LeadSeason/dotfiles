@@ -9,6 +9,7 @@ import Bar from "./widgets/bar/Bar";
 import Scratchpad from "./widgets/scratchpad/scratchpad";
 
 import OSD from "./widgets/osd/osd";
+import { showOSD } from "./widgets/osd/osd";
 import Media from "./widgets/media/media"
 import { showMedia } from "./widgets/media/media";
 
@@ -45,7 +46,6 @@ function main() {
 }
 
 function requestHandler(request: string, res: (response: string) => void) {
-    //  ags request "sass_reload" --instance astal
     switch (request.toLowerCase().replace("_", " ")) {
         case "sass reload":
         case "scss reload":
@@ -63,27 +63,10 @@ function requestHandler(request: string, res: (response: string) => void) {
                 })
             break;
 
-        /*
-        case "launcher":
-            const astalLauncher = App.get_window("AstalLauncher")
-            if (astalLauncher) {
-                astalLauncher.show()
-                return res("AstalLauncher: Opened")
-            }
-            Launcher()
-            return res("AstalLauncher: Launched")
-        */
-
         case "media":
             showMedia()
             return res("Media: showing")
 
-        /*
-        case "powermenu":
-            powermenu()
-            return res("Powermenu: Launched")
-
-        */
         case "scratchpad":
             scratchpad.present()
             return res("Scratchpad: Launched")
@@ -100,6 +83,15 @@ function requestHandler(request: string, res: (response: string) => void) {
         case "toggle gaps":
             swayGaps.toggleGaps()
             return res("Astal: Toggled gaps")
+
+        case "show everything":
+        case "show all":
+        case "show off":
+            showMedia()
+            showOSD()
+            scratchpad.present()
+            return res("Astal: Showing off ... ")
+             
 
         default:
             return res(`Astal Error: unknown command "${request}"`)

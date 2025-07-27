@@ -13,7 +13,7 @@ window#AstalBar {
     font-weight: normal;
 
     > box {
-        border-bottom: theme.$surface0;
+        border-bottom: 2px solid theme.$surface1;
         background: theme.$mantle;
     }
 

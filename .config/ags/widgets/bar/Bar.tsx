@@ -13,6 +13,10 @@ import Brightness from "../../lib/brightness"
 import Battery from "./widgets/battery";
 import Notify from "./widgets/notify";
 import SwayWs from "./widgets/sway";
+import ArchUpdates from "../../lib/updates"
+import Sway from "../../lib/sway"
+
+const sway = Sway.get_default()
 
 /**
  * @TODO Bar.tsx
@@ -21,233 +25,255 @@ import SwayWs from "./widgets/sway";
  */
 
 function Tray() {
-  const tray = AstalTray.get_default()
-  const items = createBinding(tray, "items")
+    const tray = AstalTray.get_default()
+    const items = createBinding(tray, "items")
 
-  const init = (btn: Gtk.MenuButton, item: AstalTray.TrayItem) => {
-    btn.menuModel = item.menuModel
-    btn.insert_action_group("dbusmenu", item.actionGroup)
-    item.connect("notify::action-group", () => {
-      btn.insert_action_group("dbusmenu", item.actionGroup)
-    })
-  }
+    const init = (btn: Gtk.MenuButton, item: AstalTray.TrayItem) => {
+        btn.menuModel = item.menuModel
+        btn.insert_action_group("dbusmenu", item.actionGroup)
+        item.connect("notify::action-group", () => {
+            btn.insert_action_group("dbusmenu", item.actionGroup)
+        })
+    }
 
-  return (
-    <box class="tray">
-      <For each={items}>
-        {(item) => (
-          <menubutton $={(self) => init(self, item)}>
-            <image gicon={createBinding(item, "gicon")} />
-          </menubutton>
-        )}
-      </For>
-    </box>
-  )
+    return (
+        <box class="tray">
+            <For each={items}>
+                {(item) => (
+                    <menubutton $={(self) => init(self, item)}>
+                        <image gicon={createBinding(item, "gicon")} />
+                    </menubutton>
+                )}
+            </For>
+        </box>
+    )
+}
+
+function Update() {
+    const archUpdates = ArchUpdates.get_default()
+    
+    return <revealer
+        transitionDuration={250}
+        transitionType={Gtk.RevealerTransitionType.SLIDE_LEFT}
+        revealChild={createBinding(archUpdates, "over50")}
+    >
+        <button
+            label={createBinding(archUpdates, "updatesnum").as(u => `󰁠 ${u}`)}
+            tooltipText={createBinding(archUpdates, "updates")}
+            onClicked={() => {
+                sway.message_async("exec bash -c 'kitty --hold -e $HOME/.config/waybar/scripts/getupdates-update.sh'")
+            }}
+        >
+
+        </button>
+
+    </revealer>
 }
 
 function OSIcon() {
-  return <button>
-    <label label="" />
-  </button>
+    return <button>
+        <label label="" />
+    </button>
 }
 
 function Clock({ format = "%H:%M:%S" }) {
-  let motionController: Gtk.EventControllerMotion
-  const time = createPoll("", 1000, () => {
-    return GLib.DateTime.new_now_local().format(format)!
-  })
-  const date = createPoll("", 1000, () => {
-    return GLib.DateTime.new_now_local().format("%A, %d %B")!
-  })
-  
+    let motionController: Gtk.EventControllerMotion
+    const time = createPoll("", 1000, () => {
+        return GLib.DateTime.new_now_local().format(format)!
+    })
+    const date = createPoll("", 1000, () => {
+        return GLib.DateTime.new_now_local().format("%A, %d %B")!
+    })
+    
 
-  const hi = createPoll("", 1000, () => {
-    // Show if the mouse is over the clock
-    console.log("Is_pointer:", motionController.is_pointer)
-    return ""
-  })
+    const hi = createPoll("", 1000, () => {
+        // Show if the mouse is over the clock
+        console.log("Is_pointer:", motionController.is_pointer)
+        return ""
+    })
 
-  const show = () => {
+    const show = () => {
 
-  }
+    }
 
-  return (
-    <menubutton>
-      <Gtk.EventControllerMotion
-        $={(self) => {
-          motionController = self
-        }}
-       />
-      <box>
-        <label label={time} />
-        <revealer
-          visible={true}
-          transitionDuration={200}
-          transitionType={Gtk.RevealerTransitionType.SLIDE_LEFT}
-        >
-          <label label={date}/>
-        </revealer>
-      </box>
-      <popover>
-        <Gtk.Calendar 
-          showWeekNumbers={true}
-        />
-      </popover>
-    </menubutton>
-  )
+    return (
+        <menubutton>
+            <Gtk.EventControllerMotion
+                $={(self) => {
+                    motionController = self
+                }}
+             />
+            <box>
+                <label label={time} />
+                <revealer
+                    visible={true}
+                    transitionDuration={200}
+                    transitionType={Gtk.RevealerTransitionType.SLIDE_LEFT}
+                >
+                    <label label={date}/>
+                </revealer>
+            </box>
+            <popover>
+                <Gtk.Calendar 
+                    showWeekNumbers={true}
+                />
+            </popover>
+        </menubutton>
+    )
 }
 
 function AudioOutput() {
-  const { defaultSpeaker: speaker } = AstalWp.get_default()!
-  const wp = AstalWp.get_default()
+    const { defaultSpeaker: speaker } = AstalWp.get_default()!
+    const wp = AstalWp.get_default()
 
-  return (
-    <menubutton
-    >
-      <Gtk.EventControllerScroll
-        flags={Gtk.EventControllerScrollFlags.VERTICAL}
-        onScroll={(
-          source: Gtk.EventControllerScroll,
-          arg0: number,
-          arg1: number
-        ) => {
-          speaker.volume -= arg1 / 100
-          return true
-        }}
-      />
-      <Gtk.GestureClick
-        button={3}
-        onPressed={() => {
-          speaker.mute = !speaker.mute
-          return true
-        }}
-      />
-      <box spacing={6}>
-        <label label={createBinding(speaker, "volume").as((v: number) => (v * 100).toFixed(0) + "%")} />
-        <image iconName={createBinding(speaker, "volumeIcon")} />
-      </box>
-      <popover>
-        <box>
-          <slider
-            max={1.5}
-            widthRequest={260}
-            onChangeValue={({ value }) => speaker.set_volume(value)}
-            value={createBinding(speaker, "volume")}
-          />
-        </box>
-          
-        {/** 
-         * List All devices
-         * Have a button to change the default speaker.
-         * 
-         * List All sources
-         * button to mute a source
-         * 
-         * If possible show to current level of the source
-         *
-         */}
-      </popover>
-    </menubutton>
-  )
+    return (
+        <menubutton
+        >
+            <Gtk.EventControllerScroll
+                flags={Gtk.EventControllerScrollFlags.VERTICAL}
+                onScroll={(
+                    source: Gtk.EventControllerScroll,
+                    arg0: number,
+                    arg1: number
+                ) => {
+                    speaker.volume -= arg1 / 100
+                    return true
+                }}
+            />
+            <Gtk.GestureClick
+                button={3}
+                onPressed={() => {
+                    speaker.mute = !speaker.mute
+                    return true
+                }}
+            />
+            <box spacing={6}>
+                <label label={createBinding(speaker, "volume").as((v: number) => (v * 100).toFixed(0) + "%")} />
+                <image iconName={createBinding(speaker, "volumeIcon")} />
+            </box>
+            <popover>
+                <box>
+                    <slider
+                        max={1.5}
+                        widthRequest={260}
+                        onChangeValue={({ value }) => speaker.set_volume(value)}
+                        value={createBinding(speaker, "volume")}
+                    />
+                </box>
+                    
+                {/** 
+                 * List All devices
+                 * Have a button to change the default speaker.
+                 * 
+                 * List All sources
+                 * button to mute a source
+                 * 
+                 * If possible show to current level of the source
+                 *
+                 */}
+            </popover>
+        </menubutton>
+    )
 }
 
 function DisplayBrightness() {
-  const brightness = Brightness.get_default()
-  const icons = [ '󰃛', '󰃜', '󰃞', '󰃟', '󰃝', '󰃠' ]
-  return <box
-    visible={createBinding(brightness, "isPresent")}
-  >
-  <Gtk.EventControllerScroll
-    flags={Gtk.EventControllerScrollFlags.VERTICAL}
-    onScroll={(
-      source: Gtk.EventControllerScroll,
-      arg0: number,
-      arg1: number
-    ) => {
-      brightness.screen += arg1 / 150
-      return true
-    }} />
-    <label label={createBinding(brightness, "screen").as((v: number) =>
-      `${Math.floor(v * 100)}% ${icons[Math.floor(v * 5)]}`
-      )} />
-  </box>
+    const brightness = Brightness.get_default()
+    const icons = [ '󰃛', '󰃜', '󰃞', '󰃟', '󰃝', '󰃠' ]
+    return <box
+        visible={createBinding(brightness, "isPresent")}
+    >
+    <Gtk.EventControllerScroll
+        flags={Gtk.EventControllerScrollFlags.VERTICAL}
+        onScroll={(
+            source: Gtk.EventControllerScroll,
+            arg0: number,
+            arg1: number
+        ) => {
+            brightness.screen += arg1 / 150
+            return true
+        }} />
+        <label label={createBinding(brightness, "screen").as((v: number) =>
+            `${Math.floor(v * 100)}% ${icons[Math.floor(v * 5)]}`
+            )} />
+    </box>
 }
 
 function AudioInput() {
-  const { defaultMicrophone: microphone } = AstalWp.get_default()!
-  const wp = AstalWp.get_default()
+    const { defaultMicrophone: microphone } = AstalWp.get_default()!
+    const wp = AstalWp.get_default()
 
-  return (
-    <menubutton
-    >
-      <Gtk.EventControllerScroll
-        flags={Gtk.EventControllerScrollFlags.VERTICAL}
-        onScroll={(
-          source: Gtk.EventControllerScroll,
-          arg0: number,
-          arg1: number
-        ) => {
-          microphone.volume -= arg1 / 150
-          return true
-        }}
-      />
-      <Gtk.GestureClick
-        button={3}
-        onPressed={() => {
-          microphone.mute = !microphone.mute
-          return true
-        }}
-      />
-      <box spacing={6}>
-        <label
-          class={createBinding(microphone, "mute").as((v) => v ? "muted" : "")}
-          label={createBinding(microphone, "volume").as((v) => (v * 100).toFixed(0) + "%")}
-        />
-        <image iconName={createBinding(microphone, "volumeIcon")} />
-      </box>
-      <popover>
-        <box>
-          <slider
-            widthRequest={260}
-            onChangeValue={({ value }) => microphone.set_volume(value)}
-            value={createBinding(microphone, "volume")}
-          />
-        </box>
-      </popover>
-    </menubutton>
-  )
+    return (
+        <menubutton
+        >
+            <Gtk.EventControllerScroll
+                flags={Gtk.EventControllerScrollFlags.VERTICAL}
+                onScroll={(
+                    source: Gtk.EventControllerScroll,
+                    arg0: number,
+                    arg1: number
+                ) => {
+                    microphone.volume -= arg1 / 150
+                    return true
+                }}
+            />
+            <Gtk.GestureClick
+                button={3}
+                onPressed={() => {
+                    microphone.mute = !microphone.mute
+                    return true
+                }}
+            />
+            <box spacing={6}>
+                <label
+                    class={createBinding(microphone, "mute").as((v) => v ? "muted" : "")}
+                    label={createBinding(microphone, "volume").as((v) => (v * 100).toFixed(0) + "%")}
+                />
+                <image iconName={createBinding(microphone, "volumeIcon")} />
+            </box>
+            <popover>
+                <box>
+                    <slider
+                        widthRequest={260}
+                        onChangeValue={({ value }) => microphone.set_volume(value)}
+                        value={createBinding(microphone, "volume")}
+                    />
+                </box>
+            </popover>
+        </menubutton>
+    )
 }
 
 export default function Bar({ gdkmonitor }: { gdkmonitor: Gdk.Monitor }) {
-  const { TOP, LEFT, RIGHT } = Astal.WindowAnchor
+    const { TOP, LEFT, RIGHT } = Astal.WindowAnchor
 
-  return (
-    <window
-      visible
-      name="AstalBar"
-      namespace={"AstalBar"}
-      gdkmonitor={gdkmonitor}
-      exclusivity={Astal.Exclusivity.EXCLUSIVE}
-      anchor={TOP | LEFT | RIGHT}
-      application={app}
-    >
-      <centerbox>
-        <box $type="start">
-          <OSIcon />
-          <SwayWs monitor={gdkmonitor} />
-        </box>
-        <box $type="center">
-          <Clock />
-        </box>
-        <box $type="end">
-          <Tray />
-          <DisplayBrightness />
-          <Battery />
-          <AudioInput />
-          <AudioOutput />
-          <Notify />
-        </box>
-      </centerbox>
-    </window>
-  )
+    return (
+        <window
+            visible
+            name="AstalBar"
+            namespace={"AstalBar"}
+            gdkmonitor={gdkmonitor}
+            exclusivity={Astal.Exclusivity.EXCLUSIVE}
+            anchor={TOP | LEFT | RIGHT}
+            application={app}
+        >
+            <centerbox>
+                <box $type="start">
+                    <OSIcon />
+                    <SwayWs monitor={gdkmonitor} />
+                </box>
+                <box $type="center">
+                    <Clock />
+                </box>
+                <box $type="end">
+                    <Tray />
+                    <DisplayBrightness />
+                    <Battery />
+                    <AudioInput />
+                    <AudioOutput />
+                    <Update />
+                    <Notify />
+                </box>
+            </centerbox>
+        </window>
+    )
 }

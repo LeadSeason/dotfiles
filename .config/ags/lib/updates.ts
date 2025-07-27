@@ -23,6 +23,9 @@ export default class ArchUpdates extends GObject.Object {
     @getter(Number)
     get updatesnum (): number { return this.#updatesnum }
 
+    @getter(Boolean)
+    get over50 (): boolean { return this.#updatesnum > 50 }
+
     constructor() {
         super();
 
@@ -34,6 +37,7 @@ export default class ArchUpdates extends GObject.Object {
             this.#updatesnum = v.split(/\r\n|\r|\n/).length - 1;
             this.notify("updates");
             this.notify("updatesnum");
+            this.notify("over50");
         }
 
         updatesFileUpdate(updatesFile);
