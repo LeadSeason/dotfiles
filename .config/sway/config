@@ -148,7 +148,7 @@ exec wl-paste -t text --watch clipman store --no-persist
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec /usr/lib/kdeconnectd
 
-exec ags run --gtk 3
+exec ags run
 exec swww-daemon
 exec swaync
 exec sworkstyle >> ~/.cache/sworkstyle.log 2>&1
@@ -204,7 +204,6 @@ input type:touchpad {
 input "type:keyboard" {
 	# Finnish keymap
     xkb_layout fi
-    # xkb_layout us
 	xkb_options caps:escape
 }
 
@@ -249,7 +248,7 @@ bindsym {
     # lock
     $mod+r exec "swaylock --grace 3 & "
 
-    $mod+Shift+i exec "$HOME/.local/bin/sway-toggle-gaps"
+    $mod+Shift+i exec "astal toggle gaps"
 
     # Brightness controls
     XF86MonBrightnessUp exec brightnessctl set 10%+
@@ -257,6 +256,7 @@ bindsym {
 
     $mod+ctrl+Delete exec ags request --instance astal powermenu
     $mod+t exec ags request --instance astal scratchpad
+    $modalt+i exec astal -I
 
     # start a program launcher (rofi)
     $mod+d exec pgrep rofi || rofi -I -show drun
@@ -276,6 +276,7 @@ bindsym {
     $mod+Shift+e exec pavucontrol
 
     $mod+section exec hyprmag
+    $mod+Shift+section exec ~/.local/bin/colorpicker
 
     # kill focused window
     $mod+Shift+q kill
