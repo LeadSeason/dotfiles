@@ -51,16 +51,47 @@ function OSIcon() {
   </button>
 }
 
-function Clock({ format = "%H:%M" }) {
+function Clock({ format = "%H:%M:%S" }) {
+  let motionController: Gtk.EventControllerMotion
   const time = createPoll("", 1000, () => {
     return GLib.DateTime.new_now_local().format(format)!
   })
+  const date = createPoll("", 1000, () => {
+    return GLib.DateTime.new_now_local().format("%A, %d %B")!
+  })
+  
+
+  const hi = createPoll("", 1000, () => {
+    // Show if the mouse is over the clock
+    console.log("Is_pointer:", motionController.is_pointer)
+    return ""
+  })
+
+  const show = () => {
+
+  }
 
   return (
     <menubutton>
-      <label label={time} />
+      <Gtk.EventControllerMotion
+        $={(self) => {
+          motionController = self
+        }}
+       />
+      <box>
+        <label label={time} />
+        <revealer
+          visible={true}
+          transitionDuration={200}
+          transitionType={Gtk.RevealerTransitionType.SLIDE_LEFT}
+        >
+          <label label={date}/>
+        </revealer>
+      </box>
       <popover>
-        <Gtk.Calendar />
+        <Gtk.Calendar 
+          showWeekNumbers={true}
+        />
       </popover>
     </menubutton>
   )

@@ -171,6 +171,7 @@ export default function Scratchpad() {
                     halign={Gtk.Align.CENTER}
                     orientation={Gtk.Orientation.VERTICAL}
                 >
+                    <label class="title" label="Scratchpad"/>
                     <entry
                         $={(ref) => (searchEntry = ref)}
                         onNotifyText={({ text }) => search(text)}
@@ -180,7 +181,7 @@ export default function Scratchpad() {
                         placeholderText="Start typing to search"
                         primaryIconName={"system-search-symbolic"}
                     />
-                    <Gtk.Separator visible={list((l) => l.length > 0)} />
+                    <Gtk.Separator />
                     <box orientation={Gtk.Orientation.VERTICAL} spacing={6}>
                         <For each={list}>
                         {(app, index) => (

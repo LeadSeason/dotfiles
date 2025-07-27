@@ -78,12 +78,11 @@ export default class Cache extends GObject.Object {
         if (cache === this.#cache) {
             this.#cache = cache;
             saveCacheData(this.#cache)
-            .then(() => {this.notify("data")})
+            .then(() => {/*
+                @TODO: Create cacheType constructor so we can notify that the
+                data has changed. 
+                this.notify("data")*/})
         }
-    }
-
-    constructor() {
-        super()
     }
 }
 
@@ -105,6 +104,9 @@ interface cacheType {
     idleDimLastPowerProfile: string
     idleDimLastBrightness: number
     idleDimLastKbd: number
+
+    // swaygaps.ts
+    gaps: boolean
 }
 
 interface cacheMergeType {
@@ -124,4 +126,7 @@ interface cacheMergeType {
     idleDimLastPowerProfile?: string
     idleDimLastBrightness?: number
     idleDimLastKbd?: number
+    
+    // swaygaps.ts
+    gaps?: boolean
 }

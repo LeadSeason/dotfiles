@@ -9,10 +9,12 @@ import { For, createBinding } from "ags";
 import Bar from "./widgets/bar/Bar";
 import Scratchpad from "./widgets/scratchpad/scratchpad";
 import { idleDim, idleDimReturn } from "./tools/powerManagement";
+import SwayGaps from "./tools/swaygaps";
 
 const cssPath = `${GLib.get_user_cache_dir()}/astal/astal.css`
 
 let scratchpad:  Gtk.Window
+let swaygaps = new SwayGaps()
 
 function main() {
     const monitors = createBinding(app, "monitors")
@@ -67,7 +69,7 @@ function requestHandler(request: string, res: (response: string) => void) {
         case "scratchpad":
             scratchpad.present()
             return res("Scratchpad: Launched")
-        
+
         case "dim":
             idleDim()
             return res("dimmed")
@@ -75,6 +77,11 @@ function requestHandler(request: string, res: (response: string) => void) {
         case "undo dim":
             idleDimReturn()
             return res("undid dim")
+            
+        case "sway toggle gaps":
+        case "toggle gaps":
+            swaygaps.toggleGaps()
+            return res("Astal: Toggled gaps")
 
         default:
             return res(`Astal Error: unknown command "${request}"`)

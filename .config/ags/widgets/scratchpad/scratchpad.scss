@@ -12,6 +12,11 @@ window#AstalScratchpad {
         padding: 10px;
         min-height: 600px;
     }
+    
+    .title {
+        font-size: larger;
+        padding-bottom: 6px;
+    }
 
     entry {
         background-color: theme.$surface0;

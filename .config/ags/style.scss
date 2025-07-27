@@ -17,6 +17,8 @@ menu {
 	border-radius: 1rem;
 	border: 1px solid theme.$surface0;
 
+	-gtk-icon-size: 1.2em;
+
 	icon {
 		font-size: 24px;
 	}
@@ -63,6 +65,79 @@ menu {
 			}
 		}
 	}
+
+    button {
+        border-radius: 8px;
+        margin: 2px;
+        min-height: 0;
+
+        // Padding is added by border, So if all values are basically +2px
+        padding: 0px 8px;
+        border: 2px solid transparent;
+
+        border-radius: 6px;
+
+
+		&:active {
+            background-color: theme.$surface1;
+            border: 2px solid theme.$surface2;
+		}
+
+		&:focus {
+			background-color: theme.$surface1;
+			border: 2px solid theme.$accent;
+		}
+
+		&:disabled {
+			color: theme.$surface2;
+		}
+
+        &:hover {
+            background-color: theme.$surface0;
+            border: 2px solid theme.$surface2;
+        }
+    }
+}
+
+menu {
+  box.inline-buttons {
+    color: theme.$text;
+    padding: 0 4px;
+
+    button.image-button.model {
+      min-height: 24px;
+      min-width: 24px;
+      padding: 0;
+      border: none;
+      outline: none;
+      transition: none;
+
+      &:selected { background: color.mix(theme.$base, white, 95%); }
+    }
+  }
+
+  box.circular-buttons {
+    padding: 4px;
+  }
+
+  arrow.left,
+  radio.left,
+  check.left {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  arrow.right,
+  radio.right,
+  check.right {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  label.title {
+    font-weight: bold;
+    padding: 4px (4px + 20px); //this will fall apart with font sizing
+  }
 }
 
 

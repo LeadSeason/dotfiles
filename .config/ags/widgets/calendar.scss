@@ -1,0 +1,86 @@
+@use "../themes/mocha.scss" as theme;
+@use "sass:color";
+
+calendar {
+    background-color: theme.$base;
+    border-radius: 10px;
+    border: 1px solid theme.$surface1;
+    color: theme.$text;
+    padding: 0px;
+
+    button {
+        border-radius: 8px;
+        margin: 2px;
+        min-height: 0;
+
+        // Padding is added by border, So if all values are basically +2px
+        border: 2px solid transparent;
+
+        border-radius: 6px;
+
+
+		&:active {
+            background-color: theme.$surface1;
+            border: 2px solid theme.$surface2;
+		}
+
+		&:focus {
+			background-color: theme.$surface1;
+			border: 2px solid theme.$accent;
+		}
+
+		&:disabled {
+			color: theme.$surface2;
+		}
+
+        &:hover {
+            background-color: theme.$surface0;
+            border: 2px solid theme.$surface2;
+        }
+    }
+    header {
+        padding: 8px;
+        border-bottom: 1px solid theme.$surface1;
+
+        stack.month, label.year{
+            font-weight: bold;
+        }
+    }
+
+    grid {
+        label {
+            border: 1px solid transparent;
+            min-width: 34px;
+            min-height: 34px;
+
+            &:checked {
+                border: 1px solid theme.$accent;
+                background-color: color.mix(theme.$accent, theme.$base, 5%);
+                color: theme.$text;
+                border-radius: 10px;
+                padding: 2px 2px;
+                font-weight: bold;
+            }
+        }
+        .today {
+            border: 1px solid theme.$accent;
+            color: theme.$text;
+            border-radius: 10px;
+            padding: 2px 2px;
+            font-weight: bold;
+        }
+        .other-month {
+            color: theme.$text;
+            opacity: 0.5;
+        }
+        .week-number {
+            color: theme.$text;
+            opacity: 0.5;
+        }
+        .day-name {
+            color: theme.$text;
+            opacity: 0.8;
+        }
+    }
+
+}
