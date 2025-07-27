@@ -31,7 +31,7 @@ export default class SwayGaps {
         
         conn.on("workspace", async (conn: i3ipc.Connection, event: i3ipc.WorkspaceEvent) => {
             if (event.change === "init") {
-                console.log("New sway workpaces, Better change the sizes")
+                console.log("New sway workplaces, Better change the sizes")
                 sway.message_async(`gaps inner all set ${this.state ? cacheSize : 0}; gaps outer all set ${this.state ? cacheSize : 0}`);
             }
         })

@@ -20,15 +20,21 @@
 
  - [x] Bar  
      - [x] Scss
+        - [ ] Clean up, Some parts look ugly
+            - [ ] calendar
+            - [ ] Workspaces
+            - [ ] OS-icon
      - [x] Cock 
         - Good enough for now
      - [ ] Powermenu drop down
         - Idk will I make it. Perhaps
+     - [ ] Updates
+     - [ ] Separator between Tray and Boosty boy.
 
  - [x] Scratchpad
       - [ ] Fix cases where con has children and con.name is null.
- - [ ] OSD
- - [ ] Media
+ - [x] OSD
+ - [x] Media
  - [ ] Powermenu
  - [ ] Super Super launcher Menu Menu
      - [ ] Launcher

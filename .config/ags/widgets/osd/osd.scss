@@ -1,0 +1,33 @@
+@use "../../themes/mocha.scss" as theme;
+@use "sass:color";
+
+window#AstalOSD {
+    box.OSD {
+        border-radius: 100px;
+        background-color: theme.$base;
+        padding: 10px 14px;
+        box-shadow: 3px 3px 7px 0 rgba(0,0,0,.4);
+		border: 2px solid theme.$surface1;
+    }
+
+    image {
+		margin-right: 10px;
+		-gtk-icon-size: 36px
+    }
+
+    label {
+		margin-left: 10px;
+        font-size: 26px;
+    }
+
+	levelbar block.high, levelbar block:not(.empty) {
+		min-height: 26px;
+		border-radius: 26px;
+		background-color: theme.$accent;
+	}
+
+	levelbar block.empty {
+		border-radius: 26px;
+		background-color: theme.$surface1;
+	}
+}
