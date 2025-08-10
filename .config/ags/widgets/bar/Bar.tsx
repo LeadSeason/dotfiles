@@ -114,7 +114,7 @@ function Clock({ format = "%H:%M:%S" }) {
                 </revealer>
             </box>
             <popover>
-                <Gtk.Calendar 
+                <Gtk.Calendar
                     showWeekNumbers={true}
                 />
             </popover>
