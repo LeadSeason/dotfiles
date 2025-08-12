@@ -89,6 +89,7 @@ exec_always gsettings set org.gnome.desktop.interface monospace-font-name 'FiraC
 exec_always gsettings set org.gnome.desktop.interface document-font-name 'FiraCode Nerd Font Propo 12'
 exec_always gsettings set org.gnome.desktop.interface font-name 'FiraCode Nerd Font Propo 12'
 exec_always gsettings set org.gnome.desktop.interface gtk-theme catppuccin-mocha-yellow-standard+default
+exec_always gsettings set org.cinnamon.desktop.default-applications.terminal exec '$term'
 
 exec_always xrandr --output XWAYLAND0 --primary
 
