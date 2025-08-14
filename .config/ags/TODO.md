@@ -69,6 +69,11 @@
             - Show notification actions for Open file, Open directory, copy file
             - With prefix or if a valid link is in the search.
             - Show options for if you want to download video or audio only
+      - [ ] Mac vendoor lookup
+         - Fetch data from https://standards-oui.ieee.org/oui/oui.txt
+         - Save data fore example Cache function.
+         - Remember Data last save, Update every 2 - 3 days
+         - Have MACvendorData, MACvendorData_LastUpdate
      - [ ] Prefix completion prefix
         - #math
         - #convert

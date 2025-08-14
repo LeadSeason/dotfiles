@@ -1,6 +1,9 @@
 import Gtk from "gi://Gtk?version=4.0";
 
-export function truncateText(text: string, maxLength: number = 60): string {
+export function truncateText(text: string | null, maxLength: number = 60): string {
+    if (text === null) {
+        return ""
+    }
     if (text.length <= maxLength) {
         return text;
     }

@@ -4,7 +4,6 @@
 calendar {
     background-color: theme.$base;
     border-radius: 10px;
-    border: 1px solid theme.$surface1;
     color: theme.$text;
     padding: 0px;
 
@@ -74,11 +73,12 @@ calendar {
             opacity: 0.5;
         }
         .week-number {
-            color: theme.$text;
-            opacity: 0.5;
+            font-weight: bold;
+            border-right: 1px solid theme.$surface1;
         }
         .day-name {
             color: theme.$text;
+            border-bottom: 1px solid theme.$surface1;
             opacity: 0.8;
         }
     }
