@@ -11,6 +11,7 @@ deduplicate_icons = true
 '/vim ?\w*/' = ''
 'Neovide' = ''
 'neovide' = ''
+'nvim' = ''
 
 # Other editors
 'Code' = '󰨞'
@@ -129,7 +130,6 @@ deduplicate_icons = true
 'file-roller' = ''
 'org.gnome.FileRoller' = ''
 'org.kde.ark' = ''
-
 'balena-etcher' = '󱊞'
 'Ventoy2Disk.gtk3' = '󱊞'
 
@@ -143,6 +143,12 @@ deduplicate_icons = true
 'libreoffice-calc'= '󱎏'
 
 # Misc Using
+'teams-for-linux' = '󰊻'
+'ssh-askpass' = ''
+'putty' = ''
+'obsidian' = '󰅍'
+'draw.io' = '󰇟'
+'chromium' = '󰊯'
 'heroic' = '󱢾'
 'org.wireshark.Wireshark' = '󱢺'
 '/NoiseTorch/' = '󰍯'

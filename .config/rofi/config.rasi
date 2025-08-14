@@ -151,4 +151,4 @@ configuration {
 /*	me-accept-custom: "Control+MouseDPrimary";*/
 }
 
-@theme "/home/leadseason/.local/share/rofi/run.rasi"
+@theme ".local/share/rofi/run.rasi"
