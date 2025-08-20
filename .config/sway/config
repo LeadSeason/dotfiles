@@ -130,8 +130,8 @@ for_window [title="Remote Folder Picker - Celeste"] floating enable
 for_window [title="Local Folder Picker - Celeste"] floating enable
 for_window [app_id="vivid/stasis"] fullscreen enable
 for_window [title="NoiseTorch"] floating enable
-for_window [app_id="flameshot"] border pixel 0, floating enable, fullscreen disable, move absolute position 0 0
-for_window [app_id="flameshot"] border pixel 0, fullscreen global
+# for_window [app_id="flameshot"] border pixel 0, floating enable, fullscreen disable, move absolute position 0 0
+# for_window [app_id="flameshot"] border pixel 0, fullscreen global
 for_window [app_id="com.gabm.satty"] border pixel 0, floating enable, fullscreen disable, move absolute position 0 0
 for_window [app_id="com.gabm.satty"] border pixel 0, fullscreen global
 
@@ -254,6 +254,8 @@ bindsym {
     # Brightness controls
     XF86MonBrightnessUp exec brightnessctl set 10%+
     XF86MonBrightnessDown exec brightnessctl set 10%-
+    $modalt+F5 exec brightnessctl set 10%+
+    $modalt+F6 exec brightnessctl set 10%-
 
     $mod+ctrl+Delete exec ags request --instance astal powermenu
     $mod+t exec ags request --instance astal scratchpad
