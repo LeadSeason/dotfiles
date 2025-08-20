@@ -6,7 +6,7 @@
  * Add styles for sliders
  */
 
-window#AstalBar {
+window#Bar {
     background: transparent;
     color: theme.$text;
     font-size: 20px;
@@ -14,7 +14,7 @@ window#AstalBar {
 
     > box {
         border-bottom: 2px solid theme.$surface1;
-        background: theme.$mantle;
+        background: color.mix(theme.$mantle, transparent, 80%);
     }
 
     .tray {

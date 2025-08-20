@@ -5,6 +5,7 @@ import app from "ags/gtk4/app";
 import Mpris from "gi://AstalMpris"
 import { iconLookup, truncateText } from "../../tools/utils";
 import { exec, execAsync } from "ags/process";
+import Config from "../../config";
 
 function lengthStr(length: number) {
     const min = Math.floor(length / 60)
@@ -12,6 +13,8 @@ function lengthStr(length: number) {
     const sec0 = sec < 10 ? "0" : ""
     return `${min}:${sec0}${sec}`
 }
+
+const [playerVisible, setPlayerVisible] = createState<number>(0)
 
 const [visible, setVisible] = createState<boolean>(false)
 const [visibleBlock, setVisibleBlock] = createState<boolean>(false)
@@ -26,14 +29,12 @@ export const showMedia = (timeoutTime: number = 5000) => {
     })
 }
 
-const [playerVisible, setPlayerVisible] = createState<number>(0)
 
 function MediaPlayer({ data: data }: { data: [Mpris.Player, Accessor<number>] }) {
     const player = data[0]
     const index = data[1]
 
     createBinding(player, "playbackStatus").subscribe(() => {
-        console.log("playbackStatus", player.playbackStatus)
         if (player.playbackStatus === Mpris.PlaybackStatus.PLAYING) {
             setPlayerVisible(index.get())
         }
@@ -164,9 +165,9 @@ export default function Media() {
                 }
             })
         }}
-        name="AstalMedia"
-        class="AstalMedia"
-        namespace="AstalMedia"
+        name="Media"
+        class="Media"
+        namespace={`${Config.instanceName}Media`}
         anchor={Astal.WindowAnchor.TOP | Astal.WindowAnchor.RIGHT}
         keymode={Astal.Keymode.ON_DEMAND}
         marginTop={10}

@@ -15,6 +15,7 @@ import Notify from "./widgets/notify";
 import SwayWs from "./widgets/sway";
 import ArchUpdates from "../../lib/updates"
 import Sway from "../../lib/sway"
+import Config from "../../config"
 
 const sway = Sway.get_default()
 
@@ -72,7 +73,7 @@ function Update() {
 
 function OSIcon() {
     return <button>
-        <label label="" />
+        <image iconName={"archlinux-logo"} pixelSize={24} />
     </button>
 }
 
@@ -249,8 +250,9 @@ export default function Bar({ gdkmonitor }: { gdkmonitor: Gdk.Monitor }) {
     return (
         <window
             visible
-            name="AstalBar"
-            namespace={"AstalBar"}
+            name="Bar"
+            class="Bar"
+            namespace={`${Config.instanceName}Bar`}
             gdkmonitor={gdkmonitor}
             exclusivity={Astal.Exclusivity.EXCLUSIVE}
             anchor={TOP | LEFT | RIGHT}

@@ -1,5 +1,3 @@
-// import GObject, { register, property } from "astal/gobject"
-
 import GObject, { getter, register } from "ags/gobject"
 import i3ipc from "gi://i3ipc"
 

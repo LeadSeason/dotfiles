@@ -1,0 +1,20 @@
+#!/bin/bash
+
+set +x 
+
+if [ $# -eq 0 ] || [ $1 = "run" ]; then
+    exec ags run
+    exit
+fi
+if [ $1 = "restart" ]; then
+    wam quit
+    exec ags run
+    exit
+fi
+
+if [ $1 = "-I" ] || [ $1 = "inspect" ]; then
+    exec ags inspect -i wam
+fi
+
+
+ags request -i wam "$*"

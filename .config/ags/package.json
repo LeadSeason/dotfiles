@@ -1,5 +1,5 @@
 {
-    "name": "astal-shell",
+    "name": "wam-shell",
     "dependencies": {
         "ags": "*",
         "fuse.js": "^7.1.0"
