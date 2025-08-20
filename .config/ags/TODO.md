@@ -1,5 +1,5 @@
 - [x] battery lable, show remanin battery. Hours and minutes.  
-- [ ] Show how long it lasts.  
+- [x] Show how long it lasts.  
 - [x] Caching module to quicly save items so they can be later refered to  
     Needs to be tested.  
 - [x] Scss cleanup, split the file up to multiple files  

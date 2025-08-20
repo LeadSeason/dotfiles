@@ -5,14 +5,20 @@ import { Astal, Gtk, Gdk } from "ags/gtk4"
 import Graphene from "gi://Graphene"
 import Fuse from "fuse.js";
 import { timeout } from "ags/time";
+import Config from "../../config";
 
 const { TOP, BOTTOM, LEFT, RIGHT } = Astal.WindowAnchor
+
+let win: Astal.Window
+
+export function showScratchpad() {
+    win.present()
+}
 
 export default function Scratchpad() {
     let contentBox: Gtk.Box
     let searchEntry: Gtk.Entry
     let revealer: Gtk.Revealer
-    let win: Astal.Window
 
     const sway = Sway.get_default()
 
@@ -139,9 +145,9 @@ export default function Scratchpad() {
 
     return <window
             $={(ref) => (win = ref)}
-            name="AstalScratchpad"
-            class="AstalScratchpad"
-            namespace={"AstalScratchpad"}
+            name="Scratchpad"
+            class="Scratchpad"
+            namespace={`${Config.instanceName}Scratchpad`}
             anchor={TOP | BOTTOM | LEFT | RIGHT}
             exclusivity={Astal.Exclusivity.IGNORE}
             keymode={Astal.Keymode.EXCLUSIVE}

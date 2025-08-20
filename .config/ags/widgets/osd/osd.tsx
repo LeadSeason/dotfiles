@@ -5,6 +5,7 @@ import { timeout } from "ags/time";
 import Mpris from "gi://AstalMpris"
 import Brightness from "../../lib/brightness"
 import Wp from "gi://AstalWp"
+import Config from "../../config";
 
 
 const [visible, setVisible] = createState<boolean>(false)
@@ -53,7 +54,6 @@ function OnScreenDisplay() {
         <box class="OSD">
             <image iconName={iconName} />
             <levelbar
-                class="astalLevelBar"
                 valign={Gtk.Align.CENTER}
                 widthRequest={200}
                 value={value(v => {
@@ -84,9 +84,9 @@ export default function onScreenDisplay() {
                 }
             })
         }}
-        name="AstalOSD"
-        class="AstalOSD"
-        namespace="AstalOSD"
+        name="OSD"
+        class="OSD"
+        namespace={`${Config.instanceName}OSD`}
         anchor={Astal.WindowAnchor.TOP | Astal.WindowAnchor.LEFT}
         keymode={Astal.Keymode.ON_DEMAND}
         marginTop={20}

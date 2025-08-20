@@ -104,14 +104,8 @@ blur_xray disable
 blur_passes 2
 blur_radius 2
 
-layer_effects "AstalBar" blur enable;
-layer_effects "astal-osd" blur enable; corner_radius 32;
-layer_effects "AstalConfirm" blur enable
-layer_effects "AstalPowermenu" blur enable;
-layer_effects "AstalDialog" blur enable;
-# layer_effects "AstalLauncher" blur enable; corner_radius 0; shadows enable; border pixel 0
+layer_effects "wamBar" blur enable;
 
-layer_effects "eww" blur enable; corner_radius 0
 layer_effects "rofi" blur enable; corner_radius 0; shadows enable; corner_radius 14;
 
 shadows enable
@@ -159,8 +153,8 @@ exec nm-applet --indicator
 exec blueman-applet
 
 exec swayidle \
-	timeout 240 "astal dim" \
-    resume "astal undo dim" \
+	timeout 240 "wam dim" \
+    resume "wam undim" \
 	timeout 300 "pgrep --exact swaylock || swaylock --grace 3 --fade-in 3" \
     timeout 420 'swaymsg "output * dpms off"' \
     resume 'swaymsg "output * dpms on" & sleep 10; ags run'
@@ -249,7 +243,7 @@ bindsym {
     # lock
     $mod+r exec "swaylock --grace 3 & "
 
-    $mod+Shift+i exec "astal toggle gaps"
+    $mod+Shift+i exec "wam togglegaps"
 
     # Brightness controls
     XF86MonBrightnessUp exec brightnessctl set 10%+
@@ -257,9 +251,9 @@ bindsym {
     $modalt+F5 exec brightnessctl set 10%+
     $modalt+F6 exec brightnessctl set 10%-
 
-    $mod+ctrl+Delete exec ags request --instance astal powermenu
-    $mod+t exec ags request --instance astal scratchpad
-    $modalt+i exec astal -I
+    $mod+ctrl+Delete exec ags request --instance wam powermenu
+    $mod+t exec ags request --instance wam scratchpad
+    $modalt+i exec wam -I
 
     # start a program launcher (rofi)
     $mod+d exec pgrep --exact rofi || rofi -I -show drun
@@ -409,16 +403,16 @@ bindsym --locked {
     $modalt+space exec $HOME/.local/bin/kbd_brightness_toggle
 
     # Media player controls
-    XF86AudioPlay exec playerctl play-pause; exec ags request media --instance astal
-    XF86AudioStop exec playerctl stop; exec ags request media --instance astal
-    XF86AudioNext exec playerctl next; exec ags request media --instance astal
-    XF86AudioPrev exec playerctl previous; exec ags request media --instance astal
+    XF86AudioPlay exec playerctl play-pause; exec ags request media --instance wam
+    XF86AudioStop exec playerctl stop; exec ags request media --instance wam
+    XF86AudioNext exec playerctl next; exec ags request media --instance wam
+    XF86AudioPrev exec playerctl previous; exec ags request media --instance wam
 
     # Alternatively Using $mod + F-keys
-    $mod+F1 exec playerctl previous; exec ags request media --instance astal
-    $mod+F2 exec ags request media --instance astal
-    $mod+F3 exec playerctl play-pause; exec ags request media --instance astal
-    $mod+F4 exec playerctl next; exec ags request media --instance astal
+    $mod+F1 exec playerctl previous; exec ags request media --instance wam
+    $mod+F2 exec ags request media --instance wam
+    $mod+F3 exec playerctl play-pause; exec ags request media --instance wam
+    $mod+F4 exec playerctl next; exec ags request media --instance wam
 
     # Use pactl to adjust volume in PulseAudio.
     XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle

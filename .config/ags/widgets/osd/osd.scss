@@ -1,7 +1,7 @@
 @use "../../themes/mocha.scss" as theme;
 @use "sass:color";
 
-window#AstalOSD {
+window#OSD {
     box.OSD {
         border-radius: 100px;
         background-color: theme.$base;

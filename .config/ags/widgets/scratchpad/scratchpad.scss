@@ -1,7 +1,7 @@
 @use "../../themes/mocha.scss" as theme;
 @use "sass:color";
 
-window#AstalScratchpad {
+window#Scratchpad {
     color: theme.$text;
     
     box#launcher-content {

@@ -1,8 +1,10 @@
 import GLib from "gi://GLib";
 import { readFile, readFileAsync, writeFile, writeFileAsync } from "ags/file";
 import GObject, { register, property, getter } from "ags/gobject"
+import Config from "../config";
 
-const cacheFile = `${GLib.get_user_cache_dir()}/astal/astalcache.json`
+const cacheFile = Config.cacheFile
+
 
 /**
  * cache.ts - Caching module.
@@ -100,7 +102,8 @@ interface cacheType {
     onBatteryLastKbdBrightness: number
 
     idleDimState: boolean
-    idleDimLastState: boolean // True: AC, False: Battery
+    /** True: AC, False: on-Battery */
+    idleDimLastState: boolean
     idleDimLastPowerProfile: string
     idleDimLastBrightness: number
     idleDimLastKbd: number
@@ -122,7 +125,8 @@ interface cacheMergeType {
     onBatteryLastKbdBrightness?: number
 
     idleDimState?: boolean
-    idleDimLastState?: boolean // True: AC, False: Battery
+    /** True: AC, False: on-Battery */
+    idleDimLastState?: boolean
     idleDimLastPowerProfile?: string
     idleDimLastBrightness?: number
     idleDimLastKbd?: number

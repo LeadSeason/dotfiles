@@ -1,4 +1,7 @@
 import Gtk from "gi://Gtk?version=4.0";
+import { execAsync } from "ags/process";
+import app from "ags/gtk4/app";
+import Config from "../config";
 
 export function truncateText(text: string | null, maxLength: number = 60): string {
     if (text === null) {
@@ -23,4 +26,16 @@ export function iconLookup(iconName: string): string | null {
         return icon;
     }
     return null;
+}
+
+export async function reloadStyle() {
+    try {
+        await execAsync(`sass ./style.scss ${Config.cssPath}`)
+        console.log(`${Config.instanceName}: Style reloaded`)
+        app.apply_css(Config.cssPath)
+        return "Style reloaded"
+    } catch (e) {
+        console.log(e)
+        return "Failed to apply style"
+    }
 }
