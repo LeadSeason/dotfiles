@@ -15,6 +15,21 @@ fi
 if [ $1 = "-I" ] || [ $1 = "inspect" ]; then
     exec ags inspect -i wam
 fi
+#
+# Reconstruct the arguments with quotes preserved
+out=""
+for arg in "$@"; do
+    case "$arg" in
+        *" "*)
+            out="$out \"$arg\""
+            ;;
+        *' '*)
+            out="$out \"$arg\""
+            ;;
+        *)
+            out="$out $arg"
+            ;;
+    esac
+done
 
-
-ags request -i wam "$*"
+ags request -i wam "${out# }"

@@ -12,7 +12,7 @@ import OSD from "./widgets/osd/osd";
 import Media from "./widgets/media/media"
 import SwayGaps from "./tools/swaygaps";
 import powerManagement from "./tools/powerManagement";
-import requestHandler from "./tools/requestHandler";
+import { requestHandler } from "./tools/requestHandler";
 
 let scratchpad:  Gtk.Window
 let osd: Gtk.Window

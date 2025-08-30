@@ -12,8 +12,29 @@ import { showScratchpad } from "../widgets/scratchpad/scratchpad";
 
 const swayGaps = SwayGaps.get_default()
 
-export default async function requestHandler(request: string, res: (response: string) => void) {
+export async function requestHandler(request: string, res: (response: string) => void) {
     res(await registry.execute(request))
+}
+
+function splitArgs(string: string) {
+    const regex = /"([^"]*)"|'([^']*)'|[^\s]+/g;
+    const output = [];
+    let match;
+
+    while ((match = regex.exec(string)) !== null) {
+        if (match[1] !== undefined) {
+            // double-quoted string
+            output.push(match[1]);
+        } else if (match[2] !== undefined) {
+            // single-quoted string
+            output.push(match[2]);
+        } else {
+            // unquoted string
+            output.push(match[0]);
+        }
+    }
+
+    return output;
 }
 
 type CommandResponse = string | Promise<string>
@@ -56,7 +77,8 @@ class CommandRegistry {
     }
 
     async execute(request: string): Promise<string> {
-        const parts = request.trim().split(/\s+/)
+        console.log("Request:", request)
+        const parts = splitArgs(request)
         const normalized = parts.shift()?.toLowerCase() ?? ""
         const args = parts
 
@@ -101,7 +123,7 @@ registry.register({
     description: "Toggles gaps",
     main: () => {
         swayGaps.toggleGaps()
-        return `${Config.instanceName}: Toggled gaps`
+        return `Toggled gaps`
     }
 })
 
@@ -166,3 +188,5 @@ registry.register({
     description: "Lists all available commands",
     main: () => registry.help()
 })
+
+export default CommandRegistry
