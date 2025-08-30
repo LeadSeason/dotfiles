@@ -155,7 +155,7 @@ exec blueman-applet
 exec swayidle \
 	timeout 240 "wam dim" \
     resume "wam undim" \
-	timeout 300 "pgrep --exact hyprlock || hyprlock --grace 3 --fade-in 3" \
+	timeout 300 "pgrep --exact hyprlock || hyprlock --grace 3" \
     timeout 420 'swaymsg "output * dpms off"' \
     resume 'swaymsg "output * dpms on" & sleep 10; ags run'
 
