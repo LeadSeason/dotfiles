@@ -9,11 +9,13 @@ if [ "$(tty)" = "/dev/tty1" ]; then
     exec sway-launch
 fi
 
-fastfetch --load-config $HOME/.config/fastfetch/config-small.jsonc
+# didn't feel like it.
+# fastfetch --config $HOME/.config/fastfetch/config-small.jsonc
 
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+
+# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+#   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+# fi
 
 
 # auto loads and inits
@@ -89,7 +91,7 @@ alias clear="printf '\033[2J\033[3J\033[1;1H'"
 alias clock="tty-clock -C 5"
 alias copy="wl-copy"
 alias ff="fastfetch"
-alias ffs="fastfetch --load-config $HOME/.config/fastfetch/config-small.jsonc"
+alias ffs="fastfetch --config $HOME/.config/fastfetch/config-small.jsonc"
 alias grep="grep --color"
 alias icat="kitty +kitten icat"
 alias ip="ip -color=auto"
@@ -108,7 +110,7 @@ alias showcolors="curl https://gist.githubusercontent.com/HaleTom/89ffe32783f89f
 alias ssh="TERM=xterm ssh"
 alias tree="tree -C"
 alias tty-clock="tty-clock -C 5"
-alias vim="nvim"
+# alias vim="nvim"
 alias xdg-ninja="COLORTERM=\"\" xdg-ninja"
 
 # Moving to XDG data dir
