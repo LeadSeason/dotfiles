@@ -238,7 +238,7 @@ bindsym {
     # start screenshot
     # $mod+c exec bash -c 'grim -g "$(slurp)" - | swappy -f - -o - | ~/.local/bin/timhostuploader'
     $mod+c exec flameshot gui -r | ~/.local/bin/timhostuploader
-    $mod+Shift+c exec /usr/share/sway-contrib/grimshot save window - | ~/.local/bin/timhostuploader
+    $mod+Shift+c exec grimshot save window - | ~/.local/bin/timhostuploader
 
     # lock
     $mod+r exec "hyprlock --grace 3 & "
