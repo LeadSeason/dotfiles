@@ -1,0 +1,14 @@
+{
+    "preset": "bisexual",
+    "mode": "rgb",
+    "auto_detect_light_dark": true,
+    "light_dark": "dark",
+    "lightness": 0.65,
+    "color_align": {
+        "mode": "horizontal"
+    },
+    "backend": "fastfetch",
+    "args": "--config /home/leadseason/.config/fastfetch/config-small.jsonc",
+    "distro": "arch_small",
+    "pride_month_disable": false
+}

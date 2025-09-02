@@ -73,7 +73,7 @@ function Update() {
 
 function OSIcon() {
     return <button>
-        <image iconName={"archlinux-logo"} pixelSize={24} />
+        <image file={Config.osIcon} pixelSize={24} />
     </button>
 }
 
