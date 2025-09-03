@@ -9,8 +9,7 @@ if [ "$(tty)" = "/dev/tty1" ]; then
     exec sway-launch
 fi
 
-# didn't feel like it.
-# fastfetch --config $HOME/.config/fastfetch/config-small.jsonc
+hyfetch --config-file=$HOME/.config/fastfetch/hyfetch-small.json
 
 
 # if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
