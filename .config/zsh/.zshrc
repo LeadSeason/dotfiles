@@ -9,9 +9,7 @@ if [ "$(tty)" = "/dev/tty1" ]; then
     exec sway-launch
 fi
 
-# didn't feel like it.
-# fastfetch --config $HOME/.config/fastfetch/config-small.jsonc
-
+hyfetch --config-file=$HOME/.config/fastfetch/hyfetch-small.json --ascii-file .config/fastfetch/uwuarch.ascii
 
 # if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
 #   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
@@ -93,7 +91,7 @@ alias copy="wl-copy"
 alias ff="fastfetch"
 alias ffs="fastfetch --config $HOME/.config/fastfetch/config-small.jsonc"
 alias hf="hyfetch"
-alias hfs="hyfetch --config-file=$HOME/.config/fastfetch/hyfetch-small.json"
+alias hfs="hyfetch --config-file=$HOME/.config/fastfetch/hyfetch-small.json --ascii-file .config/fastfetch/uwuarch.ascii"
 alias grep="grep --color"
 alias icat="kitty +kitten icat"
 alias ip="ip -color=auto"
