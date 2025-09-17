@@ -8,7 +8,7 @@
         "mode": "horizontal"
     },
     "backend": "fastfetch",
-    "args": "--config /home/leadseason/.config/fastfetch/config-small.jsonc",
+    "args": "--config .config/fastfetch/config-small.jsonc",
     "distro": "arch_small",
     "pride_month_disable": false
 }
