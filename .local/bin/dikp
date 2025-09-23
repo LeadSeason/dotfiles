@@ -1,0 +1,76 @@
+#!/bin/bash
+
+# Stupid ass thing made with chatgpt
+
+# dikp: DNS Information Keeper/Printer (parallel, ordered output)
+# usage: dikp domain.com [RECORD_TYPES...]
+
+[[ -z $1 ]] && { echo "Usage: dikp your.fqdn.com [RECORD_TYPES...]"; exit 1; }
+
+DOMAIN_NAME=$1
+shift
+
+if [[ $# -gt 0 ]]; then
+  RECORD_TYPES=("$@")
+else
+  RECORD_TYPES=("A" "TXT" "MX" "SOA")
+fi
+
+# ANSI colors
+COLOR_RESET="\e[0m"
+COLOR_CYAN="\e[36m"
+COLOR_YELLOW="\e[33m"
+COLOR_GREEN="\e[32m"
+COLOR_RED="\e[31m"
+
+# providers
+declare -A PUBLIC_DNS=(
+  ["Cloudflare"]="1.1.1.1"
+  ["Google"]="8.8.8.8"
+  ["Quad9"]="9.9.9.9"
+  ["ControlD"]="76.76.2.0"
+  ["OpenDNS"]="208.67.222.222"
+  ["LeadLab DNS"]="89.190.1.70"
+  ["LeadLab NS1"]="ns1.xv6.ovh"
+)
+
+ORDERED_PROVIDERS=("Cloudflare" "Google" "Quad9" "ControlD" "OpenDNS" "LeadLab DNS" "LeadLab NS1")
+
+# create a temp file for each provider
+declare -A TMP_FILES
+for PROVIDER in "${ORDERED_PROVIDERS[@]}"; do
+  TMP_FILES["$PROVIDER"]=$(mktemp)
+done
+
+# function to query a provider (write to specified file)
+query_dns() {
+  local PROVIDER="$1"
+  local DNS="$2"
+  local FILE="$3"
+
+  echo -e "${COLOR_CYAN}$PROVIDER:${COLOR_RESET}" >> "$FILE"
+
+  for RECORD in "${RECORD_TYPES[@]}"; do
+    RESULT=$(dig @"$DNS" "$DOMAIN_NAME" "$RECORD" +short)
+    if [[ -n "$RESULT" ]]; then
+      while IFS= read -r line; do
+        echo -e "   ${COLOR_YELLOW}$DNS: $RECORD${COLOR_RESET}  ${COLOR_GREEN}$line${COLOR_RESET}" >> "$FILE"
+      done <<< "$RESULT"
+    else
+      echo -e "   ${COLOR_YELLOW}$DNS: $RECORD${COLOR_RESET}  ${COLOR_RED}<no record>${COLOR_RESET}" >> "$FILE"
+    fi
+  done
+}
+
+# run queries in parallel
+for PROVIDER in "${ORDERED_PROVIDERS[@]}"; do
+  query_dns "$PROVIDER" "${PUBLIC_DNS[$PROVIDER]}" "${TMP_FILES[$PROVIDER]}" &
+done
+
+wait
+
+# print in order
+for PROVIDER in "${ORDERED_PROVIDERS[@]}"; do
+  cat "${TMP_FILES[$PROVIDER]}"
+  rm -f "${TMP_FILES[$PROVIDER]}"
+done
