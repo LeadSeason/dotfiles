@@ -13,40 +13,38 @@
   },
   "modules": [
     {
+      "type": "title",
+      "key": " "
+    },
+    {
       "type": "os",
-      "key": "   OS  \u001b[37m: "
+      "key": "os       "
     },
     {
       "type": "kernel",
-      "key": "  VER  \u001b[37m: "
+      "key": "kernel   "
     },
     {
       "type": "uptime",
-      "key": "   UP  \u001b[37m: "
+      "key": "uptime   "
+    },
+    {
+      "type": "command",
+      "shell": "./a.sh",
+      "key": "os age   "
+      
     },
     {
       "type": "packages",
-      "key": "  PKG  \u001b[37m: "
-    },
-    {
-      "type": "wm",
-      "key": "   WM  \u001b[37m: "
-    },
-    {
-      "type": "shell",
-      "key": "SHELL  \u001b[37m: "
-    },
-    {
-      "type": "terminal",
-      "key": " TERM  \u001b[37m: "
+      "key": "pkgs     "
     },
     {
       "type": "memory",
-      "key": "  MEM  \u001b[37m: "
+      "key": "memory   "
     },
     {
       "type": "battery",
-      "key": "BAT-{1}  \u001b[37m: "
+      "key": "battery  "
     },
     {
       "type": "custom",
