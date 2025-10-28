@@ -1,0 +1,55 @@
+#!/bin/bash
+
+# Usage: ./system_age_pretty.sh [-s]
+# -s : silent mode (omit "System age:" prefix)
+
+silent=false
+
+# Parse arguments
+while getopts ":sc" opt; do
+  case $opt in
+    s)
+      silent=true
+      ;;
+    c)
+      silent=true
+      ;;
+    \?)
+      echo "Invalid option: -$OPTARG" >&2
+      echo "Usage: $0 [-s]"
+      exit 1
+      ;;
+  esac
+done
+
+# Get filesystem birth date of root (/)
+birth_date=$(stat -c %w /)
+
+# If %w is not supported, fallback to %z (change time)
+if [ "$birth_date" = "-" ]; then
+  echo "Birth time not supported on this filesystem."
+  exit 1
+fi
+
+# Convert dates to seconds since epoch
+birth_epoch=$(date -d "$birth_date" +%s)
+now_epoch=$(date +%s)
+
+# Compute total days
+total_days=$(( (now_epoch - birth_epoch) / 86400 ))
+
+# Approximate conversion
+years=$(( total_days / 365 ))
+remaining_days=$(( total_days % 365 ))
+months=$(( remaining_days / 30 ))
+days=$(( remaining_days % 30 ))
+
+# Build the formatted string
+age_string="${years} years, ${months} months, ${days} days"
+
+# Output
+if $silent; then
+  echo "$age_string"
+else
+  echo "System age: $age_string"
+fi

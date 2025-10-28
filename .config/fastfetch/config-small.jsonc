@@ -30,7 +30,7 @@
     },
     {
       "type": "command",
-      "shell": "./a.sh",
+      "shell": "installed-since",
       "key": "os age   "
       
     },
