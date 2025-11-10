@@ -29,10 +29,17 @@ export default class ArchUpdates extends GObject.Object {
     constructor() {
         super();
 
-        const updatesFile = `/tmp/updates`;
+        const updatesFile = `/run/user/1000/system_updates`;
 
         const updatesFileUpdate = async (path: string) => {
-            const v = await readFileAsync(path);
+            let v
+            try {
+                v = await readFileAsync(path);
+            } catch (error) {
+                console.log(path)
+                console.log("Mrrpt")
+                return
+            }
             this.#updates = v;
             this.#updatesnum = v.split(/\r\n|\r|\n/).length - 1;
             this.notify("updates");
@@ -42,8 +49,21 @@ export default class ArchUpdates extends GObject.Object {
 
         updatesFileUpdate(updatesFile);
 
-        monitorFile(updatesFile, async f => {
-            updatesFileUpdate(f);
-        })
+        try {
+            monitorFile(updatesFile, async f => {
+                try {
+                    updatesFileUpdate(f);
+                    
+                } catch (error) {
+                    
+                    console.log("meaw")
+                    console.log(error)
+                }
+            })
+            
+        } catch (error) {
+            console.log("Mrrr")
+            console.log(error)
+        }
     }
 }

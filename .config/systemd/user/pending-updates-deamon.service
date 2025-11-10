@@ -1,0 +1,12 @@
+[Unit]
+Description=Pending update checker
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+ExecStart=%h/.local/bin/pending-updates-deamon
+
+[Install]
+WantedBy=default.target
+

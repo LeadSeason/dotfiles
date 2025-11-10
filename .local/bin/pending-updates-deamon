@@ -1,0 +1,21 @@
+#!/bin/sh
+
+UPDATE_FILE=/tmp/system_updates
+if [[ -n "$XDG_RUNTIME_DIR" ]]; then
+    UPDATE_FILE=$XDG_RUNTIME_DIR/system_updates
+fi
+
+echo Updates listed in "$UPDATE_FILE"
+
+while (true)
+do
+	# Checkupdates provided by pacman-contrib
+	checkupdates 2> /dev/null > $UPDATE_FILE.swap
+    yay -Qau 2> /dev/null >> $UPDATE_FILE.swap
+
+    cp $UPDATE_FILE.swap $UPDATE_FILE
+    rm $UPDATE_FILE.swap
+
+	echo "Avalable packages to update $(cat $UPDATE_FILE 2> /dev/null | wc -l)"
+	sleep 300
+done
