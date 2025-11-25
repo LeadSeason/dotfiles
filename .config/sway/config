@@ -8,6 +8,7 @@
 #
 
 # Mod1 = alt
+# Mod4 = super
 set $mod Mod1
 set $modalt Mod4
 
@@ -105,6 +106,7 @@ blur_passes 2
 blur_radius 2
 
 layer_effects "wamBar" blur enable;
+layer_effects "bar" blur enable;
 
 layer_effects "rofi" blur enable; corner_radius 0; shadows enable; corner_radius 14;
 
@@ -124,8 +126,8 @@ for_window [title="Remote Folder Picker - Celeste"] floating enable
 for_window [title="Local Folder Picker - Celeste"] floating enable
 for_window [app_id="vivid/stasis"] fullscreen enable
 for_window [title="NoiseTorch"] floating enable
-# for_window [app_id="flameshot"] border pixel 0, floating enable, fullscreen disable, move absolute position 0 0
-# for_window [app_id="flameshot"] border pixel 0, fullscreen global
+for_window [app_id="flameshot"] border pixel 0, floating enable, fullscreen disable, move absolute position 0 0
+for_window [app_id="flameshot"] border pixel 0, fullscreen global
 for_window [app_id="com.gabm.satty"] border pixel 0, floating enable, fullscreen disable, move absolute position 0 0
 for_window [app_id="com.gabm.satty"] border pixel 0, fullscreen global
 
@@ -143,7 +145,7 @@ exec wl-paste -t text --watch clipman store --no-persist
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec /usr/lib/kdeconnectd
 
-exec ags run
+exec_always wam restart
 exec swww-daemon
 exec swaync
 exec sworkstyle >> ~/.cache/sworkstyle.log 2>&1
@@ -157,23 +159,12 @@ exec swayidle \
     resume "wam undim" \
 	timeout 300 "pgrep --exact hyprlock || hyprlock --grace 3" \
     timeout 420 'swaymsg "output * dpms off"' \
-    resume 'swaymsg "output * dpms on" & sleep 10; ags run'
-
-# Use -w so desktops arent visible after unsleeping
-exec swayidle -w \
-	before-sleep "pgrep --exact hyprlock || hyprlock" \
+    resume 'swaymsg "output * dpms on"; wam restart' \
+	before-sleep "pgrep --exact hyprlock || hyprlock"
 
 exec nextcloud --background
 exec protonmail-bridge -n 
 exec playerctld daemon
-
-# exec /usr/lib/xdg-desktop-portal-wlr
-# exec /usr/lib/xdg-desktop-portal
-# exec /usr/lib/xdg-desktop-portal-gtk
-
-# exec systemctl --user import-environment XDG_CURRENT_DESKTOP XDG_SESSION_TYPE DISPLAY WAYLAND_DISPLAY SWAYSOCK SSH_AUTH_SOCK GNOME_KEYRING_CONTROL
-# exec dbus-update-activation-environment --systemd XDG_CURRENT_DESKTOP XDG_SESSION_TYPE DISPLAY WAYLAND_DISPLAY SWAYSOCK SSH_AUTH_SOCK GNOME_KEYRING_CONTROL
-
 
 #
 # ░█████╗░░█████╗░███╗░░██╗████████╗██████╗░░█████╗░██╗░░░░░░██████╗
@@ -220,9 +211,6 @@ mouse_warping container
 floating_modifier $mod normal
 
 bindsym {
-    # reload sway
-    $mod+Shift+r reload
-
     # start a terminal
     $mod+Return exec $term
 
@@ -235,24 +223,13 @@ bindsym {
     # Calculator
     $mod+p exec "sway-floating kitty -e 'ptpython --vi'"
 
-    # start screenshot
-    # $mod+c exec bash -c 'grim -g "$(slurp)" - | swappy -f - -o - | ~/.local/bin/timhostuploader'
-    $mod+c exec flameshot gui -r | ~/.local/bin/timhostuploader
-    $mod+Shift+c exec grimshot save window - | ~/.local/bin/timhostuploader
-
     # lock
     $mod+r exec "hyprlock --grace 3 & "
 
     $mod+Shift+i exec "wam togglegaps"
 
-    # Brightness controls
-    XF86MonBrightnessUp exec brightnessctl set 10%+
-    XF86MonBrightnessDown exec brightnessctl set 10%-
-    $modalt+F5 exec brightnessctl set 10%+
-    $modalt+F6 exec brightnessctl set 10%-
-
-    $mod+ctrl+Delete exec ags request --instance wam powermenu
-    $mod+t exec ags request --instance wam scratchpad
+    $mod+ctrl+Delete exec wam powermenu
+    $mod+t exec wam scratchpad
     $modalt+i exec wam -I
 
     # start a program launcher (rofi)
@@ -274,15 +251,20 @@ bindsym {
 
     $mod+section exec hyprmag
     $mod+Shift+section exec ~/.local/bin/colorpicker
+}
+
+bindsym {
+    # reload sway
+    $mod+Shift+r reload
 
     # kill focused window
     $mod+Shift+q kill
 
     # change focus
-    $mod+j focus left
-    $mod+k focus down
-    $mod+l focus up
-    $mod+odiaeresis focus right
+    $mod+h focus left
+    $mod+j focus down
+    $mod+k focus up
+    $mod+l focus right
 
     # alternatively, you can use the cursor keys:
     $mod+Left focus left
@@ -291,10 +273,10 @@ bindsym {
     $mod+Right focus right
 
     # move focused window
-    $mod+Shift+j move left
-    $mod+Shift+k move down
-    $mod+Shift+l move up
-    $mod+Shift+odiaeresis move right
+    $mod+Shift+h move left
+    $mod+Shift+j move down
+    $mod+Shift+k move up
+    $mod+Shift+l move right
 
     # alternatively, you can use the cursor keys:
     $mod+Shift+Left move left
@@ -302,10 +284,10 @@ bindsym {
     $mod+Shift+Up move up
     $mod+Shift+Right move right
 
-    $modalt+j resize shrink width 10 px or 10 ppt  
-    $modalt+k resize grow height 10 px or 10 ppt   
-    $modalt+l resize shrink height 10 px or 10 ppt 
-    $modalt+odiaeresis resize grow width 10 px or 10 ppt    
+    $modalt+h resize shrink width 10 px or 10 ppt  
+    $modalt+j resize grow height 10 px or 10 ppt   
+    $modalt+k resize shrink height 10 px or 10 ppt 
+    $modalt+l resize grow width 10 px or 10 ppt    
 
     # alternatively, you can use the cursor keys:
     $modalt+Left resize shrink width 10 px or 10 ppt  
@@ -320,13 +302,13 @@ bindsym {
     $mod+Control+Shift+Right move workspace to output right
 
     # alternatively, you can use the cursor keys:
-    $mod+Control+Shift+j move workspace to output left
-    $mod+Control+Shift+k move workspace to output down
-    $mod+Control+Shift+l move workspace to output up
-    $mod+Control+Shift+odiaeresis move workspace to output right
+    $mod+Control+Shift+h move workspace to output left
+    $mod+Control+Shift+j move workspace to output down
+    $mod+Control+Shift+k move workspace to output up
+    $mod+Control+Shift+l move workspace to output right
 
     # split in Horizontal or vertical orientation
-    $mod+h split h
+    $mod+b split h
     $mod+v split v
     $mod+n split n
 
@@ -402,17 +384,23 @@ bindsym --locked {
     # Kbd brightness for Lenovo laptop
     $modalt+space exec $HOME/.local/bin/kbd_brightness_toggle
 
+    # Brightness controls
+    XF86MonBrightnessUp exec brightnessctl set 10%+
+    XF86MonBrightnessDown exec brightnessctl set 10%-
+    $modalt+F6 exec brightnessctl set 10%+
+    $modalt+F5 exec brightnessctl set 10%-
+
     # Media player controls
-    XF86AudioPlay exec playerctl play-pause; exec ags request media --instance wam
-    XF86AudioStop exec playerctl stop; exec ags request media --instance wam
-    XF86AudioNext exec playerctl next; exec ags request media --instance wam
-    XF86AudioPrev exec playerctl previous; exec ags request media --instance wam
+    XF86AudioPlay exec playerctl play-pause; exec wam media
+    XF86AudioStop exec playerctl stop; exec wam media
+    XF86AudioNext exec playerctl next; exec wam media
+    XF86AudioPrev exec playerctl previous; exec wam media
 
     # Alternatively Using $mod + F-keys
-    $mod+F1 exec playerctl previous; exec ags request media --instance wam
-    $mod+F2 exec ags request media --instance wam
-    $mod+F3 exec playerctl play-pause; exec ags request media --instance wam
-    $mod+F4 exec playerctl next; exec ags request media --instance wam
+    $mod+F1 exec playerctl previous; exec wam media
+    $mod+F2 exec wam media
+    $mod+F3 exec playerctl play-pause; exec wam media
+    $mod+F4 exec playerctl next; exec wam media
 
     # Use pactl to adjust volume in PulseAudio.
     XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
