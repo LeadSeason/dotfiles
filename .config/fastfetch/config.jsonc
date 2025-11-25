@@ -4,7 +4,8 @@
     "color": {
       "1": "yellow",
       "2": "yellow"
-    }
+    },
+    "type": "auto"
   },
   "display": {
     "color": "yellow",
