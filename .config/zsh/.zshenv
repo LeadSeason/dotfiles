@@ -10,6 +10,7 @@ export EDITOR=nvim
 
 # Theaming
 export GTK_THEME=catppuccin-mocha-yellow-standard+default
+export ICON_THEME=Papirus-Dark
 export QT_QPA_PLATFORMTHEME=qt5ct
 export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
 
@@ -26,10 +27,10 @@ export XDG_DESKTOP_DIR="$HOME/"
 export XDG_DOWNLOAD_DIR="$HOME/downloads"
 export XDG_TEMPLATES_DIR="$HOME/"
 export XDG_PUBLICSHARE_DIR="$HOME/media/share"
-export XDG_DOCUMENTS_DIR="$HOME/media/documents"
+export XDG_DOCUMENTS_DIR="$HOME/documents"
 export XDG_MUSIC_DIR="$HOME/media/music"
-export XDG_PICTURES_DIR="$HOME/visual-media"
-export XDG_VIDEOS_DIR="$HOME/visual-media"
+export XDG_PICTURES_DIR="$HOME/pictures"
+export XDG_VIDEOS_DIR="$HOME/media/videos"
 
 # Per application datadirs
 export ANDROID_USER_HOME="$XDG_DATA_HOME"/android
