@@ -8,6 +8,7 @@
 #
 
 # Mod1 = alt
+# Mod4 = super
 set $mod Mod1
 set $modalt Mod4
 
@@ -158,19 +159,11 @@ exec swayidle \
     resume "wam undim" \
 	timeout 300 "pgrep --exact hyprlock || hyprlock --grace 3" \
     timeout 420 'swaymsg "output * dpms off"' \
-    resume 'swaymsg "output * dpms on" & sleep 10; wam restart' \
+    resume 'swaymsg "output * dpms on"; wam restart' \
 	before-sleep "pgrep --exact hyprlock || hyprlock"
 
 exec nextcloud --background
 exec playerctld daemon
-
-# exec /usr/lib/xdg-desktop-portal-wlr
-# exec /usr/lib/xdg-desktop-portal
-# exec /usr/lib/xdg-desktop-portal-gtk
-
-# exec systemctl --user import-environment XDG_CURRENT_DESKTOP XDG_SESSION_TYPE DISPLAY WAYLAND_DISPLAY SWAYSOCK SSH_AUTH_SOCK GNOME_KEYRING_CONTROL
-# exec dbus-update-activation-environment --systemd XDG_CURRENT_DESKTOP XDG_SESSION_TYPE DISPLAY WAYLAND_DISPLAY SWAYSOCK SSH_AUTH_SOCK GNOME_KEYRING_CONTROL
-
 
 #
 # ░█████╗░░█████╗░███╗░░██╗████████╗██████╗░░█████╗░██╗░░░░░░██████╗
@@ -229,11 +222,6 @@ bindsym {
     # Calculator
     $mod+p exec "sway-floating kitty -e 'ptpython --vi'"
 
-    # start screenshot
-    # $mod+c exec bash -c 'grim -g "$(slurp)" - | swappy -f - -o - | ~/.local/bin/timhostuploader'
-    $mod+c exec flameshot gui -r | ~/.local/bin/timhostuploader
-    $mod+Shift+c exec grimshot save window - | ~/.local/bin/timhostuploader
-
     # lock
     $mod+r exec "hyprlock --grace 3 & "
 
@@ -269,6 +257,11 @@ bindsym {
 
     $mod+section exec hyprmag
     $mod+Shift+section exec ~/.local/bin/colorpicker
+}
+
+bindsym {
+    # reload sway
+    $mod+Shift+r reload
 
     # reload sway
     $mod+Shift+r reload
@@ -277,10 +270,10 @@ bindsym {
     $mod+Shift+q kill
 
     # change focus
-    $mod+j focus left
-    $mod+k focus down
-    $mod+l focus up
-    $mod+odiaeresis focus right
+    $mod+h focus left
+    $mod+j focus down
+    $mod+k focus up
+    $mod+l focus right
 
     # alternatively, you can use the cursor keys:
     $mod+Left focus left
@@ -289,10 +282,10 @@ bindsym {
     $mod+Right focus right
 
     # move focused window
-    $mod+Shift+j move left
-    $mod+Shift+k move down
-    $mod+Shift+l move up
-    $mod+Shift+odiaeresis move right
+    $mod+Shift+h move left
+    $mod+Shift+j move down
+    $mod+Shift+k move up
+    $mod+Shift+l move right
 
     # alternatively, you can use the cursor keys:
     $mod+Shift+Left move left
@@ -300,10 +293,10 @@ bindsym {
     $mod+Shift+Up move up
     $mod+Shift+Right move right
 
-    $modalt+j resize shrink width 10 px or 10 ppt  
-    $modalt+k resize grow height 10 px or 10 ppt   
-    $modalt+l resize shrink height 10 px or 10 ppt 
-    $modalt+odiaeresis resize grow width 10 px or 10 ppt    
+    $modalt+h resize shrink width 10 px or 10 ppt  
+    $modalt+j resize grow height 10 px or 10 ppt   
+    $modalt+k resize shrink height 10 px or 10 ppt 
+    $modalt+l resize grow width 10 px or 10 ppt    
 
     # alternatively, you can use the cursor keys:
     $modalt+Left resize shrink width 10 px or 10 ppt  
@@ -318,13 +311,13 @@ bindsym {
     $mod+Control+Shift+Right move workspace to output right
 
     # alternatively, you can use the cursor keys:
-    $mod+Control+Shift+j move workspace to output left
-    $mod+Control+Shift+k move workspace to output down
-    $mod+Control+Shift+l move workspace to output up
-    $mod+Control+Shift+odiaeresis move workspace to output right
+    $mod+Control+Shift+h move workspace to output left
+    $mod+Control+Shift+j move workspace to output down
+    $mod+Control+Shift+k move workspace to output up
+    $mod+Control+Shift+l move workspace to output right
 
     # split in Horizontal or vertical orientation
-    $mod+h split h
+    $mod+b split h
     $mod+v split v
     $mod+n split n
 
@@ -399,6 +392,12 @@ bindsym {
 bindsym --locked {
     # Kbd brightness for Lenovo laptop
     $modalt+space exec $HOME/.local/bin/kbd_brightness_toggle
+
+    # Brightness controls
+    XF86MonBrightnessUp exec brightnessctl set 10%+
+    XF86MonBrightnessDown exec brightnessctl set 10%-
+    $modalt+F6 exec brightnessctl set 10%+
+    $modalt+F5 exec brightnessctl set 10%-
 
     # Media player controls
     XF86AudioPlay exec playerctl play-pause; exec wam media

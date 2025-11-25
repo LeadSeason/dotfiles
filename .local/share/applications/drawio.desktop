@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=drawio
+Comment=A diagramming and whiteboarding desktop app
+Exec=/usr/bin/drawio --enable-features=UseOzonePlatform --ozone-platform=wayland %f
+Terminal=false
+Type=Application
+Icon=drawio
+StartupWMClass=draw.io
+Categories=Graphics;
+MimeType=application/vnd.jgraph.mxfile;application/vnd.visio;
