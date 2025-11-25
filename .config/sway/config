@@ -263,9 +263,6 @@ bindsym {
     # reload sway
     $mod+Shift+r reload
 
-    # reload sway
-    $mod+Shift+r reload
-
     # kill focused window
     $mod+Shift+q kill
 
