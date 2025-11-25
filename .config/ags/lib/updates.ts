@@ -29,7 +29,7 @@ export default class ArchUpdates extends GObject.Object {
     constructor() {
         super();
 
-        const updatesFile = `/tmp/updates`;
+        const updatesFile = `/run/user/1000/system_updates`;
 
         const updatesFileUpdate = async (path: string) => {
             const v = await readFileAsync(path);
