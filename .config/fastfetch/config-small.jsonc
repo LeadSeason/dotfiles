@@ -30,9 +30,8 @@
     },
     {
       "type": "command",
-      "shell": "installed-since",
+      "text": "installed-since -s",
       "key": "os age   "
-      
     },
     {
       "type": "packages",

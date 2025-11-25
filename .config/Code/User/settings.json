@@ -3,7 +3,8 @@
     "files.associations": {
         "grub": "properties",
         "*.pde": "cpp",
-        "*.js": "javascript"
+        "*.js": "javascript",
+        "*.vhost": "nginx"
     },
     "workbench.editorAssociations": {
         "*.ipynb": "jupyter-notebook"
@@ -26,7 +27,7 @@
     "editor.largeFileOptimizations": false,
     "vim.useSystemClipboard": true,
     "git.confirmSync": false,
-    "editor.minimap.autohide": true,
+    "editor.minimap.autohide": "mouseover",
     "editor.lineNumbers": "relative",
     "css.styleSheets": [
         "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
@@ -60,7 +61,16 @@
         "asvetliakov.vscode-neovim": 1
     },
     "catppuccin.accentColor": "yellow",
-    "files.autoSave": "afterDelay",
     "typescript.updateImportsOnFileMove.enabled": "always",
-    "editor.renderWhitespace": "none"
+    "editor.renderWhitespace": "none",
+    "github.copilot.enable": {
+        "*": false,
+        "plaintext": false,
+        "markdown": false,
+        "scminput": false
+    },
+    "files.autoSave": "afterDelay",
+    "[nginx]": {
+
+    }
 }

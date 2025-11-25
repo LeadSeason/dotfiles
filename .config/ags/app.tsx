@@ -5,6 +5,8 @@ import GLib from "gi://GLib?version=2.0";
 import { exec } from "ags/process";
 import { For, createBinding } from "ags";
 
+import { requestHandler } from "./tools/requestHandler";
+
 import Config from "./config";
 import Bar from "./widgets/bar/Bar";
 import Scratchpad from "./widgets/scratchpad/scratchpad";
@@ -12,7 +14,6 @@ import OSD from "./widgets/osd/osd";
 import Media from "./widgets/media/media"
 import SwayGaps from "./tools/swaygaps";
 import powerManagement from "./tools/powerManagement";
-import { requestHandler } from "./tools/requestHandler";
 
 let scratchpad:  Gtk.Window
 let osd: Gtk.Window

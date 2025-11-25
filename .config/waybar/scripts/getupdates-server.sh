@@ -2,6 +2,7 @@
 
 while (true)
 do
+	# Checkupdates provided by pacman-contrib
 	checkupdates 2> /dev/null > /tmp/updates
 	yay -Qau 2> /dev/null >> /tmp/updates
 

@@ -5,7 +5,7 @@
 	"spacing": 0,
 	"modules-left": [
 		"custom/os_icon",
-		// "wlr/workspaces",
+		"hyprland/workspaces",
 		"sway/workspaces",
 		"sway/mode"
 	],
