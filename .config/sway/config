@@ -75,9 +75,9 @@ gaps outer 10
 
 # Colors
 # target                 title      bg      text    indicator   border
-client.focused           $yellow    $yellow $base   $blue       $yellow
-client.focused_inactive  $yellow    $base   $text   $surface1   $surface0
-client.focused_tab_title $yellow    $base   $text   $surface1   $surface0
+client.focused           $green     $green  $base   $blue       $green 
+client.focused_inactive  $green     $base   $text   $surface1   $surface0
+client.focused_tab_title $green     $base   $text   $surface1   $surface0
 client.unfocused         $base      $base   $text   $surface1   $surface0
 client.urgent            $red       $base   $red    $red        $red
 client.placeholder       $overlay0  $base   $text   $surface1   $overlay0
@@ -105,6 +105,7 @@ blur_passes 2
 blur_radius 2
 
 layer_effects "wamBar" blur enable;
+layer_effects "bar" blur enable;
 
 layer_effects "rofi" blur enable; corner_radius 0; shadows enable; corner_radius 14;
 
@@ -124,8 +125,8 @@ for_window [title="Remote Folder Picker - Celeste"] floating enable
 for_window [title="Local Folder Picker - Celeste"] floating enable
 for_window [app_id="vivid/stasis"] fullscreen enable
 for_window [title="NoiseTorch"] floating enable
-# for_window [app_id="flameshot"] border pixel 0, floating enable, fullscreen disable, move absolute position 0 0
-# for_window [app_id="flameshot"] border pixel 0, fullscreen global
+for_window [app_id="flameshot"] border pixel 0, floating enable, fullscreen disable, move absolute position 0 0
+for_window [app_id="flameshot"] border pixel 0, fullscreen global
 for_window [app_id="com.gabm.satty"] border pixel 0, floating enable, fullscreen disable, move absolute position 0 0
 for_window [app_id="com.gabm.satty"] border pixel 0, fullscreen global
 
@@ -143,7 +144,7 @@ exec wl-paste -t text --watch clipman store --no-persist
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec /usr/lib/kdeconnectd
 
-exec ags run
+exec_always wam restart
 exec swww-daemon
 exec swaync
 exec sworkstyle >> ~/.cache/sworkstyle.log 2>&1
@@ -157,14 +158,10 @@ exec swayidle \
     resume "wam undim" \
 	timeout 300 "pgrep --exact hyprlock || hyprlock --grace 3" \
     timeout 420 'swaymsg "output * dpms off"' \
-    resume 'swaymsg "output * dpms on" & sleep 10; ags run'
-
-# Use -w so desktops arent visible after unsleeping
-exec swayidle -w \
-	before-sleep "pgrep --exact hyprlock || hyprlock" \
+    resume 'swaymsg "output * dpms on" & sleep 10; wam restart' \
+	before-sleep "pgrep --exact hyprlock || hyprlock"
 
 exec nextcloud --background
-exec protonmail-bridge -n 
 exec playerctld daemon
 
 # exec /usr/lib/xdg-desktop-portal-wlr
@@ -220,9 +217,6 @@ mouse_warping container
 floating_modifier $mod normal
 
 bindsym {
-    # reload sway
-    $mod+Shift+r reload
-
     # start a terminal
     $mod+Return exec $term
 
@@ -251,9 +245,10 @@ bindsym {
     $modalt+F5 exec brightnessctl set 10%+
     $modalt+F6 exec brightnessctl set 10%-
 
-    $mod+ctrl+Delete exec ags request --instance wam powermenu
-    $mod+t exec ags request --instance wam scratchpad
+    $mod+ctrl+Delete exec wam powermenu
+    $mod+t exec wam scratchpad
     $modalt+i exec wam -I
+    $modalt+shift+i exec ags inspect -i wam-shell
 
     # start a program launcher (rofi)
     $mod+d exec pgrep --exact rofi || rofi -I -show drun
@@ -274,6 +269,9 @@ bindsym {
 
     $mod+section exec hyprmag
     $mod+Shift+section exec ~/.local/bin/colorpicker
+
+    # reload sway
+    $mod+Shift+r reload
 
     # kill focused window
     $mod+Shift+q kill
@@ -403,16 +401,16 @@ bindsym --locked {
     $modalt+space exec $HOME/.local/bin/kbd_brightness_toggle
 
     # Media player controls
-    XF86AudioPlay exec playerctl play-pause; exec ags request media --instance wam
-    XF86AudioStop exec playerctl stop; exec ags request media --instance wam
-    XF86AudioNext exec playerctl next; exec ags request media --instance wam
-    XF86AudioPrev exec playerctl previous; exec ags request media --instance wam
+    XF86AudioPlay exec playerctl play-pause; exec wam media
+    XF86AudioStop exec playerctl stop; exec wam media
+    XF86AudioNext exec playerctl next; exec wam media
+    XF86AudioPrev exec playerctl previous; exec wam media
 
     # Alternatively Using $mod + F-keys
-    $mod+F1 exec playerctl previous; exec ags request media --instance wam
-    $mod+F2 exec ags request media --instance wam
-    $mod+F3 exec playerctl play-pause; exec ags request media --instance wam
-    $mod+F4 exec playerctl next; exec ags request media --instance wam
+    $mod+F1 exec playerctl previous; exec wam media
+    $mod+F2 exec wam media
+    $mod+F3 exec playerctl play-pause; exec wam media
+    $mod+F4 exec playerctl next; exec wam media
 
     # Use pactl to adjust volume in PulseAudio.
     XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle

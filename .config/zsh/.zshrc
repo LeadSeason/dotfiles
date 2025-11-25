@@ -6,7 +6,29 @@ source $ZDOTDIR/.zshenv
 
 # start wm on tty1 login
 if [ "$(tty)" = "/dev/tty1" ]; then
-    exec sway-launch
+    echo ""
+    echo "Select session to launch:"
+    echo "  1) sway-launch"
+    echo "  2) hypr-launch"
+    echo "  3) stay in shell"
+    echo ""
+    echo -n "Enter choice [1-3]: "
+    read -r choice
+
+    case "$choice" in
+        1)
+            exec sway-launch
+            ;;
+        2)
+            exec hypr-launch
+            ;;
+        3)
+            echo "Staying in shell."
+            ;;
+        *)
+            echo "Invalid choice. Staying in shell."
+            ;;
+    esac
 fi
 
 hyfetch --config-file=$HOME/.config/fastfetch/hyfetch-small.json --ascii-file .config/fastfetch/uwuarch.ascii
@@ -80,6 +102,7 @@ function current() {
 }
 
 # alias defenitions
+alias watch="watch --color"
 alias cls=clear
 alias diff="diff --color"
 alias :q="exit"
