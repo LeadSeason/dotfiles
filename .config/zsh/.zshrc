@@ -82,6 +82,7 @@ function current() {
 # alias defenitions
 alias cls=clear
 alias diff="diff --color"
+alias sdig="dig +short"
 alias :q="exit"
 alias autoremove="sudo pacman -Rcns \$(pacman -Qdtq) --noconfirm"
 alias cc="COLORTERM="" pygmentize -g"
