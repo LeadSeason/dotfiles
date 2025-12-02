@@ -193,6 +193,12 @@ input "type:keyboard" {
 }
 
 # Mouse settings
+input 1133:16478:Logitech_M720_Triathlon {
+    accel_profile flat
+    pointer_accel -0.4
+    scroll_factor 0.25 # This mouse does has 4 times the normal steps per tick
+}
+
 input type:pointer {
     accel_profile flat
     pointer_accel -0.4
