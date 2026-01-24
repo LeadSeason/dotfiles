@@ -17,7 +17,10 @@ import keyring
 import filetype
 
 
-save_path = "/home/leadseason/visual-media/tims.host_uploads/"
+save_path = os.path.join(
+        os.environ.get("XDG_PICTURES_DIR") or os.environ.get("HOME"),
+        "tims.host_uploads"
+)
 error_log_path = "/home/leadseason/.cache/timhostuploader-logs/"
 
 NOTIFICATION_REPLACE_ID = 1
