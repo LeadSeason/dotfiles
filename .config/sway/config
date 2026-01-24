@@ -76,9 +76,9 @@ gaps outer 10
 
 # Colors
 # target                 title      bg      text    indicator   border
-client.focused           $green     $green  $base   $blue       $green 
-client.focused_inactive  $green     $base   $text   $surface1   $surface0
-client.focused_tab_title $green     $base   $text   $surface1   $surface0
+client.focused           $blue      $blue   $base   $mauve      $blue  
+client.focused_inactive  $blue      $base   $text   $surface1   $surface0
+client.focused_tab_title $blue      $base   $text   $surface1   $surface0
 client.unfocused         $base      $base   $text   $surface1   $surface0
 client.urgent            $red       $base   $red    $red        $red
 client.placeholder       $overlay0  $base   $text   $surface1   $overlay0
@@ -105,9 +105,10 @@ blur_xray disable
 blur_passes 2
 blur_radius 2
 
-layer_effects "wamBar" blur enable;
-layer_effects "bar" blur enable;
+layer_effects "wamBar" blur enable; blur_ignore_transparent true;
+layer_effects "wam-shellScratchpad" blur enable; blur_ignore_transparent true;
 
+layer_effects "bar" blur enable; blur_ignore_transparent true;
 layer_effects "rofi" blur enable; corner_radius 0; shadows enable; corner_radius 14;
 
 shadows enable
@@ -130,6 +131,7 @@ for_window [app_id="flameshot"] border pixel 0, floating enable, fullscreen disa
 for_window [app_id="flameshot"] border pixel 0, fullscreen global
 for_window [app_id="com.gabm.satty"] border pixel 0, floating enable, fullscreen disable, move absolute position 0 0
 for_window [app_id="com.gabm.satty"] border pixel 0, fullscreen global
+for_window [app_id="nwg-icon-picker"] floating enable
 
 
 #
@@ -241,8 +243,10 @@ bindsym {
 
     $mod+ctrl+Delete exec wam powermenu
     $mod+t exec wam scratchpad
+    $modalt+t exec wam dialog
     $modalt+i exec wam -I
     $modalt+shift+i exec ags inspect -i wam-shell
+    $mod+shift+u exec 'nwg-icon-picker | tr -d "\n" | wl-copy'
 
     # start a program launcher (rofi)
     $mod+d exec pgrep --exact rofi || rofi -I -show drun
