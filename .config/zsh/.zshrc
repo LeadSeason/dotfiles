@@ -4,29 +4,23 @@
 # confirmations, etc.) must go above this block; everything else may go below.
 source $ZDOTDIR/.zshenv
 
+_GREEN=$(tput setaf 2)
+_BLUE=$(tput setaf 4)
+_RED=$(tput setaf 1)
+_RESET=$(tput sgr0)
+_BOLD=$(tput bold)
+
 # start wm on tty1 login
 if [ "$(tty)" = "/dev/tty1" ]; then
-    echo ""
-    echo "Select session to launch:"
-    echo "  1) sway-launch"
-    echo "  2) hypr-launch"
-    echo "  3) stay in shell"
-    echo ""
-    echo -n "Enter choice [1-3]: "
+    echo -n "${_BLUE}::${_RESET} Start swaywm? [Y/n] "
     read -r choice
 
     case "$choice" in
-        1)
-            exec sway-launch
-            ;;
-        2)
-            exec hypr-launch
-            ;;
-        3)
-            echo "Staying in shell."
+        n | no | e | ei )
+            echo -n ""
             ;;
         *)
-            echo "Invalid choice. Staying in shell."
+            exec sway-launch
             ;;
     esac
 fi
@@ -88,19 +82,6 @@ preexec () {
     fi
 }
 
-function current() {
-    # Get current scheme background color
-    bgcolor=$(flavours info -r $(flavours current) | sed -n '3 p')
-    # Get first character
-    character=${bgcolor:1:1}
-    # If its less than 5, normally is a dark scheme
-    if [[ $character < 5 ]]; then
-        echo "dark"
-    else
-        echo "light"
-    fi
-}
-
 # alias defenitions
 alias watch="watch --color"
 alias cls=clear
@@ -154,33 +135,6 @@ zstyle ':completion:*' matcher-list \
     'm:{[:lower:]}={[:upper:]}' \
     '+r:|[._-]=* r:|=*' \
     '+l:|=*'
-
-function hb {
-    url="https://bin.retardism.xyz"
-    up_uri="$url/documents"
-
-    response=$(cat $1 | curl -s -X POST -d @- "$up_uri")
-
-    if [ ! $? -eq 0 ]; then
-        echo "Failed to upload the document."
-        return 1
-    fi
-
-    hasteKey=$(echo $response | jq -r '.key')
-    url_final_v2_I_need_better_variable_names="$url/$hasteKey"
-    echo "$url_final_v2_I_need_better_variable_names"
-
-    if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
-        if type "wl-copy" > /dev/null; then
-            wl-copy "$url_final_v2_I_need_better_variable_names"
-        fi
-
-    elif [ $XDG_SESSION_TYPE = "x11" ]; then
-        if type "xclip" > /dev/null; then
-            echo -n "$url_final_v2_I_need_better_variable_names" | xclip -sel c
-        fi
-    fi
-}
 
 backward-delete-word-custom() {
     local WORDCHARS=${WORDCHARS/\//}
