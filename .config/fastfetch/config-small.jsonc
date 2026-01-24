@@ -3,12 +3,12 @@
   "logo": {
     "source": "$HOME/.config/fastfetch/uwuarch.ascii",
     "color": {
-      "1": "yellow",
-      "2": "yellow"
+      "1": "blue",
+      "2": "blue"
     }
   },
   "display": {
-    "color": "yellow",
+    "color": "blue",
     "separator": ""
   },
   "modules": [
