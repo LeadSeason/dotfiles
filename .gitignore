@@ -1,3 +1,4 @@
 .config/sway/outputs
 .config/sway/workspaces
+.config/btop/btop.conf
 .config/btop/btop.log
