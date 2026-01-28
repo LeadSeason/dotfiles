@@ -8,6 +8,9 @@ export SSH_AUTH_SOCK="/run/user/1000/gcr/ssh"
 export SYSTEMD_EDITOR=nvim
 export EDITOR=nvim
 
+# Reading man pages easier, ignore case while searching.
+export LESS=-Ri
+
 # Theaming
 export GTK_THEME=catppuccin-mocha-yellow-standard+default
 export ICON_THEME=Papirus-Dark
