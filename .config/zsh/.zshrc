@@ -115,7 +115,7 @@ alias showcolors="curl https://gist.githubusercontent.com/HaleTom/89ffe32783f89f
 alias ssh="TERM=xterm ssh"
 alias tree="tree -C"
 alias tty-clock="tty-clock -C 5"
-# alias vim="nvim"
+alias vim="nvim"
 alias xdg-ninja="COLORTERM=\"\" xdg-ninja"
 
 # Moving to XDG data dir
