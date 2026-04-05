@@ -1,11 +1,3 @@
-#
-# ░██████╗░███████╗███╗░░██╗███████╗██████╗░░█████╗░██╗░░░░░
-# ██╔════╝░██╔════╝████╗░██║██╔════╝██╔══██╗██╔══██╗██║░░░░░
-# ██║░░██╗░█████╗░░██╔██╗██║█████╗░░██████╔╝███████║██║░░░░░
-# ██║░░╚██╗██╔══╝░░██║╚████║██╔══╝░░██╔══██╗██╔══██║██║░░░░░
-# ╚██████╔╝███████╗██║░╚███║███████╗██║░░██║██║░░██║███████╗
-# ░╚═════╝░╚══════╝╚═╝░░╚══╝╚══════╝╚═╝░░╚═╝╚═╝░░╚═╝╚══════╝
-#
 
 # Mod1 = alt
 # Mod4 = super
@@ -23,45 +15,13 @@ set $file nemo
 set $browser firefox-nightly || firefox
 set $WOBSOCK $XDG_RUNTIME_DIR/wob.sock
 
-# xwayland disable
-
-# set $ws1 "1"
-# set $ws2 "2"
-# set $ws3 "3"
-# set $ws4 "4"
-# set $ws5 "5"
-# set $ws6 "6"
-# set $ws7 "7"
-# set $ws8 "8"
-# set $ws9 "9"
-# set $ws0 "0"
-# set $ws11 "11"
-# set $ws12 "12"
-# set $ws13 "13"
-# set $ws14 "14"
-# set $ws15 "15"
-# set $ws16 "16"
-# set $ws17 "17"
-# set $ws18 "18"
-# set $ws19 "19"
-# set $ws10 "10"
-
-#
-# ██╗░░░░░░█████╗░░█████╗░██╗░░██╗  ░█████╗░███╗░░██╗██████╗░  ███████╗███████╗░█████╗░██╗░░░░░
-# ██║░░░░░██╔══██╗██╔══██╗██║░██╔╝  ██╔══██╗████╗░██║██╔══██╗  ██╔════╝██╔════╝██╔══██╗██║░░░░░
-# ██║░░░░░██║░░██║██║░░██║█████═╝░  ███████║██╔██╗██║██║░░██║  █████╗░░█████╗░░███████║██║░░░░░
-# ██║░░░░░██║░░██║██║░░██║██╔═██╗░  ██╔══██║██║╚████║██║░░██║  ██╔══╝░░██╔══╝░░██╔══██║██║░░░░░
-# ███████╗╚█████╔╝╚█████╔╝██║░╚██╗  ██║░░██║██║░╚███║██████╔╝  ██║░░░░░███████╗██║░░██║███████╗
-# ╚══════╝░╚════╝░░╚════╝░╚═╝░░╚═╝  ╚═╝░░╚═╝╚═╝░░╚══╝╚═════╝░  ╚═╝░░░░░╚══════╝╚═╝░░╚═╝╚══════╝
-#
-
 # Color scheme
 include ~/.config/sway/colors
 include ~/.config/sway/outputs
 include ~/.config/sway/config.d/*
 include /etc/sway/config.d/*
 
-# handled by Astal
+# xwayland disable
 
 # font
 font FiraCode Nerd Font Propo 12
@@ -94,63 +54,33 @@ exec_always gsettings set org.cinnamon.desktop.default-applications.terminal exe
 
 exec_always xrandr --output XWAYLAND0 --primary
 
-# Sway-FX
-# Uncomment if running Sway-FX
-# Corners
-corner_radius 14
-smart_corner_radius on
-
-blur enable
-blur_xray disable
-blur_passes 2
-blur_radius 2
-
-layer_effects "wamBar" blur enable; blur_ignore_transparent true;
-layer_effects "wam-shellScratchpad" blur enable; blur_ignore_transparent true;
-
-layer_effects "bar" blur enable; blur_ignore_transparent true;
-layer_effects "rofi" blur enable; corner_radius 0; shadows enable; corner_radius 14;
-
-shadows enable
-shadows_on_csd disable
-shadow_blur_radius 30
-shadow_color #000000ff ex, #0000007F
 
 for_window [app_id="SteamTinkerLaunch-MainMenu"] floating enable
 for_window [app_id="^SteamTinkerLaunch-*"] floating enable
 for_window [app_id="org.kde.kdeconnect.daemon"] floating enable
 for_window [app_id="xdg-desktop-portal-gtk"] floating enable
 for_window [instance="origin.exe"] floating enable
-for_window [instance="tf_linux64"] fullscreen enable
 for_window [title="^Extension: .*Bitwarden.*"] floating enable
 for_window [title="Remote Folder Picker - Celeste"] floating enable
 for_window [title="Local Folder Picker - Celeste"] floating enable
-for_window [app_id="vivid/stasis"] fullscreen enable
 for_window [title="NoiseTorch"] floating enable
-for_window [app_id="flameshot"] border pixel 0, floating enable, fullscreen disable, move absolute position 0 0
-for_window [app_id="flameshot"] border pixel 0, fullscreen global
-for_window [app_id="com.gabm.satty"] border pixel 0, floating enable, fullscreen disable, move absolute position 0 0
-for_window [app_id="com.gabm.satty"] border pixel 0, fullscreen global
 for_window [app_id="nwg-icon-picker"] floating enable
+for_window [app_id="vivid/stasis"] fullscreen enable
+for_window [instance="tf_linux64"] fullscreen enable
+# Flameshot, 2px border for its floating window.
+for_window [app_id="flameshot"] border pixel 2, floating enable
+# for_window [app_id="flameshot"] border pixel 0, floating enable, fullscreen disable, move absolute position 0 0
+# for_window [app_id="flameshot"] border pixel 0, fullscreen global
 
-
-#
-# ██████╗░██████╗░░█████╗░░██████╗░██████╗░░█████╗░███╗░░░███╗░██████╗
-# ██╔══██╗██╔══██╗██╔══██╗██╔════╝░██╔══██╗██╔══██╗████╗░████║██╔════╝
-# ██████╔╝██████╔╝██║░░██║██║░░██╗░██████╔╝███████║██╔████╔██║╚█████╗░
-# ██╔═══╝░██╔══██╗██║░░██║██║░░╚██╗██╔══██╗██╔══██║██║╚██╔╝██║░╚═══██╗
-# ██║░░░░░██║░░██║╚█████╔╝╚██████╔╝██║░░██║██║░░██║██║░╚═╝░██║██████╔╝
-# ╚═╝░░░░░╚═╝░░╚═╝░╚════╝░░╚═════╝░╚═╝░░╚═╝╚═╝░░╚═╝╚═╝░░░░░╚═╝╚═════╝░
-#
-
+#### EXEC
 exec wl-paste -t text --watch clipman store --no-persist
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec /usr/lib/kdeconnectd
 
 exec_always wam restart
-exec swww-daemon
+exec awww-daemon
 exec swaync
-exec sworkstyle >> ~/.cache/sworkstyle.log 2>&1
+exec sworkstyle >> ~/.cache/sworkstyle.log 2>&1 
 
 exec kdeconnect-indicator
 exec nm-applet --indicator
@@ -167,15 +97,7 @@ exec swayidle \
 exec nextcloud --background
 exec playerctld daemon
 
-#
-# ░█████╗░░█████╗░███╗░░██╗████████╗██████╗░░█████╗░██╗░░░░░░██████╗
-# ██╔══██╗██╔══██╗████╗░██║╚══██╔══╝██╔══██╗██╔══██╗██║░░░░░██╔════╝
-# ██║░░╚═╝██║░░██║██╔██╗██║░░░██║░░░██████╔╝██║░░██║██║░░░░░╚█████╗░
-# ██║░░██╗██║░░██║██║╚████║░░░██║░░░██╔══██╗██║░░██║██║░░░░░░╚═══██╗
-# ╚█████╔╝╚█████╔╝██║░╚███║░░░██║░░░██║░░██║╚█████╔╝███████╗██████╔╝
-# ░╚════╝░░╚════╝░╚═╝░░╚══╝░░░╚═╝░░░╚═╝░░╚═╝░╚════╝░╚══════╝╚═════╝░
-#
-
+#### INPUT
 input type:touchpad {
 	accel_profile adaptive
 	drag enabled
@@ -218,19 +140,15 @@ mouse_warping container
 floating_modifier $mod normal
 
 bindsym {
-    # start a terminal
     $mod+Return exec $term
 
-    # start a filebrowser
     $mod+A exec $file
 
-    # open browser
     $mod+S exec $browser
 
     # Calculator
     $mod+p exec "sway-floating kitty -e 'ptpython --vi'"
 
-    # lock
     $mod+r exec "hyprlock --grace 3 & "
 
     $mod+Shift+i exec "wam togglegaps"
@@ -269,32 +187,27 @@ bindsym {
     $mod+Shift+section exec ~/.local/bin/colorpicker
 }
 
+### SWAY commands
 bindsym {
-    # reload sway
     $mod+Shift+r reload
 
-    # kill focused window
     $mod+Shift+q kill
 
-    # change focus
     $mod+h focus left
     $mod+j focus down
     $mod+k focus up
     $mod+l focus right
 
-    # alternatively, you can use the cursor keys:
     $mod+Left focus left
     $mod+Down focus down
     $mod+Up focus up
     $mod+Right focus right
 
-    # move focused window
     $mod+Shift+h move left
     $mod+Shift+j move down
     $mod+Shift+k move up
     $mod+Shift+l move right
 
-    # alternatively, you can use the cursor keys:
     $mod+Shift+Left move left
     $mod+Shift+Down move down
     $mod+Shift+Up move up
@@ -305,34 +218,30 @@ bindsym {
     $modalt+k resize shrink height 10 px or 10 ppt 
     $modalt+l resize grow width 10 px or 10 ppt    
 
-    # alternatively, you can use the cursor keys:
     $modalt+Left resize shrink width 10 px or 10 ppt  
     $modalt+Down resize grow height 10 px or 10 ppt   
     $modalt+Up resize shrink height 10 px or 10 ppt 
     $modalt+Right resize grow width 10 px or 10 ppt    
 
-    # move focused workspace
     $mod+Control+Shift+Left move workspace to output left
     $mod+Control+Shift+Down move workspace to output down
     $mod+Control+Shift+Up move workspace to output up
     $mod+Control+Shift+Right move workspace to output right
 
-    # alternatively, you can use the cursor keys:
     $mod+Control+Shift+h move workspace to output left
     $mod+Control+Shift+j move workspace to output down
     $mod+Control+Shift+k move workspace to output up
     $mod+Control+Shift+l move workspace to output right
 
-    # split in Horizontal or vertical orientation
-    $mod+b split h
+    # In a neat row v,b,n
     $mod+v split v
+    $mod+b split h
     $mod+n split n
 
-    # enter fullscreen mode for the focused container
     $mod+f fullscreen toggle
     $mod+Shift+f fullscreen global
 
-    # change container layout (stacked, tabbed, toggle split)
+    # Also in a neat row
     $mod+q layout stacking
     $mod+w layout tabbed
     $mod+e layout toggle split
@@ -371,7 +280,6 @@ bindsym {
     $modalt+9 workspace number "19"
     $modalt+0 workspace number "10"
 
-
     # move focused container to workspace
     $mod+Shift+1 move container to workspace number "1"
     $mod+Shift+2 move container to workspace number "2"
@@ -407,16 +315,16 @@ bindsym --locked {
     $modalt+F5 exec brightnessctl set 10%-
 
     # Media player controls
-    XF86AudioPlay exec playerctl play-pause; exec wam media
-    XF86AudioStop exec playerctl stop; exec wam media
-    XF86AudioNext exec playerctl next; exec wam media
-    XF86AudioPrev exec playerctl previous; exec wam media
+    XF86AudioPlay exec playerctl play-pause
+    XF86AudioStop exec playerctl stop
+    XF86AudioNext exec playerctl next
+    XF86AudioPrev exec playerctl previous
 
     # Alternatively Using $mod + F-keys
-    $mod+F1 exec playerctl previous; exec wam media
-    $mod+F2 exec wam media
-    $mod+F3 exec playerctl play-pause; exec wam media
-    $mod+F4 exec playerctl next; exec wam media
+    $mod+F1 exec playerctl previous
+    # $mod+F2 exec wam media
+    $mod+F3 exec playerctl play-pause
+    $mod+F4 exec playerctl next
 
     # Use pactl to adjust volume in PulseAudio.
     XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle

@@ -5,7 +5,7 @@ Description=Pending update checker
 Type=simple
 Restart=always
 RestartSec=1
-ExecStart=%h/.local/bin/pending-updates-deamon
+ExecStart=%h/.local/bin/pending-updates-daemon
 
 [Install]
 WantedBy=default.target

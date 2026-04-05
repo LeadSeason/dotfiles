@@ -18,10 +18,14 @@ import filetype
 
 
 save_path = os.path.join(
-        os.environ.get("XDG_PICTURES_DIR") or os.environ.get("HOME"),
-        "tims.host_uploads"
+        os.environ.get("XDG_PICTURES_DIR") or os.path.join(os.environ.get("HOME"), "Pictures"),
+        "tims.host_uploads/"
 )
-error_log_path = "/home/leadseason/.cache/timhostuploader-logs/"
+
+error_log_path = os.path.join(
+        os.environ.get("XDG_CACHE_HOME") or os.path.join(os.environ.get("HOME"), ".cache"),
+        "timhostuploader-logs/"
+)
 
 NOTIFICATION_REPLACE_ID = 1
 
@@ -264,6 +268,7 @@ async def main():
         formdata.add_field("img", file_sender(
             file_name=in_file, verbose=True), filename=file_name)
 
+        print("uploading...")
         try:
             async with aiohttp.ClientSession() as session:
                 async with session.post(
@@ -308,6 +313,12 @@ async def main():
 if __name__ == "__main__":
     # logging.basicConfig(level=logging.DEBUG)
     parser = argparse.ArgumentParser()
+
+
+    # asyncio.run(Notification(
+    #     save_path))
+
+    # sys.exit()
 
     parser.add_argument("-i", "--import_conf", help="Imports the config")
     parser.add_argument(

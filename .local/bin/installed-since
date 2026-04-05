@@ -5,18 +5,11 @@
 
 silent=false
 
-# Parse arguments
-while getopts ":sc" opt; do
+while getopts ":s" opt; do
   case $opt in
-    s)
-      silent=true
-      ;;
-    c)
-      silent=true
-      ;;
+    s) silent=true ;;
     \?)
-      echo "Invalid option: -$OPTARG" >&2
-      echo "Usage: $0 [-s]"
+      echo "Usage: $0 [-s]" >&2
       exit 1
       ;;
   esac
@@ -25,29 +18,42 @@ done
 # Get filesystem birth date of root (/)
 birth_date=$(stat -c %w /)
 
-# If %w is not supported, fallback to %z (change time)
 if [ "$birth_date" = "-" ]; then
   echo "Birth time not supported on this filesystem."
   exit 1
 fi
 
-# Convert dates to seconds since epoch
-birth_epoch=$(date -d "$birth_date" +%s)
-now_epoch=$(date +%s)
+# Normalize dates
+birth=$(date -d "$birth_date" +%Y-%m-%d)
+now=$(date +%Y-%m-%d)
 
-# Compute total days
-total_days=$(( (now_epoch - birth_epoch) / 86400 ))
+# Calculate components using calendar logic
+years=$(date -d "$now" +%Y)
+birth_year=$(date -d "$birth" +%Y)
 
-# Approximate conversion
-years=$(( total_days / 365 ))
-remaining_days=$(( total_days % 365 ))
-months=$(( remaining_days / 30 ))
-days=$(( remaining_days % 30 ))
+months=$(date -d "$now" +%m)
+birth_month=$(date -d "$birth" +%m)
 
-# Build the formatted string
-age_string="${years} years, ${months} months, ${days} days"
+days=$(date -d "$now" +%d)
+birth_day=$(date -d "$birth" +%d)
 
-# Output
+y=$((years - birth_year))
+m=$((months - birth_month))
+d=$((days - birth_day))
+
+# Normalize negatives
+if (( d < 0 )); then
+  m=$((m - 1))
+  d=$((d + $(date -d "$now -$(date -d "$now" +%d) days" +%d)))
+fi
+
+if (( m < 0 )); then
+  y=$((y - 1))
+  m=$((m + 12))
+fi
+
+age_string="${y} years, ${m} months, ${d} days"
+
 if $silent; then
   echo "$age_string"
 else
