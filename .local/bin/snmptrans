@@ -1,0 +1,30 @@
+#!/bin/sh
+
+#!/bin/sh
+
+verbose=0
+args=""
+
+for arg in "$@"; do
+    if [ "$arg" = "-v" ]; then
+        verbose=1
+    else
+        args="$args \"$arg\""
+    fi
+done
+
+# restore positional parameters without -v
+eval set -- $args
+
+if [ $verbose -eq 1 ]; then
+    snmptranslate -Td "$@" 2>/dev/null
+else
+    case "$1" in
+        .*|[0-9]*)
+            snmptranslate -OS "$@" 2>/dev/null
+            ;;
+        *)
+            snmptranslate -On "$@" 2>/dev/null
+            ;;
+    esac
+fi
