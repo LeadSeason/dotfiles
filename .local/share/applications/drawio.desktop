@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=drawio
 Comment=A diagramming and whiteboarding desktop app
-Exec=/usr/bin/drawio --enable-features=UseOzonePlatform --ozone-platform=wayland %f
+Exec=/usr/bin/drawio %f --enable-features=UseOzonePlatform --ozone-platform=wayland
 Terminal=false
 Type=Application
 Icon=drawio
