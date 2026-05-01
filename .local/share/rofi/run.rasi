@@ -1,10 +1,10 @@
 /* vim:ft=css */
 
 @import "shared/mocha.rasi"
+@import "shared/fonts.rasi"
 
 * {
     width: 50%;
-    font: "FiraCode Nerd Font Propo 12";
 }
 
 element-text, element-icon , mode-switcher {

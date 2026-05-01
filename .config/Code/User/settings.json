@@ -22,7 +22,7 @@
     "docker.enableDockerComposeLanguageService": true,
     "cmake.configureOnOpen": true,
     "python.defaultInterpreterPath": "/bin/python",
-    "editor.fontFamily": "\"Symbols Nerd Font Mono\", \"FiraCode Nerd Font Propo\"",
+    "editor.fontFamily": "ComicShannsMono Nerd Font Mono",
     "editor.fontLigatures": true,
     "editor.largeFileOptimizations": false,
     "vim.useSystemClipboard": true,
@@ -60,7 +60,7 @@
     "extensions.experimental.affinity": {
         "asvetliakov.vscode-neovim": 1
     },
-    "catppuccin.accentColor": "yellow",
+    "catppuccin.accentColor": "blue",
     "typescript.updateImportsOnFileMove.enabled": "always",
     "editor.renderWhitespace": "none",
     "github.copilot.enable": {

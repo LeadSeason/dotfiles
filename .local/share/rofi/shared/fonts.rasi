@@ -1,5 +1,5 @@
 /* vim:ft=css */
 
 * {
-    font: "FiraCode Nerd Font Propo 12";
+    font: "ComicShannsMono Nerd Font Mono 12";
 }

@@ -46,10 +46,10 @@ client.background        $crust
 
 exec_always gsettings set org.gnome.desktop.interface cursor-size 12
 exec_always gsettings set org.cinnamon.desktop.interface cursor-size 12
-exec_always gsettings set org.gnome.desktop.interface monospace-font-name 'FiraCode Nerd Font Propo 12'
-exec_always gsettings set org.gnome.desktop.interface document-font-name 'FiraCode Nerd Font Propo 12'
-exec_always gsettings set org.gnome.desktop.interface font-name 'FiraCode Nerd Font Propo 12'
-exec_always gsettings set org.gnome.desktop.interface gtk-theme catppuccin-mocha-yellow-standard+default
+exec_always gsettings set org.gnome.desktop.interface monospace-font-name 'ComicShannsMono Nerd Font 12'
+exec_always gsettings set org.gnome.desktop.interface document-font-name 'ComicShannsMono Nerd Font 12'
+exec_always gsettings set org.gnome.desktop.interface font-name 'ComicShannsMono Nerd Font 12'
+exec_always gsettings set org.gnome.desktop.interface gtk-theme catppuccin-mocha-blue-standard+default
 exec_always gsettings set org.cinnamon.desktop.default-applications.terminal exec '$term'
 
 exec_always xrandr --output XWAYLAND0 --primary
@@ -74,8 +74,9 @@ for_window [app_id="flameshot"] border pixel 2, floating enable
 
 #### EXEC
 exec wl-paste -t text --watch clipman store --no-persist
-exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+# exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec /usr/lib/kdeconnectd
+exec sway-audio-idle-inhibit
 
 exec_always wam restart
 exec awww-daemon

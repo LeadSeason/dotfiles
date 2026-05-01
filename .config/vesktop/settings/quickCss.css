@@ -1,15 +1,16 @@
 @import url("https://catppuccin.github.io/discord/dist/catppuccin-mocha-blue.theme.css");
 
 :root{
-    --Chat-Font-Used: 'firacode nerd font propo';
-    src: url("https://www.programmingfonts.org/fonts/resources/firacode/firacode.woff2") format("woff");
+    --Chat-Font-Used: 'ComicShannsMono Nerd Font';
     --Chat-Font-Size: 15.5px;
 }
 
-:not([class="hljs"]):not(code){
-font-family: var(--Chat-Font-Used)!important;
+
+
+:not([class="hljs"]):not(code):not(.username_c19a55):not(.username_c19a55 *):not(.name__20a53 *):not(.username__703b9):not(.innerContainer_dfb989):not(.titleWrapper__9293f *){
+    font-family: var(--Chat-Font-Used)!important;
 }
 
 .markup:not(code) {
-font-size: var(--Chat-Font-Size)!important;
+    font-size: var(--Chat-Font-Size)!important;
 }
