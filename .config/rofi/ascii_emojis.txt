@@ -1,0 +1,193 @@
+:)	Western	face-smiling	smiley	happy | smile | smiley | classic | colon paren
+:-)	Western	face-smiling	smiley with nose	happy | smile | smiley | nose | classic
+=)	Western	face-smiling	equals smile	happy | smile | equals | grin
+:D	Western	face-smiling	big grin	laugh | grin | happy | big smile
+:-D	Western	face-smiling	big grin with nose	laugh | grin | happy | nose
+xD	Western	face-smiling	laughing hard	laugh | lol | rofl | xd | hard laugh
+XD	Western	face-smiling	laughing hard caps	laugh | lol | rofl | xd | hard laugh
+^_^	Western	face-smiling	happy eyes	happy | smile | kawaii | cute | eyes
+^.^	Western	face-smiling	happy face dot	happy | smile | kawaii | cute
+:3	Western	face-smiling	cat smile	cute | cat | smile | kawaii
+:>	Western	face-smiling	wry smile	smug | smile | wry | greater
+;)	Western	face-smiling	winking	wink | flirt | smile
+;-)	Western	face-smiling	winking with nose	wink | flirt | smile | nose
+;D	Western	face-smiling	winking laugh	wink | laugh | flirt
+:P	Western	face-tongue	tongue out	tongue | playful | silly
+:-P	Western	face-tongue	tongue out with nose	tongue | playful | silly | nose
+:p	Western	face-tongue	tongue lowercase	tongue | playful | silly
+;P	Western	face-tongue	winking tongue	wink | tongue | playful
+:b	Western	face-tongue	tongue b	tongue | playful | silly
+:(	Western	face-sad	frown	sad | frown | unhappy
+:-(	Western	face-sad	frown with nose	sad | frown | unhappy | nose
+=(	Western	face-sad	equals frown	sad | frown | unhappy
+:'(	Western	face-sad	crying	cry | tears | sad | weeping
+:'-(	Western	face-sad	crying with nose	cry | tears | sad | weeping | nose
+T_T	Western	face-sad	crying eyes	cry | tears | sad | weeping | kawaii
+T.T	Western	face-sad	crying eyes dot	cry | tears | sad | weeping
+;_;	Western	face-sad	silent crying	cry | tears | sad | quiet sob
+Q_Q	Western	face-sad	bawling	cry | tears | sad | sobbing | bawl
+:|	Western	face-neutral	neutral	meh | flat | neutral | straight face
+:-|	Western	face-neutral	neutral with nose	meh | flat | neutral | nose
+:/	Western	face-neutral	skeptical	unsure | skeptical | meh | confused
+:-/	Western	face-neutral	skeptical with nose	unsure | skeptical | meh | nose
+:\	Western	face-neutral	skeptical backslash	unsure | skeptical | meh
+-_-	Western	face-neutral	unamused	annoyed | tired | meh | unamused | done
+=_=	Western	face-neutral	exhausted	tired | exhausted | meh | sleepy
+._.	Western	face-neutral	blank stare	blank | empty | stare | speechless
+o_o	Western	face-surprised	wide eyes	surprised | shocked | stare | wide
+O_O	Western	face-surprised	very wide eyes	surprised | shocked | stare | wide
+O_o	Western	face-surprised	confused stare	confused | weirded out | uneven
+0_0	Western	face-surprised	zero eyes	surprised | shocked | stare
+:O	Western	face-surprised	open mouth	shocked | surprised | wow | gasp
+:-O	Western	face-surprised	open mouth with nose	shocked | surprised | wow | gasp | nose
+:o	Western	face-surprised	small open mouth	surprised | oh | wow
+D:	Western	face-surprised	horror	horror | shock | dread | scared
+D8	Western	face-surprised	horror with glasses	horror | shock | scared
+:*	Western	face-affection	kiss	kiss | love | smooch
+:-*	Western	face-affection	kiss with nose	kiss | love | smooch | nose
+<3	Western	face-affection	heart	love | heart | affection
+</3	Western	face-affection	broken heart	heartbreak | sad | broken
+:^)	Western	face-other	pointy nose smile	smile | pointy nose | classic
+:^(	Western	face-other	pointy nose frown	frown | pointy nose | classic
+B)	Western	face-other	cool	cool | sunglasses | shades
+B-)	Western	face-other	cool with nose	cool | sunglasses | shades | nose
+8)	Western	face-other	glasses smile	glasses | cool | smile
+8-)	Western	face-other	glasses smile with nose	glasses | cool | smile | nose
+:X	Western	face-other	sealed lips	silent | sealed | secret | no comment
+:-X	Western	face-other	sealed lips with nose	silent | sealed | secret | no comment
+>:(	Western	face-negative	angry	mad | angry | grumpy | upset
+>:)	Western	face-negative	evil grin	evil | mischief | devious | smirk
+>:D	Western	face-negative	evil laugh	evil | laugh | maniacal | mwahaha
+>.<	Western	face-negative	frustrated	frustrated | pained | annoyed | ugh
+>_<	Western	face-negative	frustrated underscore	frustrated | pained | annoyed | ugh
+o/	Western	face-other	waving	wave | hello | greeting | hi
+\o	Western	face-other	waving other	wave | hello | greeting | hi
+\o/	Western	face-other	cheering	cheer | celebrate | hooray | yay
+o7	Western	face-other	salute	salute | respect | o7
+(╯°□°)╯︵ ┻━┻	Kaomoji	rage	flip the table	rage | flip | table | angry | upset
+┬─┬ノ( º _ ºノ)	Kaomoji	rage	put table back	calm | restore | table | fix
+(ノಠ益ಠ)ノ彡┻━┻	Kaomoji	rage	furious flip	furious | rage | flip | table
+( ͡° ͜ʖ ͡°)	Kaomoji	lenny	lenny face	lenny | smirk | suggestive | meme
+( ͠° ͟ʖ ͡°)	Kaomoji	lenny	wider lenny	lenny | wider | smirk | meme
+ಠ_ಠ	Kaomoji	disapproval	look of disapproval	disapproval | judging | stern | side eye
+ಠ╭╮ಠ	Kaomoji	disapproval	disapproval frown	disapproval | upset | sad | frown
+¯\_(ツ)_/¯	Kaomoji	shrug	shrug	shrug | dunno | whatever | idk | shrugging
+(╮°-°)╮┳━━┳	Kaomoji	rage	angry but careful	gentle | considering | table
+(▀̿Ĺ̯▀̿ ̿)	Kaomoji	cool	cool sunglasses	cool | shades | gangster | tough
+(◕‿◕)	Kaomoji	happy	cute happy	cute | happy | smile | kawaii
+(づ｡◕‿‿◕｡)づ	Kaomoji	affection	hug	hug | cuddle | affection | kawaii
+(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧	Kaomoji	happy	magic sparkle	magic | sparkle | happy | excited
+(✿◠‿◠)	Kaomoji	happy	flower smile	cute | flower | happy | smile
+(╥﹏╥)	Kaomoji	sad	crying kaomoji	cry | tears | sad
+(╯︵╰,)	Kaomoji	sad	tearful	cry | sad | tears | broken
+(>﹏<)	Kaomoji	sad	pained	pained | hurt | frustrated
+(｡♥‿♥｡)	Kaomoji	affection	in love	love | infatuation | hearts | smitten
+(◔_◔)	Kaomoji	skeptical	side eye	skeptical | side eye | suspicious
+(；⌣̀_⌣́)	Kaomoji	awkward	awkward smile	awkward | nervous | uncomfortable
+(￣ω￣)	Kaomoji	neutral	smug	smug | content | satisfied
+(￣▽￣)	Kaomoji	happy	pleased	pleased | content | happy
+(¬_¬)	Kaomoji	skeptical	side eye unamused	unamused | suspicious | side eye
+(¬‿¬)	Kaomoji	smug	knowing smirk	smirk | knowing | suggestive | sly
+ʕ•ᴥ•ʔ	Kaomoji	animal	bear	bear | cute | animal | kawaii
+ʕ ᵔᴥᵔ ʔ	Kaomoji	animal	happy bear	bear | happy | cute | smiling
+(=^･ω･^=)	Kaomoji	animal	cat	cat | kitty | cute | kawaii
+(=^･^=)	Kaomoji	animal	cat simple	cat | kitty | cute
+ฅ(^•ﻌ•^ฅ)	Kaomoji	animal	cat with paws	cat | paws | kawaii | cute
+(=｀ェ´=)	Kaomoji	animal	grumpy cat	cat | grumpy | angry kitty
+(•ㅅ•)	Kaomoji	animal	bunny	bunny | rabbit | cute | kawaii
+／(=ﾟ x ﾟ=)＼	Kaomoji	animal	bunny with ears	bunny | rabbit | cute
+ʘ‿ʘ	Kaomoji	creepy	staring	staring | creepy | watching
+( ಠ ʖ̯ ಠ)	Kaomoji	disapproval	side stare	stare | disapproval | judging
+(ʘ ͜ʖ ʘ)	Kaomoji	creepy	wide lenny	creepy | staring | wide | lenny
+ಥ_ಥ	Kaomoji	sad	weeping	cry | weep | sad | tears
+(◡ ‿ ◡)	Kaomoji	happy	gentle smile	gentle | calm | happy | content
+(｡◕‿◕｡)	Kaomoji	happy	innocent	innocent | cute | happy | kawaii
+(˘▾˘)	Kaomoji	happy	pleased eyes closed	pleased | content | relaxed
+(─‿‿─)	Kaomoji	happy	mischievous smile	mischief | sly | smile
+(¬､¬)	Kaomoji	skeptical	side glance	skeptical | side eye | unimpressed
+(눈_눈)	Kaomoji	disapproval	disapproving korean	disapproval | korean | unamused
+( ͡~ ͜ʖ ͡°)	Kaomoji	lenny	winking lenny	lenny | wink | smirk
+ヽ(´▽`)/	Kaomoji	happy	cheering	cheer | excited | happy | hooray
+ヽ(•‿•)ノ	Kaomoji	happy	easygoing	easygoing | happy | calm
+\(^o^)/	Kaomoji	happy	hooray	hooray | celebrate | yay | excited
+\(◎o◎)/	Kaomoji	surprised	shocked hands up	shocked | surprised | wow
+(◍•ᴗ•◍)	Kaomoji	happy	smiling rosy	rosy | happy | cute
+(´｡• ω •｡`)	Kaomoji	cute	shy	shy | cute | bashful
+(•⊙ω⊙•)	Kaomoji	surprised	round eyes	surprised | round eyes | wow
+(*≧ω≦*)	Kaomoji	excited	excited	excited | happy | thrilled
+(◕д◕)	Kaomoji	surprised	wow	wow | surprised | amazed
+(˃̣̣̥᷄⌓˂̣̣̥᷅ )	Kaomoji	sad	teary	cry | sad | teary | sob
+(´；ω；`)	Kaomoji	sad	sobbing	sob | cry | sad | tears
+(ノಥ益ಥ)ノ	Kaomoji	rage	tearful rage	rage | tearful | flip | frustrated
+(ノ°益°)ノ	Kaomoji	rage	rage flip	rage | flip | angry | upset
+(ﾉ´ヮ`)ﾉ*: ･ﾟ	Kaomoji	happy	sparkle throw	sparkle | excited | magic
+(ノ_<。)	Kaomoji	sad	crying wiping	cry | wipe | sad | tears
+(ಠ‿ಠ)	Kaomoji	smug	knowing	smug | knowing | sly | smirk
+(ʘ_ʘ)	Kaomoji	surprised	wide stare	stare | surprised | shocked
+(ㆆ_ㆆ)	Kaomoji	skeptical	suspicious	suspicious | side eye | doubt
+(´▽`ʃ♡ƪ)	Kaomoji	affection	loving	love | affection | smitten
+( ˘ ³˘)♥	Kaomoji	affection	blowing kiss	kiss | love | affection | smooch
+(◕‿◕)♡	Kaomoji	affection	cute love	cute | love | happy | heart
+(っ˘̩╭╮˘̩)っ	Kaomoji	sad	wanting hug	sad | hug me | crying
+(づ￣ ³￣)づ	Kaomoji	affection	hug kiss	hug | kiss | affection
+\m/	Western	gesture	rock on	rock | metal | horns | rock on
+\m/(>.<)\m/	Kaomoji	gesture	rocking out	rock | metal | horns | rocking
+(ง'̀-'́)ง	Kaomoji	gesture	fight	fight | fists | ready | come at me
+(ง °ل͜°)ง	Kaomoji	gesture	come at me	fight | challenge | come at me bro
+ᕦ(ò_óˇ)ᕤ	Kaomoji	gesture	flex	flex | strong | muscle | tough
+ᕙ(⇀‸↼‶)ᕗ	Kaomoji	gesture	flex strong	flex | muscle | strong | smug
+(•_•) ( •_•)>⌐■-■ (⌐■_■)	Kaomoji	cool	deal with it	deal with it | sunglasses | cool | meme
+(⌐■_■)	Kaomoji	cool	sunglasses	cool | shades | sunglasses | deal with it
+ヽ(ಠ_ಠ)ノ	Kaomoji	rage	exasperated	exasperated | done | upset
+(҂◡_◡)	Kaomoji	sad	bruised	hurt | bruised | sad
+(´◔ ω ◔`)	Kaomoji	cute	pleading	pleading | begging | cute
+(っ◔◡◔)っ	Kaomoji	affection	offering hug	hug | offer | affection
+凸(￣ヘ￣)	Kaomoji	rage	middle finger	angry | rude | flip off | upset
+(งツ)ว	Kaomoji	gesture	fighter pose	fight | pose | ready
+(─‿‿─)♡	Kaomoji	affection	loving smirk	love | smirk | affection
+(づ｡◕‿‿◕｡)づ♡	Kaomoji	affection	loving hug	hug | love | affection
+( ͡ᵔ ͜ʖ ͡ᵔ )	Kaomoji	lenny	closed lenny	lenny | content | smirk
+(¬ ¬ )	Kaomoji	skeptical	skeptical look	skeptical | doubt | unsure
+ʕノ•ᴥ•ʔノ ︵ ┻━┻	Kaomoji	rage	bear flips table	bear | flip | rage | table
+ʕっ•ᴥ•ʔっ	Kaomoji	affection	bear hug	bear | hug | affection
+(◣_◢)	Kaomoji	rage	intense anger	anger | intense | mad
+༼ つ ◕_◕ ༽つ	Kaomoji	gesture	give energy	give | take | energy | meme
+ヽ༼ຈل͜ຈ༽ノ	Kaomoji	gesture	raise dongers	dongers | meme | raise | excited
+༼ つ Ɵ͆ل͜Ɵ͆ ༽つ	Kaomoji	gesture	summon	summon | offering | give
+(҂` ﾛ ´)凸	Kaomoji	rage	flipping off angry	angry | rude | mad
+(¬､¬)σ	Kaomoji	skeptical	pointing skeptical	point | skeptical | suspicious
+(˶˃ ᵕ ˂˶)	Kaomoji	cute	cute happy	cute | happy | smile | kawaii | shy | bashful
+(˶ˆᗜˆ˵)	Kaomoji	cute	pleased smile	pleased | happy | smile | content | kawaii
+⸜(｡˃ ᵕ ˂ )⸝♡	Kaomoji	affection	loving cute	love | cute | heart | kawaii | smitten | affection
+ദ്ദി(˵ •̀ ᴗ - ˵ )	Kaomoji	cute	finger guns	finger guns | wink | sly | cool | confident
+✧ ꉂ(˵˃ ᗜ ˂˵)	Kaomoji	happy	sparkle laugh	laugh | sparkle | excited | happy | giggle
+𐔌՞. .՞𐦯	Kaomoji	animal	cat peeking	cat | peek | shy | hiding | kawaii
+>ᴗ<	Kaomoji	cute	tiny happy	cute | happy | small | smile | shy
+(¬_¬")	Kaomoji	skeptical	awkward side eye	side eye | awkward | sweat | uncomfortable | unsure
+( ˶°ㅁ°) !!	Kaomoji	surprised	shocked gasp	shocked | surprised | gasp | wow | startled
+(◞‸ ◟)💧	Kaomoji	sad	sad tear	sad | tear | down | gloomy | dejected
+◝(ᵔᗜᵔ)◜	Kaomoji	happy	cheerful arms	cheerful | happy | excited | arms up
+( ≧ᗜ≦)	Kaomoji	excited	thrilled	thrilled | excited | happy | squee
+(ᵕ—ᴗ—)	Kaomoji	neutral	sleepy content	sleepy | content | tired | drowsy | calm
+( ꩜ ᯅ ꩜;)	Kaomoji	awkward	nervous sweat	nervous | sweat | awkward | worried | scared
+(,,>﹏<,,)	Kaomoji	sad	pained cute	pained | cute | embarrassed | shy | flustered
+૮₍ ´ ꒳ `₎ა	Kaomoji	animal	cute creature	cute | creature | paws | kawaii | smile
+(*ᴗ͈ˬᴗ͈)ꕤ*.ﾟ	Kaomoji	cute	dreamy flower	dreamy | flower | sparkle | cute | peaceful
+｡°(°¯᷄◠¯᷅°)°｡	Kaomoji	sad	crying sob	cry | sob | sad | weeping | tears
+₍^. .^₎⟆	Kaomoji	animal	small cat	cat | kitty | cute | small | kawaii
+(๑>◡<๑)	Kaomoji	happy	blushing smile	blush | happy | cute | shy | smile
+(..◜ᴗ◝..)	Kaomoji	cute	bashful smile	bashful | shy | cute | smile | sweet
+٩(ˊᗜˋ*)و ♡	Kaomoji	excited	cheering love	cheer | excited | love | hooray | happy
+(¬`‸´¬)	Kaomoji	skeptical	pouting	pout | annoyed | grumpy | unamused
+(ó﹏ò｡)	Kaomoji	sad	teary worried	worried | teary | sad | concerned
+∘ ∘ ∘ ( °ヮ° ) ?	Kaomoji	cute	confused dots	confused | curious | dots | thinking | huh
+ᕙ( •̀ ᗜ •́ )ᕗ	Kaomoji	gesture	flex confident	flex | strong | confident | muscle
+ᓚ₍ ^. .^₎	Kaomoji	animal	loaf cat	cat | loaf | sitting | kawaii | cute
+ฅ^>⩊<^ ฅ	Kaomoji	animal	cat with paws	cat | paws | kawaii | cute | excited
+≽^•⩊•^≼	Kaomoji	animal	cat face	cat | kitty | cute | kawaii
+/ᐠ - ˕ -マ	Kaomoji	animal	sleepy cat	cat | sleepy | tired | kawaii | nyan
+૮꒰ ˶• ༝ •˶꒱ა ♡	Kaomoji	animal	loving creature	cute | love | creature | heart | kawaii
+૮₍ ˃ ⤙ ˂ ₎ა	Kaomoji	animal	excited creature	excited | cute | creature | kawaii | happy
+(づ ᴗ _ᴗ)づ♡	Kaomoji	affection	loving hug	hug | love | affection | kawaii | cuddle
+( ˘͈ ᵕ ˘͈♡)	Kaomoji	affection	peaceful love	love | peaceful | content | heart | dreamy
+ε(´｡•᎑•`)っ 💕	Kaomoji	affection	offering love	offer | love | heart | hug | affection

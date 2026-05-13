@@ -177,6 +177,7 @@ bindsym {
     # a rofi tool program
     $mod+x exec pgrep --exact rofi || rofi-bluetooth
     $mod+period exec pgrep --exact rofi || rofi -show emoji
+    $mod+Shift+period exec pgrep --exact rofi || rofi -show emoji -emoji-file $HOME/.config/rofi/ascii_emojis.txt
     # $mod+ctrl+Delete exec pgrep --exact rofi || /home/leadseason/.config/rofi/powermenu.sh
     $mod+Shift+w exec pgrep --exact rofi || networkmanager_dmenu
     $mod+Shift+s exec pgrep --exact rofi || rofi -show ssh
