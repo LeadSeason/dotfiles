@@ -78,7 +78,7 @@ exec wl-paste -t text --watch clipman store --no-persist
 exec /usr/lib/kdeconnectd
 exec sway-audio-idle-inhibit
 
-exec_always wam restart
+exec wam restart
 exec awww-daemon
 exec swaync
 exec sworkstyle >> ~/.cache/sworkstyle.log 2>&1 
@@ -87,13 +87,13 @@ exec kdeconnect-indicator
 exec nm-applet --indicator
 exec blueman-applet
 
-exec swayidle \
+exec_always pkill swayidle --exact swayidle \
 	timeout 240 "wam dim" \
     resume "wam undim" \
-	timeout 300 "pgrep --exact hyprlock || hyprlock --grace 3" \
+	timeout 300 "pgrep --exact swaylock || swaylock --grace 3" \
     timeout 420 'swaymsg "output * dpms off"' \
     resume 'swaymsg "output * dpms on"; wam restart' \
-	before-sleep "pgrep --exact hyprlock || hyprlock"
+	before-sleep "pgrep --exact swaylock || swaylock"
 
 exec nextcloud --background
 exec playerctld daemon
@@ -150,7 +150,7 @@ bindsym {
     # Calculator
     $mod+p exec "sway-floating kitty -e 'ptpython --vi'"
 
-    $mod+r exec "hyprlock --grace 3 & "
+    $mod+r exec "swaylock --grace 3 & "
 
     $mod+Shift+i exec "wam togglegaps"
 
@@ -180,13 +180,14 @@ bindsym {
     $mod+Shift+period exec pgrep --exact rofi || rofi -show emoji -emoji-file $HOME/.config/rofi/ascii_emojis.txt
     # $mod+ctrl+Delete exec pgrep --exact rofi || /home/leadseason/.config/rofi/powermenu.sh
     $mod+Shift+w exec pgrep --exact rofi || networkmanager_dmenu
-    $mod+Shift+s exec pgrep --exact rofi || rofi -show ssh
+    $mod+Shift+s exec pgrep --exact rofi || rofi-rbw -a copy
 
     # Start a audio control program
     $mod+Shift+e exec pavucontrol
 
     $mod+section exec hyprmag
     $mod+Shift+section exec ~/.local/bin/colorpicker
+    
 }
 
 ### SWAY commands
