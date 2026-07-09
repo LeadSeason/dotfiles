@@ -13,6 +13,7 @@ set $modalt Mod4
 set $term kitty -1
 set $file nemo
 set $browser firefox-nightly || firefox
+set $lock hyprlock --no-fade-in
 set $WOBSOCK $XDG_RUNTIME_DIR/wob.sock
 
 # Color scheme
@@ -24,12 +25,12 @@ include /etc/sway/config.d/*
 # xwayland disable
 
 # font
-font FiraCode Nerd Font Propo 12
+font MonoCraft Nerd Font Propo 12
 
 # Gaps
 default_border pixel 2
-gaps inner 10
-gaps outer 10
+gaps inner 0
+gaps outer 0
 
 # left | center | right
 # title_align left 
@@ -46,9 +47,9 @@ client.background        $crust
 
 exec_always gsettings set org.gnome.desktop.interface cursor-size 12
 exec_always gsettings set org.cinnamon.desktop.interface cursor-size 12
-exec_always gsettings set org.gnome.desktop.interface monospace-font-name 'ComicShannsMono Nerd Font 12'
-exec_always gsettings set org.gnome.desktop.interface document-font-name 'ComicShannsMono Nerd Font 12'
-exec_always gsettings set org.gnome.desktop.interface font-name 'ComicShannsMono Nerd Font 12'
+exec_always gsettings set org.gnome.desktop.interface monospace-font-name 'Monocraft 10'
+exec_always gsettings set org.gnome.desktop.interface document-font-name 'Monocraft 10'
+exec_always gsettings set org.gnome.desktop.interface font-name 'Monocraft 10'
 exec_always gsettings set org.gnome.desktop.interface gtk-theme catppuccin-mocha-blue-standard+default
 exec_always gsettings set org.cinnamon.desktop.default-applications.terminal exec '$term'
 
@@ -87,13 +88,13 @@ exec kdeconnect-indicator
 exec nm-applet --indicator
 exec blueman-applet
 
-exec_always pkill swayidle --exact swayidle \
+exec_always pkill swayidle --exact; swayidle \
 	timeout 240 "wam dim" \
     resume "wam undim" \
-	timeout 300 "pgrep --exact swaylock || swaylock --grace 3" \
+	timeout 300 "pgrep --exact $lock || $lock --grace 3" \
     timeout 420 'swaymsg "output * dpms off"' \
     resume 'swaymsg "output * dpms on"; wam restart' \
-	before-sleep "pgrep --exact swaylock || swaylock"
+	before-sleep "pgrep --exact $lock || $lock --immediate-render"
 
 exec nextcloud --background
 exec playerctld daemon
@@ -150,15 +151,13 @@ bindsym {
     # Calculator
     $mod+p exec "sway-floating kitty -e 'ptpython --vi'"
 
-    $mod+r exec "swaylock --grace 3 & "
-
     $mod+Shift+i exec "wam togglegaps"
 
     # Brightness controls
     XF86MonBrightnessUp exec brightnessctl set 10%+
     XF86MonBrightnessDown exec brightnessctl set 10%-
-    $modalt+F5 exec brightnessctl set 10%+
-    $modalt+F6 exec brightnessctl set 10%-
+    $mod+F6 exec brightnessctl set 10%+
+    $mod+F5 exec brightnessctl set 10%-
 
     $mod+ctrl+Delete exec wam powermenu
     $mod+t exec wam scratchpad
@@ -308,6 +307,10 @@ bindsym {
 
 # Allow the use of media keys while locked.
 bindsym --locked {
+
+    # Allow to lock device even if its locked, Since it might crash
+    $mod+r exec "pgrep --exact $lock || $lock --grace 3"
+
     # Kbd brightness for Lenovo laptop
     $modalt+space exec $HOME/.local/bin/kbd_brightness_toggle
 

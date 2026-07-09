@@ -1,5 +1,5 @@
 /* vim:ft=css */
 
 * {
-    font: "ComicShannsMono Nerd Font Mono 12";
+    font: "Monocraft 12";
 }
