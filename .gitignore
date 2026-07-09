@@ -2,3 +2,6 @@
 .config/sway/workspaces
 .config/btop/btop.conf
 .config/btop/btop.log
+# Ignore fprint.conf since it might sometimes be configured
+# to something else then default
+.config/hypr/hyprlock.d/fprint.conf
